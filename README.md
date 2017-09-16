@@ -1,4 +1,4 @@
-# GRO2016
+# NitrogenUptake2016
 
 This repository contains data and source code associated with Hill et al. "Nitrogen uptake and allocation estimates for _Spartina alterniflora_ and _Distichlis spicata_"
 
@@ -8,21 +8,21 @@ Install the package from GitHub using devtools:
 
 ```r
 install.packages("devtools")
-devtools::install_github("troyhill/GRO2016")
-library("GRO2016")
+devtools::install_github("troyhill/NitrogenUptake2016")
+library("NitrogenUptake2016")
 ```
 
 All the data used in this manuscript are available via:
 
 ```r
-data(GRO2016)
+data(NitrogenUptake2016)
 ```
 
 
 The manuscript vignette can be read via:
 
 ```r
-vignette("analysis",package="GRO2016")
+vignette("analysis",package="NitrogenUptake2016")
 ```
 
 
