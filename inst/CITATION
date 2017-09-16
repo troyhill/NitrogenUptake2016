@@ -1,0 +1,18 @@
+bibentry("Data",
+         title = "Data and source code from: Nitrogen uptake and allocation estimates for Spartina alterniflora and Distichlis spicata",
+         author = person("Troy D. Hill, Nathalie R. Moore, Caroline R. Kanaskie, Emily A. Santos, and Autumn J. Oczkowski"),
+         organization = "",
+         address      = "Narragansett, RI",
+         year         = "2017",
+         url          = "https://github.com/troyhill/NitrogenUptake2016",
+
+         textVersion =
+         paste("Troy D. Hill, Nathalie R. Moore, Caroline R. Kanaskie, Emily A. Santos, and Autumn J. Oczkowski (2017). ",
+               "Data and source code from: Nitrogen uptake and allocation estimates for Spartina alterniflora and Distichlis spicata. ",
+               "Narragansett, RI. ",
+               "URL https://github.com/troyhill/NitrogenUptake2016",
+               sep=""),
+
+         mheader = "To cite NitrogenUptake2016 in publications use:",
+	       mfooter = ""
+)
