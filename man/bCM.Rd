@@ -5,7 +5,7 @@
 \title{Parameterize Box-Cox model for mass-height allometry (based on Lu et al. 2016)}
 \usage{
 bCM(dat, mass = "sample", height = "height_cm", lam.avail = c(-2, -1.5,
-  -1, -2/3, -1/2, -1/3, 0, 1/3, 1/2, 2/3, 1, 1.5, 2))
+  -1, -2/3, -1/2, -1/3, 0, 1/3, 1/2, 2/3, 1, 1.5, 2), lam.only = FALSE)
 }
 \arguments{
 \item{dat}{dataframe with data}
@@ -15,9 +15,11 @@ bCM(dat, mass = "sample", height = "height_cm", lam.avail = c(-2, -1.5,
 \item{height}{height column}
 
 \item{lam.avail}{set of possible lambda values}
+
+\item{lam.only}{if TRUE, lambda is returned. If FALSE, model is returned}
 }
 \value{
-a model
+if lam.only is FALSE, a model is returned. If lam.only is TRUE, lambda value is returned.
 }
 \description{
 Parameterize Box-Cox model for mass-height allometry (based on Lu et al. 2016)

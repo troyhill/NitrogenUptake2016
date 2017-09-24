@@ -2,7 +2,6 @@
 
 export(ap)
 export(bCM)
-export(lam)
 export(nappCalc2)
 export(nmolHr_mgDay)
 export(se)

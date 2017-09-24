@@ -100,7 +100,7 @@ nappCalc2 <- function(
     tempData[, eV] <- tempData[, dead.inc] <- tempData[, live.inc] <- as.numeric(NA)
 
   for (h in 1:length(unique(tempData[, siteCol]))) {
-    print(h)
+    # print(h)
     targetSite <- unique(tempData[, siteCol])[h]
     subData1 <- tempData[tempData[, siteCol] %in% targetSite, ]
     # calculates biomass increments (Bn - B(n-1)) over all available years
@@ -216,7 +216,7 @@ nappCalc2 <- function(
     output <- tempData
   } else if (summarize %in% countsAsTrue) {
     for (i in 1:length(unique(tempData[, siteCol]))) {
-      print(i)
+      # print(i)
       targetSite <- unique(tempData[, siteCol])[i]
       subData1 <- tempData[tempData[, siteCol] %in% targetSite, ]
       for (j in 1:length(unique(subData1[, yearCol]))) {

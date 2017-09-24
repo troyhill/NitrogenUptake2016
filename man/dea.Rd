@@ -3,13 +3,28 @@
 \docType{data}
 \name{dea}
 \alias{dea}
-\title{Denitrification enzyme activity and in vitro N2O production rates}
-\format{dataframe}
+\title{Data: Denitrification enzyme activity and in vitro N2O production rates}
+\format{A dataframe with six rows and five columns:
+\describe{
+\item{pot}{Mesocosm ID; equivalent to "new.core.id" in other datasets}
+\item{DEA}{Denitrification enzyme activity (units = nanomoles N2O / gram dry mass / hour)}
+\item{IV}{"In vitro" N2O production; no nutrient solution added, just filtered seawater (units = nanomoles N2O / gram dry mass / hour)}
+\item{mcf}{Moisture correction factor (1 - gravimetric water content)}
+\item{bd_gcm3}{Bulk density (grams per cubic centimeter)}
+}}
 \usage{
 data(dea)
 }
 \description{
-Denitrification enzyme activity and in vitro N2O production rates
+Data: Denitrification enzyme activity and in vitro N2O production rates
+}
+\examples{
+### export to .csv:
+write.csv(dea, file = "dea.csv")
+}
+\references{
+Hill et al.
+(\href{url}{text})
 }
 \keyword{N2O}
 \keyword{datasets,}
