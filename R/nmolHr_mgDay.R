@@ -4,7 +4,7 @@
 #'
 #' @return numeric value
 #'
-#' @examples nmolHr_mgDay(50)
+#' @examples nmolHr_mgDay(dea$DEA)
 #' @export
 nmolHr_mgDay <- function(x) { # x = nanomoles of N20 / hr. output: mg N per day
   x / 1e6 * 14.0067 * 24 * 2
