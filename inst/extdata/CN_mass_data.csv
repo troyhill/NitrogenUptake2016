@@ -1,0 +1,1193 @@
+"time","new.core.id","depth_bottom","sample.type","interval","pool_label","id","species","d15n","n_pct","d13c","c_pct","total_volume_cm3","depth_top","sample.type2","g_core"
+"t4","DS01",NA,"dead leaf","above","dead leaf","DS01-dead leaf","DS",534.2755962,0.015594766,-15.03298392,0.294392156,NA,NA,"dead leaf",0.0697
+"t4","DS01",NA,"decomp layer","above","decomp layer","DS01-decomp layer","DS",175.5706899,0.009531542,-16.26084771,0.176184567,NA,NA,"decomp layer",2.685
+"t4","DS01",NA,"leaf 1","above","leaf 1","DS01-leaf 1","DS",5778.860114,0.027705117,-15.89005378,0.386222013,NA,NA,"leaf",0.0351
+"t4","DS01",NA,"leaf 10","above","leaf 10","DS01-leaf 10","DS",6592.639824,0.024937296,-16.56905749,0.36913009,NA,NA,"leaf",0.0149
+"t4","DS01",NA,"leaf 11","above","leaf 11","DS01-leaf 11","DS",5478.830152,0.016448369,-16.06458632,0.326260815,NA,NA,"leaf",0.0022
+"t4","DS01",NA,"leaf 2","above","leaf 2","DS01-leaf 2","DS",5899.026344,0.024967957,-16.04111769,0.395434108,NA,NA,"leaf",0.101
+"t4","DS01",NA,"leaf 3","above","leaf 3","DS01-leaf 3","DS",6161.25813,0.025285453,-16.08438952,0.385149516,NA,NA,"leaf",0.1313
+"t4","DS01",NA,"leaf 4","above","leaf 4","DS01-leaf 4","DS",5546.048105,0.023730122,-16.19766154,0.323618108,NA,NA,"leaf",0.1145
+"t4","DS01",NA,"leaf 5","above","leaf 5","DS01-leaf 5","DS",5371.553027,0.02224801,-16.12993031,0.340176198,NA,NA,"leaf",0.102
+"t4","DS01",NA,"leaf 6","above","leaf 6","DS01-leaf 6","DS",3575.772899,0.022876121,-16.13060085,0.377179076,NA,NA,"leaf",0.0771
+"t4","DS01",NA,"leaf 7","above","leaf 7","DS01-leaf 7","DS",3144.63468,0.021122304,-16.04568746,0.331074114,NA,NA,"leaf",0.066
+"t4","DS01",NA,"leaf 8","above","leaf 8","DS01-leaf 8","DS",2392.46047,0.022472666,-16.51488812,0.351639667,NA,NA,"leaf",1.0444
+"t4","DS01",NA,"leaf 9","above","leaf 9","DS01-leaf 9","DS",3446.532398,0.021776708,-16.30649231,0.378517828,NA,NA,"leaf",0.0322
+"t4","DS01",NA,"microbe mat","above","microbe mat","DS01-microbe mat","DS",257.7603632,0.018776449,-17.97538292,0.213049526,NA,NA,"microbe mat",0.0625
+"t4","DS01",NA,"standing dead","above","standing dead","DS01-standing dead","DS",55.06547731,0.01048781,-15.19353475,0.316856744,NA,NA,"standing dead",2.7088
+"t4","DS01",NA,"stems","above","stems","DS01-stems","DS",3383.650801,0.011610128,-15.7482272,0.335966678,NA,NA,"stems",1.6917
+"t0","DS13",2,"coarse roots","0_2","coarse roots 2cm","DS13-coarse roots 2cm","DS",5.271806094,0.01621,-14.75,0.36,157.08,0,"coarse roots",0.027
+"t4","DS01",2,"coarse roots","0_2","coarse roots 2cm","DS01-coarse roots 2cm","DS",508.6539772,0.010396044,-14.8287596,0.335084293,157.08,0,"coarse roots",0.016
+"t0","DS13",2,"dead biomass","0_2","dead biomass 2cm","DS13-dead biomass 2cm","DS",5.693826468,0.01176,-14.95,0.38,157.08,0,"dead biomass",2.2938
+"t4","DS01",2,"dead biomass","0_2","dead biomass 2cm","DS01-dead biomass 2cm","DS",291.1768158,0.01229139,-15.68487577,0.348869409,157.08,0,"dead biomass",3.664
+"t0","DS13",2,"fine roots","0_2","fine roots 2cm","DS13-fine roots 2cm","DS",6.439816619,0.02107,-14.45,0.38,157.08,0,"fine roots",0.0162
+"t4","DS01",2,"fine roots","0_2","fine roots 2cm","DS01-fine roots 2cm","DS",3777.126793,0.015440626,-14.69425997,0.341262339,157.08,0,"fine roots",0.034
+"t0","DS13",2,"rhizomes","0_2","rhizomes 2cm","DS13-rhizomes 2cm","DS",6.498137446,0.00968,-14.97,0.38,157.08,0,"rhizomes",0.607
+"t4","DS01",2,"rhizomes","0_2","rhizomes 2cm","DS01-rhizomes 2cm","DS",1290.767866,0.010277492,-15.03261225,0.327363782,157.08,0,"rhizomes",0.622
+"t0","DS13",5,"coarse roots","2_5","coarse roots 5cm","DS13-coarse roots 5cm","DS",5.942340127,0.01191,-14.63,0.37,235.619,2,"coarse roots",0.2288
+"t4","DS01",5,"coarse roots","2_5","coarse roots 5cm","DS01-coarse roots 5cm","DS",3344.134688,0.010503708,-14.70982734,0.305072591,235.619,2,"coarse roots",0.192
+"t0","DS13",5,"dead biomass","2_5","dead biomass 5cm","DS13-dead biomass 5cm","DS",5.643402214,0.01043,-14.56,0.38,235.619,2,"dead biomass",12.532
+"t4","DS01",5,"dead biomass","2_5","dead biomass 5cm","DS01-dead biomass 5cm","DS",832.600197,0.007291599,-14.44659319,0.335240241,235.619,2,"dead biomass",13.404
+"t0","DS13",5,"fine roots","2_5","fine roots 5cm","DS13-fine roots 5cm","DS",5.692794881,0.01294,-14.53,0.38,235.619,2,"fine roots",0.1084
+"t4","DS01",5,"fine roots","2_5","fine roots 5cm","DS01-fine roots 5cm","DS",9572.734121,0.009580965,-14.58206541,0.31127883,235.619,2,"fine roots",0.138
+"t0","DS13",5,"rhizomes","2_5","rhizomes 5cm","DS13-rhizomes 5cm","DS",6.264032787,0.01075,-15.11,0.4,235.619,2,"rhizomes",4.2418
+"t4","DS01",5,"rhizomes","2_5","rhizomes 5cm","DS01-rhizomes 5cm","DS",1386.645803,0.008117059,-15.02308116,0.343033465,235.619,2,"rhizomes",4.86
+"t0","DS13",10,"coarse roots","5_10","coarse roots 10cm","DS13-coarse roots 10cm","DS",5.429425247,0.01004,-14.78,0.36,392.699,5,"coarse roots",0.5322
+"t4","DS01",10,"coarse roots","5_10","coarse roots 10cm","DS01-coarse roots 10cm","DS",477.8108754,0.009332824,-14.75486622,0.286544732,392.699,5,"coarse roots",0.278
+"t0","DS13",10,"dead biomass","5_10","dead biomass 10cm","DS13-dead biomass 10cm","DS",5.761270987,0.01129,-14.24497449,0.370696169,392.699,5,"dead biomass",18.414
+"t4","DS01",10,"dead biomass","5_10","dead biomass 10cm","DS01-dead biomass 10cm","DS",60.13692895,0.009136233,-13.88989417,0.369555407,392.699,5,"dead biomass",27.854
+"t0","DS13",10,"fine roots","5_10","fine roots 10cm","DS13-fine roots 10cm","DS",5.510880497,0.01104,-14.57,0.37,392.699,5,"fine roots",0.2222
+"t4","DS01",10,"fine roots","5_10","fine roots 10cm","DS01-fine roots 10cm","DS",706.5429645,0.00956628,-14.37962213,0.326343992,392.699,5,"fine roots",0.172
+"t0","DS13",10,"rhizomes","5_10","rhizomes 10cm","DS13-rhizomes 10cm","DS",6.318447787,0.00893,-15.34,0.34,392.699,5,"rhizomes",3.177
+"t4","DS01",10,"rhizomes","5_10","rhizomes 10cm","DS01-rhizomes 10cm","DS",130.9486257,0.008274572,-15.03856165,0.302834643,392.699,5,"rhizomes",1.494
+"t4","DS01",15,"coarse roots","10_15","coarse roots 15cm","DS01-coarse roots 15cm","DS",250.3405297,0.010786199,-14.93833749,0.284051769,392.699,10,"coarse roots",0.136
+"t0","DS13",15,"dead biomass","10_15","dead biomass 15cm","DS13-dead biomass 15cm","DS",5.213600447,0.01186,-13.79591568,0.351215876,392.699,10,"dead biomass",11.06
+"t4","DS01",15,"dead biomass","10_15","dead biomass 15cm","DS01-dead biomass 15cm","DS",18.74598294,0.008576439,-13.20506039,0.378449491,392.699,10,"dead biomass",17.828
+"t0","DS13",15,"fine roots","10_15","fine roots 15cm","DS13-fine roots 15cm","DS",5.116089905,0.00769,-13.2198979,0.381650567,392.699,10,"fine roots",0.1942
+"t4","DS01",15,"fine roots","10_15","fine roots 15cm","DS01-fine roots 15cm","DS",813.2696362,0.009377984,-14.30153643,0.322715459,392.699,10,"fine roots",0.134
+"t0","DS13",15,"rhizomes","10_15","rhizomes 15cm","DS13-rhizomes 15cm","DS",5.892343013,0.01129,-14.73875601,0.333150496,392.699,10,"rhizomes",0.0434
+"t4","DS01",15,"rhizomes","10_15","rhizomes 15cm","DS01-rhizomes 15cm","DS",12.54923954,0.005925859,-13.810784,0.337667662,392.699,10,"rhizomes",0.166
+"t0","DS13",20,"coarse roots","15_20","coarse roots 20cm","DS13-coarse roots 20cm","DS",3.903908316,0.00857,-13.44557901,0.364167893,392.699,15,"coarse roots",0.0916
+"t4","DS01",20,"coarse roots","15_20","coarse roots 20cm","DS01-coarse roots 20cm","DS",590.8653059,0.009962217,-14.08755176,0.261996436,392.699,15,"coarse roots",0.064
+"t0","DS13",20,"dead biomass","15_20","dead biomass 20cm","DS13-dead biomass 20cm","DS",3.842069147,0.01468,-13.31790535,0.414949359,392.699,15,"dead biomass",11.058
+"t4","DS01",20,"dead biomass","15_20","dead biomass 20cm","DS01-dead biomass 20cm","DS",9.89115469,0.00829973,-13.05074591,0.385392847,392.699,15,"dead biomass",18.638
+"t0","DS13",20,"fine roots","15_20","fine roots 20cm","DS13-fine roots 20cm","DS",4.252291922,0.00928,-13.22448105,0.408914464,392.699,15,"fine roots",0.116
+"t4","DS01",20,"fine roots","15_20","fine roots 20cm","DS01-fine roots 20cm","DS",1014.554892,0.007550566,-13.33386919,0.326744459,392.699,15,"fine roots",0.096
+"t0","DS13",20,"rhizomes","15_20","rhizomes 20cm","DS13-rhizomes 20cm","DS",3.736565246,0.01027,-13.81319925,0.380550924,392.699,15,"rhizomes",0.0614
+"t4","DS01",20,"rhizomes","15_20","rhizomes 20cm","DS01-rhizomes 20cm","DS",7.959826946,0.006396325,-13.70724612,0.336644541,392.699,15,"rhizomes",0.304
+"t0","DS13",30,"coarse roots","20_30","coarse roots 30cm","DS13-coarse roots 30cm","DS",2.882872926,0.00974,-12.83136694,0.404907293,785.398,20,"coarse roots",0.0436
+"t4","DS01",30,"coarse roots","20_30","coarse roots 30cm","DS01-coarse roots 30cm","DS",1148.140966,0.008872673,-14.2542948,0.267604266,785.398,20,"coarse roots",0.148
+"t0","DS13",30,"dead biomass","20_30","dead biomass 30cm","DS13-dead biomass 30cm","DS",2.401593377,0.01174,-13.43356945,0.349251912,785.398,20,"dead biomass",37.734
+"t4","DS01",30,"dead biomass","20_30","dead biomass 30cm","DS01-dead biomass 30cm","DS",4.975449036,0.01003634,-12.7676518,0.36860442,785.398,20,"dead biomass",28.41
+"t0","DS13",30,"fine roots","20_30","fine roots 30cm","DS13-fine roots 30cm","DS",2.730381435,0.0073,-12.40348671,0.37099791,785.398,20,"fine roots",0.099
+"t4","DS01",30,"fine roots","20_30","fine roots 30cm","DS01-fine roots 30cm","DS",475.7334335,0.006997736,-13.37093581,0.333270589,785.398,20,"fine roots",0.058
+"t0","DS13",30,"rhizomes","20_30","rhizomes 30cm","DS13-rhizomes 30cm","DS",NA,NA,NA,NA,785.398,20,"rhizomes",0.0672
+"t2","DS02",NA,"dead leaf","above","dead leaf","DS02-dead leaf","DS",242.4039042,0.016475579,-15.23427122,0.350374263,NA,NA,"dead leaf",0.0364
+"t2","DS02",NA,"decomp layer","above","decomp layer","DS02-decomp layer","DS",380.3450118,0.01118054,-16.08780124,0.277419912,NA,NA,"decomp layer",0.2258
+"t2","DS02",NA,"leaf 1","above","leaf 1","DS02-leaf 1","DS",4017.905656,0.021938929,-15.39690379,0.3918918,NA,NA,"leaf",0.0404
+"t2","DS02",NA,"leaf 2","above","leaf 2","DS02-leaf 2","DS",3864.2436,0.022594557,-15.87322717,0.361282756,NA,NA,"leaf",0.0989
+"t2","DS02",NA,"leaf 3","above","leaf 3","DS02-leaf 3","DS",3043.946982,0.021839734,-16.10306277,0.394472894,NA,NA,"leaf",0.1357
+"t2","DS02",NA,"leaf 4","above","leaf 4","DS02-leaf 4","DS",2667.146706,0.022476642,-16.1960217,0.371724571,NA,NA,"leaf",0.1488
+"t2","DS02",NA,"leaf 6","above","leaf 6","DS02-leaf 6","DS",2165.165229,0.023301983,-16.26239522,0.338066676,NA,NA,"leaf",0.1136
+"t2","DS02",NA,"leaf 7","above","leaf 7","DS02-leaf 7","DS",2129.490562,0.023364239,-16.21269082,0.344470084,NA,NA,"leaf",0.0716
+"t2","DS02",NA,"leaf 8","above","leaf 8","DS02-leaf 8","DS",1639.018271,0.021029331,-15.97785765,0.357677209,NA,NA,"leaf",0.0371
+"t2","DS02",NA,"leaf 9","above","leaf 9","DS02-leaf 9","DS",1378.909277,0.023021713,-16.71996233,0.340061033,NA,NA,"leaf",0.0127
+"t2","DS02",NA,"standing dead","above","standing dead","DS02-standing dead","DS",18.08640407,0.009389159,-15.48216683,0.369328309,NA,NA,"standing dead",2.818
+"t2","DS02",NA,"stems","above","stems","DS02-stems","DS",3372.732831,0.01043932,-15.61144145,0.372568022,NA,NA,"stems",1.6151
+"t0","DS14",2,"belowground stems","0_2","belowground stems","DS14-belowground stems","DS",NA,NA,NA,NA,157.08,0,"stems",0.0697
+"t2","DS02",2,"belowground stems","0_2","belowground stems","DS02-belowground stems","DS",1250.147274,0.00999,-15.01416043,0.375261717,157.08,0,"stems",0.0697
+"t0","DS14",2,"coarse roots","0_2","coarse roots 2cm","DS14-coarse roots 2cm","DS",4.283225873,0.01235,-14.95970452,0.384196385,157.08,0,"coarse roots",0.0096
+"t0","DS14",2,"dead biomass","0_2","dead biomass 2cm","DS14-dead biomass 2cm","DS",4.784855563,0.01449,-14.64380151,0.394758419,157.08,0,"dead biomass",1.418
+"t2","DS02",2,"dead biomass","0_2","dead biomass 2cm","DS02-dead biomass 2cm","DS",362.4789262,0.010245102,-14.63034857,0.353863137,157.08,0,"dead biomass",4.582
+"t0","DS14",2,"fine roots","0_2","fine roots 2cm","DS14-fine roots 2cm","DS",3.530600755,0.00857,-13.39309148,0.421625695,157.08,0,"fine roots",0.0116
+"t2","DS02",2,"fine roots","0_2","fine roots 2cm","DS02-fine roots 2cm","DS",4722.397452,0.010152606,-14.83588778,0.329186843,157.08,0,"fine roots",0.0372
+"t2","DS02",2,"rhizomes","0_2","rhizomes 2cm","DS02-rhizomes 2cm","DS",3327.831407,0.01287,-15.11031831,0.407648904,157.08,0,"rhizomes",1.2228
+"t0","DS14",5,"coarse roots","2_5","coarse roots 5cm","DS14-coarse roots 5cm","DS",3.964466711,0.00918,-14.64717785,0.365262449,235.619,2,"coarse roots",0.2956
+"t2","DS02",5,"coarse roots","2_5","coarse roots 5cm","DS02-coarse roots 5cm","DS",3157.728719,0.01148,-15.358449,0.341801583,235.619,2,"coarse roots",0.1434
+"t0","DS14",5,"dead biomass","2_5","dead biomass 5cm","DS14-dead biomass 5cm","DS",4.772928031,0.01261,-14.96094604,0.389705785,235.619,2,"dead biomass",17.15
+"t2","DS02",5,"dead biomass","2_5","dead biomass 5cm","DS02-dead biomass 5cm","DS",180.4234593,0.009798,-14.29179164,0.374094793,235.619,2,"dead biomass",16.664
+"t0","DS14",5,"fine roots","2_5","fine roots 5cm","DS14-fine roots 5cm","DS",4.420331703,0.01018,-14.59034111,0.365679434,235.619,2,"fine roots",0.2324
+"t2","DS02",5,"fine roots","2_5","fine roots 5cm","DS02-fine roots 5cm","DS",2706.909175,0.01073,-14.59417312,0.36055089,235.619,2,"fine roots",0.131
+"t0","DS14",5,"rhizomes","2_5","rhizomes 5cm","DS14-rhizomes 5cm","DS",4.621190079,0.00614,-15.1840068,0.348034465,235.619,2,"rhizomes",7.0424
+"t2","DS02",5,"rhizomes","2_5","rhizomes 5cm","DS02-rhizomes 5cm","DS",1785.499252,0.0105,-15.11239864,0.372318354,235.619,2,"rhizomes",2.0616
+"t0","DS14",10,"coarse roots","5_10","coarse roots 10cm","DS14-coarse roots 10cm","DS",4.430133085,0.00789,-14.33645656,0.351314543,392.699,5,"coarse roots",0.334
+"t2","DS02",10,"coarse roots","5_10","coarse roots 10cm","DS02-coarse roots 10cm","DS",836.6893849,0.01119,-14.97741674,0.316309824,392.699,5,"coarse roots",0.2212
+"t0","DS14",10,"dead biomass","5_10","dead biomass 10cm","DS14-dead biomass 10cm","DS",5.280971932,0.01206,-14.43685704,0.360309311,392.699,5,"dead biomass",23.066
+"t2","DS02",10,"dead biomass","5_10","dead biomass 10cm","DS02-dead biomass 10cm","DS",65.34373249,0.011968549,-14.16599337,0.338796739,392.699,5,"dead biomass",36.276
+"t0","DS14",10,"fine roots","5_10","fine roots 10cm","DS14-fine roots 10cm","DS",4.56557009,0.00882,-14.32064421,0.367311104,392.699,5,"fine roots",0.1636
+"t2","DS02",10,"fine roots","5_10","fine roots 10cm","DS02-fine roots 10cm","DS",1489.451045,0.01165,-14.69102188,0.37557596,392.699,5,"fine roots",0.1542
+"t0","DS14",10,"rhizomes","5_10","rhizomes 10cm","DS14-rhizomes 10cm","DS",4.64565187,0.00703,-14.9412992,0.36814924,392.699,5,"rhizomes",1.3006
+"t2","DS02",10,"rhizomes","5_10","rhizomes 10cm","DS02-rhizomes 10cm","DS",464.8579282,0.00948,-15.32728478,0.383503742,392.699,5,"rhizomes",3.167
+"t0","DS14",15,"coarse roots","10_15","coarse roots 15cm","DS14-coarse roots 15cm","DS",4.100205917,0.01002,-14.66224176,0.343220206,392.699,10,"coarse roots",0.2516
+"t2","DS02",15,"coarse roots","10_15","coarse roots 15cm","DS02-coarse roots 15cm","DS",339.9811602,0.0109,-15.00922776,0.291225614,392.699,10,"coarse roots",0.0954
+"t0","DS14",15,"dead biomass","10_15","dead biomass 15cm","DS14-dead biomass 15cm","DS",5.567773424,0.01437,-13.72165386,0.358730581,392.699,10,"dead biomass",16.16
+"t2","DS02",15,"dead biomass","10_15","dead biomass 15cm","DS02-dead biomass 15cm","DS",11.8888284,0.022842008,-13.77528976,0.3547895535,392.699,10,"dead biomass",15.744
+"t0","DS14",15,"fine roots","10_15","fine roots 15cm","DS14-fine roots 15cm","DS",4.874395425,0.0095,-13.58083658,0.389100373,392.699,10,"fine roots",0.0984
+"t2","DS02",15,"fine roots","10_15","fine roots 15cm","DS02-fine roots 15cm","DS",797.1911223,0.01262,-14.51997018,0.350184336,392.699,10,"fine roots",0.0814
+"t0","DS14",15,"rhizomes","10_15","rhizomes 15cm","DS14-rhizomes 15cm","DS",4.868636551,0.00637,-13.51678215,0.357235584,392.699,10,"rhizomes",0.2314
+"t2","DS02",15,"rhizomes","10_15","rhizomes 15cm","DS02-rhizomes 15cm","DS",17.81822041,0.01309,-15.35699779,0.334615566,392.699,10,"rhizomes",0.1108
+"t0","DS14",20,"coarse roots","15_20","coarse roots 20cm","DS14-coarse roots 20cm","DS",5.743750115,0.01708,-15.11536676,0.3105238,392.699,15,"coarse roots",0.0214
+"t2","DS02",20,"coarse roots","15_20","coarse roots 20cm","DS02-coarse roots 20cm","DS",128.8961999,0.004719173,-14.5749057,0.226347802,392.699,15,"coarse roots",0.0202
+"t0","DS14",20,"dead biomass","15_20","dead biomass 20cm","DS14-dead biomass 20cm","DS",5.527717001,0.01062,-13.00394673,0.384531369,392.699,15,"dead biomass",14.408
+"t2","DS02",20,"dead biomass","15_20","dead biomass 20cm","DS02-dead biomass 20cm","DS",8.81677484,0.012542776,-13.77923222,0.334512295,392.699,15,"dead biomass",19.608
+"t0","DS14",20,"fine roots","15_20","fine roots 20cm","DS14-fine roots 20cm","DS",4.373468351,0.00718,-12.78931202,0.389782806,392.699,15,"fine roots",0.0704
+"t2","DS02",20,"fine roots","15_20","fine roots 20cm","DS02-fine roots 20cm","DS",1411.471456,0.008015376,-13.49122271,0.369646187,392.699,15,"fine roots",0.0172
+"t0","DS14",20,"rhizomes","15_20","rhizomes 20cm","DS14-rhizomes 20cm","DS",5.092332971,0.0061,-13.9538492,0.385040798,392.699,15,"rhizomes",0.2294
+"t2","DS02",20,"rhizomes","15_20","rhizomes 20cm","DS02-rhizomes 20cm","DS",37.94395979,0.00942,-14.035444,0.351429828,392.699,15,"rhizomes",0.0568
+"t0","DS14",30,"coarse roots","20_30","coarse roots 30cm","DS14-coarse roots 30cm","DS",12.10992549,0.00636,-12.67429723,0.38437359,785.398,20,"coarse roots",0.0704
+"t2","DS02",30,"coarse roots","20_30","coarse roots 30cm","DS02-coarse roots 30cm","DS",80.13626053,0.00625075,NA,0.375133985,785.398,20,"coarse roots",0.0432
+"t0","DS14",30,"dead biomass","20_30","dead biomass 30cm","DS14-dead biomass 30cm","DS",12.69021026,0.01097,-13.1086895,0.414581647,785.398,20,"dead biomass",24.188
+"t2","DS02",30,"dead biomass","20_30","dead biomass 30cm","DS02-dead biomass 30cm","DS",7.399825784,0.009348858,-13.41076837,0.356057226,785.398,20,"dead biomass",35.194
+"t0","DS14",30,"fine roots","20_30","fine roots 30cm","DS14-fine roots 30cm","DS",10.01638002,0.00612,-12.13071601,0.386062839,785.398,20,"fine roots",0.0684
+"t2","DS02",30,"fine roots","20_30","fine roots 30cm","DS02-fine roots 30cm","DS",91.5800668,0.006790166,-13.81665556,0.37367664,785.398,20,"fine roots",0.0188
+"t0","DS14",30,"rhizomes","20_30","rhizomes 30cm","DS14-rhizomes 30cm","DS",16.43675178,0.00422,-14.47375941,0.33750441,785.398,20,"rhizomes",0.0668
+"t1","DS03",NA,"dead leaf","above","dead leaf","DS03-dead leaf","DS",176.2983438,0.01261,-15.97401457,0.349336873,NA,NA,"dead leaf",0.1971
+"t1","DS03",NA,"decomp layer","above","decomp layer","DS03-decomp layer","DS",399.1049565,0.01158,-15.93703841,0.310944529,NA,NA,"decomp layer",0.175
+"t1","DS03",NA,"leaf 1","above","leaf 1","DS03-leaf 1","DS",2997.658108,0.02249,-15.67727269,0.371812891,NA,NA,"leaf",0.084
+"t1","DS03",NA,"leaf 2","above","leaf 2","DS03-leaf 2","DS",3266.646636,0.02263,-15.89546346,0.369743642,NA,NA,"leaf",0.1441
+"t1","DS03",NA,"leaf 3","above","leaf 3","DS03-leaf 3","DS",3054.276367,0.02354,-16.0609353,0.395974287,NA,NA,"leaf",0.1642
+"t1","DS03",NA,"leaf 4","above","leaf 4","DS03-leaf 4","DS",2475.6555235,0.0254069025,-18.63416341,0.3335619045,NA,NA,"leaf",0.1504
+"t1","DS03",NA,"leaf 5","above","leaf 5","DS03-leaf 5","DS",2274.447412,0.025476902,-18.67480416,0.33185999,NA,NA,"leaf",0.1216
+"t1","DS03",NA,"leaf 6","above","leaf 6","DS03-leaf 6","DS",2186.985516,0.025222972,-18.67026792,0.322086286,NA,NA,"leaf",0.0851
+"t1","DS03",NA,"leaf 7","above","leaf 7","DS03-leaf 7","DS",2242.372291,0.023617527,-18.46079414,0.321365173,NA,NA,"leaf",0.0543
+"t1","DS03",NA,"leaf 8","above","leaf 8","DS03-leaf 8","DS",1987.632365,0.020649154,-18.86729611,0.332877489,NA,NA,"leaf",0.0367
+"t1","DS03",NA,"standing dead","above","standing dead","DS03-standing dead","DS",9.732548155,0.00703,-15.70947092,0.370018811,NA,NA,"standing dead",3.4416
+"t0","DS15",2,"belowground stems","0_2","belowground stems","DS15-belowground stems","DS",7.860733629,0.010068302,-15.04685195,0.356061778,157.08,0,"stems",0.0697
+"t1","DS03",2,"coarse roots","0_2","coarse roots 2cm","DS03-coarse roots 2cm","DS",1322.59,0.00698,-15.16683709,0.349850916,157.08,0,"coarse roots",0.5822
+"t0","DS15",2,"dead biomass","0_2","dead biomass 2cm","DS15-dead biomass 2cm","DS",7.84903651,0.012238051,-14.92631865,0.3268064,157.08,0,"dead biomass",2.9612
+"t1","DS03",2,"dead biomass","0_2","dead biomass 2cm","DS03-dead biomass 2cm","DS",253.2445666,0.01036,-14.97641128,0.387424469,157.08,0,"dead biomass",9.096
+"t0","DS15",2,"fine roots","0_2","fine roots 2cm","DS15-fine roots 2cm","DS",NA,NA,NA,NA,157.08,0,"fine roots",0.006
+"t1","DS03",2,"fine roots","0_2","fine roots 2cm","DS03-fine roots 2cm","DS",3353.321457,0.010806209,-14.37181403,0.384908111,157.08,0,"fine roots",0.0766
+"t1","DS03",2,"rhizomes","0_2","rhizomes 2cm","DS03-rhizomes 2cm","DS",1590.64,0.00702,-15.33581372,0.425674506,157.08,0,"rhizomes",0.1368
+"t0","DS15",5,"coarse roots","2_5","coarse roots 5cm","DS15-coarse roots 5cm","DS",7.606935406,0.00810217,-15.03881071,0.320453229,235.619,2,"coarse roots",0.216
+"t1","DS03",5,"coarse roots","2_5","coarse roots 5cm","DS03-coarse roots 5cm","DS",1722.04,0.00769,-15.20344354,0.338245648,235.619,2,"coarse roots",0.3932
+"t0","DS15",5,"dead biomass","2_5","dead biomass 5cm","DS15-dead biomass 5cm","DS",7.618790142,0.00987456,-14.50708801,0.347986533,235.619,2,"dead biomass",8.36
+"t1","DS03",5,"dead biomass","2_5","dead biomass 5cm","DS03-dead biomass 5cm","DS",202.8887467,0.00944,-14.0671642,0.353558423,235.619,2,"dead biomass",16.516
+"t0","DS15",5,"fine roots","2_5","fine roots 5cm","DS15-fine roots 5cm","DS",8.540515646,0.011363635,-14.56571322,0.337862884,235.619,2,"fine roots",0.1656
+"t1","DS03",5,"fine roots","2_5","fine roots 5cm","DS03-fine roots 5cm","DS",2545.45,0.0094,-14.72562523,0.396574719,235.619,2,"fine roots",0.1948
+"t0","DS15",5,"rhizomes","2_5","rhizomes 5cm","DS15-rhizomes 5cm","DS",8.231054658,0.008510815,-15.21257014,0.326495323,235.619,2,"rhizomes",4.6902
+"t1","DS03",5,"rhizomes","2_5","rhizomes 5cm","DS03-rhizomes 5cm","DS",1461.92,0.00865,-15.27283048,0.337237103,235.619,2,"rhizomes",4.518
+"t0","DS15",10,"coarse roots","5_10","coarse roots 10cm","DS15-coarse roots 10cm","DS",8.261049132,0.010233678,-14.85967467,0.32046137,392.699,5,"coarse roots",0.3004
+"t1","DS03",10,"coarse roots","5_10","coarse roots 10cm","DS03-coarse roots 10cm","DS",941.43,0.00935,-15.10616097,0.379787466,392.699,5,"coarse roots",0.2636
+"t0","DS15",10,"dead biomass","5_10","dead biomass 10cm","DS15-dead biomass 10cm","DS",7.124496666,0.010728903,-14.08742703,0.333583599,392.699,5,"dead biomass",20.852
+"t1","DS03",10,"dead biomass","5_10","dead biomass 10cm","DS03-dead biomass 10cm","DS",97.77297798,0.00804,-13.93789216,0.359486429,392.699,5,"dead biomass",19.794
+"t0","DS15",10,"fine roots","5_10","fine roots 10cm","DS15-fine roots 10cm","DS",8.552562603,0.010788628,-14.41852766,0.334323675,392.699,5,"fine roots",0.278
+"t1","DS03",10,"fine roots","5_10","fine roots 10cm","DS03-fine roots 10cm","DS",4003.59,0.01132,-14.63137428,0.349240467,392.699,5,"fine roots",0.2284
+"t0","DS15",10,"rhizomes","5_10","rhizomes 10cm","DS15-rhizomes 10cm","DS",7.727759485,0.007340756,-15.17181248,0.325169758,392.699,5,"rhizomes",2.547
+"t0","DS15",15,"coarse roots","10_15","coarse roots 15cm","DS15-coarse roots 15cm","DS",8.571550458,0.013745989,-15.02846488,0.294616764,392.699,10,"coarse roots",0.0492
+"t1","DS03",15,"coarse roots","10_15","coarse roots 15cm","DS03-coarse roots 15cm","DS",312.63,0.01254,-14.49288226,0.326191627,392.699,10,"coarse roots",0.1514
+"t0","DS15",15,"dead biomass","10_15","dead biomass 15cm","DS15-dead biomass 15cm","DS",8.049670298,0.0111821,-13.62867153,0.347086284,392.699,10,"dead biomass",17.114
+"t1","DS03",15,"dead biomass","10_15","dead biomass 15cm","DS03-dead biomass 15cm","DS",18.04020671,0.01116,-13.39940136,0.362034757,392.699,10,"dead biomass",18.442
+"t0","DS15",15,"fine roots","10_15","fine roots 15cm","DS15-fine roots 15cm","DS",6.803763828,0.010160433,-14.01621211,0.316888765,392.699,10,"fine roots",0.0964
+"t1","DS03",15,"fine roots","10_15","fine roots 15cm","DS03-fine roots 15cm","DS",1440.41,0.00981,-14.02179758,0.389120559,392.699,10,"fine roots",0.081
+"t0","DS15",15,"rhizomes","10_15","rhizomes 15cm","DS15-rhizomes 15cm","DS",10.01532623,0.006083137,-15.10646701,0.331915382,392.699,10,"rhizomes",0.1488
+"t1","DS03",15,"rhizomes","10_15","rhizomes 15cm","DS03-rhizomes 15cm","DS",11.59,0.00785,-14.22100842,0.330636857,392.699,10,"rhizomes",0.4986
+"t0","DS15",20,"coarse roots","15_20","coarse roots 20cm","DS15-coarse roots 20cm","DS",NA,NA,NA,NA,392.699,15,"coarse roots",0.0034
+"t0","DS15",20,"dead biomass","15_20","dead biomass 20cm","DS15-dead biomass 20cm","DS",6.717484746,0.011588432,-13.36546436,0.345498874,392.699,15,"dead biomass",11.97
+"t1","DS03",20,"dead biomass","15_20","dead biomass 20cm","DS03-dead biomass 20cm","DS",11.68442962,0.011,-13.29610705,0.339515039,392.699,15,"dead biomass",20.186
+"t0","DS15",20,"fine roots","15_20","fine roots 20cm","DS15-fine roots 20cm","DS",12.65485621,0.007290771,-13.26636857,0.442105654,392.699,15,"fine roots",0.0178
+"t1","DS03",20,"fine roots","15_20","fine roots 20cm","DS03-fine roots 20cm","DS",1046.256195,0.009047326,-13.03687069,0.430694269,392.699,15,"fine roots",0.0886
+"t1","DS03",30,"coarse roots","20_30","coarse roots 30cm","DS03-coarse roots 30cm","DS",7.67,0.00683,-13.29199589,0.318874089,785.398,20,"coarse roots",0.1666
+"t0","DS15",30,"dead biomass","20_30","dead biomass 30cm","DS15-dead biomass 30cm","DS",NA,NA,NA,NA,785.398,20,"dead biomass",25.428
+"t1","DS03",30,"dead biomass","20_30","dead biomass 30cm","DS03-dead biomass 30cm","DS",5.714536077,0.01259,-13.89409637,0.314309213,785.398,20,"dead biomass",35.572
+"t0","DS15",30,"fine roots","20_30","fine roots 30cm","DS15-fine roots 30cm","DS",6.878370287,0.006929056,-12.52195522,0.365821531,785.398,20,"fine roots",0.0644
+"t1","DS03",30,"fine roots","20_30","fine roots 30cm","DS03-fine roots 30cm","DS",NA,NA,NA,NA,785.398,20,"fine roots",0.0712
+"t1","DS03",30,"rhizomes","20_30","rhizomes 30cm","DS03-rhizomes 30cm","DS",17.27,0.00781,-13.54291858,0.288779665,785.398,20,"rhizomes",0.1736
+"t3","DS04",NA,"dead leaf","above","dead leaf","DS04-dead leaf","DS",461.0233426,0.012266601,-15.09562396,0.288814182,NA,NA,"dead leaf",0.1624
+"t3","DS04",NA,"decomp layer","above","decomp layer","DS04-decomp layer","DS",84.02795791,0.011583314,-15.31910749,0.290782076,NA,NA,"decomp layer",0.247
+"t3","DS04",NA,"leaf 1","above","leaf 1","DS04-leaf 1","DS",4966.067606,0.020736639,-15.82746732,0.371414643,NA,NA,"leaf",0.0907
+"t3","DS04",NA,"leaf 2","above","leaf 2","DS04-leaf 2","DS",3899.676251,0.020968956,-16.04635142,0.371024837,NA,NA,"leaf",0.1636
+"t3","DS04",NA,"leaf 3","above","leaf 3","DS04-leaf 3","DS",2840.620578,0.022153528,-16.2437527,0.380245755,NA,NA,"leaf",0.2261
+"t3","DS04",NA,"leaf 4","above","leaf 4","DS04-leaf 4","DS",1932.123369,0.021607529,-16.2950465,0.35847131,NA,NA,"leaf",0.2412
+"t3","DS04",NA,"leaf 5","above","leaf 5","DS04-leaf 5","DS",1852.854761,0.022532607,-16.36752157,0.352153528,NA,NA,"leaf",0.2097
+"t3","DS04",NA,"leaf 6","above","leaf 6","DS04-leaf 6","DS",1559.980946,0.022328,-16.29884247,0.338661656,NA,NA,"leaf",0.1677
+"t3","DS04",NA,"leaf 7","above","leaf 7","DS04-leaf 7","DS",1212.50263,0.0240135,-16.33707349,0.381308296,NA,NA,"leaf",0.1065
+"t3","DS04",NA,"leaf 8","above","leaf 8","DS04-leaf 8","DS",1227.782245,0.019996284,-16.71736363,0.304638091,NA,NA,"leaf",0.0381
+"t3","DS04",NA,"leaf 9","above","leaf 9","DS04-leaf 9","DS",898.3307442,0.019229825,-15.58581862,0.402301515,NA,NA,"leaf",0.0145
+"t3","DS04",NA,"standing dead","above","standing dead","DS04-standing dead","DS",316.688795,0.010086255,-15.535398835,0.3233065635,NA,NA,"standing dead",2.9915
+"t3","DS04",NA,"stems","above","stems","DS04-stems","DS",2065.131121,0.008369182,-15.74878419,0.370207986,NA,NA,"stems",2.7342
+"t3","DS04",2,"coarse roots","0_2","coarse roots 2cm","DS04-coarse roots 2cm","DS",11004.3905,0.012551766,-15.02890786,0.348700347,157.08,0,"coarse roots",0.4127999991744
+"t3","DS04",2,"dead biomass","0_2","dead biomass 2cm","DS04-dead biomass 2cm","DS",268.5551302,0.00782357,-14.51399368,0.344937066,157.08,0,"dead biomass",15.833999968332
+"t3","DS04",2,"fine roots","0_2","fine roots 2cm","DS04-fine roots 2cm","DS",11177.89841,0.010798458,-14.1631415,0.386346868,157.08,0,"fine roots",0.0143999999712
+"t3","DS04",2,"rhizomes","0_2","rhizomes 2cm","DS04-rhizomes 2cm","DS",962.5805553,0.013361306,-15.04539802,0.30698872,157.08,0,"rhizomes",0.1205999997588
+"t3","DS04",5,"coarse roots","2_5","coarse roots 5cm","DS04-coarse roots 5cm","DS",4688.218973,0.009194612,-14.87599318,0.361559256,235.619,2,"coarse roots",0.072
+"t3","DS04",5,"dead biomass","2_5","dead biomass 5cm","DS04-dead biomass 5cm","DS",90.65016323,0.011900164,-14.69485694,0.381079271,235.619,2,"dead biomass",9.11
+"t3","DS04",5,"fine roots","2_5","fine roots 5cm","DS04-fine roots 5cm","DS",3514.140445,0.010883783,-15.07131418,0.339285839,235.619,2,"fine roots",0.049
+"t3","DS04",5,"rhizomes","2_5","rhizomes 5cm","DS04-rhizomes 5cm","DS",1963.967079,0.008071851,-15.11582652,0.352407005,235.619,2,"rhizomes",2.0528
+"t3","DS04",10,"coarse roots","5_10","coarse roots 10cm","DS04-coarse roots 10cm","DS",2864.886334,0.010156141,-14.83095038,0.358636686,392.699,5,"coarse roots",0.3742
+"t3","DS04",10,"dead biomass","5_10","dead biomass 10cm","DS04-dead biomass 10cm","DS",117.6869216,0.008692032,-14.40913146,0.359983211,392.699,5,"dead biomass",22.912
+"t3","DS04",10,"fine roots","5_10","fine roots 10cm","DS04-fine roots 10cm","DS",4014.251616,0.010519048,-14.63031292,0.346434092,392.699,5,"fine roots",0.198
+"t3","DS04",10,"rhizomes","5_10","rhizomes 10cm","DS04-rhizomes 10cm","DS",1226.5246045,0.00786085,-15.20444498,0.3635974165,392.699,5,"rhizomes",6.6116
+"t3","DS04",15,"coarse roots","10_15","coarse roots 15cm","DS04-coarse roots 15cm","DS",2998.652092,0.011872021,-14.96606776,0.322813971,392.699,10,"coarse roots",0.0798
+"t3","DS04",15,"dead biomass","10_15","dead biomass 15cm","DS04-dead biomass 15cm","DS",46.6415924,0.009724821,-13.83873026,0.344688059,392.699,10,"dead biomass",20.044
+"t3","DS04",15,"fine roots","10_15","fine roots 15cm","DS04-fine roots 15cm","DS",2246.781066,0.011108892,-14.56772552,0.349532766,392.699,10,"fine roots",0.079
+"t3","DS04",15,"rhizomes","10_15","rhizomes 15cm","DS04-rhizomes 15cm","DS",481.0899657,0.006748623,-15.48071522,0.357267754,392.699,10,"rhizomes",0.137
+"t3","DS04",20,"coarse roots","15_20","coarse roots 20cm","DS04-coarse roots 20cm","DS",2215.782099,0.009062548,-14.87521452,0.294808393,392.699,15,"coarse roots",0.0322
+"t3","DS04",20,"dead biomass","15_20","dead biomass 20cm","DS04-dead biomass 20cm","DS",20.85626034,0.010747682,-13.57766949,0.347144211,392.699,15,"dead biomass",19.394
+"t3","DS04",20,"fine roots","15_20","fine roots 20cm","DS04-fine roots 20cm","DS",2117.103087,0.013143463,-14.90764171,0.329842991,392.699,15,"fine roots",0.0496
+"t3","DS04",30,"dead biomass","20_30","dead biomass 30cm","DS04-dead biomass 30cm","DS",5.486400276,0.009836713,-14.09323561,0.366229396,785.398,20,"dead biomass",27.956
+"t3","DS04",30,"fine roots","20_30","fine roots 30cm","DS04-fine roots 30cm","DS",1528.710481,0.008384079,-13.61296415,0.307560176,785.398,20,"fine roots",0.0362
+"t1","DS05",NA,"dead leaf","above","dead leaf","DS05-dead leaf","DS",23.28459617,0.01377,-15.05384713,0.317495144,NA,NA,"dead leaf",0.082
+"t1","DS05",NA,"decomp layer","above","decomp layer","DS05-decomp layer","DS",101.5821527,0.00992,-15.9948721,0.266955014,NA,NA,"decomp layer",1.6564
+"t1","DS05",NA,"leaf 1","above","leaf 1","DS05-leaf 1","DS",2432.802717,0.024379418,-18.16665807,0.331883092,NA,NA,"leaf",0.0843
+"t1","DS05",NA,"leaf 2","above","leaf 2","DS05-leaf 2","DS",2295.065804,0.02488616,-18.24916771,0.357124471,NA,NA,"leaf",0.1088
+"t1","DS05",NA,"leaf 3","above","leaf 3","DS05-leaf 3","DS",1208.260172,0.020660107,-18.06927148,0.35418972,NA,NA,"leaf",0.1269
+"t1","DS05",NA,"leaf 4","above","leaf 4","DS05-leaf 4","DS",1294.653197,0.021564754,-18.16955054,0.354375528,NA,NA,"leaf",0.1408
+"t1","DS05",NA,"leaf 5","above","leaf 5","DS05-leaf 5","DS",987.8888168,0.022867876,-18.28809694,0.347217426,NA,NA,"leaf",0.121
+"t1","DS05",NA,"leaf 6","above","leaf 6","DS05-leaf 6","DS",1053.309938,0.024899175,-18.21891981,0.364366874,NA,NA,"leaf",0.1059
+"t1","DS05",NA,"leaf 7","above","leaf 7","DS05-leaf 7","DS",901.1423781,0.020730533,-18.10926319,0.335377211,NA,NA,"leaf",0.0694
+"t1","DS05",NA,"leaf 8","above","leaf 8","DS05-leaf 8","DS",963.890064,0.018591476,-17.96881869,0.330194183,NA,NA,"leaf",0.0436
+"t1","DS05",NA,"microbe mat","above","microbe mat","DS05-microbe mat","DS",779.775471,0.01951,-18.59507703,0.233164655,NA,NA,"microbe mat",1.1099
+"t1","DS05",NA,"standing dead","above","standing dead","DS05-standing dead","DS",7.732735288,0.01282,-15.89277932,0.357060227,NA,NA,"standing dead",1.4634
+"t1","DS05",NA,"stems","above","stems","DS05-stems","DS",2345.319506,0.01059,-15.3834899,0.370720339,NA,NA,"stems",1.8437
+"t1","DS05",2,"belowground stems","0_2","belowground stems","DS05-belowground stems","DS",1629.91,0.01067,-15.02272067,0.316343083,157.08,0,"stems",0.0697
+"t1","DS05",2,"dead biomass","0_2","dead biomass 2cm","DS05-dead biomass 2cm","DS",535.3446345,0.01338,-15.49496238,0.348826254,157.08,0,"dead biomass",4.7258
+"t1","DS05",2,"fine roots","0_2","fine roots 2cm","DS05-fine roots 2cm","DS",4084.335993,0.015337423,-14.53702969,0.370675028,157.08,0,"fine roots",0.0514
+"t1","DS05",5,"coarse roots","2_5","coarse roots 5cm","DS05-coarse roots 5cm","DS",2211.1,0.01228,-15.12179515,0.327718965,235.619,2,"coarse roots",0.1758
+"t1","DS05",5,"dead biomass","2_5","dead biomass 5cm","DS05-dead biomass 5cm","DS",665.4758641,0.00813,-14.44957558,0.382954537,235.619,2,"dead biomass",13.808
+"t1","DS05",5,"fine roots","2_5","fine roots 5cm","DS05-fine roots 5cm","DS",3061.08,0.00992,-14.73572025,0.270319802,235.619,2,"fine roots",0.1888
+"t1","DS05",5,"rhizomes","2_5","rhizomes 5cm","DS05-rhizomes 5cm","DS",779.78,0.00843,-15.1186657,0.296802507,235.619,2,"rhizomes",5.64
+"t1","DS05",10,"coarse roots","5_10","coarse roots 10cm","DS05-coarse roots 10cm","DS",628.39,0.00821,-14.69990456,0.29619591,392.699,5,"coarse roots",0.3648
+"t1","DS05",10,"dead biomass","5_10","dead biomass 10cm","DS05-dead biomass 10cm","DS",47.86532787,0.01138,-14.26723908,0.339971781,392.699,5,"dead biomass",25.758
+"t1","DS05",10,"fine roots","5_10","fine roots 10cm","DS05-fine roots 10cm","DS",1153.84,0.01104,-14.60001796,0.304416514,392.699,5,"fine roots",0.195
+"t1","DS05",10,"rhizomes","5_10","rhizomes 10cm","DS05-rhizomes 10cm","DS",30.86,0.0056,-14.94866401,0.307752028,392.699,5,"rhizomes",2.9424
+"t1","DS05",15,"coarse roots","10_15","coarse roots 15cm","DS05-coarse roots 15cm","DS",160.4308538,0.009689871,-14.76902833,0.276135548,392.699,10,"coarse roots",0.0514
+"t1","DS05",15,"dead biomass","10_15","dead biomass 15cm","DS05-dead biomass 15cm","DS",10.51130349,0.00824,-13.47786566,0.35187776,392.699,10,"dead biomass",22.61
+"t1","DS05",15,"fine roots","10_15","fine roots 15cm","DS05-fine roots 15cm","DS",1308.16,0.00875,-13.38038142,0.321155541,392.699,10,"fine roots",0.2748
+"t1","DS05",15,"rhizomes","10_15","rhizomes 15cm","DS05-rhizomes 15cm","DS",33.04,0.00383,-14.11375921,0.251687154,392.699,10,"rhizomes",0.1316
+"t1","DS05",20,"coarse roots","15_20","coarse roots 20cm","DS05-coarse roots 20cm","DS",11.42,0.00571,-14.1570418,0.281943135,392.699,15,"coarse roots",0.0854
+"t1","DS05",20,"dead biomass","15_20","dead biomass 20cm","DS05-dead biomass 20cm","DS",8.68742342,0.01071,-13.51275031,0.347488285,392.699,15,"dead biomass",18.32
+"t1","DS05",20,"rhizomes","15_20","rhizomes 20cm","DS05-rhizomes 20cm","DS",NA,NA,NA,NA,392.699,15,"rhizomes",0.0598
+"t1","DS05",30,"coarse roots","20_30","coarse roots 30cm","DS05-coarse roots 30cm","DS",6.61,0.00485,-14.05704639,0.361724925,785.398,20,"coarse roots",0.4622
+"t0","DS13",30,"bulk sediment","20_30","bulk sediment 30cm","DS13-bulk sediment 30cm","DS",2.624269256,0.01095,-15.38032343,0.184999714,785.398,20,"bulk sediment",138.356
+"t1","DS05",30,"fine roots","20_30","fine roots 30cm","DS05-fine roots 30cm","DS",12.24,0.00456,-13.01147769,0.231005033,785.398,20,"fine roots",0.1068
+"t4","DS06",NA,"dead leaf","above","dead leaf","DS06-dead leaf","DS",3206.715071,0.013425067,-14.86621495,0.327291185,NA,NA,"dead leaf",0.025
+"t4","DS06",NA,"decomp layer","above","decomp layer","DS06-decomp layer","DS",150.2589875,0.008810117,-16.85006496,0.196914114,NA,NA,"decomp layer",3.4149
+"t4","DS06",NA,"leaf 1","above","leaf 1","DS06-leaf 1","DS",3137.672577,0.030606881,-16.41032743,0.453596805,NA,NA,"leaf",0.0266
+"t4","DS06",NA,"leaf 10","above","leaf 10","DS06-leaf 10","DS",3083.8904,0.024446234,-15.79065617,0.399065232,NA,NA,"leaf",0.015
+"t4","DS06",NA,"leaf 11","above","leaf 11","DS06-leaf 11","DS",3032.732181,0.022871566,-16.12810408,0.37457224,NA,NA,"leaf",0.0017
+"t4","DS06",NA,"leaf 2","above","leaf 2","DS06-leaf 2","DS",5716.758183,0.0267168785,-16.221014225,0.365219705,NA,NA,"leaf",0.0667
+"t4","DS06",NA,"leaf 3","above","leaf 3","DS06-leaf 3","DS",6400.750852,0.026633033,-16.31196826,0.334565305,NA,NA,"leaf",0.1029
+"t4","DS06",NA,"leaf 4","above","leaf 4","DS06-leaf 4","DS",6837.647254,0.026701173,-16.41690547,0.375544913,NA,NA,"leaf",0.102
+"t4","DS06",NA,"leaf 5","above","leaf 5","DS06-leaf 5","DS",5977.312873,0.027755735,-16.36270167,0.343600303,NA,NA,"leaf",0.072
+"t4","DS06",NA,"leaf 6","above","leaf 6","DS06-leaf 6","DS",4144.653617,0.023935227,-16.19405963,0.335127227,NA,NA,"leaf",0.0777
+"t4","DS06",NA,"leaf 7","above","leaf 7","DS06-leaf 7","DS",3561.62007,0.023202949,-16.26148045,0.36465538,NA,NA,"leaf",0.0572
+"t4","DS06",NA,"leaf 8","above","leaf 8","DS06-leaf 8","DS",2841.211794,0.023955645,-16.16603984,0.359499069,NA,NA,"leaf",0.0509
+"t4","DS06",NA,"leaf 9","above","leaf 9","DS06-leaf 9","DS",2495.953702,0.023049062,-16.13363512,0.345604402,NA,NA,"leaf",0.0355
+"t4","DS06",NA,"microbe mat","above","microbe mat","DS06-microbe mat","DS",373.3786915,0.013779094,-18.88146545,0.167133493,NA,NA,"microbe mat",1.6558
+"t4","DS06",NA,"standing dead","above","standing dead","DS06-standing dead","DS",17.45566453,0.008627843,-15.78867867,0.312141557,NA,NA,"standing dead",3.0451
+"t4","DS06",NA,"stems","above","stems","DS06-stems","DS",4198.371924,0.012374633,-15.43688387,0.325195834,NA,NA,"stems",1.3682
+"t4","DS06",2,"coarse roots","0_2","coarse roots 2cm","DS06-coarse roots 2cm","DS",5435.282322,0.012298563,-15.26481951,0.313550785,157.08,0,"coarse roots",0.11
+"t4","DS06",2,"dead biomass","0_2","dead biomass 2cm","DS06-dead biomass 2cm","DS",495.3957771,0.009919388,-15.53656979,0.358361332,157.08,0,"dead biomass",3.416
+"t4","DS06",2,"fine roots","0_2","fine roots 2cm","DS06-fine roots 2cm","DS",5386.557139,0.012761622,-14.73360735,0.311780977,157.08,0,"fine roots",0.06
+"t4","DS06",2,"rhizomes","0_2","rhizomes 2cm","DS06-rhizomes 2cm","DS",1424.322769,0.013001481,-14.93122924,0.322259138,157.08,0,"rhizomes",0.532
+"t4","DS06",5,"coarse roots","2_5","coarse roots 5cm","DS06-coarse roots 5cm","DS",3973.7505,0.010501053,-14.5870739,0.330386324,235.619,2,"coarse roots",0.19
+"t4","DS06",5,"dead biomass","2_5","dead biomass 5cm","DS06-dead biomass 5cm","DS",802.5252356,0.008108671,-14.47101545,0.362105764,235.619,2,"dead biomass",16.066
+"t4","DS06",5,"fine roots","2_5","fine roots 5cm","DS06-fine roots 5cm","DS",5973.781011,0.011128453,-14.65925863,0.326206535,235.619,2,"fine roots",0.12
+"t4","DS06",5,"rhizomes","2_5","rhizomes 5cm","DS06-rhizomes 5cm","DS",1191.901548,0.008413905,-15.07552655,0.342026264,235.619,2,"rhizomes",3.2158
+"t0","DS14",30,"bulk sediment","20_30","bulk sediment 30cm","DS14-bulk sediment 30cm","DS",2.948603981,0.01435,-15.15455755,0.179455302,785.398,20,"bulk sediment",159.432
+"t4","DS06",10,"dead biomass","5_10","dead biomass 10cm","DS06-dead biomass 10cm","DS",29.85723271,0.008990174,-14.33600106,0.366317829,392.699,5,"dead biomass",24.066
+"t4","DS06",10,"fine roots","5_10","fine roots 10cm","DS06-fine roots 10cm","DS",1311.835109,0.009799442,-14.18273639,0.319213321,392.699,5,"fine roots",0.092
+"t4","DS06",10,"rhizomes","5_10","rhizomes 10cm","DS06-rhizomes 10cm","DS",680.1930646,0.007187005,-15.01637939,0.320512812,392.699,5,"rhizomes",1.918
+"t4","DS06",15,"coarse roots","10_15","coarse roots 15cm","DS06-coarse roots 15cm","DS",1716.476464,0.011259698,-14.71924137,0.279101737,392.699,10,"coarse roots",0.07
+"t4","DS06",15,"dead biomass","10_15","dead biomass 15cm","DS06-dead biomass 15cm","DS",13.34864509,0.00714006,-13.30932359,0.385628578,392.699,10,"dead biomass",20.584
+"t4","DS06",15,"fine roots","10_15","fine roots 15cm","DS06-fine roots 15cm","DS",728.3392577,0.008293593,-13.65484262,0.355930558,392.699,10,"fine roots",0.11
+"t4","DS06",15,"rhizomes","10_15","rhizomes 15cm","DS06-rhizomes 15cm","DS",21.45718131,0.006191836,-14.00509435,0.321744564,392.699,10,"rhizomes",0.278
+"t4","DS06",20,"coarse roots","15_20","coarse roots 20cm","DS06-coarse roots 20cm","DS",6.903133464,0.006203976,-13.42254191,0.274403774,392.699,15,"coarse roots",0.048
+"t4","DS06",20,"dead biomass","15_20","dead biomass 20cm","DS06-dead biomass 20cm","DS",4.51472289,0.007317895,-13.27788927,0.386742979,392.699,15,"dead biomass",11.486
+"t4","DS06",20,"fine roots","15_20","fine roots 20cm","DS06-fine roots 20cm","DS",353.1729592,0.007920805,-13.61482448,0.342749448,392.699,15,"fine roots",0.05
+"t4","DS06",30,"coarse roots","20_30","coarse roots 30cm","DS06-coarse roots 30cm","DS",5.732910375,0.005994043,-14.03725762,0.274660035,785.398,20,"coarse roots",0.344
+"t4","DS06",30,"dead biomass","20_30","dead biomass 30cm","DS06-dead biomass 30cm","DS",4.306933752,0.008392653,-12.955274,0.308760848,785.398,20,"dead biomass",32.152
+"t4","DS06",30,"fine roots","20_30","fine roots 30cm","DS06-fine roots 30cm","DS",47.81043254,0.006070352,-13.49249274,0.321760244,785.398,20,"fine roots",0.072
+"t2","DS07",NA,"dead leaf","above","dead leaf","DS07-dead leaf","DS",1385.868702,0.016846463,-15.2870753,0.303611029,NA,NA,"dead leaf",0.0286
+"t2","DS07",NA,"decomp layer","above","decomp layer","DS07-decomp layer","DS",458.5244958,0.010696253,-16.10561149,0.255921654,NA,NA,"decomp layer",0.5429
+"t2","DS07",NA,"leaf 1","above","leaf 1","DS07-leaf 1","DS",6939.828177,0.023578052,-15.58202781,0.349830658,NA,NA,"leaf",0.0386
+"t2","DS07",NA,"leaf 2","above","leaf 2","DS07-leaf 2","DS",4823.307651,0.024101058,-16.01218713,0.35192207,NA,NA,"leaf",0.0814
+"t2","DS07",NA,"leaf 3","above","leaf 3","DS07-leaf 3","DS",3770.366041,0.023445884,-16.14721272,0.391085958,NA,NA,"leaf",0.0922
+"t2","DS07",NA,"leaf 4","above","leaf 4","DS07-leaf 4","DS",2767.777833,0.022272802,-15.97765531,0.363698167,NA,NA,"leaf",0.0972
+"t2","DS07",NA,"leaf 5","above","leaf 5","DS07-leaf 5","DS",2480.075804,0.022902155,-15.93797902,0.386286315,NA,NA,"leaf",0.0848
+"t2","DS07",NA,"leaf 6","above","leaf 6","DS07-leaf 6","DS",2453.753436,0.022946461,-15.88999406,0.385883031,NA,NA,"leaf",0.0674
+"t2","DS07",NA,"leaf 7","above","leaf 7","DS07-leaf 7","DS",2019.317635,0.023713445,-15.95770946,0.351935588,NA,NA,"leaf",0.0397
+"t2","DS07",NA,"leaf 8","above","leaf 8","DS07-leaf 8","DS",NA,NA,NA,NA,NA,NA,"leaf",0.0075
+"t2","DS07",NA,"microbe mat","above","microbe mat","DS07-microbe mat","DS",346.5877581,0.015929605,-18.73598301,0.187375816,NA,NA,"microbe mat",1.3226
+"t2","DS07",NA,"standing dead","above","standing dead","DS07-standing dead","DS",38.41437252,0.010542349,-15.38347619,0.365346633,NA,NA,"standing dead",2.091
+"t2","DS07",NA,"stems","above","stems","DS07-stems","DS",3088.410064,0.011113324,-15.30893843,0.379231786,NA,NA,"stems",1.1864
+"t2","DS07",2,"belowground stems","0_2","belowground stems","DS07-belowground stems","DS",1847.850777,0.01103,-15.09414631,0.3475792,157.08,0,"stems",0.0697
+"t2","DS07",2,"dead biomass","0_2","dead biomass 2cm","DS07-dead biomass 2cm","DS",167.113726,0.012675631,-15.78922707,0.335165861,157.08,0,"dead biomass",3.04
+"t2","DS07",2,"fine roots","0_2","fine roots 2cm","DS07-fine roots 2cm","DS",4384.638604,0.014638582,-13.97314873,0.12463572,157.08,0,"fine roots",0.0242
+"t2","DS07",2,"rhizomes","0_2","rhizomes 2cm","DS07-rhizomes 2cm","DS",1418.439237,0.00797,-15.07945493,0.330926489,157.08,0,"rhizomes",0.5894
+"t2","DS07",5,"coarse roots","2_5","coarse roots 5cm","DS07-coarse roots 5cm","DS",1717.338392,0.00879,-14.80169373,0.338746296,235.619,2,"coarse roots",0.2314
+"t2","DS07",5,"dead biomass","2_5","dead biomass 5cm","DS07-dead biomass 5cm","DS",902.5164046,0.00842577,-14.72738268,0.336302679,235.619,2,"dead biomass",13.312
+"t2","DS07",5,"fine roots","2_5","fine roots 5cm","DS07-fine roots 5cm","DS",6449.445843,0.01177,-14.70206418,0.352878744,235.619,2,"fine roots",0.1088
+"t2","DS07",5,"rhizomes","2_5","rhizomes 5cm","DS07-rhizomes 5cm","DS",1382.262812,0.0097,-15.24189431,0.367799095,235.619,2,"rhizomes",2.9492
+"t2","DS07",10,"coarse roots","5_10","coarse roots 10cm","DS07-coarse roots 10cm","DS",987.0467654,0.00998,-14.87320118,0.297787419,392.699,5,"coarse roots",0.1798
+"t2","DS07",10,"dead biomass","5_10","dead biomass 10cm","DS07-dead biomass 10cm","DS",197.3690214,0.00805154,-14.06234746,0.342967895,392.699,5,"dead biomass",20.114
+"t2","DS07",10,"fine roots","5_10","fine roots 10cm","DS07-fine roots 10cm","DS",2336.190436,0.0122,-14.72651929,0.359470339,392.699,5,"fine roots",0.1154
+"t2","DS07",10,"rhizomes","5_10","rhizomes 10cm","DS07-rhizomes 10cm","DS",281.5170298,0.00599,-14.95323148,0.363055821,392.699,5,"rhizomes",1.56
+"t2","DS07",15,"coarse roots","10_15","coarse roots 15cm","DS07-coarse roots 15cm","DS",144.8232574,0.00956894,-14.7071797,0.258295732,392.699,10,"coarse roots",0.1108
+"t2","DS07",15,"dead biomass","10_15","dead biomass 15cm","DS07-dead biomass 15cm","DS",19.27098806,0.009327098,-13.71765621,0.371683033,392.699,10,"dead biomass",23.342
+"t2","DS07",15,"fine roots","10_15","fine roots 15cm","DS07-fine roots 15cm","DS",950.1054701,0.00833,-14.50982894,0.276425527,392.699,10,"fine roots",0.1006
+"t2","DS07",15,"rhizomes","10_15","rhizomes 15cm","DS07-rhizomes 15cm","DS",77.41329409,0.003402215,-13.72877714,0.308619634,392.699,10,"rhizomes",0.087
+"t2","DS07",20,"coarse roots","15_20","coarse roots 20cm","DS07-coarse roots 20cm","DS",NA,NA,NA,NA,392.699,15,"coarse roots",0.0094
+"t2","DS07",20,"dead biomass","15_20","dead biomass 20cm","DS07-dead biomass 20cm","DS",7.187857549,0.008441075,-13.43640882,0.361406832,392.699,15,"dead biomass",15.408
+"t2","DS07",20,"fine roots","15_20","fine roots 20cm","DS07-fine roots 20cm","DS",1340.899706,0.011920784,-13.51199877,0.366507498,392.699,15,"fine roots",0.0402
+"t2","DS07",20,"rhizomes","15_20","rhizomes 20cm","DS07-rhizomes 20cm","DS",13.65028447,0.003567188,-13.01357097,0.358759886,392.699,15,"rhizomes",0.032
+"t2","DS07",30,"coarse roots","20_30","coarse roots 30cm","DS07-coarse roots 30cm","DS",6.532987415,0.007577417,-13.76783983,0.291995469,785.398,20,"coarse roots",0.0814
+"t2","DS07",30,"dead biomass","20_30","dead biomass 30cm","DS07-dead biomass 30cm","DS",4.482627893,0.011313973,-13.20593735,0.299752905,785.398,20,"dead biomass",26.188
+"t2","DS07",30,"fine roots","20_30","fine roots 30cm","DS07-fine roots 30cm","DS",6.540828565,0.008516038,-13.45009233,0.427155712,785.398,20,"fine roots",0.0472
+"t2","DS07",30,"rhizomes","20_30","rhizomes 30cm","DS07-rhizomes 30cm","DS",4.079963619,0.005992937,-13.00027887,0.349183886,785.398,20,"rhizomes",0.0766
+"t4","DS08",NA,"dead leaf","above","dead leaf","DS08-dead leaf","DS",90.59024494,0.01332576,-14.84630611,0.332715464,NA,NA,"dead leaf",0.0508
+"t4","DS08",NA,"decomp layer","above","decomp layer","DS08-decomp layer","DS",106.7358071,0.009788705,-16.43009915,0.196404813,NA,NA,"decomp layer",1.1737
+"t4","DS08",NA,"leaf 1","above","leaf 1","DS08-leaf 1","DS",3978.704063,0.02356445,-15.97490977,0.331561464,NA,NA,"leaf",0.0394
+"t4","DS08",NA,"leaf 10","above","leaf 10","DS08-leaf 10","DS",1163.512978,0.019578059,-15.78280428,0.288080275,NA,NA,"leaf",0.0279
+"t4","DS08",NA,"leaf 11","above","leaf 11","DS08-leaf 11","DS",195.3768264,0.014979182,-15.40565763,0.323589087,NA,NA,"leaf",0.0051
+"t4","DS08",NA,"leaf 2","above","leaf 2","DS08-leaf 2","DS",3390.735009,0.022571089,-16.31075019,0.322175065,NA,NA,"leaf",0.1132
+"t4","DS08",NA,"leaf 3","above","leaf 3","DS08-leaf 3","DS",3063.416065,0.022919996,-16.20260798,0.375938092,NA,NA,"leaf",0.1454
+"t4","DS08",NA,"leaf 4","above","leaf 4","DS08-leaf 4","DS",1914.564969,0.024427505,-16.23056633,0.368890065,NA,NA,"leaf",0.1521
+"t4","DS08",NA,"leaf 5","above","leaf 5","DS08-leaf 5","DS",1326.634515,0.019472986,-15.95257485,0.333091353,NA,NA,"leaf",0.1588
+"t4","DS08",NA,"leaf 6","above","leaf 6","DS08-leaf 6","DS",1454.378463,0.020183212,-15.97761437,0.32673208,NA,NA,"leaf",0.1423
+"t4","DS08",NA,"leaf 7","above","leaf 7","DS08-leaf 7","DS",1049.637269,0.020533603,-15.9541617,0.328699711,NA,NA,"leaf",0.1289
+"t4","DS08",NA,"leaf 8","above","leaf 8","DS08-leaf 8","DS",972.1541783,0.019619087,-15.94231101,0.337043245,NA,NA,"leaf",0.1135
+"t4","DS08",NA,"leaf 9","above","leaf 9","DS08-leaf 9","DS",962.9125611,0.020502173,-15.83381415,0.346829161,NA,NA,"leaf",0.0695
+"t4","DS08",NA,"microbe mat","above","microbe mat","DS08-microbe mat","DS",359.2082979,0.013904399,-17.9993253,0.163800403,NA,NA,"microbe mat",1.8993
+"t4","DS08",NA,"standing dead","above","standing dead","DS08-standing dead","DS",118.707567,0.010002279,-15.27981075,0.32643926,NA,NA,"standing dead",0.956
+"t4","DS08",NA,"stems","above","stems","DS08-stems","DS",1947.999445,0.011479006,-15.27234474,0.355230282,NA,NA,"stems",2.566
+"t4","DS08",2,"coarse roots","0_2","coarse roots 2cm","DS08-coarse roots 2cm","DS",3174.448442,0.011771886,-15.20798811,0.340484377,157.08,0,"coarse roots",0.048
+"t4","DS08",2,"dead biomass","0_2","dead biomass 2cm","DS08-dead biomass 2cm","DS",349.0581687,0.011065036,-15.50662467,0.326671112,157.08,0,"dead biomass",5.644
+"t4","DS08",2,"fine roots","0_2","fine roots 2cm","DS08-fine roots 2cm","DS",3927.253817,0.01016166,-14.68983262,0.315402321,157.08,0,"fine roots",0.036
+"t4","DS08",2,"rhizomes","0_2","rhizomes 2cm","DS08-rhizomes 2cm","DS",1848.371378,0.01019832,-14.95583183,0.319237131,157.08,0,"rhizomes",1.112
+"t4","DS08",5,"coarse roots","2_5","coarse roots 5cm","DS08-coarse roots 5cm","DS",1238.630522,0.009354506,-14.84406423,0.345875506,235.619,2,"coarse roots",0.222
+"t4","DS08",5,"dead biomass","2_5","dead biomass 5cm","DS08-dead biomass 5cm","DS",727.0650078,0.008879749,-14.59824416,0.355134599,235.619,2,"dead biomass",16.834
+"t4","DS08",5,"fine roots","2_5","fine roots 5cm","DS08-fine roots 5cm","DS",2746.593812,0.009414334,-14.55306547,0.327886326,235.619,2,"fine roots",0.164
+"t4","DS08",5,"rhizomes","2_5","rhizomes 5cm","DS08-rhizomes 5cm","DS",1069.111467,0.009506885,-15.14003635,0.312295772,235.619,2,"rhizomes",4.0274
+"t4","DS08",10,"coarse roots","5_10","coarse roots 10cm","DS08-coarse roots 10cm","DS",802.2821512,0.010008257,-14.6762751,0.29789649,392.699,5,"coarse roots",0.254
+"t4","DS08",10,"dead biomass","5_10","dead biomass 10cm","DS08-dead biomass 10cm","DS",109.4637566,0.007013314,-13.84643545,0.373183005,392.699,5,"dead biomass",25.652
+"t4","DS08",10,"fine roots","5_10","fine roots 10cm","DS08-fine roots 10cm","DS",1378.640906,0.009764326,-14.48666712,0.316860786,392.699,5,"fine roots",0.136
+"t4","DS08",10,"rhizomes","5_10","rhizomes 10cm","DS08-rhizomes 10cm","DS",249.4026005,0.009712963,-15.16966466,0.314784904,392.699,5,"rhizomes",1.698
+"t4","DS08",15,"coarse roots","10_15","coarse roots 15cm","DS08-coarse roots 15cm","DS",919.7422335,0.015271775,-14.91344924,0.297237941,392.699,10,"coarse roots",0.12
+"t4","DS08",15,"dead biomass","10_15","dead biomass 15cm","DS08-dead biomass 15cm","DS",36.96730523,0.006965628,-13.29862055,0.390966875,392.699,10,"dead biomass",17.626
+"t4","DS08",15,"fine roots","10_15","fine roots 15cm","DS08-fine roots 15cm","DS",1294.524023,0.00882461,-14.09755113,0.332836076,392.699,10,"fine roots",0.126
+"t4","DS08",15,"rhizomes","10_15","rhizomes 15cm","DS08-rhizomes 15cm","DS",15.47952891,0.004483577,-14.26771299,0.31349897,392.699,10,"rhizomes",0.154
+"t4","DS08",20,"coarse roots","15_20","coarse roots 20cm","DS08-coarse roots 20cm","DS",379.1766656,0.008541698,-14.14839825,0.285390684,392.699,15,"coarse roots",0.0444
+"t4","DS08",20,"dead biomass","15_20","dead biomass 20cm","DS08-dead biomass 20cm","DS",14.63847507,0.011698787,-13.54154256,0.377547494,392.699,15,"dead biomass",13.646
+"t4","DS08",20,"fine roots","15_20","fine roots 20cm","DS08-fine roots 20cm","DS",1680.107774,0.01202297,-14.69524621,0.287181745,392.699,15,"fine roots",0.0418
+"t4","DS08",30,"coarse roots","20_30","coarse roots 30cm","DS08-coarse roots 30cm","DS",145.8150545,0.007344906,-14.13835206,0.275121853,785.398,20,"coarse roots",0.124
+"t4","DS08",30,"dead biomass","20_30","dead biomass 30cm","DS08-dead biomass 30cm","DS",3.880119869,0.012608543,-12.84465109,0.369226683,785.398,20,"dead biomass",18.456
+"t4","DS08",30,"fine roots","20_30","fine roots 30cm","DS08-fine roots 30cm","DS",348.628095,0.007622161,-13.6873487,0.300465584,785.398,20,"fine roots",0.056
+"t3","DS09",NA,"dead leaf","above","dead leaf","DS09-dead leaf","DS",850.06635,0.015062334,-16.33451791,0.270560099,NA,NA,"dead leaf",0.0218
+"t3","DS09",NA,"decomp layer","above","decomp layer","DS09-decomp layer","DS",154.9080545,0.009779514,-17.03581002,0.275659334,NA,NA,"decomp layer",0.7154
+"t3","DS09",NA,"leaf 1","above","leaf 1","DS09-leaf 1","DS",3029.364663,0.0284123,-16.15422814,0.351298468,NA,NA,"leaf",0.0531
+"t3","DS09",NA,"leaf 2","above","leaf 2","DS09-leaf 2","DS",3160.65696,0.031143274,-15.99979532,0.386767854,NA,NA,"leaf",0.1125
+"t3","DS09",NA,"leaf 3","above","leaf 3","DS09-leaf 3","DS",3070.184933,0.025459323,-16.18880326,0.341711491,NA,NA,"leaf",0.1472
+"t3","DS09",NA,"leaf 4","above","leaf 4","DS09-leaf 4","DS",2293.449971,0.024915387,-16.23546318,0.346652512,NA,NA,"leaf",0.1498
+"t3","DS09",NA,"leaf 5","above","leaf 5","DS09-leaf 5","DS",1679.578744,0.026554,-16.27576393,0.396937819,NA,NA,"leaf",0.1432
+"t3","DS09",NA,"leaf 6","above","leaf 6","DS09-leaf 6","DS",1480.37809,0.024853959,-16.33868311,0.364367997,NA,NA,"leaf",0.1371
+"t3","DS09",NA,"leaf 7","above","leaf 7","DS09-leaf 7","DS",1376.714095,0.028103532,-16.33370947,0.386615721,NA,NA,"leaf",0.115
+"t3","DS09",NA,"leaf 8","above","leaf 8","DS09-leaf 8","DS",1614.556654,0.026490544,-16.38543804,0.35835914,NA,NA,"leaf",0.0742
+"t3","DS09",NA,"leaf 9","above","leaf 9","DS09-leaf 9","DS",1144.393004,0.026680279,-16.41534803,0.35705435,NA,NA,"leaf",0.0684
+"t3","DS09",NA,"standing dead","above","standing dead","DS09-standing dead","DS",70.41531503,0.007466981,-15.62615242,0.331852478,NA,NA,"standing dead",4.5364
+"t3","DS09",NA,"stems","above","stems","DS09-stems","DS",1975.558195,0.011864523,-15.68229747,0.366179949,NA,NA,"stems",2.2663
+"t3","DS09",2,"coarse roots","0_2","coarse roots 2cm","DS09-coarse roots 2cm","DS",1939.664216,0.009408417,-14.93220656,0.346025244,157.08,0,"coarse roots",0.4632
+"t3","DS09",2,"dead biomass","0_2","dead biomass 2cm","DS09-dead biomass 2cm","DS",692.4409701,0.008699068,-14.7205985,0.361056686,157.08,0,"dead biomass",4.418
+"t3","DS09",2,"fine roots","0_2","fine roots 2cm","DS09-fine roots 2cm","DS",4981.4036935,0.0077347505,-13.863044435,0.3190764805,157.08,0,"fine roots",0.2056
+"t3","DS09",2,"rhizomes","0_2","rhizomes 2cm","DS09-rhizomes 2cm","DS",1532.424229,0.010755204,-14.89396491,0.343139185,157.08,0,"rhizomes",2.2482
+"t3","DS09",5,"coarse roots","2_5","coarse roots 5cm","DS09-coarse roots 5cm","DS",2844.430401,0.007775182,-14.31322147,0.348838918,235.619,2,"coarse roots",0.418
+"t3","DS09",5,"dead biomass","2_5","dead biomass 5cm","DS09-dead biomass 5cm","DS",536.5142463,0.009642778,-14.86675162,0.396217752,235.619,2,"dead biomass",12.878
+"t3","DS09",5,"fine roots","2_5","fine roots 5cm","DS09-fine roots 5cm","DS",4015.033085,0.010805851,-14.5612352,0.359494825,235.619,2,"fine roots",0.1552
+"t3","DS09",5,"rhizomes","2_5","rhizomes 5cm","DS09-rhizomes 5cm","DS",1495.947434,0.0100523335,-14.89682363,0.345038831,235.619,2,"rhizomes",4.1966
+"t3","DS09",10,"coarse roots","5_10","coarse roots 10cm","DS09-coarse roots 10cm","DS",852.1038745,0.012144603,-14.93097525,0.3462701,392.699,5,"coarse roots",0.2066
+"t3","DS09",10,"crab","5_10","crab 10cm","DS09-crab 10cm","DS",1.958353501,0.014445877,-14.8695107,0.141919823,392.699,5,"crab",0.5962
+"t3","DS09",10,"dead biomass","5_10","dead biomass 10cm","DS09-dead biomass 10cm","DS",116.8449353,0.010065124,-14.08185166,0.390764091,392.699,5,"dead biomass",14.654
+"t3","DS09",10,"fine roots","5_10","fine roots 10cm","DS09-fine roots 10cm","DS",863.3228987,0.011006636,-14.32736127,0.360118148,392.699,5,"fine roots",0.2072
+"t3","DS09",10,"rhizomes","5_10","rhizomes 10cm","DS09-rhizomes 10cm","DS",867.6619544,0.008591985,-14.90855877,0.34185422,392.699,5,"rhizomes",1.2126
+"t3","DS09",15,"coarse roots","10_15","coarse roots 15cm","DS09-coarse roots 15cm","DS",1907.582546,0.022728836,-15.06650312,0.301328433,392.699,10,"coarse roots",0.0094
+"t3","DS09",15,"dead biomass","10_15","dead biomass 15cm","DS09-dead biomass 15cm","DS",13.93076126,0.011183434,-13.93717679,0.399651217,392.699,10,"dead biomass",13.15
+"t3","DS09",15,"fine roots","10_15","fine roots 15cm","DS09-fine roots 15cm","DS",567.6863926,0.01084086,-13.92983516,0.367911255,392.699,10,"fine roots",0.051
+"t3","DS09",15,"rhizomes","10_15","rhizomes 15cm","DS09-rhizomes 15cm","DS",88.93538206,0.003504317,-14.81864302,0.373648526,392.699,10,"rhizomes",0.0728
+"t3","DS09",20,"coarse roots","15_20","coarse roots 20cm","DS09-coarse roots 20cm","DS",27.03708657,0.006255823,-13.56383842,0.326541692,392.699,15,"coarse roots",0.0492
+"t3","DS09",20,"dead biomass","15_20","dead biomass 20cm","DS09-dead biomass 20cm","DS",11.02975187,0.010605206,-13.55388431,0.3800615,392.699,15,"dead biomass",14.786
+"t3","DS09",20,"fine roots","15_20","fine roots 20cm","DS09-fine roots 20cm","DS",257.525534,0.007644306,-13.06857743,0.362235631,392.699,15,"fine roots",0.0608
+"t3","DS09",20,"rhizomes","15_20","rhizomes 20cm","DS09-rhizomes 20cm","DS",20.53332245,0.009873915,-13.3128273,0.474821797,392.699,15,"rhizomes",0.1042
+"t3","DS09",30,"coarse roots","20_30","coarse roots 30cm","DS09-coarse roots 30cm","DS",33.85780392,0.006604276,-13.55248687,0.364864306,785.398,20,"coarse roots",1.4038
+"t3","DS09",30,"dead biomass","20_30","dead biomass 30cm","DS09-dead biomass 30cm","DS",15.28446812,0.009259555,-13.51234326,0.343057561,785.398,20,"dead biomass",38.316
+"t3","DS09",30,"fine roots","20_30","fine roots 30cm","DS09-fine roots 30cm","DS",23.21830012,0.006691831,-12.96163386,0.318220493,785.398,20,"fine roots",0.0278
+"t3","DS09",30,"rhizomes","20_30","rhizomes 30cm","DS09-rhizomes 30cm","DS",13.506364605,0.0079055995,-13.641217625,0.360778595,785.398,20,"rhizomes",0.0726
+"t0","DS13",NA,"dead leaf","above","dead leaf","DS13-dead leaf","DS",6.022454426,0.0087,-15.46179304,0.372049286,NA,NA,"dead leaf",0.1829
+"t0","DS13",NA,"leaf 1","above","leaf 1","DS13-leaf 1","DS",7.429139493,0.02199,-15.35879676,0.383828828,NA,NA,"leaf",0.118
+"t0","DS13",NA,"leaf 2","above","leaf 2","DS13-leaf 2","DS",7.563730722,0.02367,-15.53968604,0.331722887,NA,NA,"leaf",0.1828
+"t0","DS13",NA,"leaf 3","above","leaf 3","DS13-leaf 3","DS",7.467291187,0.02457,-15.69817593,0.349600929,NA,NA,"leaf",0.2033
+"t0","DS13",NA,"leaf 4","above","leaf 4","DS13-leaf 4","DS",7.324649358,0.02519,-15.81962564,0.340201212,NA,NA,"leaf",0.1655
+"t0","DS13",NA,"leaf 5","above","leaf 5","DS13-leaf 5","DS",6.994691051,0.02511,-15.85705949,0.362448709,NA,NA,"leaf",0.1238
+"t0","DS13",NA,"leaf 6","above","leaf 6","DS13-leaf 6","DS",6.844494615,0.02219,-15.78754093,0.338687545,NA,NA,"leaf",0.0724
+"t0","DS13",NA,"leaf 7","above","leaf 7","DS13-leaf 7","DS",6.737163322,0.0229,-15.67402422,0.352697199,NA,NA,"leaf",0.03
+"t0","DS13",NA,"leaf 8","above","leaf 8","DS13-leaf 8","DS",6.3197304,0.02165,-15.66989536,0.343104641,NA,NA,"leaf",0.013
+"t0","DS13",NA,"leaf 9","above","leaf 9","DS13-leaf 9","DS",NA,NA,NA,NA,NA,NA,"leaf",0.0049
+"t0","DS13",NA,"standing dead","above","standing dead","DS13-standing dead","DS",4.678379742,0.00713,-15.3500239,0.371476961,NA,NA,"standing dead",2.8118
+"t0","DS13",NA,"stems","above","stems","DS13-stems","DS",6.154302064,0.0117,-15.22652783,0.374546205,NA,NA,"stems",1.9079
+"t3","DS10",NA,"dead leaf","above","dead leaf","DS10-dead leaf","DS",303.6824636,0.008932079,-16.23639372,0.308576851,NA,NA,"dead leaf",0.0491
+"t3","DS10",NA,"decomp layer","above","decomp layer","DS10-decomp layer","DS",116.8744023,0.01154422,-15.57028623,0.245495187,NA,NA,"decomp layer",0.497
+"t3","DS10",NA,"leaf 1","above","leaf 1","DS10-leaf 1","DS",4711.818527,0.022409607,-16.41438704,0.328471383,NA,NA,"leaf",0.0457
+"t3","DS10",NA,"leaf 2","above","leaf 2","DS10-leaf 2","DS",5180.551657,0.023252664,-15.97061485,0.386757287,NA,NA,"leaf",0.0955
+"t3","DS10",NA,"leaf 3","above","leaf 3","DS10-leaf 3","DS",5157.995962,0.023627719,-16.15458543,0.404541741,NA,NA,"leaf",0.1117
+"t3","DS10",NA,"leaf 4","above","leaf 4","DS10-leaf 4","DS",4168.863869,0.023320584,-16.23345068,0.371279679,NA,NA,"leaf",0.1249
+"t3","DS10",NA,"leaf 5","above","leaf 5","DS10-leaf 5","DS",2830.515337,0.023218827,-16.27833774,0.354263793,NA,NA,"leaf",0.1251
+"t3","DS10",NA,"leaf 6","above","leaf 6","DS10-leaf 6","DS",2431.465555,0.024390736,-16.40676991,0.362766995,NA,NA,"leaf",0.0947
+"t3","DS10",NA,"leaf 7","above","leaf 7","DS10-leaf 7","DS",2360.735143,0.024323351,-16.35546514,0.371239065,NA,NA,"leaf",0.0871
+"t3","DS10",NA,"leaf 8","above","leaf 8","DS10-leaf 8","DS",1922.562911,0.027351408,-16.37261749,0.407193611,NA,NA,"leaf",0.07
+"t3","DS10",NA,"leaf 9","above","leaf 9","DS10-leaf 9","DS",2289.728572,0.023429754,-16.9719513,0.306456057,NA,NA,"leaf",0.1106
+"t3","DS10",NA,"standing dead","above","standing dead","DS10-standing dead","DS",107.8412139,0.009707567,-15.51383444,0.351726235,NA,NA,"standing dead",3.8222
+"t3","DS10",NA,"stems","above","stems","DS10-stems","DS",3672.867537,0.01241102,-15.78405264,0.347116433,NA,NA,"stems",1.7396
+"t3","DS10",2,"coarse roots","0_2","coarse roots 2cm","DS10-coarse roots 2cm","DS",1006.361592,0.01023384,-14.69053037,0.353937594,157.08,0,"coarse roots",0.2488
+"t3","DS10",2,"dead biomass","0_2","dead biomass 2cm","DS10-dead biomass 2cm","DS",43.58284007,0.009381449,-14.65909197,0.366203432,157.08,0,"dead biomass",6.076
+"t3","DS10",2,"fine roots","0_2","fine roots 2cm","DS10-fine roots 2cm","DS",463.4196477,0.008231832,-14.13035508,0.325879312,157.08,0,"fine roots",0.0576
+"t3","DS10",2,"rhizomes","0_2","rhizomes 2cm","DS10-rhizomes 2cm","DS",1132.313045,0.008811093,-15.06261528,0.34263654,157.08,0,"rhizomes",2.0024
+"t3","DS10",5,"coarse roots","2_5","coarse roots 5cm","DS10-coarse roots 5cm","DS",1725.241212,0.009318685,-14.90937165,0.366997217,235.619,2,"coarse roots",0.5012
+"t3","DS10",5,"dead biomass","2_5","dead biomass 5cm","DS10-dead biomass 5cm","DS",137.8162704,0.011261129,-14.59344513,0.396141948,235.619,2,"dead biomass",15.814
+"t3","DS10",5,"fine roots","2_5","fine roots 5cm","DS10-fine roots 5cm","DS",2102.50931,0.009066073,-14.40899215,0.369341934,235.619,2,"fine roots",0.164
+"t3","DS10",5,"rhizomes","2_5","rhizomes 5cm","DS10-rhizomes 5cm","DS",1009.037263,0.007530308,-15.41249212,0.374520486,235.619,2,"rhizomes",4.913
+"t3","DS10",10,"coarse roots","5_10","coarse roots 10cm","DS10-coarse roots 10cm","DS",1257.281026,0.009335546,-15.1251476,0.343808719,392.699,5,"coarse roots",0.2358
+"t3","DS10",10,"dead biomass","5_10","dead biomass 10cm","DS10-dead biomass 10cm","DS",54.47843831,0.009738616,-14.04254207,0.371329707,392.699,5,"dead biomass",19.172
+"t3","DS10",10,"fine roots","5_10","fine roots 10cm","DS10-fine roots 10cm","DS",1148.57563,0.010387702,-14.95189989,0.346457717,392.699,5,"fine roots",0.1272
+"t3","DS10",10,"rhizomes","5_10","rhizomes 10cm","DS10-rhizomes 10cm","DS",70.46003197,0.009774243,-15.68579383,0.34810308,392.699,5,"rhizomes",0.6734
+"t3","DS10",15,"coarse roots","10_15","coarse roots 15cm","DS10-coarse roots 15cm","DS",2046.094138,0.013912935,-15.51474427,0.330274404,392.699,10,"coarse roots",0.0668
+"t3","DS10",15,"dead biomass","10_15","dead biomass 15cm","DS10-dead biomass 15cm","DS",27.00848623,0.010033816,-13.56675067,0.391657838,392.699,10,"dead biomass",17.654
+"t3","DS10",15,"fine roots","10_15","fine roots 15cm","DS10-fine roots 15cm","DS",944.3332897,0.010270428,-14.94635144,0.354948792,392.699,10,"fine roots",0.0808
+"t0","DS15",30,"bulk sediment","20_30","bulk sediment 30cm","DS15-bulk sediment 30cm","DS",2.766725305,0.01077,-15.23395269,0.180202488,785.398,20,"bulk sediment",154.06
+"t3","DS10",20,"coarse roots","15_20","coarse roots 20cm","DS10-coarse roots 20cm","DS",62.16200328,0.006193119,-14.81131324,0.287240692,392.699,15,"coarse roots",0.0258
+"t3","DS10",20,"dead biomass","15_20","dead biomass 20cm","DS10-dead biomass 20cm","DS",14.25861504,0.011889191,-13.22216943,0.40000465,392.699,15,"dead biomass",11.44
+"t3","DS10",20,"fine roots","15_20","fine roots 20cm","DS10-fine roots 20cm","DS",2049.725377,0.008038496,-14.42370095,0.358627459,392.699,15,"fine roots",0.0296
+"t3","DS10",20,"rhizomes","15_20","rhizomes 20cm","DS10-rhizomes 20cm","DS",27.09575794,0.005117652,-14.5943152,0.329828339,392.699,15,"rhizomes",0.0692
+"t3","DS10",30,"dead biomass","20_30","dead biomass 30cm","DS10-dead biomass 30cm","DS",10.18688379,0.009580015,-13.2579863,0.394719953,785.398,20,"dead biomass",32.72
+"t3","DS10",30,"fine roots","20_30","fine roots 30cm","DS10-fine roots 30cm","DS",1872.3002,0.010285235,-13.97797181,0.33345877,785.398,20,"fine roots",0.014
+"t1","DS11",NA,"dead leaf","above","dead leaf","DS11-dead leaf","DS",104.372526,0.01956,-15.61731741,0.354528295,NA,NA,"dead leaf",0.0379
+"t1","DS11",NA,"decomp layer","above","decomp layer","DS11-decomp layer","DS",126.0913378,0.00945,-16.6104379,0.269642496,NA,NA,"decomp layer",0.3399
+"t1","DS11",NA,"leaf 1","above","leaf 1","DS11-leaf 1","DS",2984.74532,0.02362,-15.75337334,0.36691698,NA,NA,"leaf",0.0289
+"t1","DS11",NA,"leaf 2","above","leaf 2","DS11-leaf 2","DS",2772.009998,0.02372,-15.80993984,0.359785395,NA,NA,"leaf",0.0585
+"t1","DS11",NA,"leaf 3","above","leaf 3","DS11-leaf 3","DS",3316.411657,0.02378,-15.89440997,0.378984718,NA,NA,"leaf",0.0894
+"t1","DS11",NA,"leaf 4","above","leaf 4","DS11-leaf 4","DS",2894.625692,0.0244,-15.83608242,0.370426858,NA,NA,"leaf",0.0943
+"t1","DS11",NA,"leaf 5","above","leaf 5","DS11-leaf 5","DS",1814.353238,0.02295,-15.76879199,0.37585173,NA,NA,"leaf",0.0762
+"t1","DS11",NA,"leaf 6","above","leaf 6","DS11-leaf 6","DS",2077.010249,0.02179,-15.74190549,0.366523114,NA,NA,"leaf",0.0616
+"t1","DS11",NA,"leaf 7","above","leaf 7","DS11-leaf 7","DS",2134.252439,0.02387,-15.82213352,0.371892736,NA,NA,"leaf",0.0466
+"t1","DS11",NA,"leaf 8","above","leaf 8","DS11-leaf 8","DS",1181.000237,0.02111,-15.61069785,0.380910619,NA,NA,"leaf",0.0199
+"t1","DS11",NA,"microbe mat","above","microbe mat","DS11-microbe mat","DS",434.8565613,0.02013,-18.61628312,0.238379514,NA,NA,"microbe mat",1.6255
+"t1","DS11",NA,"standing dead","above","standing dead","DS11-standing dead","DS",11.35066468,0.00802,-15.21466877,0.351849004,NA,NA,"standing dead",4.4823
+"t1","DS11",NA,"stems","above","stems","DS11-stems","DS",5924.091937,0.011115,-15.02734183,0.3629134095,NA,NA,"stems",1.335
+"t1","DS11",2,"belowground stems","0_2","belowground stems","DS11-belowground stems","DS",2617.45,0.01379,-14.90094935,0.337814857,157.08,0,"stems",0.0697
+"t1","DS11",2,"dead biomass","0_2","dead biomass 2cm","DS11-dead biomass 2cm","DS",275.2514823,0.01566,-15.90215074,0.332199654,157.08,0,"dead biomass",0.4028
+"t1","DS11",2,"fine roots","0_2","fine roots 2cm","DS11-fine roots 2cm","DS",5881.732105,0.017831254,-15.38571212,0.369261265,157.08,0,"fine roots",0.0498
+"t1","DS11",5,"coarse roots","2_5","coarse roots 5cm","DS11-coarse roots 5cm","DS",3950.04,0.00988,-14.76524836,0.330711382,235.619,2,"coarse roots",0.1112
+"t1","DS11",5,"dead biomass","2_5","dead biomass 5cm","DS11-dead biomass 5cm","DS",1066.045532,0.0122,-15.20570406,0.353815836,235.619,2,"dead biomass",12.304
+"t1","DS11",5,"fine roots","2_5","fine roots 5cm","DS11-fine roots 5cm","DS",9857.15,0.01219,-14.78650335,0.346124619,235.619,2,"fine roots",0.1102
+"t1","DS11",5,"rhizomes","2_5","rhizomes 5cm","DS11-rhizomes 5cm","DS",1850.46,0.00971,-15.12688804,0.375476893,235.619,2,"rhizomes",4.793
+"t1","DS11",10,"coarse roots","5_10","coarse roots 10cm","DS11-coarse roots 10cm","DS",1676.14,0.00848,-14.78596032,0.346300409,392.699,5,"coarse roots",0.2772
+"t1","DS11",10,"dead biomass","5_10","dead biomass 10cm","DS11-dead biomass 10cm","DS",195.5180843,0.00953,-14.44223122,0.371869065,392.699,5,"dead biomass",23.15
+"t1","DS11",10,"fine roots","5_10","fine roots 10cm","DS11-fine roots 10cm","DS",2615.47,0.00935,-14.46018906,0.311264208,392.699,5,"fine roots",0.2884
+"t1","DS11",10,"rhizomes","5_10","rhizomes 10cm","DS11-rhizomes 10cm","DS",245.83,0.00734,-15.19594586,0.316571708,392.699,5,"rhizomes",4.918
+"t1","DS11",15,"coarse roots","10_15","coarse roots 15cm","DS11-coarse roots 15cm","DS",157.51,0.00664,-14.90514294,0.350386984,392.699,10,"coarse roots",0.1972
+"t1","DS11",15,"dead biomass","10_15","dead biomass 15cm","DS11-dead biomass 15cm","DS",11.77004766,0.01065,-13.51463532,0.418052925,392.699,10,"dead biomass",15.128
+"t1","DS11",15,"fine roots","10_15","fine roots 15cm","DS11-fine roots 15cm","DS",747.15,0.00872,-14.34003276,0.285606776,392.699,10,"fine roots",0.1498
+"t1","DS11",20,"coarse roots","15_20","coarse roots 20cm","DS11-coarse roots 20cm","DS",NA,NA,NA,NA,392.699,15,"coarse roots",0.03
+"t1","DS11",20,"dead biomass","15_20","dead biomass 20cm","DS11-dead biomass 20cm","DS",4.432891717,0.01183,-13.57129072,0.377461922,392.699,15,"dead biomass",18.708
+"t1","DS11",20,"fine roots","15_20","fine roots 20cm","DS11-fine roots 20cm","DS",2737.19,0.0059,-13.37146726,0.417546893,392.699,15,"fine roots",0.0928
+"t1","DS11",30,"coarse roots","20_30","coarse roots 30cm","DS11-coarse roots 30cm","DS",36.20765507,0.011462774,-13.85867292,0.418707552,785.398,20,"coarse roots",0.0578
+"t1","DS11",30,"dead biomass","20_30","dead biomass 30cm","DS11-dead biomass 30cm","DS",3.925887355,0.01277,-13.20071871,0.338769238,785.398,20,"dead biomass",37.29
+"t1","DS11",30,"fine roots","20_30","fine roots 30cm","DS11-fine roots 30cm","DS",18.52,0.0063,-13.38592821,0.398170909,785.398,20,"fine roots",0.076
+"t2","DS12",NA,"dead leaf","above","dead leaf","DS12-dead leaf","DS",NA,NA,NA,NA,NA,NA,"dead leaf",0.004
+"t2","DS12",NA,"decomp layer","above","decomp layer","DS12-decomp layer","DS",102.0643052,0.011926441,-15.61765633,0.271657433,NA,NA,"decomp layer",0.282
+"t2","DS12",NA,"leaf 1","above","leaf 1","DS12-leaf 1","DS",4263.839363,0.02180396,-15.69678114,0.374498301,NA,NA,"leaf",0.0355
+"t2","DS12",NA,"leaf 2","above","leaf 2","DS12-leaf 2","DS",3902.421731,0.021632969,-15.88976338,0.404099758,NA,NA,"leaf",0.0618
+"t2","DS12",NA,"leaf 3","above","leaf 3","DS12-leaf 3","DS",2845.586992,0.022237569,-16.07612542,0.391290389,NA,NA,"leaf",0.0703
+"t2","DS12",NA,"leaf 4","above","leaf 4","DS12-leaf 4","DS",2121.878689,0.021532481,-16.14456272,0.365767852,NA,NA,"leaf",0.07
+"t2","DS12",NA,"leaf 5","above","leaf 5","DS12-leaf 5","DS",1870.497874,0.021896402,-16.17619224,0.397209186,NA,NA,"leaf",0.0555
+"t2","DS02",NA,"leaf 5","above","leaf 5","DS02-leaf 5","DS",2535.946567,0.026171328,-16.30631756,0.376911723,NA,NA,"leaf",0.1323
+"t2","DS12",NA,"leaf 6","above","leaf 6","DS12-leaf 6","DS",1799.234106,0.022594213,-16.29561314,0.376819849,NA,NA,"leaf",0.05
+"t2","DS12",NA,"leaf 7","above","leaf 7","DS12-leaf 7","DS",1750.164131,0.022483503,-16.24902722,0.32411025,NA,NA,"leaf",0.0368
+"t2","DS12",NA,"leaf 8","above","leaf 8","DS12-leaf 8","DS",1529.017273,0.030083619,-16.45833875,0.434947159,NA,NA,"leaf",0.018
+"t2","DS12",NA,"leaf 9","above","leaf 9","DS12-leaf 9","DS",1436.288703,0.019246665,-16.4972638,0.343411335,NA,NA,"leaf",0.0133
+"t2","DS12",NA,"standing dead","above","standing dead","DS12-standing dead","DS",32.32440025,0.009919017,-15.68938421,0.332626487,NA,NA,"standing dead",0.4769
+"t2","DS12",NA,"stems","above","stems","DS12-stems","DS",2712.386905,0.009084087,-15.69533567,0.373470871,NA,NA,"stems",0.9459
+"t2","DS12",2,"coarse roots","0_2","coarse roots 2cm","DS12-coarse roots 2cm","DS",728.6451404,0.007355975,-14.67570269,0.335653498,157.08,0,"coarse roots",0.552
+"t2","DS12",2,"dead biomass","0_2","dead biomass 2cm","DS12-dead biomass 2cm","DS",113.3775473,0.007186162,-14.38785556,0.37134029,157.08,0,"dead biomass",26.648
+"t2","DS12",2,"fine roots","0_2","fine roots 2cm","DS12-fine roots 2cm","DS",2109.274688,0.008351303,-13.91940865,0.317299777,157.08,0,"fine roots",0.206
+"t2","DS12",2,"rhizomes","0_2","rhizomes 2cm","DS12-rhizomes 2cm","DS",1172.505164,0.007156465,-15.22666637,0.35050091,157.08,0,"rhizomes",1.83
+"t2","DS12",5,"coarse roots","2_5","coarse roots 5cm","DS12-coarse roots 5cm","DS",2521.322936,0.008050685,-15.06832907,0.37201357,235.619,2,"coarse roots",0.2508
+"t2","DS12",5,"dead biomass","2_5","dead biomass 5cm","DS12-dead biomass 5cm","DS",117.44704075,0.0108224795,-14.485669975,0.3605034075,235.619,2,"dead biomass",17.1
+"t2","DS12",5,"fine roots","2_5","fine roots 5cm","DS12-fine roots 5cm","DS",3344.850911,0.011540791,-14.56713493,0.374475205,235.619,2,"fine roots",0.1238
+"t2","DS12",5,"rhizomes","2_5","rhizomes 5cm","DS12-rhizomes 5cm","DS",1941.447816,0.009237726,-15.18438411,0.372559575,235.619,2,"rhizomes",1.7282
+"t2","DS12",10,"coarse roots","5_10","coarse roots 10cm","DS12-coarse roots 10cm","DS",2127.549924,0.010609443,-14.66608152,0.328949985,392.699,5,"coarse roots",0.1272
+"t2","DS12",10,"dead biomass","5_10","dead biomass 10cm","DS12-dead biomass 10cm","DS",67.31382159,0.010978331,-13.9993439,0.365626953,392.699,5,"dead biomass",23.948
+"t2","DS12",10,"fine roots","5_10","fine roots 10cm","DS12-fine roots 10cm","DS",2207.959748,0.010009175,-14.21628378,0.330422964,392.699,5,"fine roots",0.1146
+"t2","DS12",10,"rhizomes","5_10","rhizomes 10cm","DS12-rhizomes 10cm","DS",1517.415809,0.009495044,-15.18561508,0.385910768,392.699,5,"rhizomes",0.6038
+"t2","DS12",15,"coarse roots","10_15","coarse roots 15cm","DS12-coarse roots 15cm","DS",2759.666392,0.012782552,-14.58192199,0.390959004,392.699,10,"coarse roots",0.0334
+"t2","DS12",15,"dead biomass","10_15","dead biomass 15cm","DS12-dead biomass 15cm","DS",44.01801162,0.009930391,-13.33347246,0.397904251,392.699,10,"dead biomass",18.184
+"t2","DS12",15,"fine roots","10_15","fine roots 15cm","DS12-fine roots 15cm","DS",6466.253735,0.013563136,-13.8186378,0.446497996,392.699,10,"fine roots",0.0294
+"t2","DS12",15,"rhizomes","10_15","rhizomes 15cm","DS12-rhizomes 15cm","DS",122.2578906,0.004529155,-14.57033627,0.21308339,392.699,10,"rhizomes",0.0292
+"t2","DS12",20,"coarse roots","15_20","coarse roots 20cm","DS12-coarse roots 20cm","DS",NA,NA,NA,NA,392.699,15,"coarse roots",0.0104
+"t2","DS12",20,"dead biomass","15_20","dead biomass 20cm","DS12-dead biomass 20cm","DS",25.42082967,0.011153794,-13.06317147,0.352700194,392.699,15,"dead biomass",14.382
+"t2","DS12",20,"fine roots","15_20","fine roots 20cm","DS12-fine roots 20cm","DS",2559.157239,0.012070851,-12.77485268,0.500090724,392.699,15,"fine roots",0.028
+"t2","DS12",20,"rhizomes","15_20","rhizomes 20cm","DS12-rhizomes 20cm","DS",80.54635425,0.004657344,-14.71861561,0.303523476,392.699,15,"rhizomes",0.099
+"t2","DS12",30,"coarse roots","20_30","coarse roots 30cm","DS12-coarse roots 30cm","DS",3637.957668,0.013222875,-13.67229889,0.325498438,785.398,20,"coarse roots",0.0438
+"t0","SA13",10,"bulk sediment","5_10","bulk sediment 10cm","SA13-bulk sediment 10cm","SA",4.468760757,0.004365426,-17.05399358,0.054416516,392.699,5,"bulk sediment",32.43
+"t2","DS12",30,"fine roots","20_30","fine roots 30cm","DS12-fine roots 30cm","DS",518.3673067,0.012478459,-12.56449774,0.455126047,785.398,20,"fine roots",0.0254
+"t2","DS12",30,"rhizomes","20_30","rhizomes 30cm","DS12-rhizomes 30cm","DS",17.09201847,0.008734543,-13.26752065,0.327932113,785.398,20,"rhizomes",0.3992
+"t0","DS14",NA,"dead leaf","above","dead leaf","DS14-dead leaf","DS",4.880600499,0.00899,-15.203782,0.334053904,NA,NA,"dead leaf",0.0429
+"t0","DS14",NA,"leaf 1","above","leaf 1","DS14-leaf 1","DS",5.618948871,0.01806,-15.3488756,0.371880509,NA,NA,"leaf",0.0931
+"t0","DS14",NA,"leaf 2","above","leaf 2","DS14-leaf 2","DS",5.912128014,0.02146,-15.62975159,0.343296117,NA,NA,"leaf",0.1716
+"t0","DS14",NA,"leaf 3","above","leaf 3","DS14-leaf 3","DS",6.002744612,0.02125,-15.6925872,0.375438131,NA,NA,"leaf",0.166
+"t0","DS14",NA,"leaf 4","above","leaf 4","DS14-leaf 4","DS",5.698983787,0.02366,-15.89724702,0.373462246,NA,NA,"leaf",0.1277
+"t0","DS14",NA,"leaf 5","above","leaf 5","DS14-leaf 5","DS",5.721093387,0.02183,-15.89948705,0.344696977,NA,NA,"leaf",0.0978
+"t0","DS14",NA,"leaf 6","above","leaf 6","DS14-leaf 6","DS",5.903121152,0.04852,-16.09242209,0.450456005,NA,NA,"leaf",0.0608
+"t0","DS14",NA,"leaf 7","above","leaf 7","DS14-leaf 7","DS",5.335781808,0.01793,-15.72077632,0.349274883,NA,NA,"leaf",0.0254
+"t0","DS14",NA,"leaf 8","above","leaf 8","DS14-leaf 8","DS",4.626167399,0.0136,-15.58419565,0.353016883,NA,NA,"leaf",0.0097
+"t0","DS14",NA,"standing dead","above","standing dead","DS14-standing dead","DS",5.084519141,0.007820986,-15.47741103,0.315692975,NA,NA,"standing dead",3.4988
+"t0","DS14",NA,"stems","above","stems","DS14-stems","DS",4.79642751,0.01054,-15.54356698,0.369501247,NA,NA,"stems",2.146
+"t0","DS15",NA,"dead leaf","above","dead leaf","DS15-dead leaf","DS",6.087188494,0.01095,-15.47555513,0.355392629,NA,NA,"dead leaf",0.1487
+"t0","DS15",NA,"leaf 1","above","leaf 1","DS15-leaf 1","DS",7.261962731,0.02039,-15.21212859,0.377518461,NA,NA,"leaf",0.0761
+"t0","DS15",NA,"leaf 2","above","leaf 2","DS15-leaf 2","DS",7.505116953,0.0209,-15.4471801,0.349492408,NA,NA,"leaf",0.1565
+"t0","DS15",NA,"leaf 3","above","leaf 3","DS15-leaf 3","DS",7.545413646,0.0238,-15.68047637,0.353924323,NA,NA,"leaf",0.1856
+"t0","DS15",NA,"leaf 4","above","leaf 4","DS15-leaf 4","DS",7.453532656,0.02396,-15.81459456,0.32810868,NA,NA,"leaf",0.1687
+"t0","DS15",NA,"leaf 5","above","leaf 5","DS15-leaf 5","DS",7.148778672,0.02495,-15.85840249,0.347685124,NA,NA,"leaf",0.1371
+"t0","DS15",NA,"leaf 6","above","leaf 6","DS15-leaf 6","DS",7.248401853,0.02241,-15.78124984,0.341884416,NA,NA,"leaf",0.0976
+"t0","DS15",NA,"leaf 7","above","leaf 7","DS15-leaf 7","DS",7.650141156,0.024054612,-15.89005027,0.306404885,NA,NA,"leaf",0.0502
+"t0","DS15",NA,"leaf 8","above","leaf 8","DS15-leaf 8","DS",7.651321671,0.022238955,-15.55814422,0.313187651,NA,NA,"leaf",0.0217
+"t0","DS15",NA,"leaf 9","above","leaf 9","DS15-leaf 9","DS",NA,NA,NA,NA,NA,NA,"leaf",0.0123
+"t0","DS15",NA,"standing dead","above","standing dead","DS15-standing dead","DS",4.440688742,0.00947,-15.74805506,0.357567859,NA,NA,"standing dead",1.9277
+"t0","DS15",NA,"stems","above","stems","DS15-stems","DS",6.286863145,0.01085,-15.35968282,0.365360086,NA,NA,"stems",1.6655
+"t1","DS03",NA,"stems","above","stems","DS03-stems","DS",3761.35663,0.01008,-15.69992869,0.375518138,NA,NA,"stems",1.8418
+"t4","SA01",NA,"dead leaf","above","dead leaf","SA01-dead leaf","SA",2308.509656,0.008848642,-15.14161075,0.299446543,NA,NA,"dead leaf",0.1499
+"t4","SA01",NA,"decomp layer","above","decomp layer","SA01-decomp layer","SA",460.3539391,0.010148897,-15.84245371,0.156373292,NA,NA,"decomp layer",0.5051
+"t4","SA01",NA,"leaf 1","above","leaf 1","SA01-leaf 1","SA",5842.085334,0.022269417,-14.9196617,0.366760898,NA,NA,"leaf",0.1462
+"t4","SA01",NA,"leaf 2","above","leaf 2","SA01-leaf 2","SA",7103.578775,0.021300434,-15.15557187,0.356580306,NA,NA,"leaf",0.31
+"t4","SA01",NA,"leaf 3","above","leaf 3","SA01-leaf 3","SA",6790.887011,0.019011122,-15.40408759,0.343188454,NA,NA,"leaf",0.3678
+"t4","SA01",NA,"leaf 4","above","leaf 4","SA01-leaf 4","SA",3924.64668,0.017883912,-15.32948765,0.336814614,NA,NA,"leaf",0.1566
+"t4","SA01",NA,"microbe mat","above","microbe mat","SA01-microbe mat","SA",667.7856169,0.015798258,-16.88139465,0.179344986,NA,NA,"microbe mat",3.3342
+"t4","SA01",NA,"standing dead","above","standing dead","SA01-standing dead","SA",1247.580352,0.009071913,-14.83055556,0.273533721,NA,NA,"standing dead",0.6745
+"t4","SA01",NA,"stems","above","stems","SA01-stems","SA",4400.155514,0.014548659,-14.70921677,0.332884669,NA,NA,"stems",0.4577
+"t4","SA01",2,"coarse roots","0_2","coarse roots 2cm","SA01-coarse roots 2cm","SA",8939.822129,0.013862831,-14.32120192,0.260932057,157.08,0,"coarse roots",0.141000000141
+"t4","SA01",2,"dead biomass","0_2","dead biomass 2cm","SA01-dead biomass 2cm","SA",705.6339238,0.009603495,-14.66370693,0.366382114,157.08,0,"dead biomass",2.052000002052
+"t4","SA01",2,"fine roots","0_2","fine roots 2cm","SA01-fine roots 2cm","SA",3174.987061,0.012204622,-14.27019145,0.299522466,157.08,0,"fine roots",0.372000000372
+"t4","SA01",2,"rhizomes","0_2","rhizomes 2cm","SA01-rhizomes 2cm","SA",4929.048336,0.011922938,-14.2438124,0.271919093,157.08,0,"rhizomes",0.447000000447
+"t4","SA01",5,"coarse roots","2_5","coarse roots 5cm","SA01-coarse roots 5cm","SA",2227.706853,0.007139668,-14.43295874,0.305291281,235.619,2,"coarse roots",0.332
+"t4","SA01",5,"dead biomass","2_5","dead biomass 5cm","SA01-dead biomass 5cm","SA",422.8472954,0.008860172,-14.59612347,0.365614308,235.619,2,"dead biomass",14.892
+"t4","SA01",5,"fine roots","2_5","fine roots 5cm","SA01-fine roots 5cm","SA",2885.499976,0.007912353,-14.21797036,0.303844137,235.619,2,"fine roots",0.386
+"t4","SA01",5,"rhizomes","2_5","rhizomes 5cm","SA01-rhizomes 5cm","SA",2570.535855,0.007801716,-14.5857696,0.32093808,235.619,2,"rhizomes",0.74
+"t4","SA01",10,"coarse roots","5_10","coarse roots 10cm","SA01-coarse roots 10cm","SA",1348.357448,0.007192275,-14.71951983,0.303809987,392.699,5,"coarse roots",0.132
+"t4","SA01",10,"dead biomass","5_10","dead biomass 10cm","SA01-dead biomass 10cm","SA",80.63273632,0.008741318,-14.64991284,0.351445298,392.699,5,"dead biomass",21.332
+"t4","SA01",10,"fine roots","5_10","fine roots 10cm","SA01-fine roots 10cm","SA",1532.480255,0.008607232,-14.42891186,0.279182995,392.699,5,"fine roots",0.11
+"t4","SA01",10,"rhizomes","5_10","rhizomes 10cm","SA01-rhizomes 10cm","SA",286.9818076,0.004467772,-14.79862411,0.297681157,392.699,5,"rhizomes",1.064
+"t4","SA01",15,"coarse roots","10_15","coarse roots 15cm","SA01-coarse roots 15cm","SA",48.08878292,0.007223079,-15.05053862,0.329050162,392.699,10,"coarse roots",0.07
+"t4","SA01",15,"dead biomass","10_15","dead biomass 15cm","SA01-dead biomass 15cm","SA",23.89967419,0.009507273,-14.42389706,0.381032021,392.699,10,"dead biomass",12.018
+"t4","SA01",15,"fine roots","10_15","fine roots 15cm","SA01-fine roots 15cm","SA",2374.579439,0.010183657,-14.00293179,0.331641182,392.699,10,"fine roots",0.034
+"t4","SA01",15,"rhizomes","10_15","rhizomes 15cm","SA01-rhizomes 15cm","SA",66.74802373,0.005423549,-14.65768233,0.278308286,392.699,10,"rhizomes",0.5
+"t4","SA01",20,"coarse roots","15_20","coarse roots 20cm","SA01-coarse roots 20cm","SA",5951.555855,0.010176115,-13.60175875,0.356841099,392.699,15,"coarse roots",0.01
+"t0","SA13",20,"dead biomass","15_20","dead biomass 20cm","SA13-dead biomass 20cm","SA",2.568136609,0.0094,-13.29930661,0.37815651,392.699,15,"dead biomass",15.604
+"t4","SA01",20,"dead biomass","15_20","dead biomass 20cm","SA01-dead biomass 20cm","SA",22.64384143,0.007489164,-12.92756923,0.39189824,392.699,15,"dead biomass",22.392
+"t0","SA13",20,"fine roots","15_20","fine roots 20cm","SA13-fine roots 20cm","SA",1.949261863,0.00722,-13.11778522,0.333868337,392.699,15,"fine roots",0.0824
+"t4","SA01",20,"fine roots","15_20","fine roots 20cm","SA01-fine roots 20cm","SA",606.9090221,0.006128199,-15.99976815,0.378289744,392.699,15,"fine roots",0.068
+"t4","SA01",20,"rhizomes","15_20","rhizomes 20cm","SA01-rhizomes 20cm","SA",97.40555387,0.003961469,-14.27002239,0.288452206,392.699,15,"rhizomes",0.082
+"t4","SA01",30,"dead biomass","20_30","dead biomass 30cm","SA01-dead biomass 30cm","SA",6.364811638,0.009590953,-12.50549506,0.376976956,785.398,20,"dead biomass",28.392
+"t0","SA13",30,"fine roots","20_30","fine roots 30cm","SA13-fine roots 30cm","SA",0.706938434,0.00536,-12.04064083,0.40211148,785.398,20,"fine roots",0.0774
+"t4","SA01",30,"fine roots","20_30","fine roots 30cm","SA01-fine roots 30cm","SA",420.8560967,0.005927147,-12.06295732,0.3325396,785.398,20,"fine roots",0.114
+"t2","SA02",NA,"dead leaf","above","dead leaf","SA02-dead leaf","SA",101.4185175,0.00783101,-15.16149919,0.320699728,NA,NA,"dead leaf",0.2735
+"t2","SA02",NA,"decomp layer","above","decomp layer","SA02-decomp layer","SA",214.3315087,0.007911393,-14.98985221,0.216713659,NA,NA,"decomp layer",0.5758
+"t2","SA02",NA,"leaf 1","above","leaf 1","SA02-leaf 1","SA",2985.654297,0.014621476,-15.30518524,0.349060766,NA,NA,"leaf",0.1467
+"t2","SA02",NA,"leaf 2","above","leaf 2","SA02-leaf 2","SA",3573.527077,0.016198912,-15.23157811,0.350076644,NA,NA,"leaf",0.3559
+"t2","SA02",NA,"leaf 3","above","leaf 3","SA02-leaf 3","SA",3161.834646,0.015156664,-15.21158402,0.344035506,NA,NA,"leaf",0.1914
+"t2","SA02",NA,"leaf 4","above","leaf 4","SA02-leaf 4","SA",539.891971,0.00621579,-15.72354757,0.310996487,NA,NA,"leaf",0.0338
+"t2","SA02",NA,"microbe mat","above","microbe mat","SA02-microbe mat","SA",185.9878555,0.01348416,-17.87780376,0.189821481,NA,NA,"microbe mat",1.141
+"t2","SA02",NA,"standing dead","above","standing dead","SA02-standing dead","SA",135.8098431,0.00720378,-14.43516087,0.30757181,NA,NA,"standing dead",0.3372
+"t2","SA02",NA,"stems","above","stems","SA02-stems","SA",5495.090811,0.009690408,-14.78408342,0.31831595,NA,NA,"stems",0.5058
+"t0","SA14",2,"belowground stems","0_2","belowground stems","SA14-belowground stems","SA",1.724438918,0.00992,-14.03330341,0.342681959,157.08,0,"stems",0.0697
+"t0","SA14",2,"coarse roots","0_2","coarse roots 2cm","SA14-coarse roots 2cm","SA",1.52039706,0.00801,-13.9765308,0.355064804,157.08,0,"coarse roots",0.1504
+"t2","SA02",2,"coarse roots","0_2","coarse roots 2cm","SA02-coarse roots 2cm","SA",2292.013619,0.008461995,-14.67919257,0.334520781,157.08,0,"coarse roots",0.8216
+"t0","SA14",2,"dead biomass","0_2","dead biomass 2cm","SA14-dead biomass 2cm","SA",2.175988798,0.01034,-14.25232314,0.359635899,157.08,0,"dead biomass",3.1238
+"t2","SA02",2,"dead biomass","0_2","dead biomass 2cm","SA02-dead biomass 2cm","SA",742.47018815,0.009016994,-14.837345055,0.3514783365,157.08,0,"dead biomass",6.672
+"t0","SA14",2,"fine roots","0_2","fine roots 2cm","SA14-fine roots 2cm","SA",1.834401287,0.00915,-13.66732478,0.322012394,157.08,0,"fine roots",0.4478
+"t2","SA02",2,"fine roots","0_2","fine roots 2cm","SA02-fine roots 2cm","SA",3562.658551,0.008140176,-14.17525426,0.320180801,157.08,0,"fine roots",0.9036
+"t2","SA02",2,"rhizomes","0_2","rhizomes 2cm","SA02-rhizomes 2cm","SA",2754.8583,0.007628675,-14.64445796,0.332728383,157.08,0,"rhizomes",1.4902
+"t0","SA14",5,"coarse roots","2_5","coarse roots 5cm","SA14-coarse roots 5cm","SA",2.17131081,0.00453,-14.24161328,0.331734322,235.619,2,"coarse roots",0.8472
+"t2","SA02",5,"coarse roots","2_5","coarse roots 5cm","SA02-coarse roots 5cm","SA",1428.820285,0.006053555,-14.73441168,0.334817579,235.619,2,"coarse roots",0.5204
+"t0","SA14",5,"dead biomass","2_5","dead biomass 5cm","SA14-dead biomass 5cm","SA",3.526093753,0.00949,-14.98793617,0.337864275,235.619,2,"dead biomass",16.4534
+"t2","SA02",5,"dead biomass","2_5","dead biomass 5cm","SA02-dead biomass 5cm","SA",212.7352366,0.010207552,-14.75392045,0.352471712,235.619,2,"dead biomass",15.61
+"t0","SA14",5,"fine roots","2_5","fine roots 5cm","SA14-fine roots 5cm","SA",2.157612316,0.00524,-13.80131085,0.338418562,235.619,2,"fine roots",0.439
+"t2","SA02",5,"fine roots","2_5","fine roots 5cm","SA02-fine roots 5cm","SA",2666.525232,0.008023479,-14.20995044,0.339947527,235.619,2,"fine roots",0.4624
+"t0","SA14",5,"rhizomes","2_5","rhizomes 5cm","SA14-rhizomes 5cm","SA",1.989557231,0.00516,-14.35354132,0.35597963,235.619,2,"rhizomes",2.8236
+"t2","SA02",5,"rhizomes","2_5","rhizomes 5cm","SA02-rhizomes 5cm","SA",1016.506656,0.006108077,-14.87815095,0.317702615,235.619,2,"rhizomes",1.8138
+"t0","SA14",10,"coarse roots","5_10","coarse roots 10cm","SA14-coarse roots 10cm","SA",1.691650472,0.00503,-13.9790524,0.33214773,392.699,5,"coarse roots",0.1936
+"t2","SA02",10,"coarse roots","5_10","coarse roots 10cm","SA02-coarse roots 10cm","SA",60.74689422,0.005442981,-14.6766232,0.334335559,392.699,5,"coarse roots",0.2122
+"t0","SA14",10,"dead biomass","5_10","dead biomass 10cm","SA14-dead biomass 10cm","SA",3.155505698,0.00814,-14.02990357,0.363655684,392.699,5,"dead biomass",17.6918
+"t2","SA02",10,"dead biomass","5_10","dead biomass 10cm","SA02-dead biomass 10cm","SA",20.94725462,0.008801962,-14.51445512,0.380659776,392.699,5,"dead biomass",19.186
+"t0","SA14",10,"fine roots","5_10","fine roots 10cm","SA14-fine roots 10cm","SA",2.095353794,0.00704,-13.65306802,0.328481332,392.699,5,"fine roots",0.2814
+"t2","SA02",10,"fine roots","5_10","fine roots 10cm","SA02-fine roots 10cm","SA",65.95450649,0.00394516,-14.6263269,0.319922756,392.699,5,"fine roots",0.723
+"t0","SA14",10,"rhizomes","5_10","rhizomes 10cm","SA14-rhizomes 10cm","SA",2.609730506,0.00413,-14.37778747,0.325092867,392.699,5,"rhizomes",0.9494
+"t0","SA14",15,"coarse roots","10_15","coarse roots 15cm","SA14-coarse roots 15cm","SA",1.543036555,0.00891,-13.52836807,0.304173862,392.699,10,"coarse roots",0.1756
+"t2","SA02",15,"coarse roots","10_15","coarse roots 15cm","SA02-coarse roots 15cm","SA",45.51384246,0.007368686,-14.11842325,0.35303793,392.699,10,"coarse roots",0.0628
+"t0","SA14",15,"dead biomass","10_15","dead biomass 15cm","SA14-dead biomass 15cm","SA",3.867555898,0.01212,-13.74714957,0.336573815,392.699,10,"dead biomass",19.3934
+"t2","SA02",15,"dead biomass","10_15","dead biomass 15cm","SA02-dead biomass 15cm","SA",16.13454709,0.010786945,-13.67939725,0.34059116,392.699,10,"dead biomass",22.638
+"t0","SA14",15,"fine roots","10_15","fine roots 15cm","SA14-fine roots 15cm","SA",1.248702099,0.00497,-12.90148929,0.378703196,392.699,10,"fine roots",0.0852
+"t2","SA02",15,"fine roots","10_15","fine roots 15cm","SA02-fine roots 15cm","SA",41.37147575,0.00757914,-13.64793058,0.404537141,392.699,10,"fine roots",0.0524
+"t0","SA14",15,"rhizomes","10_15","rhizomes 15cm","SA14-rhizomes 15cm","SA",3.357353577,0.00706,-14.49090679,0.330044612,392.699,10,"rhizomes",0.0078
+"t2","SA02",15,"rhizomes","10_15","rhizomes 15cm","SA02-rhizomes 15cm","SA",44.45282237,0.003829056,-14.39958654,0.327537947,392.699,10,"rhizomes",0.2934
+"t2","SA02",20,"coarse roots","15_20","coarse roots 20cm","SA02-coarse roots 20cm","SA",11.0482935,0.010287805,-12.86338382,0.44126348,392.699,15,"coarse roots",0.0476
+"t0","SA14",20,"dead biomass","15_20","dead biomass 20cm","SA14-dead biomass 20cm","SA",2.652563661,0.00973,-13.12973859,0.388841302,392.699,15,"dead biomass",13.9176
+"t2","SA02",20,"dead biomass","15_20","dead biomass 20cm","SA02-dead biomass 20cm","SA",6.502213889,0.011162708,-13.2311636,0.360422698,392.699,15,"dead biomass",24.872
+"t0","SA14",20,"fine roots","15_20","fine roots 20cm","SA14-fine roots 20cm","SA",1.334694048,0.00492,-12.51411902,0.406556012,392.699,15,"fine roots",0.1182
+"t2","SA02",20,"fine roots","15_20","fine roots 20cm","SA02-fine roots 20cm","SA",NA,NA,NA,NA,392.699,15,"fine roots",0.0128
+"t0","SA14",20,"rhizomes","15_20","rhizomes 20cm","SA14-rhizomes 20cm","SA",3.661277462,0.00208,-14.4575768,0.238864181,392.699,15,"rhizomes",0.0644
+"t0","SA14",30,"coarse roots","20_30","coarse roots 30cm","SA14-coarse roots 30cm","SA",0.521480413,0.00869,-12.92970851,0.378168926,785.398,20,"coarse roots",0.3758
+"t2","SA02",30,"coarse roots","20_30","coarse roots 30cm","SA02-coarse roots 30cm","SA",4.326483413,0.009439039,-13.06609097,0.397445041,785.398,20,"coarse roots",0.0248
+"t4","SA01",30,"coarse roots","20_30","coarse roots 30cm","SA01-coarse roots 30cm","SA",11.12920268,0.004976201,-12.14798403,0.296198618,785.398,20,"coarse roots",0.024
+"t0","SA14",30,"dead biomass","20_30","dead biomass 30cm","SA14-dead biomass 30cm","SA",1.461727039,0.01256,-13.16807126,0.357702745,785.398,20,"dead biomass",29.8988
+"t2","SA02",30,"dead biomass","20_30","dead biomass 30cm","SA02-dead biomass 30cm","SA",4.048257876,0.013081071,-12.875425535,0.3780871895,785.398,20,"dead biomass",14.866
+"t0","SA14",30,"fine roots","20_30","fine roots 30cm","SA14-fine roots 30cm","SA",1.216464685,0.0063,-12.13389896,0.404115082,785.398,20,"fine roots",0.3014
+"t2","SA02",30,"fine roots","20_30","fine roots 30cm","SA02-fine roots 30cm","SA",NA,NA,NA,NA,785.398,20,"fine roots",0.0068
+"t0","SA14",30,"rhizomes","20_30","rhizomes 30cm","SA14-rhizomes 30cm","SA",0.324212689,0.00647,-13.20799021,0.360978133,785.398,20,"rhizomes",0.8596
+"t2","SA02",30,"rhizomes","20_30","rhizomes 30cm","SA02-rhizomes 30cm","SA",3.941107018,0.00588676,-13.30290981,0.368132788,785.398,20,"rhizomes",0.1228
+"t1","SA03",NA,"dead leaf","above","dead leaf","SA03-dead leaf","SA",263.7370936,0.011114011,-14.54480115,0.292113949,NA,NA,"dead leaf",0.1654
+"t1","SA03",NA,"decomp layer","above","decomp layer","SA03-decomp layer","SA",302.0761271,0.010210006,-17.21952492,0.221869377,NA,NA,"decomp layer",1.0207
+"t1","SA03",NA,"leaf 1","above","leaf 1","SA03-leaf 1","SA",4865.312878,0.024606719,-17.32516063,0.32910081,NA,NA,"leaf",0.1235
+"t1","SA03",NA,"leaf 2","above","leaf 2","SA03-leaf 2","SA",3118.276535,0.02146,-15.04497775,0.362924799,NA,NA,"leaf",0.2439
+"t1","SA03",NA,"leaf 3","above","leaf 3","SA03-leaf 3","SA",1754.004201,0.02107,-15.0743842,0.348349898,NA,NA,"leaf",0.0714
+"t1","SA03",NA,"leaf 4","above","leaf 4","SA03-leaf 4","SA",NA,NA,NA,NA,NA,NA,"leaf",0.0047
+"t1","SA03",NA,"microbe mat","above","microbe mat","SA03-microbe mat","SA",239.6272053,0.015719053,-20.79833752,0.176418211,NA,NA,"microbe mat",1.6005
+"t1","SA03",NA,"standing dead","above","standing dead","SA03-standing dead","SA",230.2848104,0.006584038,-16.39616597,0.279510058,NA,NA,"standing dead",0.3349
+"t1","SA03",NA,"stems","above","stems","SA03-stems","SA",5128.628095,0.01374,-14.58184231,0.339263725,NA,NA,"stems",0.4488
+"t1","SA03",2,"belowground stems","0_2","belowground stems","SA03-belowground stems","SA",5298.63,0.01499,-14.3081739,0.276904296,157.08,0,"stems",0.0697
+"t0","SA15",2,"coarse roots","0_2","coarse roots 2cm","SA15-coarse roots 2cm","SA",1.387159044,0.00654,-13.64978809,0.354141142,157.08,0,"coarse roots",0.258
+"t1","SA03",2,"coarse roots","0_2","coarse roots 2cm","SA03-coarse roots 2cm","SA",2238.51,0.00805,-14.42262272,0.327748068,157.08,0,"coarse roots",0.3946
+"t0","SA15",2,"dead biomass","0_2","dead biomass 2cm","SA15-dead biomass 2cm","SA",2.680284862,0.01762,-14.13994443,0.613656485,157.08,0,"dead biomass",7.436
+"t1","SA03",2,"dead biomass","0_2","dead biomass 2cm","SA03-dead biomass 2cm","SA",545.063663,0.01757,-15.20543904,0.315719167,157.08,0,"dead biomass",5.75
+"t0","SA15",2,"fine roots","0_2","fine roots 2cm","SA15-fine roots 2cm","SA",1.837252928,0.00765,-13.53729538,0.354793394,157.08,0,"fine roots",1.0372
+"t1","SA03",2,"fine roots","0_2","fine roots 2cm","SA03-fine roots 2cm","SA",2725.57,0.01131,-13.95797882,0.268525714,157.08,0,"fine roots",0.7406
+"t0","SA15",2,"rhizomes","0_2","rhizomes 2cm","SA15-rhizomes 2cm","SA",1.660236382,0.00965,-13.74373025,0.331051257,157.08,0,"rhizomes",0.892
+"t0","SA15",5,"coarse roots","2_5","coarse roots 5cm","SA15-coarse roots 5cm","SA",1.991582515,0.00408,-13.90819691,0.328123776,235.619,2,"coarse roots",0.2586
+"t1","SA03",5,"coarse roots","2_5","coarse roots 5cm","SA03-coarse roots 5cm","SA",455.2962606,0.00567,-14.75041787,0.348049207,235.619,2,"coarse roots",1.8844
+"t0","SA15",5,"dead biomass","2_5","dead biomass 5cm","SA15-dead biomass 5cm","SA",3.652669755,0.00967,-14.66709051,0.37523183,235.619,2,"dead biomass",16.854
+"t1","SA03",5,"dead biomass","2_5","dead biomass 5cm","SA03-dead biomass 5cm","SA",130.2569192,0.01299,-15.01828961,0.354370148,235.619,2,"dead biomass",20.362
+"t0","SA15",5,"fine roots","2_5","fine roots 5cm","SA15-fine roots 5cm","SA",1.118972666,0.00451,-13.49443212,0.359313556,235.619,2,"fine roots",0.3992
+"t1","SA03",5,"fine roots","2_5","fine roots 5cm","SA03-fine roots 5cm","SA",1873.49,0.00736,-14.13551701,0.335451128,235.619,2,"fine roots",0.6106
+"t0","SA15",5,"rhizomes","2_5","rhizomes 5cm","SA15-rhizomes 5cm","SA",1.389702206,0.00501,-13.94896429,0.356945457,235.619,2,"rhizomes",0.8618
+"t1","SA03",5,"rhizomes","2_5","rhizomes 5cm","SA03-rhizomes 5cm","SA",1451.598495,0.01139,-14.65386932,3.446397928,235.619,2,"rhizomes",0.5396
+"t0","SA15",10,"coarse roots","5_10","coarse roots 10cm","SA15-coarse roots 10cm","SA",2.207886929,0.00477,-13.55749566,0.312376604,392.699,5,"coarse roots",0.1318
+"t1","SA03",10,"coarse roots","5_10","coarse roots 10cm","SA03-coarse roots 10cm","SA",59.92090832,0.00542,-17.25908117,0.366901517,392.699,5,"coarse roots",0.1376
+"t0","SA15",10,"dead biomass","5_10","dead biomass 10cm","SA15-dead biomass 10cm","SA",3.233791286,0.00741,-13.77413314,0.353985166,392.699,5,"dead biomass",21.856
+"t1","SA03",10,"dead biomass","5_10","dead biomass 10cm","SA03-dead biomass 10cm","SA",20.61372066,0.01145,-14.44407125,0.3603357,392.699,5,"dead biomass",13.466
+"t0","SA15",10,"fine roots","5_10","fine roots 10cm","SA15-fine roots 10cm","SA",1.500404512,0.00588,-13.44896247,0.33168297,392.699,5,"fine roots",0.2278
+"t1","SA03",10,"fine roots","5_10","fine roots 10cm","SA03-fine roots 10cm","SA",1488.329451,0.01225,-14.35356779,0.354600102,392.699,5,"fine roots",0.0756
+"t0","SA15",10,"rhizomes","5_10","rhizomes 10cm","SA15-rhizomes 10cm","SA",2.302951491,0.00411,-14.07646502,0.322542192,392.699,5,"rhizomes",0.966
+"t1","SA03",10,"rhizomes","5_10","rhizomes 10cm","SA03-rhizomes 10cm","SA",52.45589114,0.00388,-14.53227049,0.335081674,392.699,5,"rhizomes",0.3452
+"t0","SA15",15,"coarse roots","10_15","coarse roots 15cm","SA15-coarse roots 15cm","SA",1.616058559,0.00815,-13.20832039,0.30566101,392.699,10,"coarse roots",0.0536
+"t1","SA03",15,"coarse roots","10_15","coarse roots 15cm","SA03-coarse roots 15cm","SA",12.99760103,0.00479,-14.60716747,0.335260575,392.699,10,"coarse roots",0.0998
+"t0","SA15",15,"dead biomass","10_15","dead biomass 15cm","SA15-dead biomass 15cm","SA",2.709522889,0.0099,-13.26977266,0.37449787,392.699,10,"dead biomass",18.9654
+"t1","SA03",15,"dead biomass","10_15","dead biomass 15cm","SA03-dead biomass 15cm","SA",14.58001256,0.01299,-14.25222535,0.330982008,392.699,10,"dead biomass",24.056
+"t0","SA15",15,"fine roots","10_15","fine roots 15cm","SA15-fine roots 15cm","SA",1.642908822,0.00725,-12.97363246,0.342568094,392.699,10,"fine roots",0.0726
+"t1","SA03",15,"fine roots","10_15","fine roots 15cm","SA03-fine roots 15cm","SA",19.67914633,0.00442,-14.42152685,0.308842538,392.699,10,"fine roots",0.0312
+"t0","SA13",10,"dead biomass","5_10","dead biomass 10cm","SA13-dead biomass 10cm","SA",5.588172174,0.012010103,-14.10711529,0.327934968,392.699,5,"dead biomass",23.93
+"t1","SA03",15,"rhizomes","10_15","rhizomes 15cm","SA03-rhizomes 15cm","SA",24.16182348,0.005992654,-14.1837202,0.343633627,392.699,10,"rhizomes",0.4304
+"t0","SA15",20,"coarse roots","15_20","coarse roots 20cm","SA15-coarse roots 20cm","SA",1.92376160533333,0.00897119566666667,-12.8205990866667,0.327050108,392.699,15,"coarse roots",0.062
+"t1","SA03",20,"coarse roots","15_20","coarse roots 20cm","SA03-coarse roots 20cm","SA",2.430222101,0.00902,-14.71840883,0.372446588,392.699,15,"coarse roots",0.0042
+"t0","SA15",20,"dead biomass","15_20","dead biomass 20cm","SA15-dead biomass 20cm","SA",2.343622103,0.00872,-12.81699265,0.384487438,392.699,15,"dead biomass",14.198
+"t1","SA03",20,"dead biomass","15_20","dead biomass 20cm","SA03-dead biomass 20cm","SA",4.507564522,0.01438,-13.89779441,0.363000451,392.699,15,"dead biomass",18.022
+"t0","SA15",20,"fine roots","15_20","fine roots 20cm","SA15-fine roots 20cm","SA",1.08082126,0.00758,-13.13019291,0.346661534,392.699,15,"fine roots",0.0356
+"t1","SA03",20,"fine roots","15_20","fine roots 20cm","SA03-fine roots 20cm","SA",NA,NA,NA,NA,392.699,15,"fine roots",0.002
+"t0","SA13",15,"bulk sediment","10_15","bulk sediment 15cm","SA13-bulk sediment 15cm","SA",4.854010536,0.008284577,-16.75657293,0.108355492,392.699,10,"bulk sediment",30.85
+"t1","SA03",20,"rhizomes","15_20","rhizomes 20cm","SA03-rhizomes 20cm","SA",2.979141027,0.00707,-13.75170622,0.347637627,392.699,15,"rhizomes",0.0076
+"t0","SA15",30,"coarse roots","20_30","coarse roots 30cm","SA15-coarse roots 30cm","SA",1.594340067,0.0181,-12.66875447,0.634198426,785.398,20,"coarse roots",0.0144
+"t1","SA03",30,"coarse roots","20_30","coarse roots 30cm","SA03-coarse roots 30cm","SA",NA,NA,NA,NA,785.398,20,"coarse roots",0.0282
+"t0","SA15",30,"dead biomass","20_30","dead biomass 30cm","SA15-dead biomass 30cm","SA",2.850762554,0.011502646,-13.19860281,0.342483809,785.398,20,"dead biomass",28.4726
+"t0","SA13",15,"dead biomass","10_15","dead biomass 15cm","SA13-dead biomass 15cm","SA",3.616445422,0.01329,-14.05460408,0.338463661,392.699,10,"dead biomass",30.12
+"t0","SA15",30,"fine roots","20_30","fine roots 30cm","SA15-fine roots 30cm","SA",3.365519689,0.00784011,-11.73885548,0.398910507,785.398,20,"fine roots",0.0474
+"t1","SA03",30,"fine roots","20_30","fine roots 30cm","SA03-fine roots 30cm","SA",152.3207497,0.007694163,-15.57508143,0.43044461,785.398,20,"fine roots",0.0086
+"t0","SA15",30,"rhizomes","20_30","rhizomes 30cm","SA15-rhizomes 30cm","SA",0.017282833,0.00673,-13.02988014,0.338263916,785.398,20,"rhizomes",0.2
+"t3","SA04",NA,"dead leaf","above","dead leaf","SA04-dead leaf","SA",667.1838096,0.00806869,-14.61934635,0.314278945,NA,NA,"dead leaf",0.1234
+"t3","SA04",NA,"decomp layer","above","decomp layer","SA04-decomp layer","SA",970.8511245,0.011021688,-14.96688439,0.226950518,NA,NA,"decomp layer",0.1931
+"t3","SA04",NA,"leaf 1","above","leaf 1","SA04-leaf 1","SA",3949.567026,0.02348742,-14.93188618,0.372139421,NA,NA,"leaf",0.1334
+"t3","SA04",NA,"leaf 2","above","leaf 2","SA04-leaf 2","SA",4264.229896,0.020594584,-14.76939692,0.358090568,NA,NA,"leaf",0.3327
+"t3","SA04",NA,"leaf 3","above","leaf 3","SA04-leaf 3","SA",3754.400859,0.019184916,-14.89689308,0.368477647,NA,NA,"leaf",0.2863
+"t3","SA04",NA,"leaf 4","above","leaf 4","SA04-leaf 4","SA",4890.409758,0.019557115,-15.22419354,0.322758614,NA,NA,"leaf",0.0581
+"t3","SA04",NA,"microbe mat","above","microbe mat","SA04-microbe mat","SA",933.3383125,0.01904638,-17.90184941,0.206449013,NA,NA,"microbe mat",2.5243
+"t3","SA04",NA,"standing dead","above","standing dead","SA04-standing dead","SA",375.4188329,0.01031648,-14.34851766,0.320923022,NA,NA,"standing dead",0.3771
+"t3","SA04",NA,"stems","above","stems","SA04-stems","SA",4165.935906,0.013494956,-14.38927423,0.345217467,NA,NA,"stems",0.506
+"t3","SA04",2,"coarse roots","0_2","coarse roots 2cm","SA04-coarse roots 2cm","SA",1936.988898,0.007373265,-14.74823178,0.344959034,157.08,0,"coarse roots",1.0366
+"t3","SA04",2,"dead biomass","0_2","dead biomass 2cm","SA04-dead biomass 2cm","SA",673.3277907,0.009284798,-14.469069,0.391897121,157.08,0,"dead biomass",11.876
+"t3","SA04",2,"fine roots","0_2","fine roots 2cm","SA04-fine roots 2cm","SA",3475.867458,0.009386691,-14.21805445,0.347627678,157.08,0,"fine roots",0.561
+"t3","SA04",2,"rhizomes","0_2","rhizomes 2cm","SA04-rhizomes 2cm","SA",2685.620631,0.009384701,-14.64037074,0.346463927,157.08,0,"rhizomes",1.3598
+"t3","SA04",5,"coarse roots","2_5","coarse roots 5cm","SA04-coarse roots 5cm","SA",238.7880994,0.005699843,-14.91047525,0.354296327,235.619,2,"coarse roots",0.544
+"t3","SA04",5,"dead biomass","2_5","dead biomass 5cm","SA04-dead biomass 5cm","SA",49.95838225,0.009356068,-14.66386789,0.382985538,235.619,2,"dead biomass",11.998
+"t3","SA04",5,"fine roots","2_5","fine roots 5cm","SA04-fine roots 5cm","SA",784.7168769,0.007788554,-14.36778555,0.337330263,235.619,2,"fine roots",0.2294
+"t3","SA04",5,"rhizomes","2_5","rhizomes 5cm","SA04-rhizomes 5cm","SA",284.0148883,0.005247119,-14.68529493,0.321608934,235.619,2,"rhizomes",0.7944
+"t3","SA04",10,"coarse roots","5_10","coarse roots 10cm","SA04-coarse roots 10cm","SA",75.74986545,0.005004261,-14.86225701,0.32762873,392.699,5,"coarse roots",0.1486
+"t3","SA04",10,"dead biomass","5_10","dead biomass 10cm","SA04-dead biomass 10cm","SA",37.37822074,0.010957513,-14.6170553,0.347521934,392.699,5,"dead biomass",27.41
+"t3","SA04",10,"fine roots","5_10","fine roots 10cm","SA04-fine roots 10cm","SA",1638.10685,0.011567561,-14.40614258,0.32921722,392.699,5,"fine roots",0.0828
+"t3","SA04",10,"rhizomes","5_10","rhizomes 10cm","SA04-rhizomes 10cm","SA",38.06687385,0.005367256,-14.78911754,0.34431152,392.699,5,"rhizomes",0.855
+"t3","SA04",15,"coarse roots","10_15","coarse roots 15cm","SA04-coarse roots 15cm","SA",NA,NA,NA,NA,392.699,10,"coarse roots",0.0154
+"t3","SA04",15,"dead biomass","10_15","dead biomass 15cm","SA04-dead biomass 15cm","SA",5.594605261,0.011445168,-14.24800371,0.355075067,392.699,10,"dead biomass",20.494
+"t3","SA04",15,"fine roots","10_15","fine roots 15cm","SA04-fine roots 15cm","SA",184.03189569,0.008165706,-14.30186754,0.3048015265,392.699,10,"fine roots",0.0306
+"t3","SA04",15,"rhizomes","10_15","rhizomes 15cm","SA04-rhizomes 15cm","SA",11.95157268,0.004972654,-14.52389713,0.3440332,392.699,10,"rhizomes",0.5014
+"t3","SA04",20,"dead biomass","15_20","dead biomass 20cm","SA04-dead biomass 20cm","SA",3.88602645,0.010387638,-13.59740964,0.39050785,392.699,15,"dead biomass",16.83
+"t3","SA04",20,"fine roots","15_20","fine roots 20cm","SA04-fine roots 20cm","SA",180.1060373,0.004469935,-12.16769892,0.448136977,392.699,15,"fine roots",0.0058
+"t3","SA04",30,"coarse roots","20_30","coarse roots 30cm","SA04-coarse roots 30cm","SA",5.053189514,0.006514233,-13.05223513,0.334762179,785.398,20,"coarse roots",0.1046
+"t3","SA04",30,"dead biomass","20_30","dead biomass 30cm","SA04-dead biomass 30cm","SA",3.497750546,0.014062087,-13.40256988,0.378579341,785.398,20,"dead biomass",30.096
+"t3","SA04",30,"fine roots","20_30","fine roots 30cm","SA04-fine roots 30cm","SA",1112.148382,0.011968699,-13.57179738,0.405880859,785.398,20,"fine roots",0.0116
+"t3","SA04",30,"rhizomes","20_30","rhizomes 30cm","SA04-rhizomes 30cm","SA",8.933250244,0.007739082,-13.07109615,0.35057534,785.398,20,"rhizomes",0.4044
+"t1","SA05",NA,"dead leaf","above","dead leaf","SA05-dead leaf","SA",759.0193439,0.00698,-14.74389777,0.318219699,NA,NA,"dead leaf",0.2244
+"t1","SA05",NA,"decomp layer","above","decomp layer","SA05-decomp layer","SA",365.350248,0.01209,-15.29709444,0.252288925,NA,NA,"decomp layer",0.5517
+"t1","SA05",NA,"leaf 1","above","leaf 1","SA05-leaf 1","SA",5529.787396,0.02243,-14.9336903,0.36634503,NA,NA,"leaf",0.1817
+"t1","SA05",NA,"leaf 2","above","leaf 2","SA05-leaf 2","SA",2711.13614,0.01862,-14.68228548,0.353622801,NA,NA,"leaf",0.375
+"t1","SA05",NA,"leaf 3","above","leaf 3","SA05-leaf 3","SA",1030.887076,0.01683,-14.84419929,0.34521384,NA,NA,"leaf",0.1375
+"t1","SA05",NA,"microbe mat","above","microbe mat","SA05-microbe mat","SA",246.2452636,0.01807,-17.47033937,0.200422535,NA,NA,"microbe mat",1.7384
+"t1","SA05",NA,"standing dead","above","standing dead","SA05-standing dead","SA",15.54410199,0.00943,-14.79037665,0.26727985,NA,NA,"standing dead",0.0822
+"t1","SA05",NA,"stems","above","stems","SA05-stems","SA",6824.448771,0.01337,-14.52058374,0.336766863,NA,NA,"stems",0.4285
+"t1","SA05",2,"belowground stems","0_2","belowground stems","SA05-belowground stems","SA",6535.400757,0.01513,-14.1341716,0.310032097,157.08,0,"stems",0.0697
+"t1","SA05",2,"coarse roots","0_2","coarse roots 2cm","SA05-coarse roots 2cm","SA",1875.800962,0.00804,-14.51831577,0.33780665,157.08,0,"coarse roots",0.5538
+"t1","SA05",2,"dead biomass","0_2","dead biomass 2cm","SA05-dead biomass 2cm","SA",252.0189976,0.01317,-14.67390301,0.380735503,157.08,0,"dead biomass",2.692
+"t1","SA05",2,"fine roots","0_2","fine roots 2cm","SA05-fine roots 2cm","SA",1921.275069,0.01328,-14.01661289,0.338276627,157.08,0,"fine roots",0.4904
+"t1","SA05",5,"coarse roots","2_5","coarse roots 5cm","SA05-coarse roots 5cm","SA",1222.088914,0.00677,-14.49285653,0.341359856,235.619,2,"coarse roots",0.7768
+"t1","SA05",5,"dead biomass","2_5","dead biomass 5cm","SA05-dead biomass 5cm","SA",178.3873044,0.01101,-14.74905522,0.353223798,235.619,2,"dead biomass",19.81
+"t1","SA05",5,"fine roots","2_5","fine roots 5cm","SA05-fine roots 5cm","SA",2180.32886,0.00827,-14.08544906,0.344224341,235.619,2,"fine roots",0.5574
+"t1","SA05",5,"rhizomes","2_5","rhizomes 5cm","SA05-rhizomes 5cm","SA",2162.76796,0.00825,-14.43458626,0.364961061,235.619,2,"rhizomes",0.9952
+"t1","SA05",10,"coarse roots","5_10","coarse roots 10cm","SA05-coarse roots 10cm","SA",86.9609093,0.00432,-14.51157981,0.347132164,392.699,5,"coarse roots",0.1596
+"t1","SA05",10,"dead biomass","5_10","dead biomass 10cm","SA05-dead biomass 10cm","SA",30.57874133,0.01136,-14.54468288,0.361846347,392.699,5,"dead biomass",20.282
+"t1","SA05",10,"fine roots","5_10","fine roots 10cm","SA05-fine roots 10cm","SA",46.41226306,0.00498,-14.51862075,0.356996914,392.699,5,"fine roots",0.727
+"t1","SA05",15,"coarse roots","10_15","coarse roots 15cm","SA05-coarse roots 15cm","SA",591.4329422,0.00489,-14.59292291,0.321898979,392.699,10,"coarse roots",0.124
+"t1","SA05",15,"dead biomass","10_15","dead biomass 15cm","SA05-dead biomass 15cm","SA",11.24150343,0.01302,-14.35247986,0.340653757,392.699,10,"dead biomass",15.774
+"t1","SA05",15,"fine roots","10_15","fine roots 15cm","SA05-fine roots 15cm","SA",3654.680557,0.01259,-14.07166269,0.32289884,392.699,10,"fine roots",0.1028
+"t1","SA05",15,"rhizomes","10_15","rhizomes 15cm","SA05-rhizomes 15cm","SA",28.08515796,0.00536,-14.38729959,0.315747148,392.699,10,"rhizomes",0.7318
+"t1","SA05",20,"dead biomass","15_20","dead biomass 20cm","SA05-dead biomass 20cm","SA",5.380360446,0.01349,-13.79240921,0.375723188,392.699,15,"dead biomass",20.506
+"t1","SA05",20,"fine roots","15_20","fine roots 20cm","SA05-fine roots 20cm","SA",NA,NA,NA,NA,392.699,15,"fine roots",0.0138
+"t1","SA05",30,"coarse roots","20_30","coarse roots 30cm","SA05-coarse roots 30cm","SA",3.077093014,0.00858,-13.52286837,0.39681858,785.398,20,"coarse roots",0.321
+"t1","SA05",30,"dead biomass","20_30","dead biomass 30cm","SA05-dead biomass 30cm","SA",7.439936816,0.01611,-13.5067429,0.383820539,785.398,20,"dead biomass",34.998
+"t1","SA05",30,"fine roots","20_30","fine roots 30cm","SA05-fine roots 30cm","SA",9.172380059,0.01053,-13.38394738,0.407716405,785.398,20,"fine roots",0.141
+"t1","SA05",30,"rhizomes","20_30","rhizomes 30cm","SA05-rhizomes 30cm","SA",3.255662664,0.00812,-13.44243082,0.37659638,785.398,20,"rhizomes",1.2146
+"t4","SA06",NA,"dead leaf","above","dead leaf","SA06-dead leaf","SA",425.9825504,0.009023614,-14.87988042,0.294363823,NA,NA,"dead leaf",0.1942
+"t4","SA06",NA,"decomp layer","above","decomp layer","SA06-decomp layer","SA",278.0870099,0.01005222,-14.85489297,0.219421415,NA,NA,"decomp layer",1.0807
+"t4","SA06",NA,"leaf 1","above","leaf 1","SA06-leaf 1","SA",3181.066038,0.021585895,-14.88025021,0.363186935,NA,NA,"leaf",0.0914
+"t4","SA06",NA,"leaf 2","above","leaf 2","SA06-leaf 2","SA",3351.137184,0.020578088,-15.14840719,0.350341863,NA,NA,"leaf",0.2617
+"t4","SA06",NA,"leaf 3","above","leaf 3","SA06-leaf 3","SA",3075.49221,0.018325844,-15.28300181,0.339638489,NA,NA,"leaf",0.2764
+"t4","SA06",NA,"leaf 4","above","leaf 4","SA06-leaf 4","SA",3666.624334,0.015902106,-15.07647127,0.340179675,NA,NA,"leaf",0.1531
+"t4","SA06",NA,"leaf 5","above","leaf 5","SA06-leaf 5","SA",1194.412289,0.013119605,-15.32261509,0.369585512,NA,NA,"leaf",0.0144
+"t4","SA06",NA,"leaf 6","above","leaf 6","SA06-leaf 6","SA",1849.626413,0.012416255,-14.90559686,0.285459455,NA,NA,"leaf",0.0338
+"t4","SA06",NA,"microbe mat","above","microbe mat","SA06-microbe mat","SA",198.5800392,0.015544071,-17.47913781,0.167944853,NA,NA,"microbe mat",3.3295
+"t4","SA06",NA,"standing dead","above","standing dead","SA06-standing dead","SA",131.9990403,0.009026551,-14.63399144,0.271988073,NA,NA,"standing dead",0.6005
+"t4","SA06",NA,"stems","above","stems","SA06-stems","SA",2606.270636,0.015433461,-14.60937674,0.299661123,NA,NA,"stems",0.3957
+"t4","SA06",2,"coarse roots","0_2","coarse roots 2cm","SA06-coarse roots 2cm","SA",1585.196182,0.012229376,-14.42775938,0.315941915,157.08,0,"coarse roots",0.328
+"t4","SA06",2,"dead biomass","0_2","dead biomass 2cm","SA06-dead biomass 2cm","SA",270.3100131,0.009697021,-14.51180064,0.340280487,157.08,0,"dead biomass",4.19
+"t0","SA13",30,"bulk sediment","20_30","bulk sediment 30cm","SA13-bulk sediment 30cm","SA",1.870675401,0.0133,-15.12560374,0.173283373,785.398,20,"bulk sediment",172.96
+"t4","SA06",2,"rhizomes","0_2","rhizomes 2cm","SA06-rhizomes 2cm","SA",1906.243188,0.009694391,-14.52720886,0.290948284,157.08,0,"rhizomes",1.002
+"t4","SA06",5,"coarse roots","2_5","coarse roots 5cm","SA06-coarse roots 5cm","SA",927.142693,0.006658098,-14.78048427,0.319483595,235.619,2,"coarse roots",0.388
+"t4","SA06",5,"dead biomass","2_5","dead biomass 5cm","SA06-dead biomass 5cm","SA",181.5798289,0.009578986,-14.62390614,0.369012789,235.619,2,"dead biomass",15.012
+"t4","SA06",5,"fine roots","2_5","fine roots 5cm","SA06-fine roots 5cm","SA",1099.379926,0.008025906,-14.32803631,0.330164721,235.619,2,"fine roots",0.35
+"t4","SA06",5,"rhizomes","2_5","rhizomes 5cm","SA06-rhizomes 5cm","SA",569.9871103,0.005916398,-14.28413631,0.342470982,235.619,2,"rhizomes",1.1404
+"t4","SA06",10,"coarse roots","5_10","coarse roots 10cm","SA06-coarse roots 10cm","SA",1112.543291,0.006572179,-14.59780368,0.321792193,392.699,5,"coarse roots",0.062
+"t4","SA06",10,"dead biomass","5_10","dead biomass 10cm","SA06-dead biomass 10cm","SA",96.88059908,0.007138556,-14.26930692,0.353295279,392.699,5,"dead biomass",23.286
+"t4","SA06",10,"fine roots","5_10","fine roots 10cm","SA06-fine roots 10cm","SA",1602.998275,0.008427647,-14.11826017,0.311296582,392.699,5,"fine roots",0.086
+"t4","SA06",15,"coarse roots","10_15","coarse roots 15cm","SA06-coarse roots 15cm","SA",30.14212502,0.007343674,-13.80237327,0.344417478,392.699,10,"coarse roots",0.014
+"t4","SA06",15,"dead biomass","10_15","dead biomass 15cm","SA06-dead biomass 15cm","SA",22.7298914,0.008793227,-13.42121842,0.370487576,392.699,10,"dead biomass",19.846
+"t4","SA06",15,"fine roots","10_15","fine roots 15cm","SA06-fine roots 15cm","SA",364.1578883,0.005948242,-14.0304397,0.366067125,392.699,10,"fine roots",0.048
+"t4","SA06",15,"rhizomes","10_15","rhizomes 15cm","SA06-rhizomes 15cm","SA",122.7196432,0.005188719,-14.85132138,0.328024044,392.699,10,"rhizomes",0.036
+"t4","SA06",20,"coarse roots","15_20","coarse roots 20cm","SA06-coarse roots 20cm","SA",15.97986323,0.006762723,-14.06223279,0.328505355,392.699,15,"coarse roots",0.026
+"t4","SA06",20,"dead biomass","15_20","dead biomass 20cm","SA06-dead biomass 20cm","SA",10.70624497,0.010487532,-13.23207638,0.371845688,392.699,15,"dead biomass",26.708
+"t4","SA06",20,"fine roots","15_20","fine roots 20cm","SA06-fine roots 20cm","SA",106.490899,0.005939926,-12.58870353,0.368963465,392.699,15,"fine roots",0.034
+"t4","SA06",30,"dead biomass","20_30","dead biomass 30cm","SA06-dead biomass 30cm","SA",4.415552661,0.012150564,-12.65483706,0.38545294,785.398,20,"dead biomass",28.604
+"t4","SA06",30,"fine roots","20_30","fine roots 30cm","SA06-fine roots 30cm","SA",12.02872805,0.007414616,-12.42189796,0.347911715,785.398,20,"fine roots",0.012
+"t4","SA06",10,"rhizomes","5_10","rhizomes 10cm","SA06-rhizomes 10cm","SA",361.5980011,0.005077334,-14.53783292,0.318874838,392.699,5,"rhizomes",0.6
+"t2","SA07",NA,"dead leaf","above","dead leaf","SA07-dead leaf","SA",327.4451915,0.007510344,-15.17434036,0.325044072,NA,NA,"dead leaf",0.4788
+"t2","SA07",NA,"decomp layer","above","decomp layer","SA07-decomp layer","SA",101.608608,0.008520455,-15.28055238,0.208764998,NA,NA,"decomp layer",1.0926
+"t2","SA07",NA,"leaf 1","above","leaf 1","SA07-leaf 1","SA",3105.124643,0.015560012,-15.13497487,0.368556244,NA,NA,"leaf",0.1425
+"t2","SA07",NA,"leaf 2","above","leaf 2","SA07-leaf 2","SA",3150.281449,0.015981615,-15.07466032,0.354645943,NA,NA,"leaf",0.4581
+"t2","SA07",NA,"leaf 3","above","leaf 3","SA07-leaf 3","SA",3233.648985,0.01391791,-15.19194207,0.363472492,NA,NA,"leaf",0.2937
+"t2","SA07",NA,"leaf 4","above","leaf 4","SA07-leaf 4","SA",3327.140479,0.014580815,-15.00143098,0.354118942,NA,NA,"leaf",0.0513
+"t2","SA07",NA,"microbe mat","above","microbe mat","SA07-microbe mat","SA",158.9142862,0.017777866,-18.61887676,0.210154824,NA,NA,"microbe mat",0.8509
+"t2","SA07",NA,"standing dead","above","standing dead","SA07-standing dead","SA",100.4809481,0.008667942,-14.52880754,0.307104539,NA,NA,"standing dead",0.3981
+"t2","SA07",NA,"stems","above","stems","SA07-stems","SA",5315.9160945,0.0089621735,-14.59234086,0.3416762415,NA,NA,"stems",0.5998
+"t2","SA07",2,"belowground stems","0_2","belowground stems","SA07-belowground stems","SA",4640.204186,0.012081721,-14.68712216,0.332992307,157.08,0,"stems",0.0697
+"t2","SA07",2,"coarse roots","0_2","coarse roots 2cm","SA07-coarse roots 2cm","SA",2283.726887,0.008829375,-14.74878791,0.335714017,157.08,0,"coarse roots",0.331
+"t2","SA07",2,"dead biomass","0_2","dead biomass 2cm","SA07-dead biomass 2cm","SA",460.7640154,0.010245573,-14.65380005,0.360979774,157.08,0,"dead biomass",4.85
+"t2","SA07",2,"fine roots","0_2","fine roots 2cm","SA07-fine roots 2cm","SA",2125.692791,0.009113154,-14.21434253,0.326963478,157.08,0,"fine roots",0.8392
+"t2","SA07",5,"coarse roots","2_5","coarse roots 5cm","SA07-coarse roots 5cm","SA",644.4984868,0.005597144,-14.96212374,0.335078814,235.619,2,"coarse roots",0.916
+"t2","SA07",5,"dead biomass","2_5","dead biomass 5cm","SA07-dead biomass 5cm","SA",301.8050337,0.00774625,-14.68272978,0.347562556,235.619,2,"dead biomass",19.126
+"t2","SA07",5,"fine roots","2_5","fine roots 5cm","SA07-fine roots 5cm","SA",2572.08204,0.007288722,-14.29782052,0.351570243,235.619,2,"fine roots",0.3908
+"t2","SA07",5,"rhizomes","2_5","rhizomes 5cm","SA07-rhizomes 5cm","SA",1546.599105,0.006005491,-14.79083595,0.360019748,235.619,2,"rhizomes",1.4138
+"t2","SA07",10,"coarse roots","5_10","coarse roots 10cm","SA07-coarse roots 10cm","SA",82.61222178,0.004537413,-14.89204534,0.337810549,392.699,5,"coarse roots",0.0868
+"t2","SA07",10,"dead biomass","5_10","dead biomass 10cm","SA07-dead biomass 10cm","SA",30.44059477,0.016129617,-14.66488263,0.352368656,392.699,5,"dead biomass",23.782
+"t2","SA07",10,"fine roots","5_10","fine roots 10cm","SA07-fine roots 10cm","SA",2407.586129,0.010712732,-14.440651,0.348772005,392.699,5,"fine roots",0.0834
+"t2","SA07",10,"rhizomes","5_10","rhizomes 10cm","SA07-rhizomes 10cm","SA",129.6910544,0.004141881,-14.94741036,0.321097985,392.699,5,"rhizomes",0.1926
+"t2","SA07",15,"coarse roots","10_15","coarse roots 15cm","SA07-coarse roots 15cm","SA",77.15164958,0.007142661,-14.48854956,0.399330993,392.699,10,"coarse roots",0.0702
+"t2","SA07",15,"dead biomass","10_15","dead biomass 15cm","SA07-dead biomass 15cm","SA",34.39218497,0.009076364,-14.11587583,0.351183493,392.699,10,"dead biomass",19.308
+"t2","SA07",15,"fine roots","10_15","fine roots 15cm","SA07-fine roots 15cm","SA",NA,NA,NA,NA,392.699,10,"fine roots",0.0246
+"t2","SA07",15,"rhizomes","10_15","rhizomes 15cm","SA07-rhizomes 15cm","SA",63.38181918,0.005250977,-14.30485053,0.369497814,392.699,10,"rhizomes",0.0928
+"t2","SA07",20,"coarse roots","15_20","coarse roots 20cm","SA07-coarse roots 20cm","SA",NA,NA,NA,NA,392.699,15,"coarse roots",0.031
+"t2","SA07",20,"dead biomass","15_20","dead biomass 20cm","SA07-dead biomass 20cm","SA",15.443765225,0.009839087,-13.697204735,0.386225113,392.699,15,"dead biomass",15.81
+"t2","SA07",20,"fine roots","15_20","fine roots 20cm","SA07-fine roots 20cm","SA",NA,NA,NA,NA,392.699,15,"fine roots",0.0054
+"t2","SA07",20,"rhizomes","15_20","rhizomes 20cm","SA07-rhizomes 20cm","SA",70.45215241,0.004098284,-14.63349231,0.314430504,392.699,15,"rhizomes",0.0838
+"t2","SA07",30,"coarse roots","20_30","coarse roots 30cm","SA07-coarse roots 30cm","SA",9.149985712,0.007561575,-13.79605394,0.326868048,785.398,20,"coarse roots",0.0644
+"t2","SA07",30,"dead biomass","20_30","dead biomass 30cm","SA07-dead biomass 30cm","SA",5.538761936,0.01286219,-13.17046442,0.336234164,785.398,20,"dead biomass",37.326
+"t2","SA07",30,"fine roots","20_30","fine roots 30cm","SA07-fine roots 30cm","SA",7.036121367,0.012889782,-12.74134773,0.485749131,785.398,20,"fine roots",0.0254
+"t4","SA08",NA,"dead leaf","above","dead leaf","SA08-dead leaf","SA",1130.522744,0.010409791,-14.88724128,0.332190399,NA,NA,"dead leaf",0.2281
+"t4","SA08",NA,"decomp layer","above","decomp layer","SA08-decomp layer","SA",247.2580479,0.012587672,-15.54923024,0.194080537,NA,NA,"decomp layer",0.8796
+"t4","SA08",NA,"leaf 1","above","leaf 1","SA08-leaf 1","SA",4874.303276,0.022160763,-15.11480571,0.353803434,NA,NA,"leaf",0.1393
+"t4","SA08",NA,"leaf 2","above","leaf 2","SA08-leaf 2","SA",4675.225384,0.021397946,-15.29170737,0.341879896,NA,NA,"leaf",0.3045
+"t4","SA08",NA,"leaf 3","above","leaf 3","SA08-leaf 3","SA",4555.321136,0.021274343,-15.42014393,0.35447604,NA,NA,"leaf",0.238
+"t4","SA08",NA,"leaf 4","above","leaf 4","SA08-leaf 4","SA",3644.655649,0.017610248,-15.27729926,0.348826231,NA,NA,"leaf",0.0475
+"t4","SA08",NA,"microbe mat","above","microbe mat","SA08-microbe mat","SA",240.2354165,0.013980577,-17.15185881,0.15736501,NA,NA,"microbe mat",1.0822
+"t4","SA08",NA,"standing dead","above","standing dead","SA08-standing dead","SA",987.9491167,0.009502216,-14.65932588,0.310161422,NA,NA,"standing dead",0.4744
+"t4","SA08",NA,"stems","above","stems","SA08-stems","SA",3904.968842,0.014422125,-14.65639151,0.29261041,NA,NA,"stems",0.5032
+"t4","SA08",2,"belowground stems","0_2","belowground stems","SA08-belowground stems","SA",1915.098904,0.011113622,-14.74550617,0.286228206,157.08,0,"stems",0.0697
+"t4","SA08",2,"coarse roots","0_2","coarse roots 2cm","SA08-coarse roots 2cm","SA",1514.862172,0.007030681,-14.23757829,0.313176135,157.08,0,"coarse roots",0.432
+"t4","SA08",2,"dead biomass","0_2","dead biomass 2cm","SA08-dead biomass 2cm","SA",236.9988999,0.008649807,-14.60490511,0.36212845,157.08,0,"dead biomass",7.806
+"t4","SA08",2,"fine roots","0_2","fine roots 2cm","SA08-fine roots 2cm","SA",1452.562296,0.007670918,-13.96106688,0.320069484,157.08,0,"fine roots",0.606
+"t4","SA08",2,"rhizomes","0_2","rhizomes 2cm","SA08-rhizomes 2cm","SA",1875.628702,0.009624349,-14.61297984,0.330531287,157.08,0,"rhizomes",1.164
+"t4","SA08",5,"coarse roots","2_5","coarse roots 5cm","SA08-coarse roots 5cm","SA",1560.392384,0.00543041,-14.50448264,0.326678087,235.619,2,"coarse roots",0.566
+"t4","SA08",5,"dead biomass","2_5","dead biomass 5cm","SA08-dead biomass 5cm","SA",179.9999868,0.008521179,-14.26254596,0.380643523,235.619,2,"dead biomass",18.492
+"t4","SA08",5,"fine roots","2_5","fine roots 5cm","SA08-fine roots 5cm","SA",1355.490271,0.006711926,-14.25407744,0.341732645,235.619,2,"fine roots",0.264
+"t4","SA08",5,"rhizomes","2_5","rhizomes 5cm","SA08-rhizomes 5cm","SA",1049.750969,0.005286125,-14.77389507,0.309398902,235.619,2,"rhizomes",1.4148
+"t4","SA08",10,"coarse roots","5_10","coarse roots 10cm","SA08-coarse roots 10cm","SA",1477.0481,0.004710361,-14.51646483,0.316793267,392.699,5,"coarse roots",0.282
+"t4","SA08",10,"dead biomass","5_10","dead biomass 10cm","SA08-dead biomass 10cm","SA",117.3511733,0.009039443,-14.03190852,0.35664935,392.699,5,"dead biomass",24.4
+"t4","SA08",10,"fine roots","5_10","fine roots 10cm","SA08-fine roots 10cm","SA",1980.030024,0.006576653,-14.05648404,0.324086772,392.699,5,"fine roots",0.148
+"t4","SA08",10,"rhizomes","5_10","rhizomes 10cm","SA08-rhizomes 10cm","SA",407.0042487,0.003808248,-14.45360405,0.319338509,392.699,5,"rhizomes",0.84
+"t4","SA08",15,"coarse roots","10_15","coarse roots 15cm","SA08-coarse roots 15cm","SA",32.11198284,0.005255576,-14.5558145,0.296107332,392.699,10,"coarse roots",0.02
+"t4","SA08",15,"dead biomass","10_15","dead biomass 15cm","SA08-dead biomass 15cm","SA",41.35696978,0.006871079,-13.14272735,0.38749755,392.699,10,"dead biomass",25.954
+"t4","SA08",15,"fine roots","10_15","fine roots 15cm","SA08-fine roots 15cm","SA",1227.457914,0.006101242,-13.66536382,0.322210414,392.699,10,"fine roots",0.084
+"t4","SA08",15,"rhizomes","10_15","rhizomes 15cm","SA08-rhizomes 15cm","SA",157.2162069,0.003903813,-14.33438816,0.301525894,392.699,10,"rhizomes",0.3232
+"t4","SA08",20,"coarse roots","15_20","coarse roots 20cm","SA08-coarse roots 20cm","SA",47.63603662,0.004387213,-12.6223523,0.387632479,392.699,15,"coarse roots",0.018
+"t4","SA08",20,"dead biomass","15_20","dead biomass 20cm","SA08-dead biomass 20cm","SA",14.02210265,0.008019393,-12.78245264,0.395976184,392.699,15,"dead biomass",24.638
+"t4","SA08",20,"fine roots","15_20","fine roots 20cm","SA08-fine roots 20cm","SA",32.21591172,0.004456198,-12.61472659,0.360703214,392.699,15,"fine roots",0.082
+"t4","SA08",20,"rhizomes","15_20","rhizomes 20cm","SA08-rhizomes 20cm","SA",26.74655643,0.007887935,-14.50409283,0.309385947,392.699,15,"rhizomes",0.164
+"t4","SA08",30,"coarse roots","20_30","coarse roots 30cm","SA08-coarse roots 30cm","SA",10.06743579,0.005150517,-13.3464237,0.363117217,785.398,20,"coarse roots",0.01
+"t4","SA08",30,"dead biomass","20_30","dead biomass 30cm","SA08-dead biomass 30cm","SA",5.560368936,0.007368929,-12.5891564,0.340354154,785.398,20,"dead biomass",34.958
+"t4","SA08",30,"fine roots","20_30","fine roots 30cm","SA08-fine roots 30cm","SA",14.61259597,0.003563062,-12.15796653,0.390714531,785.398,20,"fine roots",0.096
+"t3","SA09",NA,"dead leaf","above","dead leaf","SA09-dead leaf","SA",1580.893661,0.007141033,-14.73121402,0.30106533,NA,NA,"dead leaf",0.1605
+"t3","SA09",NA,"decomp layer","above","decomp layer","SA09-decomp layer","SA",212.323322,0.010064484,-14.98204046,0.237225634,NA,NA,"decomp layer",0.6483
+"t3","SA09",NA,"leaf 1","above","leaf 1","SA09-leaf 1","SA",5057.453932,0.024032909,-15.54927113,0.333626426,NA,NA,"leaf",0.0552
+"t3","SA09",NA,"leaf 2","above","leaf 2","SA09-leaf 2","SA",7265.67999,0.021588093,-15.0316085,0.354172912,NA,NA,"leaf",0.1879
+"t3","SA09",NA,"leaf 3","above","leaf 3","SA09-leaf 3","SA",5484.768981,0.018556729,-15.15227188,0.347636083,NA,NA,"leaf",0.1988
+"t3","SA09",NA,"leaf 4","above","leaf 4","SA09-leaf 4","SA",5655.529197,0.01892906,-15.14849672,0.352777708,NA,NA,"leaf",0.1369
+"t3","SA09",NA,"leaf 5","above","leaf 5","SA09-leaf 5","SA",3428.928938,0.016881606,-15.80455378,0.314625729,NA,NA,"leaf",0.0222
+"t3","SA09",NA,"microbe mat","above","microbe mat","SA09-microbe mat","SA",59.46424418,0.015495902,-16.35081976,0.212867432,NA,NA,"microbe mat",0.1237
+"t3","SA09",NA,"standing dead","above","standing dead","SA09-standing dead","SA",1024.037989,0.007819825,-14.58851175,0.302750218,NA,NA,"standing dead",0.2288
+"t3","SA09",NA,"stems","above","stems","SA09-stems","SA",5081.26358,0.016438201,-14.71845351,0.32076651,NA,NA,"stems",0.262
+"t3","SA09",2,"coarse roots","0_2","coarse roots 2cm","SA09-coarse roots 2cm","SA",1238.092028,0.010431901,-14.72374175,0.326058645,157.08,0,"coarse roots",0.178
+"t3","SA09",2,"dead biomass","0_2","dead biomass 2cm","SA09-dead biomass 2cm","SA",241.0407653,0.010088576,-14.55177744,0.381119994,157.08,0,"dead biomass",3.538
+"t3","SA09",2,"fine roots","0_2","fine roots 2cm","SA09-fine roots 2cm","SA",2460.990102,0.011357989,-14.16930839,0.335724075,157.08,0,"fine roots",0.2898
+"t3","SA09",2,"rhizomes","0_2","rhizomes 2cm","SA09-rhizomes 2cm","SA",4077.470243,0.016599712,-14.64971798,0.35813909,157.08,0,"rhizomes",0.2754
+"t3","SA09",5,"coarse roots","2_5","coarse roots 5cm","SA09-coarse roots 5cm","SA",874.3794561,0.00445862,-14.86599764,0.335626601,235.619,2,"coarse roots",0.7996
+"t3","SA09",5,"dead biomass","2_5","dead biomass 5cm","SA09-dead biomass 5cm","SA",293.4598911,0.008084518,-14.70042777,0.358771328,235.619,2,"dead biomass",16.206
+"t3","SA09",5,"fine roots","2_5","fine roots 5cm","SA09-fine roots 5cm","SA",2335.950676,0.006969769,-14.23729748,0.34852021,235.619,2,"fine roots",0.4636
+"t3","SA09",5,"rhizomes","2_5","rhizomes 5cm","SA09-rhizomes 5cm","SA",3922.618462,0.008500053,-14.74661182,0.348526498,235.619,2,"rhizomes",1.1206
+"t3","SA09",10,"coarse roots","5_10","coarse roots 10cm","SA09-coarse roots 10cm","SA",500.8849926,0.005611376,-14.77498922,0.308863118,392.699,5,"coarse roots",0.0596
+"t3","SA09",10,"dead biomass","5_10","dead biomass 10cm","SA09-dead biomass 10cm","SA",71.0791954,0.008693456,-14.46282272,0.346913137,392.699,5,"dead biomass",23.404
+"t3","SA09",10,"fine roots","5_10","fine roots 10cm","SA09-fine roots 10cm","SA",1365.588056,0.007427267,-14.36107823,0.34551551,392.699,5,"fine roots",0.1318
+"t3","SA09",10,"rhizomes","5_10","rhizomes 10cm","SA09-rhizomes 10cm","SA",340.0317597,0.006441947,-14.55932583,0.361575621,392.699,5,"rhizomes",0.4242
+"t3","SA09",15,"coarse roots","10_15","coarse roots 15cm","SA09-coarse roots 15cm","SA",47.47123227,0.007956223,-14.62375305,0.317185511,392.699,10,"coarse roots",0.0268
+"t3","SA09",15,"dead biomass","10_15","dead biomass 15cm","SA09-dead biomass 15cm","SA",14.09984189,0.008540381,-13.47671175,0.37943624,392.699,10,"dead biomass",22.042
+"t3","SA09",15,"fine roots","10_15","fine roots 15cm","SA09-fine roots 15cm","SA",37.88494223,0.002608418,-13.73926069,0.411959831,392.699,10,"fine roots",0.032
+"t3","SA09",15,"rhizomes","10_15","rhizomes 15cm","SA09-rhizomes 15cm","SA",75.31846548,0.003162984,-14.3753202,0.334826387,392.699,10,"rhizomes",0.2032
+"t3","SA09",20,"coarse roots","15_20","coarse roots 20cm","SA09-coarse roots 20cm","SA",4.239592095,0.008326225,-13.52281059,0.3515580275,392.699,15,"coarse roots",0.1052
+"t3","SA09",20,"dead biomass","15_20","dead biomass 20cm","SA09-dead biomass 20cm","SA",5.480782649,0.011664102,-13.53798357,0.342416528,392.699,15,"dead biomass",29.394
+"t3","SA09",20,"fine roots","15_20","fine roots 20cm","SA09-fine roots 20cm","SA",23.82618493,0.006298797,-13.45854023,0.325120825,392.699,15,"fine roots",0.0352
+"t3","SA09",20,"rhizomes","15_20","rhizomes 20cm","SA09-rhizomes 20cm","SA",6.169539316,0.0077514,-13.50428894,0.341173439,392.699,15,"rhizomes",0.1882
+"t3","SA09",30,"coarse roots","20_30","coarse roots 30cm","SA09-coarse roots 30cm","SA",54.24623454,0.005551737,-14.30998316,0.323032299,785.398,20,"coarse roots",0.033
+"t3","SA09",30,"dead biomass","20_30","dead biomass 30cm","SA09-dead biomass 30cm","SA",3.131984713,0.012678915,-13.08191055,0.375907035,785.398,20,"dead biomass",22.516
+"t3","SA09",30,"fine roots","20_30","fine roots 30cm","SA09-fine roots 30cm","SA",NA,NA,NA,NA,785.398,20,"fine roots",0.0026
+"t3","SA09",30,"rhizomes","20_30","rhizomes 30cm","SA09-rhizomes 30cm","SA",3.738881257,0.009355725,-13.23641794,0.351211405,785.398,20,"rhizomes",0.0252
+"t0","SA13",NA,"dead leaf","above","dead leaf","SA13-dead leaf","SA",5.322158365,0.007141832,-14.02576016,0.316981537,NA,NA,"dead leaf",0.2401
+"t0","SA13",NA,"decomp layer","above","decomp layer","SA13-decomp layer","SA",3.321235006,0.010643404,-14.381928,0.277821335,NA,NA,"decomp layer",0.6759
+"t0","SA13",NA,"leaf 1","above","leaf 1","SA13-leaf 1","SA",3.258272624,0.016235342,-14.02969643,0.333290141,NA,NA,"leaf",0.4881
+"t0","SA13",NA,"leaf 2","above","leaf 2","SA13-leaf 2","SA",3.36419661,0.016647852,-13.96181623,0.322662652,NA,NA,"leaf",0.5368
+"t0","SA13",NA,"leaf 3","above","leaf 3","SA13-leaf 3","SA",3.598873314,0.015357007,-14.18713229,0.331840712,NA,NA,"leaf",0.3991
+"t0","SA13",NA,"leaf 4","above","leaf 4","SA13-leaf 4","SA",4.229625444,0.014547181,-14.11849396,0.329920899,NA,NA,"leaf",0.0994
+"t0","SA13",2,"bulk sediment","0_2","bulk sediment 2cm","SA13-bulk sediment 2cm","SA",4.308954717,0.01832,-17.12899814,0.236319585,157.08,0,"bulk sediment",11.2887
+"t0","SA13",NA,"standing dead","above","standing dead","SA13-standing dead","SA",3.142528006,0.007644371,-13.80553779,0.284452942,NA,NA,"standing dead",0.3188
+"t0","SA13",NA,"stems","above","stems","SA13-stems","SA",4.002546624,0.010008185,-13.61326375,0.313873984,NA,NA,"stems",1.0246
+"t0","SA13",2,"belowground stems","0_2","belowground stems","SA13-belowground stems","SA",2.749412396,0.014186288,-14.76358793,0.275406874,157.08,0,"stems",0.0697
+"t0","SA13",5,"coarse roots","2_5","coarse roots 5cm","SA13-coarse roots 5cm","SA",7.822081201,0.00502957,-14.22440569,0.31236861,235.619,2,"coarse roots",0.2762
+"t0","SA13",2,"coarse roots","0_2","coarse roots 2cm","SA13-coarse roots 2cm","SA",5.539603724,0.010406802,-13.71434996,0.295915532,157.08,0,"coarse roots",0.2296
+"t0","SA13",2,"dead biomass","0_2","dead biomass 2cm","SA13-dead biomass 2cm","SA",4.319612575,0.015186201,-14.64170871,0.345395057,157.08,0,"dead biomass",3.118
+"t0","SA13",2,"fine roots","0_2","fine roots 2cm","SA13-fine roots 2cm","SA",4.55092713,0.013781062,-14.21867408,0.322665492,157.08,0,"fine roots",1.1429
+"t0","SA13",5,"rhizomes","2_5","rhizomes 5cm","SA13-rhizomes 5cm","SA",6.169184756,0.006123275,-14.07833219,0.317959402,235.619,2,"rhizomes",5.0682
+"t0","SA13",2,"rhizomes","0_2","rhizomes 2cm","SA13-rhizomes 2cm","SA",5.270585685,0.010961022,-14.01384007,0.298304946,157.08,0,"rhizomes",0.4392
+"t0","SA13",5,"dead biomass","2_5","dead biomass 5cm","SA13-dead biomass 5cm","SA",5.108889692,0.011508163,-14.90304137,0.337441706,235.619,2,"dead biomass",22.76
+"t0","SA13",5,"fine roots","2_5","fine roots 5cm","SA13-fine roots 5cm","SA",8.105900715,0.007729687,-14.11522798,0.301125002,235.619,2,"fine roots",2.4068
+"t0","SA13",15,"coarse roots","10_15","coarse roots 15cm","SA13-coarse roots 15cm","SA",1.911645832,0.00893,-13.45215164,0.294598877,392.699,10,"coarse roots",0.0652
+"t0","SA13",10,"coarse roots","5_10","coarse roots 10cm","SA13-coarse roots 10cm","SA",5.450616214,0.006730415,-13.65709285,0.298329929,392.699,5,"coarse roots",0.1911
+"t0","SA14",30,"bulk sediment","20_30","bulk sediment 30cm","SA14-bulk sediment 30cm","SA",1.908024072,0.01552,-14.86586099,0.20261138,785.398,20,"bulk sediment",166.996
+"t0","SA13",10,"fine roots","5_10","fine roots 10cm","SA13-fine roots 10cm","SA",4.459587397,0.007457358,-13.73822275,0.315310733,392.699,5,"fine roots",0.2919
+"t0","SA13",15,"rhizomes","10_15","rhizomes 15cm","SA13-rhizomes 15cm","SA",1.354891111,0.0034,-14.21667077,0.330199721,392.699,10,"rhizomes",0.1046
+"t0","SA13",10,"rhizomes","5_10","rhizomes 10cm","SA13-rhizomes 10cm","SA",7.120711386,0.004802839,-14.17106598,0.303940328,392.699,5,"rhizomes",0.5388
+"t0","SA15",15,"rhizomes","10_15","rhizomes 15cm","SA15-rhizomes 15cm","SA",NA,NA,NA,NA,392.699,10,"rhizomes",0
+"t0","SA13",15,"fine roots","10_15","fine roots 15cm","SA13-fine roots 15cm","SA",2.111731558,0.00563,-12.8014916,0.403566065,392.699,10,"fine roots",0.3123
+"t0","SA13",30,"dead biomass","20_30","dead biomass 30cm","SA13-dead biomass 30cm","SA",1.464156011,0.01214,-13.01309215,0.337506002,785.398,20,"dead biomass",24.64
+"t3","SA10",NA,"dead leaf","above","dead leaf","SA10-dead leaf","SA",159.9691129,0.008792115,-14.15454825,0.325734525,NA,NA,"dead leaf",0.2799
+"t3","SA10",NA,"decomp layer","above","decomp layer","SA10-decomp layer","SA",101.6561769,0.012773446,-15.16583038,0.263214775,NA,NA,"decomp layer",0.1917
+"t3","SA10",NA,"leaf 1","above","leaf 1","SA10-leaf 1","SA",3751.903718,0.014532557,-14.28647177,0.351530964,NA,NA,"leaf",0.2794
+"t3","SA10",NA,"leaf 2","above","leaf 2","SA10-leaf 2","SA",4337.16259,0.015583459,-14.77813914,0.366382354,NA,NA,"leaf",0.2159
+"t3","SA10",NA,"leaf 3","above","leaf 3","SA10-leaf 3","SA",2965.60499,0.013985321,-14.58710682,0.333358464,NA,NA,"leaf",0.1943
+"t3","SA10",NA,"leaf 4","above","leaf 4","SA10-leaf 4","SA",1333.783517,0.01159801,-14.46470385,0.340067816,NA,NA,"leaf",0.0862
+"t3","SA10",NA,"microbe mat","above","microbe mat","SA10-microbe mat","SA",42.00054293,0.016216619,-16.96799788,0.230219121,NA,NA,"microbe mat",0.3921
+"t3","SA10",NA,"standing dead","above","standing dead","SA10-standing dead","SA",94.20984926,0.007359953,-14.2095145,0.297519743,NA,NA,"standing dead",0.5184
+"t3","SA10",NA,"stems","above","stems","SA10-stems","SA",4637.713145,0.009626954,-14.34557472,0.313754404,NA,NA,"stems",0.5001
+"t3","SA10",2,"belowground stems","0_2","belowground stems","SA10-belowground stems","SA",2540.070125,0.007524563,-13.62473019,0.344378655,157.08,0,"stems",0.0697
+"t3","SA10",2,"dead biomass","0_2","dead biomass 2cm","SA10-dead biomass 2cm","SA",503.6175924,0.009322345,-14.59738664,0.371861559,157.08,0,"dead biomass",5.194
+"t3","SA10",2,"fine roots","0_2","fine roots 2cm","SA10-fine roots 2cm","SA",3277.017026,0.007892978,-13.89840753,0.337672261,157.08,0,"fine roots",0.1704
+"t3","SA10",2,"rhizomes","0_2","rhizomes 2cm","SA10-rhizomes 2cm","SA",6842.370749,0.007678198,-14.12856582,0.352141531,157.08,0,"rhizomes",0.0802
+"t3","SA10",5,"coarse roots","2_5","coarse roots 5cm","SA10-coarse roots 5cm","SA",4276.795989,0.005041235,-14.13507095,0.32618187,235.619,2,"coarse roots",0.7522
+"t3","SA10",5,"dead biomass","2_5","dead biomass 5cm","SA10-dead biomass 5cm","SA",310.7790324,0.008330979,-14.51584524,0.373718806,235.619,2,"dead biomass",20.594
+"t3","SA10",5,"fine roots","2_5","fine roots 5cm","SA10-fine roots 5cm","SA",5962.485908,0.005993045,-13.808406,0.356407165,235.619,2,"fine roots",0.3874
+"t3","SA10",5,"rhizomes","2_5","rhizomes 5cm","SA10-rhizomes 5cm","SA",1967.426071,0.004851495,-14.20229044,0.322101693,235.619,2,"rhizomes",2.0168
+"t3","SA10",10,"coarse roots","5_10","coarse roots 10cm","SA10-coarse roots 10cm","SA",2201.29386,0.00567636,-14.01303968,0.338914604,392.699,5,"coarse roots",0.5458
+"t3","SA10",10,"dead biomass","5_10","dead biomass 10cm","SA10-dead biomass 10cm","SA",105.5973647,0.009576097,-14.38974395,0.378206191,392.699,5,"dead biomass",18.518
+"t3","SA10",10,"fine roots","5_10","fine roots 10cm","SA10-fine roots 10cm","SA",2792.26218,0.008489439,-13.69864759,0.350178321,392.699,5,"fine roots",0.319
+"t3","SA10",10,"rhizomes","5_10","rhizomes 10cm","SA10-rhizomes 10cm","SA",1027.626822,0.004180988,-14.17899983,0.346347044,392.699,5,"rhizomes",1.16
+"t3","SA10",15,"coarse roots","10_15","coarse roots 15cm","SA10-coarse roots 15cm","SA",366.8009773,0.007046409,-13.85312655,0.297899751,392.699,10,"coarse roots",0.0628
+"t3","SA10",15,"dead biomass","10_15","dead biomass 15cm","SA10-dead biomass 15cm","SA",41.3851717,0.011740217,-13.94632858,0.361252895,392.699,10,"dead biomass",13.688
+"t3","SA10",15,"fine roots","10_15","fine roots 15cm","SA10-fine roots 15cm","SA",730.7447735,0.010191668,-13.42366133,0.327891555,392.699,10,"fine roots",0.0894
+"t3","SA10",15,"rhizomes","10_15","rhizomes 15cm","SA10-rhizomes 15cm","SA",309.5697172,0.003881029,-14.23191301,0.311983557,392.699,10,"rhizomes",0.52
+"t3","SA10",20,"coarse roots","15_20","coarse roots 20cm","SA10-coarse roots 20cm","SA",48.54846512,0.005853293,-14.17521872,0.312523838,392.699,15,"coarse roots",0.0488
+"t3","SA10",20,"dead biomass","15_20","dead biomass 20cm","SA10-dead biomass 20cm","SA",13.80779702,0.010758671,-14.25320409,0.397651775,392.699,15,"dead biomass",8.144
+"t3","SA10",20,"fine roots","15_20","fine roots 20cm","SA10-fine roots 20cm","SA",411.2592189,0.009269131,-14.00751753,0.250153175,392.699,15,"fine roots",0.0414
+"t3","SA10",20,"rhizomes","15_20","rhizomes 20cm","SA10-rhizomes 20cm","SA",35.00178381,0.003531671,-14.45628709,0.317749665,392.699,15,"rhizomes",0.2634
+"t3","SA10",30,"dead biomass","20_30","dead biomass 30cm","SA10-dead biomass 30cm","SA",5.4854152,0.01305344,-13.56536048,0.390060891,785.398,20,"dead biomass",20.994
+"t3","SA10",30,"fine roots","20_30","fine roots 30cm","SA10-fine roots 30cm","SA",29.37351835,0.009742219,-13.95616033,0.287488114,785.398,20,"fine roots",0.0128
+"t1","SA11",NA,"dead leaf","above","dead leaf","SA11-dead leaf","SA",1177.448425,0.008304463,-17.59097736,0.291113788,NA,NA,"dead leaf",0.278
+"t1","SA11",NA,"decomp layer","above","decomp layer","SA11-decomp layer","SA",733.4030735,0.01460369,-18.37281868,0.226244661,NA,NA,"decomp layer",0.5325
+"t1","SA11",NA,"leaf 1","above","leaf 1","SA11-leaf 1","SA",4729.580391,0.018292238,-17.66480455,0.32353147,NA,NA,"leaf",0.1749
+"t1","SA11",NA,"leaf 2","above","leaf 2","SA11-leaf 2","SA",5086.875258,0.016188884,-17.58807314,0.330927802,NA,NA,"leaf",0.3825
+"t1","SA11",NA,"leaf 3","above","leaf 3","SA11-leaf 3","SA",3066.556104,0.01509,-15.21599956,0.372096333,NA,NA,"leaf",0.2621
+"t1","SA11",NA,"leaf 4","above","leaf 4","SA11-leaf 4","SA",4274.24564,0.01531,-15.09727745,0.367976373,NA,NA,"leaf",0.0845
+"t1","SA11",NA,"leaf 5","above","leaf 5","SA11-leaf 5","SA",NA,NA,NA,NA,NA,NA,"leaf",0.0165
+"t1","SA11",NA,"microbe mat","above","microbe mat","SA11-microbe mat","SA",452.0119284,0.018857692,-19.48814548,0.219529566,NA,NA,"microbe mat",2.1157
+"t1","SA11",NA,"standing dead","above","standing dead","SA11-standing dead","SA",846.79767425,0.007660898,-16.157466135,0.274526566,NA,NA,"standing dead",0.3022
+"t1","SA11",NA,"stems","above","stems","SA11-stems","SA",6635.572214,0.00988262,-14.47115233,0.292301537,NA,NA,"stems",0.5459
+"t1","SA11",2,"belowground stems","0_2","belowground stems","SA11-belowground stems","SA",4492.290599,0.01031,-14.61131468,0.354738583,157.08,0,"stems",0.0697
+"t1","SA11",2,"coarse roots","0_2","coarse roots 2cm","SA11-coarse roots 2cm","SA",2459.138754,0.00774,-14.25409447,0.378920207,157.08,0,"coarse roots",0.456
+"t1","SA11",2,"dead biomass","0_2","dead biomass 2cm","SA11-dead biomass 2cm","SA",757.2941879,0.01217,-14.62809956,0.381997044,157.08,0,"dead biomass",4.442
+"t1","SA11",2,"fine roots","0_2","fine roots 2cm","SA11-fine roots 2cm","SA",2091.702427,0.00942,-14.21771987,0.336451164,157.08,0,"fine roots",0.5418
+"t1","SA11",5,"coarse roots","2_5","coarse roots 5cm","SA11-coarse roots 5cm","SA",1918.79004,0.00709,-14.56589976,0.369331558,235.619,2,"coarse roots",0.2142
+"t1","SA11",5,"dead biomass","2_5","dead biomass 5cm","SA11-dead biomass 5cm","SA",396.7664525,0.01047,-14.86374856,0.349192635,235.619,2,"dead biomass",17.776
+"t1","SA11",5,"fine roots","2_5","fine roots 5cm","SA11-fine roots 5cm","SA",5023.149871,0.00721,-14.43338841,0.349555924,235.619,2,"fine roots",0.3422
+"t1","SA11",5,"rhizomes","2_5","rhizomes 5cm","SA11-rhizomes 5cm","SA",2358.422357,0.0058,-14.77280253,0.337293261,235.619,2,"rhizomes",1.7262
+"t1","SA11",10,"coarse roots","5_10","coarse roots 10cm","SA11-coarse roots 10cm","SA",1539.274222,0.00913,-14.39838243,0.332669216,392.699,5,"coarse roots",0.1122
+"t1","SA11",10,"dead biomass","5_10","dead biomass 10cm","SA11-dead biomass 10cm","SA",34.97161034,0.01338,-14.94044228,0.375391438,392.699,5,"dead biomass",21.442
+"t1","SA11",10,"fine roots","5_10","fine roots 10cm","SA11-fine roots 10cm","SA",1469.890668,0.00863,-14.29058021,0.366955086,392.699,5,"fine roots",0.1942
+"t1","SA11",10,"rhizomes","5_10","rhizomes 10cm","SA11-rhizomes 10cm","SA",78.54391141,0.00401,-14.86558879,0.331316252,392.699,5,"rhizomes",0.5116
+"t1","SA11",15,"coarse roots","10_15","coarse roots 15cm","SA11-coarse roots 15cm","SA",22.25989028,0.010199933,-14.98126797,0.436958475,392.699,10,"coarse roots",0.0606
+"t1","SA11",15,"dead biomass","10_15","dead biomass 15cm","SA11-dead biomass 15cm","SA",16.55333622,0.01133,-14.15614733,0.341911457,392.699,10,"dead biomass",20.446
+"t1","SA11",15,"fine roots","10_15","fine roots 15cm","SA11-fine roots 15cm","SA",1386.717442,0.010892425,-13.7652025,0.392625977,392.699,10,"fine roots",0.0544
+"t1","SA11",15,"rhizomes","10_15","rhizomes 15cm","SA11-rhizomes 15cm","SA",20.97739757,0.00662,-14.8424366,0.335312495,392.699,10,"rhizomes",0.8748
+"t1","SA11",20,"coarse roots","15_20","coarse roots 20cm","SA11-coarse roots 20cm","SA",NA,NA,NA,NA,392.699,15,"coarse roots",0.0188
+"t1","SA11",20,"dead biomass","15_20","dead biomass 20cm","SA11-dead biomass 20cm","SA",8.15064033,0.01193,-13.32075399,0.396416299,392.699,15,"dead biomass",24.158
+"t1","SA11",20,"fine roots","15_20","fine roots 20cm","SA11-fine roots 20cm","SA",10.66523071,0.00429,-12.18760457,0.443720232,392.699,15,"fine roots",0.2462
+"t1","SA11",20,"rhizomes","15_20","rhizomes 20cm","SA11-rhizomes 20cm","SA",NA,NA,NA,NA,392.699,15,"rhizomes",0.0038
+"t0","SA15",20,"rhizomes","15_20","rhizomes 20cm","SA15-rhizomes 20cm","SA",NA,NA,NA,NA,392.699,15,"rhizomes",0
+"t1","SA11",30,"dead biomass","20_30","dead biomass 30cm","SA11-dead biomass 30cm","SA",6.929087717,0.01138,-12.61413027,0.398809427,785.398,20,"dead biomass",32.366
+"t1","SA11",30,"fine roots","20_30","fine roots 30cm","SA11-fine roots 30cm","SA",8.137277279,0.00457,-12.00197607,0.407737116,785.398,20,"fine roots",0.2442
+"t0","SA15",30,"bulk sediment","20_30","bulk sediment 30cm","SA15-bulk sediment 30cm","SA",1.998910438,0.01278,-14.68862657,0.180290226,785.398,20,"bulk sediment",178.048
+"t2","SA12",NA,"dead leaf","above","dead leaf","SA12-dead leaf","SA",180.3536181,0.005062466,-14.1467064,0.316967966,NA,NA,"dead leaf",0.5163
+"t2","SA12",NA,"decomp layer","above","decomp layer","SA12-decomp layer","SA",38.65968178,0.008635516,-14.31244254,0.244210285,NA,NA,"decomp layer",0.4934
+"t2","SA12",NA,"leaf 1","above","leaf 1","SA12-leaf 1","SA",2213.485523,0.013636654,-14.58490527,0.380661839,NA,NA,"leaf",0.2343
+"t2","SA12",NA,"leaf 2","above","leaf 2","SA12-leaf 2","SA",1280.170484,0.013321505,-14.44241018,0.34805578,NA,NA,"leaf",0.4353
+"t2","SA12",NA,"leaf 3","above","leaf 3","SA12-leaf 3","SA",1362.831864,0.014374086,-14.47504272,0.357225427,NA,NA,"leaf",0.3473
+"t2","SA12",NA,"leaf 4","above","leaf 4","SA12-leaf 4","SA",826.0005524,0.008769126,-14.42985421,0.35255318,NA,NA,"leaf",0.1048
+"t2","SA12",NA,"microbe mat","above","microbe mat","SA12-microbe mat","SA",91.99921121,0.017212539,-18.061015,0.21774502,NA,NA,"microbe mat",3.2956
+"t2","SA12",NA,"standing dead","above","standing dead","SA12-standing dead","SA",32.32015444,0.005054618,-13.63988432,0.310285529,NA,NA,"standing dead",0.524
+"t2","SA12",NA,"stems","above","stems","SA12-stems","SA",2632.952417,0.008599315,-13.93295381,0.359082706,NA,NA,"stems",0.7686
+"t2","SA12",2,"belowground stems","0_2","belowground stems","SA12-belowground stems","SA",1434.025533,0.009218761,-13.97122339,0.340475923,157.08,0,"stems",0.0697
+"t2","SA12",2,"coarse roots","0_2","coarse roots 2cm","SA12-coarse roots 2cm","SA",466.4056917,0.007214608,-14.14881838,0.393188774,157.08,0,"coarse roots",0.2916
+"t2","SA12",2,"dead biomass","0_2","dead biomass 2cm","SA12-dead biomass 2cm","SA",101.3209957,0.009694854,-14.01831851,0.38174193,157.08,0,"dead biomass",3.624
+"t2","SA12",2,"fine roots","0_2","fine roots 2cm","SA12-fine roots 2cm","SA",599.3820577,0.009340941,-13.63819496,0.340290412,157.08,0,"fine roots",0.8548
+"t2","SA12",5,"coarse roots","2_5","coarse roots 5cm","SA12-coarse roots 5cm","SA",1811.881585,0.006106325,-14.05265792,0.337461195,235.619,2,"coarse roots",0.5104
+"t2","SA12",5,"dead biomass","2_5","dead biomass 5cm","SA12-dead biomass 5cm","SA",617.2742471,0.008271641,-14.1624752,0.370199365,235.619,2,"dead biomass",11.33
+"t2","SA12",5,"fine roots","2_5","fine roots 5cm","SA12-fine roots 5cm","SA",2579.12581,0.007994431,-13.64339504,0.34190074,235.619,2,"fine roots",0.6592
+"t2","SA12",5,"rhizomes","2_5","rhizomes 5cm","SA12-rhizomes 5cm","SA",2273.409276,0.007906605,-14.02482096,0.339379249,235.619,2,"rhizomes",1.0616
+"t2","SA12",10,"coarse roots","5_10","coarse roots 10cm","SA12-coarse roots 10cm","SA",840.0818925,0.007604186,-13.84941287,0.308706057,392.699,5,"coarse roots",0.1522
+"t2","SA12",10,"dead biomass","5_10","dead biomass 10cm","SA12-dead biomass 10cm","SA",61.17523832,0.010423834,-14.70491649,0.345187671,392.699,5,"dead biomass",26.654
+"t2","SA12",10,"fine roots","5_10","fine roots 10cm","SA12-fine roots 10cm","SA",1249.192099,0.008635581,-13.78513631,0.339780622,392.699,5,"fine roots",0.178
+"t2","SA12",10,"rhizomes","5_10","rhizomes 10cm","SA12-rhizomes 10cm","SA",126.9502198,0.005735547,-14.22862604,0.325570445,392.699,5,"rhizomes",1.6182
+"t2","SA12",15,"coarse roots","10_15","coarse roots 15cm","SA12-coarse roots 15cm","SA",NA,NA,NA,NA,392.699,10,"coarse roots",0.0336
+"t2","SA12",15,"dead biomass","10_15","dead biomass 15cm","SA12-dead biomass 15cm","SA",39.62005589,0.0090828225,-13.45545602,0.331884338,392.699,10,"dead biomass",28.878
+"t2","SA12",15,"fine roots","10_15","fine roots 15cm","SA12-fine roots 15cm","SA",1002.947926,0.009680521,-13.11443949,0.425974189,392.699,10,"fine roots",0.0612
+"t2","SA12",15,"rhizomes","10_15","rhizomes 15cm","SA12-rhizomes 15cm","SA",179.4074444,0.00606299,-14.39812917,0.265589518,392.699,10,"rhizomes",0.0298
+"t2","SA12",20,"coarse roots","15_20","coarse roots 20cm","SA12-coarse roots 20cm","SA",274.6887076,0.007184251,-12.95045819,0.379898283,392.699,15,"coarse roots",0.0164
+"t2","SA12",20,"dead biomass","15_20","dead biomass 20cm","SA12-dead biomass 20cm","SA",15.79832055,0.011189869,-13.63473865,0.326868453,392.699,15,"dead biomass",26.67
+"t2","SA12",30,"coarse roots","20_30","coarse roots 30cm","SA12-coarse roots 30cm","SA",37.70014089,0.006315748,-12.20744629,0.329941062,785.398,20,"coarse roots",0.0344
+"t1","DS03",30,"bulk sediment","20_30","bulk sediment 30cm","DS03-bulk sediment 30cm","DS",4.662787221,0.010942564,-15.49154547,0.135689411,785.398,20,"bulk sediment",131.248
+"t2","SA12",30,"fine roots","20_30","fine roots 30cm","SA12-fine roots 30cm","SA",23.91732443,0.005882729,-12.07545541,0.345834909,785.398,20,"fine roots",0.0652
+"t0","SA14",NA,"dead leaf","above","dead leaf","SA14-dead leaf","SA",6.422069188,0.007888299,-14.0691139,0.302759377,NA,NA,"dead leaf",0.2669
+"t0","SA14",NA,"decomp layer","above","decomp layer","SA14-decomp layer","SA",3.941780059,0.012924435,-14.9055515,0.244955074,NA,NA,"decomp layer",0.1681
+"t0","SA14",NA,"leaf","above","leaf","SA14-leaf","SA",NA,NA,NA,NA,NA,NA,"leaf",0.0128
+"t0","SA14",NA,"leaf 1","above","leaf 1","SA14-leaf 1","SA",2.922374022,0.018505563,-14.06586536,0.312255513,NA,NA,"leaf",0.4047
+"t0","SA14",NA,"leaf 2","above","leaf 2","SA14-leaf 2","SA",3.250889138,0.019370351,-13.93116152,0.304523079,NA,NA,"leaf",0.6428
+"t0","SA14",NA,"leaf 3","above","leaf 3","SA14-leaf 3","SA",3.43622985,0.016772638,-14.19676211,0.324761907,NA,NA,"leaf",0.4508
+"t0","SA14",NA,"leaf 4","above","leaf 4","SA14-leaf 4","SA",3.964816793,0.014084218,-14.14031631,0.326784353,NA,NA,"leaf",0.1625
+"t0","SA14",NA,"microbe mat","above","microbe mat","SA14-microbe mat","SA",3.295597711,0.019964013,-17.30478373,0.194893821,NA,NA,"microbe mat",3.4785
+"t0","SA14",NA,"standing dead","above","standing dead","SA14-standing dead","SA",4.695753329,0.010065568,-14.41049343,0.251338619,NA,NA,"standing dead",1.3519
+"t0","SA14",NA,"stems","above","stems","SA14-stems","SA",4.285083951,0.011325072,-13.61402276,0.315931633,NA,NA,"stems",1.2878
+"t0","SA15",NA,"dead leaf","above","dead leaf","SA15-dead leaf","SA",2.300873259,0.0065,-13.91178946,0.32833604,NA,NA,"dead leaf",0.162
+"t0","SA15",NA,"decomp layer","above","decomp layer","SA15-decomp layer","SA",4.63072237,0.012808254,-14.93282223,0.248739277,NA,NA,"decomp layer",0.9529
+"t0","SA15",NA,"leaf","above","leaf","SA15-leaf","SA",NA,NA,NA,NA,NA,NA,"leaf",0.0101
+"t0","SA15",NA,"leaf 1","above","leaf 1","SA15-leaf 1","SA",2.37890979,0.01581,-14.16680246,0.327506708,NA,NA,"leaf",0.2473
+"t0","SA15",NA,"leaf 2","above","leaf 2","SA15-leaf 2","SA",2.213977487,0.01456,-13.87956496,0.372157088,NA,NA,"leaf",0.543
+"t0","SA15",NA,"leaf 3","above","leaf 3","SA15-leaf 3","SA",2.494262935,0.01382,-14.06579988,0.354485282,NA,NA,"leaf",0.5844
+"t0","SA15",NA,"leaf 4","above","leaf 4","SA15-leaf 4","SA",2.532755946,0.01301,-14.02134199,0.354862952,NA,NA,"leaf",0.1906
+"t0","SA15",NA,"leaf 5","above","leaf 5","SA15-leaf 5","SA",2.821042559,0.00994,-13.8874215,0.34453801,NA,NA,"leaf",0.0649
+"t0","SA15",NA,"microbe mat","above","microbe mat","SA15-microbe mat","SA",2.977302437,0.017473398,-16.24135515,0.199239315,NA,NA,"microbe mat",2.7404
+"t0","SA15",NA,"standing dead","above","standing dead","SA15-standing dead","SA",2.668725904,0.00685,-13.82653377,0.313319831,NA,NA,"standing dead",0.3807
+"t0","SA15",NA,"stems","above","stems","SA15-stems","SA",1.480325653,0.00852,-13.47565987,0.334423851,NA,NA,"stems",1.0565
+"t0","DS13",2,"bulk sediment","0_2","bulk sediment 2cm","DS13-bulk sediment 2cm","DS",4.775228624,0.01612,-16.02340705,0.253195464,157.08,0,"bulk sediment",17.736
+"t0","DS13",5,"bulk sediment","2_5","bulk sediment 5cm","DS13-bulk sediment 5cm","DS",4.97612103,0.01642,-16.30227145,0.262306779,235.619,2,"bulk sediment",49.048
+"t0","DS13",10,"bulk sediment","5_10","bulk sediment 10cm","DS13-bulk sediment 10cm","DS",5.032327533,0.01514,-16.22378201,0.230659613,392.699,5,"bulk sediment",74.588
+"t0","DS13",15,"bulk sediment","10_15","bulk sediment 15cm","DS13-bulk sediment 15cm","DS",4.72454202,0.01324,-15.81676296,0.200304451,392.699,10,"bulk sediment",61.86
+"t0","DS13",20,"bulk sediment","15_20","bulk sediment 20cm","DS13-bulk sediment 20cm","DS",3.906316922,0.01277,-15.39942458,0.205528714,392.699,15,"bulk sediment",53.02
+"t1","DS05",30,"dead biomass","20_30","dead biomass 30cm","DS05-dead biomass 30cm","DS",3.668379904,0.00913,-12.98977871,0.272165854,785.398,20,"dead biomass",48.73
+"t0","DS14",2,"bulk sediment","0_2","bulk sediment 2cm","DS14-bulk sediment 2cm","DS",4.056101872,0.01406,-15.85097592,0.219785599,157.08,0,"bulk sediment",10.28
+"t0","DS14",5,"bulk sediment","2_5","bulk sediment 5cm","DS14-bulk sediment 5cm","DS",4.526959746,0.01619,-16.50196169,0.239924516,235.619,2,"bulk sediment",50.236
+"t0","DS14",10,"bulk sediment","5_10","bulk sediment 10cm","DS14-bulk sediment 10cm","DS",4.841698843,0.01453,-16.46032423,0.230172173,392.699,5,"bulk sediment",65.628
+"t0","DS14",15,"bulk sediment","10_15","bulk sediment 15cm","DS14-bulk sediment 15cm","DS",5.046003506,0.0132,-15.70073175,0.183157399,392.699,10,"bulk sediment",67.068
+"t0","DS14",20,"bulk sediment","15_20","bulk sediment 20cm","DS14-bulk sediment 20cm","DS",4.380105318,0.01434,-15.44106595,0.202230779,392.699,15,"bulk sediment",58.956
+"t1","DS05",30,"bulk sediment","20_30","bulk sediment 30cm","DS05-bulk sediment 30cm","DS",5.027670836,0.010957291,-14.46206337,0.17065856,785.398,20,"bulk sediment",178.62
+"t0","DS15",2,"bulk sediment","0_2","bulk sediment 2cm","DS15-bulk sediment 2cm","DS",4.244397814,0.01384,-16.1378509,0.254450799,157.08,0,"bulk sediment",12.768
+"t0","DS15",5,"bulk sediment","2_5","bulk sediment 5cm","DS15-bulk sediment 5cm","DS",4.830341276,0.01462,-16.13893161,0.233833845,235.619,2,"bulk sediment",31.324
+"t0","DS15",10,"bulk sediment","5_10","bulk sediment 10cm","DS15-bulk sediment 10cm","DS",4.943305235,0.01642,-16.02668882,0.233104132,392.699,5,"bulk sediment",77.284
+"t0","DS15",15,"bulk sediment","10_15","bulk sediment 15cm","DS15-bulk sediment 15cm","DS",4.946789275,0.01624,-16.0391121,0.199294698,392.699,10,"bulk sediment",43.688
+"t0","DS15",20,"bulk sediment","15_20","bulk sediment 20cm","DS15-bulk sediment 20cm","DS",4.311740543,0.01373,-15.42827973,0.212049737,392.699,15,"bulk sediment",53.32
+"t1","DS11",30,"bulk sediment","20_30","bulk sediment 30cm","DS11-bulk sediment 30cm","DS",3.826914545,0.0117757,-14.54791741,0.150749652,785.398,20,"bulk sediment",162.14
+"t0","SA13",5,"bulk sediment","2_5","bulk sediment 5cm","SA13-bulk sediment 5cm","SA",3.379433684,0.0146,-16.55908193,0.240102189,235.619,2,"bulk sediment",52.372
+"t0","SA13",20,"bulk sediment","15_20","bulk sediment 20cm","SA13-bulk sediment 20cm","SA",2.810987082,0.01166,-15.23970896,0.190598051,392.699,15,"bulk sediment",55.92
+"t1","SA03",30,"dead biomass","20_30","dead biomass 30cm","SA03-dead biomass 30cm","SA",3.929207978,0.01567,-13.76130514,0.341966618,785.398,20,"dead biomass",73.158
+"t0","SA14",2,"bulk sediment","0_2","bulk sediment 2cm","SA14-bulk sediment 2cm","SA",30.86,0.01678,-15.9709611,0.228995685,157.08,0,"bulk sediment",31.656
+"t0","SA14",5,"bulk sediment","2_5","bulk sediment 5cm","SA14-bulk sediment 5cm","SA",3.42501211,0.01591,-16.95614055,0.246226127,235.619,2,"bulk sediment",54.116
+"t0","SA14",10,"bulk sediment","5_10","bulk sediment 10cm","SA14-bulk sediment 10cm","SA",4.163679671,0.01009,-15.53696944,0.191376853,392.699,5,"bulk sediment",58.308
+"t0","SA14",15,"bulk sediment","10_15","bulk sediment 15cm","SA14-bulk sediment 15cm","SA",4.383980572,0.01375,-15.36266148,0.206842048,392.699,10,"bulk sediment",71.536
+"t0","SA14",20,"bulk sediment","15_20","bulk sediment 20cm","SA14-bulk sediment 20cm","SA",2.706447008,0.01172,-14.98651344,0.208455879,392.699,15,"bulk sediment",61.16
+"t1","SA03",30,"bulk sediment","20_30","bulk sediment 30cm","SA03-bulk sediment 30cm","SA",2.124759868,0.012149189,-14.53543213,0.202244439,785.398,20,"bulk sediment",129.996
+"t0","SA15",2,"bulk sediment","0_2","bulk sediment 2cm","SA15-bulk sediment 2cm","SA",3.107341043,0.01628,-16.49290714,0.202088722,157.08,0,"bulk sediment",29.884
+"t0","SA15",5,"bulk sediment","2_5","bulk sediment 5cm","SA15-bulk sediment 5cm","SA",3.891473334,0.01087,-15.93571139,0.207735367,235.619,2,"bulk sediment",35.7
+"t0","SA15",10,"bulk sediment","5_10","bulk sediment 10cm","SA15-bulk sediment 10cm","SA",3.893925616,0.01247,-15.2802938,0.231565674,392.699,5,"bulk sediment",50.208
+"t0","SA15",15,"bulk sediment","10_15","bulk sediment 15cm","SA15-bulk sediment 15cm","SA",4.049739529,0.01225,-15.52332674,0.204883448,392.699,10,"bulk sediment",60.484
+"t0","SA15",20,"bulk sediment","15_20","bulk sediment 20cm","SA15-bulk sediment 20cm","SA",2.863681001,0.011,-15.98109225,0.207494564,392.699,15,"bulk sediment",55.68
+"t1","SA05",30,"bulk sediment","20_30","bulk sediment 30cm","SA05-bulk sediment 30cm","SA",3.478306823,0.01416,-14.94,0.22,785.398,20,"bulk sediment",172.424
+"t1","DS03",2,"bulk sediment","0_2","bulk sediment 2cm","DS03-bulk sediment 2cm","DS",419.5625953,0.012947561,-15.12642131,0.249699322,157.08,0,"bulk sediment",30.976
+"t1","DS03",5,"bulk sediment","2_5","bulk sediment 5cm","DS03-bulk sediment 5cm","DS",320.7039027,0.014850807,-15.07480763,0.226902736,235.619,2,"bulk sediment",46.48
+"t1","DS03",10,"bulk sediment","5_10","bulk sediment 10cm","DS03-bulk sediment 10cm","DS",110.3256003,0.01485,-15.29,0.3,392.699,5,"bulk sediment",56.44
+"t1","DS03",15,"bulk sediment","10_15","bulk sediment 15cm","DS03-bulk sediment 15cm","DS",8.627763395,0.01388,-15.71,0.24,392.699,10,"bulk sediment",54.704
+"t1","DS03",20,"bulk sediment","15_20","bulk sediment 20cm","DS03-bulk sediment 20cm","DS",6.907155608,0.010790187,-14.31422996,0.198111345,392.699,15,"bulk sediment",57.64
+"t1","SA11",30,"coarse roots","20_30","coarse roots 30cm","SA11-coarse roots 30cm","SA",NA,NA,NA,NA,785.398,20,"coarse roots",0
+"t1","DS05",2,"bulk sediment","0_2","bulk sediment 2cm","DS05-bulk sediment 2cm","DS",199.5472196,0.0168,-16.97,0.27,157.08,0,"bulk sediment",19.424
+"t1","DS05",5,"bulk sediment","2_5","bulk sediment 5cm","DS05-bulk sediment 5cm","DS",74.04386492,0.011364807,-16.26906562,0.266951858,235.619,2,"bulk sediment",52.144
+"t1","DS05",10,"bulk sediment","5_10","bulk sediment 10cm","DS05-bulk sediment 10cm","DS",29.12284387,0.013341382,-18.10564864,0.151971585,392.699,5,"bulk sediment",76.152
+"t1","DS05",15,"bulk sediment","10_15","bulk sediment 15cm","DS05-bulk sediment 15cm","DS",11.91002867,0.011219836,-14.72613901,0.178106641,392.699,10,"bulk sediment",68.152
+"t1","DS05",20,"bulk sediment","15_20","bulk sediment 20cm","DS05-bulk sediment 20cm","DS",14.4538941,0.012829204,-14.80013556,0.18366285,392.699,15,"bulk sediment",48.168
+"t1","SA11",30,"rhizomes","20_30","rhizomes 30cm","SA11-rhizomes 30cm","SA",NA,NA,NA,NA,785.398,20,"rhizomes",0
+"t1","DS11",2,"bulk sediment","0_2","bulk sediment 2cm","DS11-bulk sediment 2cm","DS",146.95729105,0.0200088645,-19.5287234,0.1824428605,157.08,0,"bulk sediment",11.748
+"t1","DS11",5,"bulk sediment","2_5","bulk sediment 5cm","DS11-bulk sediment 5cm","DS",334.7089956,0.012025213,-15.51983162,0.272741365,235.619,2,"bulk sediment",33.484
+"t1","DS11",10,"bulk sediment","5_10","bulk sediment 10cm","DS11-bulk sediment 10cm","DS",67.39865072,0.012128902,-15.09068412,0.172798306,392.699,5,"bulk sediment",64.816
+"t1","DS11",15,"bulk sediment","10_15","bulk sediment 15cm","DS11-bulk sediment 15cm","DS",7.988580846,0.011904527,-15.37119067,0.178967006,392.699,10,"bulk sediment",61.528
+"t1","DS11",20,"bulk sediment","15_20","bulk sediment 20cm","DS11-bulk sediment 20cm","DS",4.691050961,0.012954,-14.78550602,0.196472452,392.699,15,"bulk sediment",61.396
+"t1","SA11",30,"bulk sediment","20_30","bulk sediment 30cm","SA11-bulk sediment 30cm","SA",4.530844108,0.0126,-13.88,0.22,785.398,20,"bulk sediment",153.216
+"t1","SA03",2,"bulk sediment","0_2","bulk sediment 2cm","SA03-bulk sediment 2cm","SA",247.45408795,0.017212396,-18.1537944,0.1947222,157.08,0,"bulk sediment",22.7604
+"t1","SA03",5,"bulk sediment","2_5","bulk sediment 5cm","SA03-bulk sediment 5cm","SA",136.02153765,0.0156830005,-18.082594025,0.2169224525,235.619,2,"bulk sediment",49.324
+"t1","SA03",10,"bulk sediment","5_10","bulk sediment 10cm","SA03-bulk sediment 10cm","SA",18.68736065,0.01271,-16.02,0.24,392.699,5,"bulk sediment",46.996
+"t1","SA03",15,"bulk sediment","10_15","bulk sediment 15cm","SA03-bulk sediment 15cm","SA",23.48325757,0.01249,-15.44,0.25,392.699,10,"bulk sediment",61.328
+"t1","SA03",20,"bulk sediment","15_20","bulk sediment 20cm","SA03-bulk sediment 20cm","SA",14.43956881,0.015073653,-15.36466327,0.203660514,392.699,15,"bulk sediment",66.8
+"t2","DS02",30,"bulk sediment","20_30","bulk sediment 30cm","DS02-bulk sediment 30cm","DS",7.589279981,0.01427,-15.06674064,0.221263745,785.398,20,"bulk sediment",133.788
+"t1","SA05",5,"bulk sediment","2_5","bulk sediment 5cm","SA05-bulk sediment 5cm","SA",126.0391117,0.014119529,-16.00767751,0.244046875,235.619,2,"bulk sediment",48.696
+"t1","SA05",10,"bulk sediment","5_10","bulk sediment 10cm","SA05-bulk sediment 10cm","SA",24.20333592,0.011639576,-15.66453498,0.2304481,392.699,5,"bulk sediment",52.172
+"t1","SA05",15,"bulk sediment","10_15","bulk sediment 15cm","SA05-bulk sediment 15cm","SA",7.563398544,0.011396997,-15.33437756,0.180732447,392.699,10,"bulk sediment",69.472
+"t1","SA05",20,"bulk sediment","15_20","bulk sediment 20cm","SA05-bulk sediment 20cm","SA",4.309213649,0.01242,-15.2,0.23,392.699,15,"bulk sediment",50.364
+"t2","DS07",30,"bulk sediment","20_30","bulk sediment 30cm","DS07-bulk sediment 30cm","DS",6.072692261,0.0131,-14.93669272,0.192371165,785.398,20,"bulk sediment",165.572
+"t1","SA11",2,"bulk sediment","0_2","bulk sediment 2cm","SA11-bulk sediment 2cm","SA",1004.69920835,0.0163039625,-17.84633451,0.2078392355,157.08,0,"bulk sediment",19.04
+"t1","SA11",5,"bulk sediment","2_5","bulk sediment 5cm","SA11-bulk sediment 5cm","SA",70.38959872,0.014820132,-15.98772626,0.257972452,235.619,2,"bulk sediment",32.616
+"t1","SA11",10,"bulk sediment","5_10","bulk sediment 10cm","SA11-bulk sediment 10cm","SA",36.21695791,0.012328847,-15.83841429,0.201729151,392.699,5,"bulk sediment",60.216
+"t1","SA11",15,"bulk sediment","10_15","bulk sediment 15cm","SA11-bulk sediment 15cm","SA",7.912554136,0.012166534,-14.60430766,0.229360997,392.699,10,"bulk sediment",54.776
+"t1","SA11",20,"bulk sediment","15_20","bulk sediment 20cm","SA11-bulk sediment 20cm","SA",5.800178647,0.010966092,-15.13332317,0.175516205,392.699,15,"bulk sediment",75.932
+"t2","DS12",30,"dead biomass","20_30","dead biomass 30cm","DS12-dead biomass 30cm","DS",13.90987574,0.013402309,-13.58053184,0.313859149,785.398,20,"dead biomass",43.496
+"t1","SA05",2,"bulk sediment","0_2","bulk sediment 2cm","SA05-bulk sediment 2cm","SA",196.01089465,0.01520951,-17.415753555,0.213267504,157.08,0,"bulk sediment",24.768
+"t2","DS02",2,"bulk sediment","0_2","bulk sediment 2cm","DS02-bulk sediment 2cm","DS",909.9803154,0.01415,-16.15701071,0.220054716,157.08,0,"bulk sediment",16.672
+"t2","DS02",5,"bulk sediment","2_5","bulk sediment 5cm","DS02-bulk sediment 5cm","DS",154.6298958,0.01587,-15.47559732,0.300321364,235.619,2,"bulk sediment",38.272
+"t2","DS02",10,"bulk sediment","5_10","bulk sediment 10cm","DS02-bulk sediment 10cm","DS",65.04811284,0.01782,-15.36563497,0.28071176,392.699,5,"bulk sediment",70.624
+"t2","DS02",15,"bulk sediment","10_15","bulk sediment 15cm","DS02-bulk sediment 15cm","DS",13.39531004,0.01726,-15.94996685,0.235621751,392.699,10,"bulk sediment",58.02
+"t2","DS02",20,"bulk sediment","15_20","bulk sediment 20cm","DS02-bulk sediment 20cm","DS",11.3132081,0.01399,-15.23580533,0.236733854,392.699,15,"bulk sediment",66.672
+"t2","DS12",30,"bulk sediment","20_30","bulk sediment 30cm","DS12-bulk sediment 30cm","DS",13.76479261,0.01305,-14.86866754,0.21701893,785.398,20,"bulk sediment",134.192
+"t2","DS07",2,"bulk sediment","0_2","bulk sediment 2cm","DS07-bulk sediment 2cm","DS",368.7863292,0.01648,-15.94397467,0.239423981,157.08,0,"bulk sediment",16.8
+"t2","DS07",5,"bulk sediment","2_5","bulk sediment 5cm","DS07-bulk sediment 5cm","DS",270.2705936,0.01594,-16.58120531,0.259648333,235.619,2,"bulk sediment",40.584
+"t2","DS07",10,"bulk sediment","5_10","bulk sediment 10cm","DS07-bulk sediment 10cm","DS",43.17943312,0.01376,-15.24089634,0.274638736,392.699,5,"bulk sediment",68.468
+"t2","DS07",20,"bulk sediment","15_20","bulk sediment 20cm","DS07-bulk sediment 20cm","DS",12.06445009,0.01524,-15.46935648,0.270444028,392.699,15,"bulk sediment",61.492
+"t2","SA02",30,"bulk sediment","20_30","bulk sediment 30cm","SA02-bulk sediment 30cm","SA",4.61338263,0.01655,-14.67491339,0.207822967,785.398,20,"bulk sediment",166.4
+"t2","DS12",2,"bulk sediment","0_2","bulk sediment 2cm","DS12-bulk sediment 2cm","DS",180.1748979,0.0134,-15.68660956,0.263415395,157.08,0,"bulk sediment",54.064
+"t2","DS12",5,"bulk sediment","2_5","bulk sediment 5cm","DS12-bulk sediment 5cm","DS",187.6816768,0.01432,-14.97656525,0.300408415,235.619,2,"bulk sediment",36.228
+"t2","DS12",10,"bulk sediment","5_10","bulk sediment 10cm","DS12-bulk sediment 10cm","DS",71.01511634,0.01472,-16.10549076,0.221060452,392.699,5,"bulk sediment",53.4187499332266
+"t2","DS12",15,"bulk sediment","10_15","bulk sediment 15cm","DS12-bulk sediment 15cm","DS",51.93198564,0.01543,-15.68129954,0.240753061,392.699,10,"bulk sediment",60.944
+"t2","DS12",20,"bulk sediment","15_20","bulk sediment 20cm","DS12-bulk sediment 20cm","DS",13.8521541,0.01422,-14.94843559,0.258250709,392.699,15,"bulk sediment",58.768
+"t2","SA07",30,"bulk sediment","20_30","bulk sediment 30cm","SA07-bulk sediment 30cm","SA",6.43095743,0.01509,-14.91882049,0.2341317,785.398,20,"bulk sediment",178.416
+"t2","DS07",15,"bulk sediment","10_15","bulk sediment 15cm","DS07-bulk sediment 15cm","DS",16.1881084,0.01284,-15.25811,0.230602492,392.699,10,"bulk sediment",67.86
+"t2","SA02",2,"bulk sediment","0_2","bulk sediment 2cm","SA02-bulk sediment 2cm","SA",399.8746525,0.01698,-16.36225327,0.233017558,157.08,0,"bulk sediment",30.492
+"t2","SA02",5,"bulk sediment","2_5","bulk sediment 5cm","SA02-bulk sediment 5cm","SA",120.3697032,0.01529,-15.95846499,0.278232362,235.619,2,"bulk sediment",48.908
+"t2","SA02",10,"bulk sediment","5_10","bulk sediment 10cm","SA02-bulk sediment 10cm","SA",27.2973022,0.01347,-15.36788152,0.296145668,392.699,5,"bulk sediment",47.4
+"t2","SA02",15,"bulk sediment","10_15","bulk sediment 15cm","SA02-bulk sediment 15cm","SA",12.29444259,0.01336,-15.58456247,0.236282409,392.699,10,"bulk sediment",72.256
+"t2","SA02",20,"bulk sediment","15_20","bulk sediment 20cm","SA02-bulk sediment 20cm","SA",6.755036563,0.01549,-15.21883216,0.233726674,392.699,15,"bulk sediment",77.584
+"t2","SA12",30,"dead biomass","20_30","dead biomass 30cm","SA12-dead biomass 30cm","SA",5.686394441,0.019075067,-13.79004081,0.308423211,785.398,20,"dead biomass",48.37
+"t2","SA07",2,"bulk sediment","0_2","bulk sediment 2cm","SA07-bulk sediment 2cm","SA",316.5557584,0.01573,-16.4415289,0.219729137,157.08,0,"bulk sediment",21.024
+"t2","SA07",5,"bulk sediment","2_5","bulk sediment 5cm","SA07-bulk sediment 5cm","SA",222.7018384,0.01523,-16.45624614,0.249142901,235.619,2,"bulk sediment",48.832
+"t2","SA07",10,"bulk sediment","5_10","bulk sediment 10cm","SA07-bulk sediment 10cm","SA",31.31700194,0.01374,-15.51009682,0.295124606,392.699,5,"bulk sediment",51.956
+"t2","SA07",15,"bulk sediment","10_15","bulk sediment 15cm","SA07-bulk sediment 15cm","SA",23.01256759,0.01399,-16.01416524,0.227082796,392.699,10,"bulk sediment",65.94
+"t2","SA07",20,"bulk sediment","15_20","bulk sediment 20cm","SA07-bulk sediment 20cm","SA",12.95453315,0.01396,-15.50337972,0.241318179,392.699,15,"bulk sediment",64.604
+"t2","SA12",30,"bulk sediment","20_30","bulk sediment 30cm","SA12-bulk sediment 30cm","SA",8.503363771,0.01548,-14.42926449,0.24290873,785.398,20,"bulk sediment",166.78
+"t2","SA12",2,"bulk sediment","0_2","bulk sediment 2cm","SA12-bulk sediment 2cm","SA",123.4302504,0.01638,-17.88487416,0.185802505,157.08,0,"bulk sediment",18.032
+"t2","SA12",5,"bulk sediment","2_5","bulk sediment 5cm","SA12-bulk sediment 5cm","SA",318.0219531,0.01787,-16.28218599,0.280944122,235.619,2,"bulk sediment",35.9
+"t2","SA12",10,"bulk sediment","5_10","bulk sediment 10cm","SA12-bulk sediment 10cm","SA",157.4849537,0.01237,-15.52957441,0.220887403,392.699,5,"bulk sediment",63.38
+"t2","SA12",15,"bulk sediment","10_15","bulk sediment 15cm","SA12-bulk sediment 15cm","SA",43.90922699,0.01338,-14.97196672,0.245556916,392.699,10,"bulk sediment",69.56
+"t2","SA12",20,"bulk sediment","15_20","bulk sediment 20cm","SA12-bulk sediment 20cm","SA",20.08018256,0.0122,-14.5856939,0.262974288,392.699,15,"bulk sediment",58.608
+"t3","DS04",30,"bulk sediment","20_30","bulk sediment 30cm","DS04-bulk sediment 30cm","DS",4.550873248,0.01193,-15.60305336,0.216130823,785.398,20,"bulk sediment",120.424
+"t3","DS04",2,"bulk sediment","0_2","bulk sediment 2cm","DS04-bulk sediment 2cm","DS",536.0909476,0.01293,-15.8396276,0.2743317335,157.08,0,"bulk sediment",40.265999919468
+"t3","DS04",5,"bulk sediment","2_5","bulk sediment 5cm","DS04-bulk sediment 5cm","DS",249.9718717,0.01022,-14.95818133,0.30585442,235.619,2,"bulk sediment",32.152
+"t3","DS04",10,"bulk sediment","5_10","bulk sediment 10cm","DS04-bulk sediment 10cm","DS",109.4452403,0.01075,-14.50666401,0.284048546,392.699,5,"bulk sediment",60.472
+"t3","DS04",15,"bulk sediment","10_15","bulk sediment 15cm","DS04-bulk sediment 15cm","DS",19.08920991,0.01355,-15.5707757,0.235627646,392.699,10,"bulk sediment",63.356
+"t3","DS04",20,"bulk sediment","15_20","bulk sediment 20cm","DS04-bulk sediment 20cm","DS",7.045735385,0.01141,-14.73812955,0.243709048,392.699,15,"bulk sediment",60.348
+"t3","DS09",30,"bulk sediment","20_30","bulk sediment 30cm","DS09-bulk sediment 30cm","DS",7.473923517,0.01195,-15.67269634,0.222435696,785.398,20,"bulk sediment",135.08
+"t3","DS09",2,"bulk sediment","0_2","bulk sediment 2cm","DS09-bulk sediment 2cm","DS",238.927465,0.00855,-15.7228773,0.211798881,157.08,0,"bulk sediment",37.724
+"t3","DS09",5,"bulk sediment","2_5","bulk sediment 5cm","DS09-bulk sediment 5cm","DS",92.93454089,0.01474,-16.25184525,0.277163756,235.619,2,"bulk sediment",38.508
+"t3","DS09",10,"bulk sediment","5_10","bulk sediment 10cm","DS09-bulk sediment 10cm","DS",19.12874631,0.01647,-16.5742703,0.239504912,392.699,5,"bulk sediment",44.852
+"t3","DS09",15,"bulk sediment","10_15","bulk sediment 15cm","DS09-bulk sediment 15cm","DS",13.47463339,0.01267,-15.68173816,0.22452153,392.699,10,"bulk sediment",61.148
+"t3","DS09",20,"bulk sediment","15_20","bulk sediment 20cm","DS09-bulk sediment 20cm","DS",6.941284295,0.01269,-15.3450387,0.229270896,392.699,15,"bulk sediment",52.188
+"t3","DS10",15,"rhizomes","10_15","rhizomes 15cm","DS10-rhizomes 15cm","DS",NA,NA,NA,NA,392.699,10,"rhizomes",0
+"t3","DS10",2,"bulk sediment","0_2","bulk sediment 2cm","DS10-bulk sediment 2cm","DS",191.6256216,0.01204,-16.06598019,0.243344324,157.08,0,"bulk sediment",36.092
+"t3","DS10",5,"bulk sediment","2_5","bulk sediment 5cm","DS10-bulk sediment 5cm","DS",63.43525128,0.01324,-14.72326678,0.311399007,235.619,2,"bulk sediment",39.676
+"t3","DS10",10,"bulk sediment","5_10","bulk sediment 10cm","DS10-bulk sediment 10cm","DS",63.77101706,0.01295,-14.78255887,0.301693132,392.699,5,"bulk sediment",54.94
+"t3","DS10",15,"bulk sediment","10_15","bulk sediment 15cm","DS10-bulk sediment 15cm","DS",18.39861918,0.0139,-15.07999793,0.253986617,392.699,10,"bulk sediment",58.06
+"t3","DS10",20,"bulk sediment","15_20","bulk sediment 20cm","DS10-bulk sediment 20cm","DS",15.98849999,0.01266,-15.51515493,0.223188504,392.699,15,"bulk sediment",47.06
+"t3","DS10",30,"bulk sediment","20_30","bulk sediment 30cm","DS10-bulk sediment 30cm","DS",4.727451037,0.01102,-14.83768648,0.226324931,785.398,20,"bulk sediment",135.088
+"t3","SA04",2,"bulk sediment","0_2","bulk sediment 2cm","SA04-bulk sediment 2cm","SA",179.9370367,0.014516766,-16.20227752,0.203311695,157.08,0,"bulk sediment",30.872
+"t3","SA04",5,"bulk sediment","2_5","bulk sediment 5cm","SA04-bulk sediment 5cm","SA",64.65636839,0.01152,-15.84710728,0.276971137,235.619,2,"bulk sediment",32.22
+"t3","SA04",10,"bulk sediment","5_10","bulk sediment 10cm","SA04-bulk sediment 10cm","SA",11.15008582,0.01162,-15.42734004,0.27140998,392.699,5,"bulk sediment",51.48
+"t3","SA04",15,"bulk sediment","10_15","bulk sediment 15cm","SA04-bulk sediment 15cm","SA",15.99835807,0.010301362,-14.807650955,0.28887074,392.699,10,"bulk sediment",63.14
+"t3","SA04",20,"bulk sediment","15_20","bulk sediment 20cm","SA04-bulk sediment 20cm","SA",4.368233385,0.01424,-15.16713512,0.235577328,392.699,15,"bulk sediment",63.588
+"t3","SA04",30,"bulk sediment","20_30","bulk sediment 30cm","SA04-bulk sediment 30cm","SA",2.854770905,0.01389,-14.76894047,0.205830865,785.398,20,"bulk sediment",176.784
+"t3","SA09",2,"bulk sediment","0_2","bulk sediment 2cm","SA09-bulk sediment 2cm","SA",378.1389946,0.01546,-16.20094234,0.229182435,157.08,0,"bulk sediment",16.464
+"t3","SA09",5,"bulk sediment","2_5","bulk sediment 5cm","SA09-bulk sediment 5cm","SA",147.320661,0.01596,-16.41661478,0.259650175,235.619,2,"bulk sediment",46.708
+"t3","SA09",10,"bulk sediment","5_10","bulk sediment 10cm","SA09-bulk sediment 10cm","SA",43.76288562,0.01134,-15.75820678,0.238290117,392.699,5,"bulk sediment",50.256
+"t3","SA09",15,"bulk sediment","10_15","bulk sediment 15cm","SA09-bulk sediment 15cm","SA",17.70668047,0.01406,-15.28153759,0.239155397,392.699,10,"bulk sediment",65.896
+"t3","SA09",20,"bulk sediment","15_20","bulk sediment 20cm","SA09-bulk sediment 20cm","SA",5.370256737,0.01476,-14.97582751,0.236093703,392.699,15,"bulk sediment",83.748
+"t3","SA09",30,"bulk sediment","20_30","bulk sediment 30cm","SA09-bulk sediment 30cm","SA",3.21730172,0.01464,-14.47416408,0.212462297,785.398,20,"bulk sediment",168.512
+"t3","SA10",2,"bulk sediment","0_2","bulk sediment 2cm","SA10-bulk sediment 2cm","SA",301.0359719,0.01111,-15.52392384,0.27642209,157.08,0,"bulk sediment",17.496
+"t3","SA10",5,"bulk sediment","2_5","bulk sediment 5cm","SA10-bulk sediment 5cm","SA",340.5518419,0.0127,-15.97623582,0.28747885,235.619,2,"bulk sediment",42.128
+"t3","SA10",10,"bulk sediment","5_10","bulk sediment 10cm","SA10-bulk sediment 10cm","SA",100.6659546,0.01244,-15.04277371,0.263671372,392.699,5,"bulk sediment",66.424
+"t3","SA10",15,"bulk sediment","10_15","bulk sediment 15cm","SA10-bulk sediment 15cm","SA",13.85775269,0.01431,-15.83221823,0.248405119,392.699,10,"bulk sediment",50.948
+"t3","SA10",20,"bulk sediment","15_20","bulk sediment 20cm","SA10-bulk sediment 20cm","SA",7.791683939,0.01274,-15.16319281,0.198494026,392.699,15,"bulk sediment",56.172
+"t3","SA10",30,"bulk sediment","20_30","bulk sediment 30cm","SA10-bulk sediment 30cm","SA",8.246462317,0.01481,-15.1072529,0.194486504,785.398,20,"bulk sediment",148.096
+"t4","DS01",2,"bulk sediment","0_2","bulk sediment 2cm","DS01-bulk sediment 2cm","DS",150.8337592,0.014599572,-17.44317288,0.156133579,157.08,0,"bulk sediment",21.456
+"t4","DS01",5,"bulk sediment","2_5","bulk sediment 5cm","DS01-bulk sediment 5cm","DS",473.9088374,0.014638756,-15.98189329,0.160113845,235.619,2,"bulk sediment",43.056
+"t4","DS01",10,"bulk sediment","5_10","bulk sediment 10cm","DS01-bulk sediment 10cm","DS",81.48101694,0.013544558,-15.23936078,0.168862934,392.699,5,"bulk sediment",62.272
+"t4","DS01",15,"bulk sediment","10_15","bulk sediment 15cm","DS01-bulk sediment 15cm","DS",13.34221145,0.013241927,-14.98783539,0.157757446,392.699,10,"bulk sediment",74.708
+"t4","DS01",20,"bulk sediment","15_20","bulk sediment 20cm","DS01-bulk sediment 20cm","DS",7.269268962,0.014107252,-14.75509419,0.172192271,392.699,15,"bulk sediment",61.892
+"t4","DS01",30,"bulk sediment","20_30","bulk sediment 30cm","DS01-bulk sediment 30cm","DS",5.574065411,0.013204782,-14.89672207,0.120779305,785.398,20,"bulk sediment",155.64
+"t4","DS06",2,"bulk sediment","0_2","bulk sediment 2cm","DS06-bulk sediment 2cm","DS",226.3647996,0.017491858,-17.24549017,0.142467861,157.08,0,"bulk sediment",22.004
+"t4","DS06",5,"bulk sediment","2_5","bulk sediment 5cm","DS06-bulk sediment 5cm","DS",403.4060893,0.013272471,-15.54801349,0.187253003,235.619,2,"bulk sediment",38.244
+"t4","DS06",10,"bulk sediment","5_10","bulk sediment 10cm","DS06-bulk sediment 10cm","DS",101.8732265,0.016329965,-15.37936157,0.173686187,392.699,5,"bulk sediment",64.628
+"t4","DS06",15,"bulk sediment","10_15","bulk sediment 15cm","DS06-bulk sediment 15cm","DS",6.601564412,0.013005453,-15.1137963,0.167701277,392.699,10,"bulk sediment",71.2
+"t4","DS06",20,"bulk sediment","15_20","bulk sediment 20cm","DS06-bulk sediment 20cm","DS",5.241050385,0.015731879,-15.08101209,0.168768484,392.699,15,"bulk sediment",61.584
+"t4","DS06",10,"coarse roots","5_10","coarse roots 10cm","DS06-coarse roots 10cm","DS",1016.091422,0.011746403,-14.84113674,0.307849458,392.699,5,"coarse roots",0.172
+"t4","DS08",2,"bulk sediment","0_2","bulk sediment 2cm","DS08-bulk sediment 2cm","DS",121.3128954,0.014555745,-17.21996832,0.137402141,157.08,0,"bulk sediment",26.66
+"t4","DS08",5,"bulk sediment","2_5","bulk sediment 5cm","DS08-bulk sediment 5cm","DS",378.5937138,0.015495376,-15.62791977,0.184543046,235.619,2,"bulk sediment",39.512
+"t4","DS08",10,"bulk sediment","5_10","bulk sediment 10cm","DS08-bulk sediment 10cm","DS",25.05690341,0.011723218,-15.3569161,0.145368515,392.699,5,"bulk sediment",71.248
+"t4","DS08",15,"bulk sediment","10_15","bulk sediment 15cm","DS08-bulk sediment 15cm","DS",7.113016315,0.01495764,-15.47861074,0.147863068,392.699,10,"bulk sediment",60.712
+"t4","DS08",20,"bulk sediment","15_20","bulk sediment 20cm","DS08-bulk sediment 20cm","DS",9.368058359,0.014844289,-15.0649529,0.166796208,392.699,15,"bulk sediment",55.9
+"t4","DS06",30,"bulk sediment","20_30","bulk sediment 30cm","DS06-bulk sediment 30cm","DS",3.503445148,0.009119346,-14.5563429,0.120626555,785.398,20,"bulk sediment",165.344
+"t4","SA01",2,"bulk sediment","0_2","bulk sediment 2cm","SA01-bulk sediment 2cm","SA",374.2284521,0.014340512,-16.5890533,0.143453332,157.08,0,"bulk sediment",16.374000016374
+"t4","SA01",5,"bulk sediment","2_5","bulk sediment 5cm","SA01-bulk sediment 5cm","SA",282.9266346,0.014275818,-16.26246125,0.177323564,235.619,2,"bulk sediment",39.596
+"t4","SA01",10,"bulk sediment","5_10","bulk sediment 10cm","SA01-bulk sediment 10cm","SA",34.34350341,0.013424632,-15.9243632,0.176553076,392.699,5,"bulk sediment",59.684
+"t4","SA01",15,"bulk sediment","10_15","bulk sediment 15cm","SA01-bulk sediment 15cm","SA",18.39381504,0.013099919,-15.70055934,0.14990869,392.699,10,"bulk sediment",65.748
+"t4","SA01",20,"bulk sediment","15_20","bulk sediment 20cm","SA01-bulk sediment 20cm","SA",7.234550432,0.012035243,-14.62784499,0.170082143,392.699,15,"bulk sediment",78.988
+"t4","DS08",30,"bulk sediment","20_30","bulk sediment 30cm","DS08-bulk sediment 30cm","DS",5.494862908,0.014401233,-14.60941525,0.126854032,785.398,20,"bulk sediment",158.284
+"t4","SA06",2,"bulk sediment","0_2","bulk sediment 2cm","SA06-bulk sediment 2cm","SA",130.9638909,0.013986779,-16.44526769,0.136840103,157.08,0,"bulk sediment",24.348
+"t4","SA06",5,"bulk sediment","2_5","bulk sediment 5cm","SA06-bulk sediment 5cm","SA",202.3026904,0.015090771,-16.33608523,0.149284636,235.619,2,"bulk sediment",45.764
+"t4","SA06",10,"bulk sediment","5_10","bulk sediment 10cm","SA06-bulk sediment 10cm","SA",34.63371239,0.014059908,-15.43147487,0.163790088,392.699,5,"bulk sediment",55.564
+"t4","SA06",15,"bulk sediment","10_15","bulk sediment 15cm","SA06-bulk sediment 15cm","SA",20.34326019,0.014520244,-14.72758759,0.161348456,392.699,10,"bulk sediment",60.712
+"t4","SA01",30,"bulk sediment","20_30","bulk sediment 30cm","SA01-bulk sediment 30cm","SA",7.056368232,0.012418225,-14.58938817,0.131705793,785.398,20,"bulk sediment",151.984
+"t4","SA06",2,"fine roots","0_2","fine roots 2cm","SA06-fine roots 2cm","SA",1204.38593,0.008752027,-14.76310653,0.311341682,157.08,0,"fine roots",0.528
+"t4","SA08",2,"bulk sediment","0_2","bulk sediment 2cm","SA08-bulk sediment 2cm","SA",436.9504778,0.013671448,-16.53408409,0.150386549,157.08,0,"bulk sediment",22.7
+"t4","SA08",5,"bulk sediment","2_5","bulk sediment 5cm","SA08-bulk sediment 5cm","SA",176.8218163,0.012177684,-16.21351968,0.195700497,235.619,2,"bulk sediment",46.74
+"t4","SA08",10,"bulk sediment","5_10","bulk sediment 10cm","SA08-bulk sediment 10cm","SA",92.15355142,0.014398801,-15.85988409,0.193670265,392.699,5,"bulk sediment",51.16
+"t4","SA08",15,"bulk sediment","10_15","bulk sediment 15cm","SA08-bulk sediment 15cm","SA",30.08040241,0.009979419,-14.83952423,0.174838178,392.699,10,"bulk sediment",73.692
+"t4","SA08",20,"bulk sediment","15_20","bulk sediment 20cm","SA08-bulk sediment 20cm","SA",16.20561903,0.012166518,-15.28764372,0.157452477,392.699,15,"bulk sediment",64.264
+"t4","SA06",20,"bulk sediment","15_20","bulk sediment 20cm","SA06-bulk sediment 20cm","SA",13.98950878,0.015700485,-14.99571266,0.167744268,392.699,15,"bulk sediment",83.752
+"t4","SA06",30,"bulk sediment","20_30","bulk sediment 30cm","SA06-bulk sediment 30cm","SA",9.567776329,0.016910083,-14.73362509,0.150386211,785.398,20,"bulk sediment",158.544
+"t4","SA08",30,"bulk sediment","20_30","bulk sediment 30cm","SA08-bulk sediment 30cm","SA",3.914797476,0.014009432,-14.41351109,0.14487037,785.398,20,"bulk sediment",188.776
