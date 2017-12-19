@@ -13,7 +13,7 @@
 \item{bd_gcm3}{Bulk density (grams per cubic centimeter)}
 }}
 \usage{
-data(dea)
+dea
 }
 \description{
 Data: Denitrification enzyme activity and in vitro N2O production rates
@@ -25,6 +25,9 @@ write.csv(dea, file = "dea.csv")
 \references{
 Hill et al.
 (\href{url}{text})
+}
+\author{
+Troy D. Hill \email{Hill.Troy@gmail.com}
 }
 \keyword{N2O}
 \keyword{datasets,}

@@ -16,5 +16,6 @@ value
 Calculates standard error
 }
 \examples{
-\dontrun{}
+se(CN_mass_data$n_pct)
+plyr::ddply(CN_mass_data, .(species, pool_label), summarise, se = se(n_pct))
 }

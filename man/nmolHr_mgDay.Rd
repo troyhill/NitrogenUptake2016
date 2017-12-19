@@ -16,5 +16,5 @@ numeric value
 Convert N2O units from nanomoles per hour to milligrams per day
 }
 \examples{
-nmolHr_mgDay(50)
+nmolHr_mgDay(dea$DEA)
 }
