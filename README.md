@@ -8,14 +8,17 @@ Install the package from GitHub using devtools:
 
 ```r
 install.packages("devtools")
-devtools::install_github("troyhill/NitrogenUptake2016")
+devtools::install_github("troyhill/NitrogenUptake2016", build_vignettes = TRUE)
 library("NitrogenUptake2016")
 ```
 
-All the data used in this manuscript are available via:
+All the data used in this manuscript will then be available using data():
 
 ```r
-data(NitrogenUptake2016)
+data("allometry")
+data("dea")
+data("stemHeights")
+data("CN_mass_data")
 ```
 
 
