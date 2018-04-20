@@ -2,6 +2,9 @@
 
 This repository contains data and source code associated with Hill et al. "Nitrogen uptake and allocation estimates for _Spartina alterniflora_ and _Distichlis spicata_"
 
+[![DOI](https://zenodo.org/badge/103706037.svg)](https://zenodo.org/badge/latestdoi/103706037)
+
+
 ## Install the Package 
 
 Install the package from GitHub using devtools:
