@@ -14,7 +14,7 @@ for (i in 1:length(list.files(here("R")))) {
 }
 load(here("/data/allometry.RData"))
 load(here("/data/dea.RData"))
-load(here("data/StemHeights.RData"))
+load(here("data/stemHeights.RData"))
 load(here("data/CN_mass_data.RData"))
 
 ### code above for package development
