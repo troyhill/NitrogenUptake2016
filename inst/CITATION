@@ -1,7 +1,15 @@
 bibentry(
-         bibtype = "Article",
-         title = "Data and source code from: Nitrogen uptake and allocation estimates for Spartina alterniflora and Distichlis spicata",
-         author = person("Troy D. Hill, Nathalie R. Moore, Caroline R. Kanaskie, Emily A. Santos, and Autumn J. Oczkowski"),
+         bibtype  = "Article",
+         journal  = "Journal of Experimental Marine Biology and Ecology",
+         title    = "Data and source code from: Nitrogen uptake and allocation estimates for Spartina alterniflora and Distichlis spicata",
+         doi      = c("https://doi.org/10.5281/zenodo.1226378"),
+         author   = c(
+          person(c("Troy", "D."), "Hill", role = c("aut", "cre"), email = "hill.troy@gmail.com"),
+          person(c("Nathalie", "R."), "Sommer", role = "aut"),
+          person(c("Caroline", "R."), "Kanaskie", role = "aut"),
+          person(c("Emily", "A."), "Santos", role = "aut"),
+          person(c("Autumn", "J."), "Oczkowski", role = "aut")
+         ),
          organization = "",
          address      = "Narragansett, RI",
          year         = "2017",
@@ -10,10 +18,9 @@ bibentry(
          textVersion =
          paste("Troy D. Hill, Nathalie R. Moore, Caroline R. Kanaskie, Emily A. Santos, and Autumn J. Oczkowski (2017). ",
                "Data and source code from: Nitrogen uptake and allocation estimates for Spartina alterniflora and Distichlis spicata. ",
-               "Narragansett, RI. ",
+               "Journal of Experimental Marine Biology and Ecology ",
                "URL https://github.com/troyhill/NitrogenUptake2016",
                sep=""),
-
          mheader = "To cite NitrogenUptake2016 in publications use:",
 	       mfooter = ""
 )
