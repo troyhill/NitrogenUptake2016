@@ -15,13 +15,13 @@ devtools::install_github("troyhill/NitrogenUptake2016", build_vignettes = TRUE)
 library("NitrogenUptake2016")
 ```
 
-All the data used in this manuscript will then be available using data():
+All the data used in this manuscript will then be available:
 
 ```r
-data("allometry")
-data("dea")
-data("stemHeights")
-data("CN_mass_data")
+?allometry
+?dea
+?stemHeights
+?CN_mass_data
 ```
 
 
