@@ -18,7 +18,6 @@
 #' @examples \dontrun{}
 #' @export
 nappCalc2 <- function(
-  ### a generalized improvement upon the CWC_functions code
   dataset,
   liveCol = "mass",
   deadCol = "dead",

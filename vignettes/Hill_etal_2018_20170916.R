@@ -2,22 +2,10 @@
 
 library(ggplot2)
 library(reshape2)
-library(here)
 library(car) # has qqPlot() and basePower() functions
 library(MASS) # has boxcox() function
 library(zoo)
 
-
-for (i in 1:length(list.files(here("R")))) {
-  rFile <- list.files(here("R"), full.names = TRUE)[i]
-  source(rFile)
-}
-load(here("/data/allometry.RData"))
-load(here("/data/dea.RData"))
-load(here("data/stemHeights.RData"))
-load(here("data/CN_mass_data.RData"))
-
-### code above for package development
 library(NitrogenUptake2016)
 
 core.area <- pot.m2 <- 0.00801185 # mesocosm surface area (m2)
