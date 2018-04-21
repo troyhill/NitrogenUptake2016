@@ -18,12 +18,12 @@ fig2Col   <- "gray55"
 # Allometry ----------------------------------------------------------------
 
 ##### Establish relationships following Lu et al.
-CSP          <- dlply(allom.sub, c("spp"), bCM)
+CSP          <- dlply(allometry, c("spp"), bCM)
 CSP.coef     <- ldply(CSP, coef)
-CSP.coef$lam <- ddply(allom.sub, c("spp"), function(df)  bCM(df, lam.only = TRUE))[, "V1"]
+CSP.coef$lam <- ddply(allometry, c("spp"), function(df)  bCM(df, lam.only = TRUE))[, "V1"]
 ldply(CSP, BIC)
 ldply(CSP, r.squaredGLMM)
-table(allom.sub$spp[!is.na(allom.sub$sample)])
+table(allometry$spp[!is.na(allometry$sample)])
 
 
 
@@ -31,39 +31,39 @@ table(allom.sub$spp[!is.na(allom.sub$sample)])
 # Relative growth rates ---------------------------------------------------
 
 ### estimate plant masses from allometry
-for (i in 1:nrow(dat1)) {
-  if (dat1$species[i] %in% "DS") {
-    dat1$mass[i] <- (dat1$height_cm[i] * CSP.coef[1, 3] + CSP.coef[1, "(Intercept)"])^(1/CSP.coef$lam[1]) # DISP
-  } else if (dat1$species[i] %in% "SA") {
-    dat1$mass[i] <- (dat1$height_cm[i] * CSP.coef[2, 3] + CSP.coef[2, "(Intercept)"])^(1/CSP.coef$lam[2]) # SPAL
+for (i in 1:nrow(stemHeights)) {
+  if (stemHeights$species[i] %in% "DS") {
+    stemHeights$mass[i] <- (stemHeights$height_cm[i] * CSP.coef[1, 3] + CSP.coef[1, "(Intercept)"])^(1/CSP.coef$lam[1]) # DISP
+  } else if (stemHeights$species[i] %in% "SA") {
+    stemHeights$mass[i] <- (stemHeights$height_cm[i] * CSP.coef[2, 3] + CSP.coef[2, "(Intercept)"])^(1/CSP.coef$lam[2]) # SPAL
   }
 }
 
 
-dat1$RGR <- dat1$lateStartDate <- NA
+stemHeights$RGR <- stemHeights$lateStartDate <- NA
 
-pb <- txtProgressBar(min = 0, max = length(unique(dat1$id[dat1$dead_live %in% "L"])), initial = 0, style = 3)
-for(i in 1:length(unique(dat1$id[dat1$dead_live %in% "L"]))) { # 830 plants
-  targPlant <- unique(dat1$id[dat1$dead_live %in% "L"])[i]
-  subDat <- dat1[dat1$id %in% targPlant, ]
+pb <- txtProgressBar(min = 0, max = length(unique(stemHeights$id[stemHeights$dead_live %in% "L"])), initial = 0, style = 3)
+for(i in 1:length(unique(stemHeights$id[stemHeights$dead_live %in% "L"]))) { # 830 plants
+  targPlant <- unique(stemHeights$id[stemHeights$dead_live %in% "L"])[i]
+  subDat <- stemHeights[stemHeights$id %in% targPlant, ]
   if (nrow(subDat) > 1) {
     subDat$mass2 <- c(NA, subDat$mass[1:(nrow(subDat)-1)])
     subDat$day2 <- c(subDat$day[1], subDat$day[1:(nrow(subDat)-1)])
     subDat$RGR <- (log(subDat$mass) - log(subDat$mass2)) / as.numeric(difftime(subDat$day, subDat$day2, units = "days"))
 
     ### add RGRs to stem height dataset
-    dat1$RGR[(which(rownames(dat1) %in% rownames(subDat)))] <- subDat$RGR
+    stemHeights$RGR[(which(rownames(stemHeights) %in% rownames(subDat)))] <- subDat$RGR
     if (!is.na(subDat$height[1]) & (subDat$height[1] < 6)) {
-      dat1$lateStartDate[which(rownames(dat1) %in% rownames(subDat))] <- 1 # indicates if high-growth period is captured
+      stemHeights$lateStartDate[which(rownames(stemHeights) %in% rownames(subDat))] <- 1 # indicates if high-growth period is captured
     }
   }
   setTxtProgressBar(pb, i)
 }
 
-dat1$RGR[!is.finite(dat1$RGR)] <- NA
+stemHeights$RGR[!is.finite(stemHeights$RGR)] <- NA
 
 # mean growth rate for each plant, then each mesocosm
-mean.rgr     <- ddply(dat1[dat1$dead_live %in% "L", ], .(id, new.core.id, species), summarise, meanRGR = mean(RGR, na.rm = TRUE))
+mean.rgr     <- ddply(stemHeights[stemHeights$dead_live %in% "L", ], .(id, new.core.id, species), summarise, meanRGR = mean(RGR, na.rm = TRUE))
 mean.rgr.pot <- ddply(mean.rgr, .(new.core.id, species), summarise, RGR = mean(meanRGR, na.rm = TRUE))
 mean.rgr.pot <- mean.rgr.pot[1:24, ]
 
@@ -71,7 +71,7 @@ mean.rgr.pot <- mean.rgr.pot[1:24, ]
 # Stem density and biomass ------------------------------------------------
 
 ### summarize by pot and session
-dat.live <- dat1[dat1$dead_live %in% "L", ]
+dat.live <- stemHeights[stemHeights$dead_live %in% "L", ]
 ddHgt2 <- ddply(dat.live, .(date, day, core_num, species), numcolwise(sum, na.rm = TRUE))
 ddHgt2$day <- as.POSIXct(ddHgt2$day, origin = "1960-01-01")
 ddHgt2$cohort <- NA
@@ -100,7 +100,7 @@ ddHgt4$species2 <- ifelse(ddHgt4$species %in% "SA", "italic(S.~alterniflora)", "
 ####
 
 # get live + dead biomass for each pot at each date
-dat.ld <- ddply(dat1, .(core_num, species, date), summarise,
+dat.ld <- ddply(stemHeights, .(core_num, species, date), summarise,
                 live = sum(mass[dead_live %in% "L"], na.rm = TRUE),
                 dead = sum(mass[dead_live %in% "D"], na.rm = TRUE)
 )
@@ -135,11 +135,11 @@ napp$new.core.id <- ifelse(napp$core_num > 9, paste0(napp$species, napp$core_num
 
 ### build object to merge with master: average RGR, stem characteristics
 # mean growth rate for each plant, then each mesocosm
-mean.rgr     <- ddply(dat1[dat1$dead_live %in% "L", ], .(id, new.core.id, species), summarise, meanRGR = mean(RGR, na.rm = TRUE))
+mean.rgr     <- ddply(stemHeights[stemHeights$dead_live %in% "L", ], .(id, new.core.id, species), summarise, meanRGR = mean(RGR, na.rm = TRUE))
 mean.rgr.pot <- ddply(mean.rgr, .(new.core.id, species), summarise, rgr = mean(meanRGR, na.rm = TRUE))
 mean.rgr.pot <- mean.rgr.pot[1:24, ]
 
-mean.dens     <- ddply(dat1[dat1$dead_live %in% "L", ], .(new.core.id, date), summarise, stem.density = sum(!is.na(height_cm)))
+mean.dens     <- ddply(stemHeights[stemHeights$dead_live %in% "L", ], .(new.core.id, date), summarise, stem.density = sum(!is.na(height_cm)))
 mean.dens.pot <- ddply(mean.dens, .(new.core.id), summarise, dens = mean(stem.density / pot.m2, na.rm = TRUE)) # mean of all stem density msrmts for a pot
 mean.dens.pot <- mean.dens.pot[1:24, ]
 
@@ -200,11 +200,11 @@ spike <- KNO3 * (N_mw / KNO3_mw) / soln * mls # total grams of 15N added to each
 
 
 # calculate atom pct from mean values
-test2$n_ap <- ap(test2$d15n)
+CN_mass_data$n_ap <- ap(CN_mass_data$d15n)
 
 
 # get background 15N AP
-bkd <- ddply(test2[as.character(test2$time) %in% "t0", ], .(species, pool_label), summarise,
+bkd <- ddply(CN_mass_data[as.character(CN_mass_data$time) %in% "t0", ], .(species, pool_label), summarise,
              n15 = mean(n_ap, na.rm = T),
              se.n15 = se(n_ap)
 )
@@ -212,44 +212,44 @@ bkd <- ddply(test2[as.character(test2$time) %in% "t0", ], .(species, pool_label)
 
 
 # subtract background to get 15N excess (if result is negative, 15Nxs = 0)
-test2$n15xs <- as.numeric(NA)
-for(i in 1:nrow(test2)) {
-  if(!is.na(test2$species[i])) {
-    spp <- test2$species[i]
-    pool <- test2$pool_label[i]
+CN_mass_data$n15xs <- as.numeric(NA)
+for(i in 1:nrow(CN_mass_data)) {
+  if(!is.na(CN_mass_data$species[i])) {
+    spp <- CN_mass_data$species[i]
+    pool <- CN_mass_data$pool_label[i]
 
     a <- bkd[(bkd$species %in% spp) & (bkd$pool_label %in% pool), "n15"]
 
     if((is.numeric(a) & (length(a) > 0))) { # excludes all pools we don't have bkd for
-      difference <- test2$n_ap[i] - a # NOT decimal fraction
-      ifelse (!is.na(difference) & (difference > 0), test2$n15xs[i] <- difference, test2$n15xs[i] <- 0)
+      difference <- CN_mass_data$n_ap[i] - a # NOT decimal fraction
+      ifelse (!is.na(difference) & (difference > 0), CN_mass_data$n15xs[i] <- difference, CN_mass_data$n15xs[i] <- 0)
     } else {
-      difference <- test2$n_ap[i] - 0.370317701 # assume bkgd of 11 d15N
-      ifelse ((difference > 0) & !is.na(difference), test2$n15xs[i] <- difference, test2$n15xs[i] <- 0)
+      difference <- CN_mass_data$n_ap[i] - 0.370317701 # assume bkgd of 11 d15N
+      ifelse ((difference > 0) & !is.na(difference), CN_mass_data$n15xs[i] <- difference, CN_mass_data$n15xs[i] <- 0)
     }
   }
 }
 
 
 ### Additional correction to belowground live biomass, subtracting 15Nxs of dead MOM to account for sorption
-test2$n15xs_MOM <- test2$n15xs # n15xs still useful for total recoveries
-for(i in 1:nrow(test2)) {
-  if (test2$time[i] %in% paste0("t", 1:4)) {
-    if(!is.na(test2$depth_top[i])) {
-      spp <- test2$species[i]
-      coreID <- test2$new.core.id[i]
-      pool <- test2$pool_label[i]
-      depth_bottom <- test2$depth_bottom[i]
+CN_mass_data$n15xs_MOM <- CN_mass_data$n15xs # n15xs still useful for total recoveries
+for(i in 1:nrow(CN_mass_data)) {
+  if (CN_mass_data$time[i] %in% paste0("t", 1:4)) {
+    if(!is.na(CN_mass_data$depth_top[i])) {
+      spp <- CN_mass_data$species[i]
+      coreID <- CN_mass_data$new.core.id[i]
+      pool <- CN_mass_data$pool_label[i]
+      depth_bottom <- CN_mass_data$depth_bottom[i]
 
-      a <- test2[(test2$new.core.id %in% coreID) & (test2$pool_label %in% paste0("dead biomass ", depth_bottom, "cm")) &
-                   (test2$depth_bottom == depth_bottom), "n15xs"]
+      a <- CN_mass_data[(CN_mass_data$new.core.id %in% coreID) & (CN_mass_data$pool_label %in% paste0("dead biomass ", depth_bottom, "cm")) &
+                   (CN_mass_data$depth_bottom == depth_bottom), "n15xs"]
 
       if((is.numeric(a) & (length(a) > 0))) { # excludes all pools we don't have bkd for
-        difference <- test2$n15xs[i] - a # NOT decimal fraction
-        ifelse (!is.na(difference) & (difference > 0), test2$n15xs_MOM[i] <- difference, test2$n15xs_MOM[i] <- 0)
+        difference <- CN_mass_data$n15xs[i] - a # NOT decimal fraction
+        ifelse (!is.na(difference) & (difference > 0), CN_mass_data$n15xs_MOM[i] <- difference, CN_mass_data$n15xs_MOM[i] <- 0)
       } else {
-        difference <- test2$n_ap[i] - 0.370317701 # assume bkgd of 11 d15N
-        ifelse ((difference > 0) & !is.na(difference), test2$n15xs_MOM[i] <- difference, test2$n15xs_MOM[i] <- 0)
+        difference <- CN_mass_data$n_ap[i] - 0.370317701 # assume bkgd of 11 d15N
+        ifelse ((difference > 0) & !is.na(difference), CN_mass_data$n15xs_MOM[i] <- difference, CN_mass_data$n15xs_MOM[i] <- 0)
       }
     }
   }
@@ -257,34 +257,34 @@ for(i in 1:nrow(test2)) {
 
 
 
-test2$n15_g_pg_recov  <- test2$n15xs  / 100 * test2$n_pct  # for total recovery
-test2$n15_g_recov     <- test2$n15_g_pg_recov  * test2$g_core  # for total recovery
+CN_mass_data$n15_g_pg_recov  <- CN_mass_data$n15xs  / 100 * CN_mass_data$n_pct  # for total recovery
+CN_mass_data$n15_g_recov     <- CN_mass_data$n15_g_pg_recov  * CN_mass_data$g_core  # for total recovery
 
-test2$n15_g_pg <- test2$n15xs_MOM / 100 * test2$n_pct
-test2$n15_g    <- test2$n15_g_pg  * test2$g_core
-test2$n_core   <- test2$n_pct * test2$g_core
+CN_mass_data$n15_g_pg <- CN_mass_data$n15xs_MOM / 100 * CN_mass_data$n_pct
+CN_mass_data$n15_g    <- CN_mass_data$n15_g_pg  * CN_mass_data$g_core
+CN_mass_data$n_core   <- CN_mass_data$n_pct * CN_mass_data$g_core
 
 # Q: how much sorption is there? (look just at belowground data from t1-4)
-summary(test2$n15xs[!is.na(test2$depth_bottom) & (test2$time %in% paste0("t", 1:4))])
-summary(test2$n15xs_MOM[!is.na(test2$depth_bottom) & (test2$time %in% paste0("t", 1:4))])
+summary(CN_mass_data$n15xs[!is.na(CN_mass_data$depth_bottom) & (CN_mass_data$time %in% paste0("t", 1:4))])
+summary(CN_mass_data$n15xs_MOM[!is.na(CN_mass_data$depth_bottom) & (CN_mass_data$time %in% paste0("t", 1:4))])
 
-summary(test2$n15xs[(test2$depth_bottom < 11) & (test2$sample.type %in% "dead biomass") & (test2$time %in% paste0("t", 1:4))])
-summary(test2$n15xs_MOM[(test2$depth_bottom < 11) & (test2$sample.type %in% "dead biomass") & (test2$time %in% paste0("t", 1:4))])
+summary(CN_mass_data$n15xs[(CN_mass_data$depth_bottom < 11) & (CN_mass_data$sample.type %in% "dead biomass") & (CN_mass_data$time %in% paste0("t", 1:4))])
+summary(CN_mass_data$n15xs_MOM[(CN_mass_data$depth_bottom < 11) & (CN_mass_data$sample.type %in% "dead biomass") & (CN_mass_data$time %in% paste0("t", 1:4))])
 
 # look at difference between with and without MOM correction
-summary(test2$n15xs[!is.na(test2$depth_bottom) & (test2$time %in% paste0("t", 1:4))] - test2$n15xs_MOM[!is.na(test2$depth_bottom) & (test2$time %in% paste0("t", 1:4))])
+summary(CN_mass_data$n15xs[!is.na(CN_mass_data$depth_bottom) & (CN_mass_data$time %in% paste0("t", 1:4))] - CN_mass_data$n15xs_MOM[!is.na(CN_mass_data$depth_bottom) & (CN_mass_data$time %in% paste0("t", 1:4))])
 # A: actually kind of high. mean = 0.05% compared with mean 15Nxs AP = 0.25%
 
 ### does sorption vary by species?  No.
-summary(test2$n15xs[test2$sample.type %in% "dead biomass"])
-summary(aov(n15xs ~ species, data = test2[(test2$sample.type %in% "dead biomass") & (!test2$time %in% "t0"), ]))
-summary(aov(n15xs ~ species, data = test2[(test2$sample.type %in% "dead biomass") & (!test2$time %in% "t0") & (test2$depth_bottom < 11), ])) # doesn't change if focused only on top 10 cm
+summary(CN_mass_data$n15xs[CN_mass_data$sample.type %in% "dead biomass"])
+summary(aov(n15xs ~ species, data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0"), ]))
+summary(aov(n15xs ~ species, data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0") & (CN_mass_data$depth_bottom < 11), ])) # doesn't change if focused only on top 10 cm
 
 ### does sorption change over time? No
-summary(lm(n15xs ~ species + as.numeric(substr(time, 2, 2)), data = test2[(test2$sample.type %in% "dead biomass") & (!test2$time %in% "t0"), ])) # no
-summary(lm(n15xs ~ as.numeric(substr(time, 2, 2)), data = test2[(test2$sample.type %in% "dead biomass") & (!test2$time %in% "t0"), ]))
-summary(lm(n15xs ~ as.numeric(substr(time, 2, 2)), data = test2[(test2$sample.type %in% "dead biomass") & (!test2$time %in% "t0") & (test2$depth_bottom < 11), ])) # doesn't change if focused only on top 10 cm
-plot(n15xs ~ as.numeric(substr(time, 2, 2)), data = test2[(test2$sample.type %in% "dead biomass") & (!test2$time %in% "t0") & (test2$depth_bottom < 6), ])
+summary(lm(n15xs ~ species + as.numeric(substr(time, 2, 2)), data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0"), ])) # no
+summary(lm(n15xs ~ as.numeric(substr(time, 2, 2)), data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0"), ]))
+summary(lm(n15xs ~ as.numeric(substr(time, 2, 2)), data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0") & (CN_mass_data$depth_bottom < 11), ])) # doesn't change if focused only on top 10 cm
+plot(n15xs ~ as.numeric(substr(time, 2, 2)), data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0") & (CN_mass_data$depth_bottom < 6), ])
 
 
 
@@ -292,7 +292,7 @@ plot(n15xs ~ as.numeric(substr(time, 2, 2)), data = test2[(test2$sample.type %in
 
 # get 15Nxs mass in each pool in each core
 # total recovery using belowground pools (rather than bulk sediment)
-mat2 <- ddply(test2[!test2$sample.type %in% c("bulk sediment"), ], .(time, species, new.core.id), summarise,
+mat2 <- ddply(CN_mass_data[!CN_mass_data$sample.type %in% c("bulk sediment"), ], .(time, species, new.core.id), summarise,
               n15_2 = sum(n15_g_recov, na.rm  = T)
 )
 mat2$recovery2 <- mat2$n15_2 / (spike) # "recovery" uses bulk belowground data, "recovery2" uses root pools
@@ -301,7 +301,7 @@ summary(mat2$recovery2[mat2$recovery2 > 0.05])
 
 
 ### relps between napp and 15n recoveries (excludes dead biomass)
-bgd <- ddply(test2[test2$sample.type %in% c("coarse roots", "fine roots", "rhizomes"), ],
+bgd <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roots", "fine roots", "rhizomes"), ],
              .(time, species, new.core.id), summarise,
              g        = sum(g_core, na.rm = T),
              n15    = sum(n15_g, na.rm  = T),
@@ -311,7 +311,7 @@ bgd$g_pg <- bgd$n15 / bgd$g
 
 
 # species-level belowground inventory over time
-abv <- ddply(test2[test2$sample.type %in% c("decomp layer", "leaf 1", "leaf 2", "leaf 3", "leaf 4",
+abv <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("decomp layer", "leaf 1", "leaf 2", "leaf 3", "leaf 4",
                                             "leaf 5", "leaf 6", "leaf 7", "leaf 8", "leaf 9", "leaf 10", "leaf 11",
                                             # "dead leaf", "standing dead", "microbe mat",
                                             "standing dead", "stems"), ], .(time, species, new.core.id), summarise,
@@ -348,7 +348,7 @@ for (i in 1:length(unique(dat.ld$pot2))) {
 dat.ld.sub$id <- paste0(dat.ld.sub$species, "-", dat.ld.sub$core_num)
 
 ### observed values
-obs <- ddply(test2[test2$sample.type %in% c("leaf 1", "leaf 2", "leaf 3", "leaf 4", # "dead leaf",
+obs <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("leaf 1", "leaf 2", "leaf 3", "leaf 4", # "dead leaf",
                                             "leaf 5", "leaf 6", "leaf 7", "leaf 8", "leaf 9", "leaf 10", "leaf 11",
                                             "stems"), ], .(time, species, new.core.id), summarise,
              g        = sum(g_core, na.rm = T)
@@ -375,7 +375,7 @@ obs$species2 <- ifelse(obs$species %in% "SA", "italic(S.~alterniflora)", "italic
 
 ### mass over time in aboveground compartments. mean +- se by species (sum across depth intervals)
 
-ag2 <- ddply(test2[test2$sample.type2 %in% c("stems", "leaf"), ],
+ag2 <- ddply(CN_mass_data[CN_mass_data$sample.type2 %in% c("stems", "leaf"), ],
              .(time, species, new.core.id, sample.type2), summarise,
              g   = sum(g_core / pot.m2, na.rm  = T),
              n_pct = mean(n_pct, na.rm = TRUE),
@@ -403,7 +403,7 @@ ag2.sp$species2 <- ifelse(ag2.sp$species %in% "SA", "italic(S.~alterniflora)", "
 ###
 
 ### mass over time in belowground compartments. mean +- se by species (sum across depth intervals)
-bg <- ddply(test2[test2$sample.type %in% c("coarse roots", "fine roots", "rhizomes"), ],
+bg <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roots", "fine roots", "rhizomes"), ],
             .(time, species, new.core.id, sample.type), summarise,
             g   = sum(g_core / pot.m2, na.rm  = T),
             n_pct = mean(n_pct, na.rm = TRUE),
@@ -427,7 +427,7 @@ bg.sp$species2 <- ifelse(bg.sp$species %in% "SA", "italic(S.~alterniflora)", "it
 # 15N inventories ---------------------------------------------------------
 
 # aboveground
-ag <- ddply(test2[test2$sample.type %in% c("belowground stems", "stems", "leaf", paste0("leaf ", 1:10)), ],
+ag <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("belowground stems", "stems", "leaf", paste0("leaf ", 1:10)), ],
             .(time, species, new.core.id), summarise,
             g   = sum(g_core / pot.m2, na.rm  = T),
             n_pct = mean(n_pct, na.rm = TRUE),
@@ -442,7 +442,7 @@ agd1 <- ddply(ag, .(time, species), summarise,
               recovery.se = se(n15 / spike)
 )
 # species-level belowground inventory over time
-bgd <- ddply(test2[test2$sample.type %in% c("coarse roots", "fine roots", "rhizomes"), ], #, "dead biomass"
+bgd <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roots", "fine roots", "rhizomes"), ], #, "dead biomass"
              .(time, species, new.core.id), summarise,
              n15    = sum(n15_g, na.rm  = T)
 )
@@ -466,7 +466,7 @@ tot <- ddply(mat2, .(time, species), summarise,
 tot$type <- "Total"
 
 # total recovery combined above + belowground (includes dead aboveground but only live belowground)
-tot.live <- ddply(test2[test2$sample.type %in% c("coarse roots", "fine roots", "rhizomes",
+tot.live <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roots", "fine roots", "rhizomes",
                                                  "leaf 1", "leaf 2", "leaf 3", "leaf 4",
                                                  "leaf 5", "leaf 6", "leaf 7", "leaf 8", "leaf 9", "leaf 10", "leaf 11",
                                                  "stems"), ], #, "dead biomass"
@@ -489,7 +489,7 @@ mgd$session <- unique(ddHgt4$session)[c(1, 3, 5, 7, 9)][as.numeric(as.factor(mgd
 # N uptake rates ----------------------------------------------------------
 # Aboveground: estimate from biomass and weighted average biomass N concentration
 # get weighted average of aboveground N concentrations for each core
-n_mean <- ddply(test2[test2$sample.type %in% c("belowground stems", "stems", "leaf", paste0("leaf ", 1:10)), ],
+n_mean <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("belowground stems", "stems", "leaf", paste0("leaf ", 1:10)), ],
                 .(species, time, new.core.id), summarise,
                 tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
                 tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
@@ -497,7 +497,7 @@ n_mean <- ddply(test2[test2$sample.type %in% c("belowground stems", "stems", "le
                 n_wa = tot_n / tot_mass,
                 c_wa = tot_c / tot_mass
 )
-n_bg_mean <- ddply(test2[test2$sample.type %in% c("fine roots", "coarse roots", "rhizomes"), ],
+n_bg_mean <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("fine roots", "coarse roots", "rhizomes"), ],
                    .(species, time, new.core.id), summarise,
                    tot_mass_bg = sum(g_core / pot.m2, na.rm = TRUE),
                    tot_n_bg    = sum(n_core / pot.m2, na.rm = TRUE),
@@ -646,7 +646,7 @@ t.test(I(bgp_est / prodn_rate) ~ species, data = master[master$time %in% c("t3",
 
 ##### Documentation
 ### leaf, stem biomass differences
-leaf <- ddply(test2[test2$sample.type %in% c("leaf", paste0("leaf ", 1:10)), ],
+leaf <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("leaf", paste0("leaf ", 1:10)), ],
               .(species, time, new.core.id), summarise,
               tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
               tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
@@ -656,7 +656,7 @@ leaf <- ddply(test2[test2$sample.type %in% c("leaf", paste0("leaf ", 1:10)), ],
 )
 leaf$t <- as.numeric(substr(leaf$time, 2, 2))
 
-stem <- ddply(test2[test2$sample.type %in% c("belowground stems", "stems"), ],
+stem <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("belowground stems", "stems"), ],
               .(species, time, new.core.id), summarise,
               tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
               tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
@@ -715,7 +715,7 @@ ddply(leaf2, .(), summarise,
 
 
 ### belowground biomass and tissue N
-rts <- ddply(test2[test2$sample.type %in% c("fine roots", "coarse roots", "rhizomes"), ],
+rts <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("fine roots", "coarse roots", "rhizomes"), ],
              .(species, time, new.core.id, sample.type), summarise,
              tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
              tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
@@ -777,17 +777,17 @@ summary(mat2$recovery2[mat2$recovery2 > 0.05])
 
 # png(filename = here("output/Figure1.png"), width = 100, height = 100, units = "mm", res = 400)
 par(fig = c(0, 1, 0, 1), mar = c(4, 4, 0.5, 0.5))
-plot(sample ~ height_cm, data = allom.sub[(allom.sub$spp %in% "DISP"), ],
+plot(sample ~ height_cm, data = allometry[(allometry$spp %in% "DISP"), ],
      cex = pointSize / 2, pch = 19, col = fig2Col,
      ylab = "Total mass (g)", xlab = "Height (cm)", xlim = c(0, 80), ylim = c(0, 0.65), xaxt = "n",
      las = 1, tcl = 0.25, tck = 0.01, bty = "n", yaxs = "i", xaxs = "i")
 abline(h = 0)
 abline(v = 0)
 axis(side = 1, tcl = 0.25, tck = 0.01, at = axTicks(1), labels = axTicks(1))
-points(sample ~ height_cm, data = allom.sub[(allom.sub$spp %in% "SPAL"), ],  cex = pointSize / 2, pch = 17)
+points(sample ~ height_cm, data = allometry[(allometry$spp %in% "SPAL"), ],  cex = pointSize / 2, pch = 17)
 
-x <- allom.sub[(allom.sub$spp %in% "DISP"), "height_cm"]
-x.spal <- allom.sub[(allom.sub$spp %in% "SPAL"), "height_cm"]
+x <- allometry[(allometry$spp %in% "DISP"), "height_cm"]
+x.spal <- allometry[(allometry$spp %in% "SPAL"), "height_cm"]
 
 y.pred2 <- (x * CSP.coef[1, 3] + CSP.coef[1, "(Intercept)"])^(1/CSP.coef$lam[1]) # DISP
 y.pred3 <- (x.spal * CSP.coef[2, 3] + CSP.coef[2, "(Intercept)"])^(1/CSP.coef$lam[2]) # SPAL
