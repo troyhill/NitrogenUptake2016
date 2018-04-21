@@ -15,9 +15,12 @@ Depends:
     car,
     MASS,
     MuMIn,
-    plyr
+    plyr,
+    reshape2,
+    ggplot2,
+    scales
 RoxygenNote: 6.0.1
-Suggests: reshape2,
-    ggplot2
+Suggests: knitr,
+    rmarkdown
 VignetteBuilder: knitr
 

@@ -1,4 +1,5 @@
-bibentry("Data",
+bibentry(
+         bibtype = "Article",
          title = "Data and source code from: Nitrogen uptake and allocation estimates for Spartina alterniflora and Distichlis spicata",
          author = person("Troy D. Hill, Nathalie R. Moore, Caroline R. Kanaskie, Emily A. Santos, and Autumn J. Oczkowski"),
          organization = "",
