@@ -1,7 +1,7 @@
 Package: NitrogenUptake2016
 Type: Package
 Title: Data and Source Code From: Nitrogen Uptake and Allocation Estimates for Spartina Alterniflora and Distichlis Spicata
-Version: 0.1.4
+Version: 0.1.5
 Author: Troy D. Hill, Nathalie R. Sommer, Caroline R. Kanaskie, Emily A. Santos, and Autumn J. Oczkowski
 Maintainer: Troy D. Hill <Hill.Troy@gmail.com>
 Description: Includes data, analysis, and figures from Hill et al.'s examination of nitrogen uptake and allocation in two salt marsh plants. 

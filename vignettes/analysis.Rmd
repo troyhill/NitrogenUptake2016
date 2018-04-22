@@ -880,6 +880,7 @@ ggplot2::ggplot(ddHgt4[ddHgt4$cohort > 0, ], ggplot2::aes(y = mass / pot.m2, x =
   ggplot2::geom_errorbar(aes(ymin = (mass - mass.se) / pot.m2, ymax = (mass + mass.se) / pot.m2), width = 0) +
   ggplot2::scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   ggplot2::scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ggplot2::scale_x_datetime(breaks = unique(ddHgt4$session)[c(1, 3, 5, 7, 9)], labels = date_format("%b-%d")) +
   ggplot2::ylim(0, 600) + ggplot2::facet_grid(. ~ cohort, labeller = label_parsed) +
   ggplot2::labs(y = expression("Biomass (g "%.%m^-2~")"), x = "") +
   ggplot2::theme(legend.position = c(0.125, 0.87), legend.text.align = 0,

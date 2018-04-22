@@ -802,19 +802,19 @@ text(x = 65, y = 0.3, cex = 0.95, expression(italic("Distichlis")))
 
 
 # Figure 2a - Aboveground biomass over time ----------------------------------
-
 ggplot(ddHgt4[ddHgt4$cohort > 0, ], aes(y = mass / pot.m2, x = session, colour = species, shape = species)) +
-  geom_point(size = 1.5) + theme_classic() +
+  geom_point(size = 1.5) + theme_classic() + 
   geom_errorbar(aes(ymin = (mass - mass.se) / pot.m2, ymax = (mass + mass.se) / pot.m2), width = 0) +
   scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   ylim(0, 600) + facet_grid(. ~ cohort, labeller = label_parsed) +
   labs(y = expression("Biomass (g "%.%m^-2~")"), x = "") +
+  scale_x_datetime(breaks = unique(ddHgt4$session)[c(1, 3, 5, 7, 9, 11)], labels = date_format("%b-%d")) +
   theme(legend.position = c(0.125, 0.87), legend.text.align = 0,
         legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
 # ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure2_", todaysDate, ".png"), width = 120, height= 70, units = "mm", dpi = 400)
 
-
+unique(ddHgt4$day[ddHgt4$cohort == 1])
 
 # Figure 2b - NAPP ------------------------------------------
 ggplot(dd.master, aes(y = prodn_rate, x = session, shape = species, colour = species)) + geom_point(size = pointSize) + theme_classic() +
