@@ -22,7 +22,7 @@
 allometry
 }
 \description{
-A dataframe of masses and heights of stems of Spartina alterniflora and Distichlis spicata. Samples were collected from Colt State Park, Bristol, RI, USA, during May-July 2016.
+A dataframe of masses and heights of stems of Spartina alterniflora and Distichlis spicata. Samples were collected from Colt State Park, Bristol, RI, USA, during May-July 2016. Column descriptions:
 }
 \examples{
 ### export to .csv:

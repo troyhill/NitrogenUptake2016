@@ -20,13 +20,13 @@ bCM <- function(dat, mass = "sample", height = "height_cm", lam.avail = c(-2, -1
                 lam.only = FALSE) {
   dat.sub <- dat[(!is.na(dat[, height])) & (!is.na(dat[, mass])), ]
   height <- dat.sub[, height]
-  mod.h <- lm(dat.sub[, mass] ~ height)
-  bc.h  <- boxcox(dat.sub[, mass] ~ height, lam.avail, interp=F, plotit=F)
+  mod.h <- stats::lm(dat.sub[, mass] ~ height)
+  bc.h  <- MASS::boxcox(dat.sub[, mass] ~ height, lam.avail, interp=F, plotit=F)
   lam.h <- bc.h$x[bc.h$y==max(bc.h$y)]
   if (lam.only == TRUE) {
     lam.h
   } else if (lam.only == FALSE) {
-    mod.h.bc <- lm(basicPower(dat.sub[, mass] , lam.h) ~ height)
+    mod.h.bc <- lm(car::basicPower(dat.sub[, mass] , lam.h) ~ height)
     mod.h.bc
   }
 }

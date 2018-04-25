@@ -72,7 +72,7 @@ for (i in 1:nrow(stemHeights)) {
 
 
 # get live + dead biomass for each pot at each date
-dat.ld <- plyr::ddply(stemHeights, .(core_num, species, date), plyr::summarise,
+dat.ld <- plyr::ddply(stemHeights, plyr::.(core_num, species, date), plyr::summarise,
                 live = sum(mass[dead_live %in% "L"], na.rm = TRUE),
                 dead = sum(mass[dead_live %in% "D"], na.rm = TRUE)
 )
@@ -114,7 +114,7 @@ dat.ld.sub$id <- paste0(dat.ld.sub$species, "-", dat.ld.sub$core_num)
 ### observed values
 obs <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("leaf 1", "leaf 2", "leaf 3", "leaf 4", # "dead leaf",
                                             "leaf 5", "leaf 6", "leaf 7", "leaf 8", "leaf 9", "leaf 10", "leaf 11",
-                                            "stems"), ], .(time, species, new.core.id), plyr::summarise,
+                                            "stems"), ], plyr::.(time, species, new.core.id), plyr::summarise,
              g        = sum(g_core, na.rm = T)
 )
 obs$core_num <- as.character(as.integer(substr(obs$new.core.id, 3, 4)))
@@ -160,8 +160,8 @@ for(i in 1:length(unique(stemHeights$id[stemHeights$dead_live %in% "L"]))) { # 8
 stemHeights$RGR[!is.finite(stemHeights$RGR)] <- NA
 
 # mean growth rate for each plant, then each mesocosm
-mean.rgr     <- plyr::ddply(stemHeights[stemHeights$dead_live %in% "L", ], .(id, new.core.id, species), plyr::summarise, meanRGR = mean(RGR, na.rm = TRUE))
-mean.rgr.pot <- plyr::ddply(mean.rgr, .(new.core.id, species), plyr::summarise, RGR = mean(meanRGR, na.rm = TRUE))
+mean.rgr     <- plyr::ddply(stemHeights[stemHeights$dead_live %in% "L", ], plyr::.(id, new.core.id, species), plyr::summarise, meanRGR = mean(RGR, na.rm = TRUE))
+mean.rgr.pot <- plyr::ddply(mean.rgr, plyr::.(new.core.id, species), plyr::summarise, RGR = mean(meanRGR, na.rm = TRUE))
 mean.rgr.pot <- mean.rgr.pot[1:24, ]
 
 ``` 
@@ -176,7 +176,7 @@ mean.rgr.pot <- mean.rgr.pot[1:24, ]
 
 ### summarize by pot and session
 dat.live <- stemHeights[stemHeights$dead_live %in% "L", ]
-ddHgt2 <- plyr::ddply(dat.live, .(date, day, core_num, species), plyr::numcolwise(sum, na.rm = TRUE))
+ddHgt2 <- plyr::ddply(dat.live, plyr::.(date, day, core_num, species), plyr::numcolwise(sum, na.rm = TRUE))
 ddHgt2$day <- as.POSIXct(ddHgt2$day, origin = "1960-01-01")
 ddHgt2$cohort <- NA
 
@@ -190,8 +190,8 @@ ddHgt2$cohort <- (ddHgt2$cohort - 2) / 2
 ddHgt2$cohort[is.na(ddHgt2$cohort)] <- 0
 
 
-ddHgt4 <- plyr::ddply(ddHgt2, .(day, cohort, species), plyr::numcolwise(mean, na.rm = TRUE))
-ddHgt4.se <- plyr::ddply(ddHgt2, .(day, cohort, species), plyr::numcolwise(se))
+ddHgt4 <- plyr::ddply(ddHgt2, plyr::.(day, cohort, species), plyr::numcolwise(mean, na.rm = TRUE))
+ddHgt4.se <- plyr::ddply(ddHgt2, plyr::.(day, cohort, species), plyr::numcolwise(se))
 names(ddHgt4.se) <- paste0(names(ddHgt4.se), ".se")
 ddHgt4 <- cbind(ddHgt4, ddHgt4.se[, c(5, 7, 9)])
 ddHgt4$session <- as.POSIXct(ddHgt4$day, origin = "1960-01-01")
@@ -214,12 +214,12 @@ napp$new.core.id <- ifelse(napp$core_num > 9, paste0(napp$species, napp$core_num
 
 ### build object to merge with master: average RGR, stem characteristics
 # mean growth rate for each plant, then each mesocosm
-mean.rgr     <- plyr::ddply(stemHeights[stemHeights$dead_live %in% "L", ], .(id, new.core.id, species), plyr::summarise, meanRGR = mean(RGR, na.rm = TRUE))
-mean.rgr.pot <- plyr::ddply(mean.rgr, .(new.core.id, species), plyr::summarise, rgr = mean(meanRGR, na.rm = TRUE))
+mean.rgr     <- plyr::ddply(stemHeights[stemHeights$dead_live %in% "L", ], plyr::.(id, new.core.id, species), plyr::summarise, meanRGR = mean(RGR, na.rm = TRUE))
+mean.rgr.pot <- plyr::ddply(mean.rgr, plyr::.(new.core.id, species), plyr::summarise, rgr = mean(meanRGR, na.rm = TRUE))
 mean.rgr.pot <- mean.rgr.pot[1:24, ]
 
-mean.dens     <- plyr::ddply(stemHeights[stemHeights$dead_live %in% "L", ], .(new.core.id, date), plyr::summarise, stem.density = sum(!is.na(height_cm)))
-mean.dens.pot <- plyr::ddply(mean.dens, .(new.core.id), plyr::summarise, dens = mean(stem.density / pot.m2, na.rm = TRUE)) # mean of all stem density msrmts for a pot
+mean.dens     <- plyr::ddply(stemHeights[stemHeights$dead_live %in% "L", ], plyr::.(new.core.id, date), plyr::summarise, stem.density = sum(!is.na(height_cm)))
+mean.dens.pot <- plyr::ddply(mean.dens, plyr::.(new.core.id), plyr::summarise, dens = mean(stem.density / pot.m2, na.rm = TRUE)) # mean of all stem density msrmts for a pot
 mean.dens.pot <- mean.dens.pot[1:24, ]
 
 rgr.stems <- plyr::join_all(list(mean.rgr.pot, mean.dens.pot), by = "new.core.id")
@@ -241,7 +241,7 @@ dea$IV.m2    <- dea$IV * dea$bd_gcm3  * (top.vol / core.area) # * 5 * 1e4
 dea$gap.g    <- dea$DEA - dea$IV
 dea$gap.m2   <- dea$DEA.m2 - dea$IV.m2
 
-dd.dea <- plyr::ddply(dea, .(species, species2), plyr::summarise,
+dd.dea <- plyr::ddply(dea, plyr::.(species, species2), plyr::summarise,
                 flux.g = mean(DEA),
                 flux.m2 = mean(DEA.m2),
                 flux.g.se = se(DEA),
@@ -249,7 +249,7 @@ dd.dea <- plyr::ddply(dea, .(species, species2), plyr::summarise,
 )
 dd.dea$type <- "DEA"
 
-dd.iv <- plyr::ddply(dea, .(species, species2), plyr::summarise,
+dd.iv <- plyr::ddply(dea, plyr::.(species, species2), plyr::summarise,
                flux.g = mean(IV),
                flux.m2 = mean(IV.m2),
                flux.g.se = se(IV),
@@ -290,7 +290,7 @@ CN_mass_data$n_ap <- ap(CN_mass_data$d15n)
 
 
 # get background 15N AP
-bkd <- plyr::ddply(CN_mass_data[as.character(CN_mass_data$time) %in% "t0", ], .(species, pool_label), plyr::summarise,
+bkd <- plyr::ddply(CN_mass_data[as.character(CN_mass_data$time) %in% "t0", ], plyr::.(species, pool_label), plyr::summarise,
              n15 = mean(n_ap, na.rm = T),
              se.n15 = se(n_ap)
 )
@@ -376,7 +376,7 @@ summary(stats::lm(n15xs ~ as.numeric(substr(time, 2, 2)), data = CN_mass_data[(C
 
 # get 15Nxs mass in each pool in each core
 # total recovery using belowground pools (rather than bulk sediment)
-mat2 <- plyr::ddply(CN_mass_data[!CN_mass_data$sample.type %in% c("bulk sediment"), ], .(time, species, new.core.id), plyr::summarise,
+mat2 <- plyr::ddply(CN_mass_data[!CN_mass_data$sample.type %in% c("bulk sediment"), ], plyr::.(time, species, new.core.id), plyr::summarise,
               n15_2 = sum(n15_g_recov, na.rm  = T)
 )
 mat2$recovery2 <- mat2$n15_2 / (spike) # "recovery" uses bulk belowground data, "recovery2" uses root pools
@@ -386,7 +386,7 @@ summary(mat2$recovery2[mat2$recovery2 > 0.05])
 
 ### relps between napp and 15n recoveries (excludes dead biomass)
 bgd <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roots", "fine roots", "rhizomes"), ],
-             .(time, species, new.core.id), plyr::summarise,
+             plyr::.(time, species, new.core.id), plyr::summarise,
              g        = sum(g_core, na.rm = T),
              n15    = sum(n15_g, na.rm  = T),
              n_core   = sum(n_core, na.rm = T)
@@ -398,7 +398,7 @@ bgd$g_pg <- bgd$n15 / bgd$g
 abv <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("decomp layer", "leaf 1", "leaf 2", "leaf 3", "leaf 4",
                                             "leaf 5", "leaf 6", "leaf 7", "leaf 8", "leaf 9", "leaf 10", "leaf 11",
                                             # "dead leaf", "standing dead", "microbe mat",
-                                            "standing dead", "stems"), ], .(time, species, new.core.id), plyr::summarise,
+                                            "standing dead", "stems"), ], plyr::.(time, species, new.core.id), plyr::summarise,
              g        = sum(g_core, na.rm = T),
              n15      = sum(n15_g, na.rm  = T),
              n_core   = sum(n_core, na.rm = T)
@@ -425,7 +425,7 @@ comb <- plyr::join_all(list(napp, abv, bgd, mat2), by = "new.core.id")
 ### mass over time in aboveground compartments. mean +- se by species (sum across depth intervals)
 
 ag2 <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type2 %in% c("stems", "leaf"), ],
-             .(time, species, new.core.id, sample.type2), plyr::summarise,
+             plyr::.(time, species, new.core.id, sample.type2), plyr::summarise,
              g   = sum(g_core / pot.m2, na.rm  = T),
              n_pct = mean(n_pct, na.rm = TRUE),
              n   = sum(n_core / pot.m2, na.rm  = T),
@@ -435,8 +435,8 @@ ag2 <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type2 %in% c("stems", "leaf"
              cn  = sum(c_pct * g_core, na.rm = TRUE) / n
 )
 
-ag2.sp <- plyr::ddply(ag2, .(time, species, sample.type2), plyr::numcolwise(mean))
-ag2.se <- plyr::ddply(ag2, .(time, species, sample.type2), plyr::numcolwise(se))
+ag2.sp <- plyr::ddply(ag2, plyr::.(time, species, sample.type2), plyr::numcolwise(mean))
+ag2.se <- plyr::ddply(ag2, plyr::.(time, species, sample.type2), plyr::numcolwise(se))
 names(ag2.se)[4:10] <- paste0(names(ag2.sp)[4:10], ".se")
 ag2.sp <- cbind(ag2.sp, ag2.se[, 4:10])
 ag2.sp$t <- as.integer(substr(ag2.sp$time, 2, 2))
@@ -453,7 +453,7 @@ ag2.sp$species2 <- ifelse(ag2.sp$species %in% "SA", "italic(S.~alterniflora)", "
 
 ### mass over time in belowground compartments. mean +- se by species (sum across depth intervals)
 bg <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roots", "fine roots", "rhizomes"), ],
-            .(time, species, new.core.id, sample.type), plyr::summarise,
+            plyr::.(time, species, new.core.id, sample.type), plyr::summarise,
             g   = sum(g_core / pot.m2, na.rm  = T),
             n_pct = mean(n_pct, na.rm = TRUE),
             n   = sum(n_core / pot.m2, na.rm  = T),
@@ -461,8 +461,8 @@ bg <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roots", "
             n15_pg = n15 / (g * pot.m2)
 )
 
-bg.sp <- plyr::ddply(bg, .(time, species, sample.type), plyr::numcolwise(mean))
-bg.se <- plyr::ddply(bg, .(time, species, sample.type), plyr::numcolwise(se))
+bg.sp <- plyr::ddply(bg, plyr::.(time, species, sample.type), plyr::numcolwise(mean))
+bg.se <- plyr::ddply(bg, plyr::.(time, species, sample.type), plyr::numcolwise(se))
 names(bg.se)[4:8] <- paste0(names(bg.se)[4:8], ".se")
 bg.sp <- cbind(bg.sp, bg.se[, 4:8])
 bg.sp$t <- as.integer(substr(bg.sp$time, 2, 2))
@@ -477,14 +477,14 @@ bg.sp$species2 <- ifelse(bg.sp$species %in% "SA", "italic(S.~alterniflora)", "it
 
 # aboveground
 ag <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("belowground stems", "stems", "leaf", paste0("leaf ", 1:10)), ],
-            .(time, species, new.core.id), plyr::summarise,
+            plyr::.(time, species, new.core.id), plyr::summarise,
             g   = sum(g_core / pot.m2, na.rm  = T),
             n_pct = mean(n_pct, na.rm = TRUE),
             n   = sum(n_core / pot.m2, na.rm  = T),
             n15 = sum(n15_g, na.rm  = T) # g per pot
 )
 
-agd1 <- plyr::ddply(ag, .(time, species), plyr::summarise,
+agd1 <- plyr::ddply(ag, plyr::.(time, species), plyr::summarise,
               n15.mean    = mean(n15, na.rm  = T),
               n15.se      = se(n15),
               recovery    = mean(n15 / spike, na.rm = TRUE),
@@ -492,10 +492,10 @@ agd1 <- plyr::ddply(ag, .(time, species), plyr::summarise,
 )
 # species-level belowground inventory over time
 bgd <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roots", "fine roots", "rhizomes"), ], #, "dead biomass"
-             .(time, species, new.core.id), plyr::summarise,
+             plyr::.(time, species, new.core.id), plyr::summarise,
              n15    = sum(n15_g, na.rm  = T)
 )
-bgd1 <- plyr::ddply(bgd, .(time, species), plyr::summarise,
+bgd1 <- plyr::ddply(bgd, plyr::.(time, species), plyr::summarise,
               n15.mean    = mean(n15, na.rm  = T),
               n15.se      = se(n15),
               recovery    = mean(n15 / spike, na.rm = TRUE),
@@ -506,7 +506,7 @@ bgd1$type <- "Belowground"
 agd1$type <- "Aboveground"
 mgd <- rbind(agd1, bgd1)
 
-tot <- plyr::ddply(mat2, .(time, species), plyr::summarise,
+tot <- plyr::ddply(mat2, plyr::.(time, species), plyr::summarise,
              n15.mean    = mean(n15_2, na.rm  = T),
              n15.se      = se(n15_2),
              recovery    = mean(n15_2 / spike, na.rm = TRUE),
@@ -519,10 +519,10 @@ tot.live <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roo
                                                  "leaf 1", "leaf 2", "leaf 3", "leaf 4",
                                                  "leaf 5", "leaf 6", "leaf 7", "leaf 8", "leaf 9", "leaf 10", "leaf 11",
                                                  "stems"), ], #, "dead biomass"
-                  .(time, species, new.core.id), plyr::summarise,
+                  plyr::.(time, species, new.core.id), plyr::summarise,
                   n15    = sum(n15_g, na.rm  = T)
 )
-tot.live1 <- plyr::ddply(tot.live, .(time, species), plyr::summarise,
+tot.live1 <- plyr::ddply(tot.live, plyr::.(time, species), plyr::summarise,
                    n15.mean    = mean(n15, na.rm  = T),
                    n15.se      = se(n15),
                    recovery    = mean(n15 / spike, na.rm = TRUE),
@@ -545,7 +545,7 @@ mgd$session <- unique(ddHgt4$session)[c(1, 3, 5, 7, 9)][as.numeric(as.factor(mgd
 # Aboveground: estimate from biomass and weighted average biomass N concentration
 # get weighted average of aboveground N concentrations for each core
 n_mean <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("belowground stems", "stems", "leaf", paste0("leaf ", 1:10)), ],
-                .(species, time, new.core.id), plyr::summarise,
+                plyr::.(species, time, new.core.id), plyr::summarise,
                 tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
                 tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
                 tot_c    = sum(c_pct * g_core / pot.m2, na.rm = TRUE),
@@ -553,14 +553,14 @@ n_mean <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("belowground 
                 c_wa = tot_c / tot_mass
 )
 n_bg_mean <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("fine roots", "coarse roots", "rhizomes"), ],
-                   .(species, time, new.core.id), plyr::summarise,
+                   plyr::.(species, time, new.core.id), plyr::summarise,
                    tot_mass_bg = sum(g_core / pot.m2, na.rm = TRUE),
                    tot_n_bg    = sum(n_core / pot.m2, na.rm = TRUE),
                    tot_c_bg    = sum(c_pct * g_core  / pot.m2, na.rm = TRUE),
                    n_wa_bg = tot_n_bg / tot_mass_bg,
                    c_wa_bg = tot_c_bg / tot_mass_bg
 )
-bg_del <- plyr::ddply(bg, .(new.core.id), plyr::summarise, # I think all these values are per m2
+bg_del <- plyr::ddply(bg, plyr::.(new.core.id), plyr::summarise, # I think all these values are per m2
                 g_bg     = sum(g, na.rm = TRUE),
                 g_froots = sum(g[sample.type %in% "fine roots"], na.rm = TRUE),
                 g_roots  = sum(g[sample.type %in% c("fine roots", "coarse roots")], na.rm = TRUE),
@@ -571,7 +571,7 @@ bg_del <- plyr::ddply(bg, .(new.core.id), plyr::summarise, # I think all these v
 )
 
 # all relevant values are per m2
-master <- join_all(list(napp[, c("napp.MH", "new.core.id")], # primary production
+master <- plyr::join_all(list(napp[, c("napp.MH", "new.core.id")], # primary production
                         rgr.stems,
                         n_mean, n_bg_mean[, -c(1:2)], # N inventories above and belowground
                         ag[, 3:7], bg_del # 15N recoveries and unweighted average pct N
@@ -638,8 +638,8 @@ summary(master$cn_ag[master$cn_ag > 5])
 
 summary(lm3_4 <- stats::lm(n_uptake_biomass ~ I(n_uptake_15n ) , data = master[master$time %in% c("t3", "t4"), ]))
 
-dd.master <- plyr::ddply(master, .(time, species), plyr::numcolwise(mean))
-dd.master.se <- plyr::ddply(master, .(time, species), plyr::numcolwise(se))
+dd.master <- plyr::ddply(master, plyr::.(time, species), plyr::numcolwise(mean))
+dd.master.se <- plyr::ddply(master, plyr::.(time, species), plyr::numcolwise(se))
 dd.master$n_uptake_biomass.se <- dd.master.se$n_uptake_biomass
 dd.master$prodn_rate.se <- dd.master.se$prodn_rate
 dd.master$session <- unique(ddHgt4$session)[c(3, 5, 7, 9)][as.numeric(as.factor(dd.master$time))]
@@ -671,12 +671,12 @@ car::Anova(aov.sp2 <- stats::aov(tot_N_int ~ species, data = master))
 stats::TukeyHSD(aov.sp2)
 stats::t.test(tot_N_int ~ species, data = master)
 
-plyr::ddply(master, .(species), plyr::summarise,
+plyr::ddply(master, plyr::.(species), plyr::summarise,
       Nint = mean(tot_N_int, na.rm = TRUE),
       Nint.se = se(tot_N_int))
 
 
-bgp.out <- plyr::ddply(master[master$time %in% c("t3", "t4"), ], .(species), plyr::summarise,
+bgp.out <- plyr::ddply(master[master$time %in% c("t3", "t4"), ], plyr::.(species), plyr::summarise,
                  bg_n_uptake         = mean(bg_n_est), # mg/m2/d
                  bg_n_uptake.se      = se(bg_n_est),
                  ag_n_uptake         = mean(n_uptake_biomass),
@@ -714,7 +714,7 @@ stats::t.test(I(bgp_est / prodn_rate) ~ species, data = master[master$time %in% 
 ##### Documentation
 ### leaf, stem biomass differences
 leaf <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("leaf", paste0("leaf ", 1:10)), ],
-              .(species, time, new.core.id), plyr::summarise,
+              plyr::.(species, time, new.core.id), plyr::summarise,
               tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
               tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
               tot_c    = sum(c_pct * g_core / pot.m2, na.rm = TRUE),
@@ -724,7 +724,7 @@ leaf <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("leaf", paste0(
 leaf$t <- as.numeric(substr(leaf$time, 2, 2))
 
 stem <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("belowground stems", "stems"), ],
-              .(species, time, new.core.id), plyr::summarise,
+              plyr::.(species, time, new.core.id), plyr::summarise,
               tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
               tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
               tot_c    = sum(c_pct * g_core / pot.m2, na.rm = TRUE),
@@ -738,8 +738,8 @@ names(leaf2)[4:8] <- paste0(names(leaf)[4:8], ".leaf")
 leaf2 <- cbind(leaf2, stem[4:8])
 leaf2$n_wa_ag <- (leaf2$tot_n.leaf + leaf2$tot_n) / (leaf2$tot_mass.leaf + leaf2$tot_mass)
 
-plyr::ddply(leaf[, -c(2, 3)], .(species), plyr::numcolwise(mean))
-plyr::ddply(leaf[, -c(2, 3)], .(species), plyr::numcolwise(se))
+plyr::ddply(leaf[, -c(2, 3)], plyr::.(species), plyr::numcolwise(mean))
+plyr::ddply(leaf[, -c(2, 3)], plyr::.(species), plyr::numcolwise(se))
 car::Anova(aov1 <- stats::aov(tot_mass ~ t * as.factor(species), data = leaf), type = "III")
 stats::TukeyHSD(stats::aov(tot_mass ~ as.factor(species), data = leaf))
 summary(stats::lm(tot_mass ~ t, data = leaf[leaf$species %in% "SA",]))
@@ -748,8 +748,8 @@ summary(stats::lm(tot_mass ~ t, data = leaf[leaf$species %in% "SA",]))
 car::Anova(aov1 <- stats::aov(n_wa ~ t * as.factor(species), data = leaf), type = "III")
 stats::TukeyHSD(stats::aov(n_wa ~ as.factor(species), data = leaf))
 
-plyr::ddply(stem[, -c(2, 3)], .(species), plyr::numcolwise(mean))
-plyr::ddply(stem[, -c(2, 3)], .(species), plyr::numcolwise(se))
+plyr::ddply(stem[, -c(2, 3)], plyr::.(species), plyr::numcolwise(mean))
+plyr::ddply(stem[, -c(2, 3)], plyr::.(species), plyr::numcolwise(se))
 car::Anova(aov1 <- stats::aov(tot_mass ~ t * as.factor(species), data = stem), type = "III")
 stats::TukeyHSD(stats::aov(tot_mass ~ as.factor(species), data = stem))
 # N content: no diffs
@@ -760,21 +760,21 @@ car::Anova(aov1 <- stats::aov(tot_n ~ t * as.factor(species), data = stem), type
 stats::TukeyHSD(stats::aov(tot_n ~ as.factor(species), data = stem))
 
 # mean N content for all
-plyr::ddply(stem[, -c(2, 3)], .(), plyr::numcolwise(mean))
-plyr::ddply(stem[, -c(2, 3)], .(), plyr::numcolwise(se))
+plyr::ddply(stem[, -c(2, 3)], plyr::.(), plyr::numcolwise(mean))
+plyr::ddply(stem[, -c(2, 3)], plyr::.(), plyr::numcolwise(se))
 
 
 
 
 ### aboveground weighted average N content
 car::Anova(stats::aov(n_wa_ag ~ t*species, data = leaf2), type = "III") # no diffs by spp
-plyr::ddply(leaf2, .(species, time), plyr::summarise,
+plyr::ddply(leaf2, plyr::.(species, time), plyr::summarise,
       n_pct = mean(n_wa_ag),
       n_pct.se = se(n_wa_ag))
-plyr::ddply(leaf2, .(species), plyr::summarise,
+plyr::ddply(leaf2, plyr::.(species), plyr::summarise,
       n_pct = mean(n_wa_ag),
       n_pct.se = se(n_wa_ag))
-plyr::ddply(leaf2, .(), plyr::summarise,
+plyr::ddply(leaf2, plyr::.(), plyr::summarise,
       n_pct = mean(n_wa_ag),
       n_pct.se = se(n_wa_ag))
 
@@ -783,7 +783,7 @@ plyr::ddply(leaf2, .(), plyr::summarise,
 
 ### belowground biomass and tissue N
 rts <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("fine roots", "coarse roots", "rhizomes"), ],
-             .(species, time, new.core.id, sample.type), plyr::summarise,
+             plyr::.(species, time, new.core.id, sample.type), plyr::summarise,
              tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
              tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
              tot_c    = sum(c_pct * g_core / pot.m2, na.rm = TRUE),
@@ -792,8 +792,8 @@ rts <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("fine roots", "c
 )
 rts$t <- as.numeric(substr(rts$time, 2, 2))
 
-plyr::ddply(rts[, -c(2, 3)], .(species, sample.type), plyr::numcolwise(mean))
-plyr::ddply(rts[, -c(2, 3)], .(species, sample.type), plyr::numcolwise(se))
+plyr::ddply(rts[, -c(2, 3)], plyr::.(species, sample.type), plyr::numcolwise(mean))
+plyr::ddply(rts[, -c(2, 3)], plyr::.(species, sample.type), plyr::numcolwise(se))
 car::Anova(aov1 <- stats::aov(tot_mass ~ t * as.factor(species), data = rts[rts$sample.type %in% "coarse roots", ]), type = "III")
 car::Anova(aov1 <- stats::aov(tot_mass ~ t * as.factor(species), data = rts[rts$sample.type %in% "fine roots", ]), type = "III")
 car::Anova(aov1 <- stats::aov(tot_mass ~ t * as.factor(species), data = rts[rts$sample.type %in% "rhizomes", ]), type = "III")
@@ -877,10 +877,10 @@ graphics::text(x = 65, y = 0.3, cex = 0.95, expression(italic("Distichlis")))
 
 ggplot2::ggplot(ddHgt4[ddHgt4$cohort > 0, ], ggplot2::aes(y = mass / pot.m2, x = session, colour = species, shape = species)) +
   ggplot2::geom_point(size = 1.5) + ggplot2::theme_classic() +
-  ggplot2::geom_errorbar(aes(ymin = (mass - mass.se) / pot.m2, ymax = (mass + mass.se) / pot.m2), width = 0) +
+  ggplot2::geom_errorbar(ggplot2::aes(ymin = (mass - mass.se) / pot.m2, ymax = (mass + mass.se) / pot.m2), width = 0) +
   ggplot2::scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   ggplot2::scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  ggplot2::scale_x_datetime(breaks = unique(ddHgt4$session)[c(1, 3, 5, 7, 9)], labels = date_format("%b-%d")) +
+  ggplot2::scale_x_datetime(breaks = unique(ddHgt4$session)[c(1, 3, 5, 7, 9)], labels = scales::date_format("%b-%d")) +
   ggplot2::ylim(0, 600) + ggplot2::facet_grid(. ~ cohort, labeller = label_parsed) +
   ggplot2::labs(y = expression("Biomass (g "%.%m^-2~")"), x = "") +
   ggplot2::theme(legend.position = c(0.125, 0.87), legend.text.align = 0,
@@ -936,7 +936,7 @@ ggplot(mgd[!mgd$time %in% "t0", ], aes(x = session, y = recovery, colour = speci
 
 
 # Figure 5 - 15N uptake per gram fine roots ---------------------------------
-rt2 <- plyr::ddply(master, .(species, timeDiff), plyr::summarise,
+rt2 <- plyr::ddply(master, plyr::.(species, timeDiff), plyr::summarise,
              xbar = mean(n15_pgFR, na.rm = TRUE),
              se = se(n15_pgFR))
 ggplot(rt2, aes(x = timeDiff, y = xbar, colour = species, shape = species)) + geom_point(size = pointSize) + theme_classic() +
