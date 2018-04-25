@@ -5,9 +5,9 @@
 \title{Calculate net aboveground primary production}
 \usage{
 nappCalc2(dataset, liveCol = "mass", deadCol = "dead", yearCol = "year",
-  siteCol = "pot2", MilnerHughes = "TRUE", EOS = "FALSE",
-  EOS_window = 1, summarize = "TRUE", timeCol = "day",
-  annualReset = "TRUE")
+  siteCol = "pot2", timeCol = "day", annualReset = "TRUE",
+  MilnerHughes = "TRUE", EOS = "FALSE", EOS_window = 1,
+  summarize = "TRUE")
 }
 \arguments{
 \item{dataset}{data}
@@ -20,24 +20,21 @@ nappCalc2(dataset, liveCol = "mass", deadCol = "dead", yearCol = "year",
 
 \item{siteCol}{site/plot/experimental unit identifier}
 
-\item{MilnerHughes}{Do you want Milner Hughes calculated?}
-
-\item{EOS}{Do you want end-of-season-live calculated?}
-
-\item{EOS_window}{window for EOSL}
-
-\item{summarize}{should data summary be added (output will be a list)}
-
 \item{timeCol}{time column (sequential measurements within each year)}
 
 \item{annualReset}{should data be reset to zero each year}
+
+\item{MilnerHughes}{If "TRUE", Milner-Hughes NAPP is calculated}
+
+\item{EOS}{If "TRUE", end-of-season live biomass is reported}
+
+\item{EOS_window}{window for EOSL}
+
+\item{summarize}{If "TRUE", output will be a list with two elements: incremental data and summary data}
 }
 \value{
 list
 }
 \description{
 Calculate net aboveground primary production
-}
-\examples{
-\dontrun{}
 }

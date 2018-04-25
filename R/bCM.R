@@ -14,7 +14,8 @@
 #' CSP <- plyr::dlply(allometry, c("spp"), bCM)
 #' CSP.coef <- plyr::ldply(CSP, stats::coef)
 #' ### add lambda value
-#' CSP.coef$lam <- plyr::ddply(allometry, c("spp"), function(df)  bCM(df, lam.only = TRUE))[, "V1"]
+#' CSP.coef$lam <- plyr::ddply(allometry, c("spp"), function(df)  
+#'                 bCM(df, lam.only = TRUE))[, "V1"]
 #' @export
 bCM <- function(dat, mass = "sample", height = "height_cm", lam.avail = c(-2, -1.5, -1, -2/3, -1/2, -1/3, 0, 1/3, 1/2, 2/3, 1, 1.5, 2),
                 lam.only = FALSE) {

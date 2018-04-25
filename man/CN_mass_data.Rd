@@ -33,11 +33,7 @@ Data: Nutrient concentrations, stable isotope ratios, and biomass from destructi
 ### export to .csv:
 write.csv(CN_mass_data, file = "CN_mass_data.csv")
 }
-\references{
-Hill et al.
-(\href{url}{text})
-}
 \keyword{15N}
-\keyword{datasets,}
+\keyword{data,}
 \keyword{isotopes,}
 \keyword{stable}

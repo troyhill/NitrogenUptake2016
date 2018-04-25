@@ -5,17 +5,16 @@
 #' @param deadCol dead biomass
 #' @param yearCol year
 #' @param siteCol site/plot/experimental unit identifier
-#' @param MilnerHughes Do you want Milner Hughes calculated?
-#' @param EOS Do you want end-of-season-live calculated?
-#' @param EOS_window window for EOSL
-#' @param summarize should data summary be added (output will be a list)
 #' @param timeCol time column (sequential measurements within each year)
 #' @param annualReset should data be reset to zero each year
+#' @param MilnerHughes If "TRUE", Milner-Hughes NAPP is calculated
+#' @param EOS If "TRUE", end-of-season live biomass is reported
+#' @param EOS_window window for EOSL
+#' @param summarize If "TRUE", output will be a list with two elements: incremental data and summary data
 #'
 #' @return list
 #' @importFrom zoo as.yearmon
 #'
-#' @examples \dontrun{}
 #' @export
 nappCalc2 <- function(
   dataset,
@@ -23,13 +22,12 @@ nappCalc2 <- function(
   deadCol = "dead",
   yearCol = "year",
   siteCol = "pot2",
+  timeCol = "day",
+  annualReset = "TRUE",
   MilnerHughes = "TRUE",
   EOS = "FALSE",
   EOS_window = 1,
-  summarize = "TRUE",
-  timeCol = "day",
-  annualReset = "TRUE"
-
+  summarize = "TRUE"
 ) {
   # requires that zoo library be loaded (time is converted to yearmon for finding EOS)
   # implements Smalley (1958) and Milner and Hughes (1968)

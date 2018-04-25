@@ -22,11 +22,9 @@
 #' \item{g_core}{Total mass (grams) in entire pool; corrects for subsampling of depth intervals}
 #'}
 #' @docType data
-#' @keywords datasets, stable isotopes, 15N
+#' @keywords data, stable isotopes, 15N
 #' @name CN_mass_data
 #' @usage CN_mass_data
 #' @examples ### export to .csv:
 #' write.csv(CN_mass_data, file = "CN_mass_data.csv")
-#' @references Hill et al.
-#' (\href{url}{text})
 NULL

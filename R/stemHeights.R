@@ -27,11 +27,9 @@
 #'
 #' }
 #' @docType data
-#' @keywords datasets, aboveground biomass, NAPP
+#' @keywords data, aboveground biomass, NAPP, stem height, stem density
 #' @name stemHeights
 #' @usage stemHeights
 #' @examples ### export to .csv:
 #' write.csv(stemHeights, file = "stemHeights.csv")
-#' @references Hill et al.
-#' (\href{url}{text})
 NULL

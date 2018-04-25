@@ -22,13 +22,6 @@ Data: Denitrification enzyme activity and in vitro N2O production rates
 ### export to .csv:
 write.csv(dea, file = "dea.csv")
 }
-\references{
-Hill et al.
-(\href{url}{text})
-}
-\author{
-Troy D. Hill \email{Hill.Troy@gmail.com}
-}
 \keyword{N2O}
-\keyword{datasets,}
+\keyword{data,}
 \keyword{denitrification,}

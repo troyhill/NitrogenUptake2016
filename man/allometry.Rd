@@ -28,9 +28,5 @@ A dataframe of masses and heights of stems of Spartina alterniflora and Distichl
 ### export to .csv:
 write.csv(allometry, file = "allometry.csv")
 }
-\references{
-Hill et al.
-(\href{url}{text})
-}
 \keyword{allometry}
 \keyword{data,}

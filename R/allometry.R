@@ -23,6 +23,4 @@
 #' @usage allometry
 #' @examples ### export to .csv:
 #' write.csv(allometry, file = "allometry.csv")
-#' @references Hill et al.
-#' (\href{url}{text})
 NULL

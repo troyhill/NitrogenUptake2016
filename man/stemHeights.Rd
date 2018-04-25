@@ -37,11 +37,10 @@ A dataframe of Spartina alterniflora and Distichlis spicata stem heights, from t
 ### export to .csv:
 write.csv(stemHeights, file = "stemHeights.csv")
 }
-\references{
-Hill et al.
-(\href{url}{text})
-}
-\keyword{NAPP}
+\keyword{NAPP,}
 \keyword{aboveground}
 \keyword{biomass,}
-\keyword{datasets,}
+\keyword{data,}
+\keyword{density}
+\keyword{height,}
+\keyword{stem}

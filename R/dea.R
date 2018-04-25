@@ -9,12 +9,9 @@
 #' \item{bd_gcm3}{Bulk density (grams per cubic centimeter)}
 #'}
 #' @docType data
-#' @author Troy D. Hill \email{Hill.Troy@@gmail.com}
-#' @keywords datasets, denitrification, N2O
+#' @keywords data, denitrification, N2O
 #' @name dea
 #' @usage dea
 #' @examples ### export to .csv:
 #' write.csv(dea, file = "dea.csv")
-#' @references Hill et al.
-#' (\href{url}{text})
 NULL
