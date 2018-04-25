@@ -43,8 +43,8 @@ fig2Col   <- "gray55"
 CSP <- plyr::dlply(allometry, c("spp"), bCM)
 CSP.coef <- plyr::ldply(CSP, stats::coef)
 CSP.coef$lam <- plyr::ddply(allometry, c("spp"), function(df)  bCM(df, lam.only = TRUE))[, "V1"]
-CSP.coef$BIC <- ldply(CSP, stats::BIC)[, "V1"]
-CSP.coef$rsq <- ldply(CSP, MuMIn::r.squaredGLMM)[, "R2m"]
+CSP.coef$BIC <- plyr::ldply(CSP, stats::BIC)[, "V1"]
+CSP.coef$rsq <- plyr::ldply(CSP, MuMIn::r.squaredGLMM)[, "R2m"]
 table(allometry$spp[!is.na(allometry$sample)])
 
 
