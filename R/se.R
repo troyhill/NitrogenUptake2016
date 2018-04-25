@@ -6,7 +6,7 @@
 #'
 #' @examples
 #' se(CN_mass_data$n_pct)
-#' plyr::ddply(CN_mass_data, plyr::.(species, pool_label), summarise, se = se(n_pct))
+#' plyr::ddply(CN_mass_data, plyr::.(species, pool_label), plyr::summarise, se = se(n_pct))
 #' @importFrom stats sd
 #' @export
 se <- function(x){
