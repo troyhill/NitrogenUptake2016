@@ -1,6 +1,6 @@
 ---
 title: "analysis"
-author: "Troy D. Hill"
+author: "Troy D. Hill, Nathalie R. Sommer, Caroline R. Kanaskie, Emily A. Santos, and Autumn J. Oczkowski"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -35,19 +35,51 @@ fig2Col   <- "gray55"
 
 ## Allometry models
 
+Live plants were collected from Colt State Park (Bristol, Rhode Island, USA) in May, June, and July 2016. On each sampling date, three 25 x 25 cm quadrats were collected from monoculture areas of short-form Spartina alterniflora and Distichlis spicata. Stems were cut at the sediment surface, measured to the nearest millimeter, and a representative subsample of stems were individually dried to constant weight at 50oC.
+
+These live stem masses and heights were used to establish allometric relationships and non-destructively estimate plant masses. Species-specific allometry models were parameterized using Box-Cox power transformations of biomass (lambda) and untransformed plant heights. 
+
 ```{r allometry}
 
 # Allometry ----------------------------------------------------------------
 
-##### Establish relationships following Lu et al.
+##### Establish relationships following Lu et al. 2016
 CSP <- plyr::dlply(allometry, c("spp"), bCM)
 CSP.coef <- plyr::ldply(CSP, stats::coef)
 CSP.coef$lam <- plyr::ddply(allometry, c("spp"), function(df)  bCM(df, lam.only = TRUE))[, "V1"]
 CSP.coef$BIC <- plyr::ldply(CSP, stats::BIC)[, "V1"]
 CSP.coef$rsq <- plyr::ldply(CSP, MuMIn::r.squaredGLMM)[, "R2m"]
-table(allometry$spp[!is.na(allometry$sample)])
+CSP.coef
 
+```
 
+``` {r Figure 1 - Allometry, fig.width = 6, fig.height = 4}
+
+# png(filename = here("output/Figure1.png"), width = 100, height = 100, units = "mm", res = 400)
+graphics::par(fig = c(0, 1, 0, 1), mar = c(4, 4, 0.5, 0.5))
+graphics::plot(sample ~ height_cm, data = allometry[(allometry$spp %in% "DISP"), ],
+     cex = pointSize / 2, pch = 19, col = fig2Col,
+     ylab = "Total mass (g)", xlab = "Height (cm)", xlim = c(0, 80), ylim = c(0, 0.65), xaxt = "n",
+     las = 1, tcl = 0.25, tck = 0.01, bty = "n", yaxs = "i", xaxs = "i")
+graphics::abline(h = 0)
+graphics::abline(v = 0)
+graphics::axis(side = 1, tcl = 0.25, tck = 0.01, at = axTicks(1), labels = graphics::axTicks(1))
+graphics::points(sample ~ height_cm, data = allometry[(allometry$spp %in% "SPAL"), ],  cex = pointSize / 2, pch = 17)
+
+x <- allometry[(allometry$spp %in% "DISP"), "height_cm"]
+x.spal <- allometry[(allometry$spp %in% "SPAL"), "height_cm"]
+
+y.pred2 <- (x * CSP.coef[1, 3] + CSP.coef[1, "(Intercept)"])^(1/CSP.coef$lam[1]) # DISP
+y.pred3 <- (x.spal * CSP.coef[2, 3] + CSP.coef[2, "(Intercept)"])^(1/CSP.coef$lam[2]) # SPAL
+graphics::lines(x = x[order(y.pred2)], y = y.pred2[order(y.pred2)], lty = 1, lwd = 2, col = fig2Col)
+graphics::lines(x = x.spal[order(y.pred3)], y = y.pred3[order(y.pred3)], lty = 1, lwd = 2)
+
+graphics::text(x = 20, y = 0.52, cex = 0.95, expression(italic("Spartina")))
+graphics::text(x = 65, y = 0.3, cex = 0.95, expression(italic("Distichlis")))
+```
+The mass of plants growing in the mesocosms were estimated from weekly plant height measurements and the species-specific allometry equations of the form mass = (height*a + b)1/lambda (reported in CSP.coef, above). 
+
+```{r applying allometry to estimate plant masses}
 
 ### estimate plant masses from allometry
 for (i in 1:nrow(stemHeights)) {
@@ -61,9 +93,9 @@ for (i in 1:nrow(stemHeights)) {
 
 ```
 
-
 ## Allometry validation: comparison between predicted and harvested masses
 
+To evaluate the performance of our allometry models, predicted biomass was compared with aboveground biomass directly measured during mesocosm harvest.
 
 ```{r Allometry validation: comparison between predicted and harvested masses}
 ###
@@ -125,17 +157,31 @@ obs <- plyr::join_all(list(obs, dat.ld.sub[, c(4,9:10)]), by = "id")
 names(obs)[which(names(obs) %in% "live")] <- "allom.est"
 obs$diff <- (obs$allom.est - obs$g)             # magnitude accuracy of allometry prediction (g)
 obs$diff.pct <- (obs$allom.est - obs$g) / obs$g # percent accuracy of allometry prediction
-summary(obs$diff)
-# summary(obs[obs$species %in% "SA", ])
-# summary(obs[obs$species %in% "DS", ])
-
 obs$species2 <- ifelse(obs$species %in% "SA", "italic(S.~alterniflora)", "italic(D.~spicata)")
+summary(obs$diff)
+```
 
+```{r Comparison, fig.width = 6, fig.height = 4}
+# Figure S1 - predicted vs obs biomass ---------------------------------------
+ggplot(obs, aes(x = allom.est / pot.m2, y = g / pot.m2, colour = species2, shape = species2)) +
+  geom_point(size = pointSize) + theme_classic() %+replace% theme(legend.title = element_blank()) +
+  labs(x = expression("Predicted biomass (allometry; g"%.%m^-2~")"), y = expression("Measured biomass (g "%.%m^-2~")")) +
+  ylim(0, 650) + xlim(0, 650) +
+  scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(obs$species2)[1], unique(obs$species2)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(obs$species2)[1], unique(obs$species2)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  theme(legend.position = c(0.3, 0.9), legend.text.align = 0,
+        legend.background = element_rect(fill = NA, colour = NA)) +
+  geom_abline(slope = 1, intercept = 0, linetype = 2)
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS1_", todaysDate, ".png"), width = 90, height= 90, units = "mm", dpi = 400)
 ```
 
 
 
 ## Relative growth rates
+
+All live plants in each of the 24 mesocosms were tagged and measured to the nearest millimeter on 22 June, 29 June, 6 July, 13 July, and 20 July 2016. Stem heights were also recorded for mesocosms as they were harvested. New plants were tagged throughout the experiment, and in total 839 unique plants were tracked. Relative growth rates were calculated for each tagged plant as the difference between sequential log-transformed plant masses, as described in equation 1 of Hill et al. (in press).
+
+Relative growth rates were averaged across all unique stems in each mesocosm. When multiple growth rate measurements were available for an individual plant, they were averaged to get a single representative quantity for each unique plant, before calculating a mesocosm average.
 
 ```{r Relative growth rates}
 
@@ -170,6 +216,7 @@ mean.rgr.pot <- mean.rgr.pot[1:24, ]
 
 ## Stem density and primary production
 
+Our dataset also allowed calculation of stem densities and primary production. Primary production was calculated for each mesocosm as the sum of positive live biomass increments at the mesocosm-scale (Milner and Hughes, 1968).
 
 ```{r stem density and primary production}
 # Stem density and biomass ------------------------------------------------
@@ -228,7 +275,14 @@ rgr.stems <- plyr::join_all(list(mean.rgr.pot, mean.dens.pot), by = "new.core.id
 
 
 
-## N2O flux: DEA and in vitro denitrifcation
+## Denitrification enzyme activity: potential and in vitro denitrifcation
+
+These data are derived from two sets of acetylene inhibition assays conducted using bulk sediment from the 0-5 cm depth intervals of each of the six mesocosms harvested on 9 July 2016. The two assays measured denitrification enzyme activity (DEA) potential and "in vitro" or ambient denitrification. DEA potential was measured by incubating 6.5 g of sediment in 70 mL jars sealed with rubber septa. Sample containers were amended with 12 mL of nutrient-amended filtered seawater (7 mmol N L-1 as KNO3; 17 mmol C L-1 as D-glucose; and 6 mmol P L-1 as KH2PO4) with 0.125 g L-1 chloramphenicol added as a microbial inhibitor. Containers were alternately evacuated and flushed with N2 three times, and acetylene (10% of headspace volume) was added to block reduction of N2O to N2. 
+
+In vitro denitrification was measured in nearly identical acetylene inhibition assays. The only difference was the use of 12 mL of unamended filtered seawater rather than a nutrient solution, following Warneke et al. (2011). 
+The potential and in vitro DEA data provided here reflect the slope of the line of best fit for dilution-corrected N2O concentrations in the jar headspace. At least three points were used for each rate estimate, and all relationships had r2 ??? 0.92 (mean r2 = 0.97). A laboratory blank using DEA solution and no added sediment yielded zero flux (slope = 0.0; r2 = 0.0), so no blank correction was applied. Rates are provided on a per-gram basis (units: nmol N2O per g dry mass per hr). 
+
+Differences between species and assay types were tested using two-way ANOVA.
 
 ```{r Denitrification enzyme activity and ambient N2O flux}
 
@@ -272,10 +326,13 @@ car::Anova(dea.g.aov, type = 3, singular = TRUE) # no difference between species
 
 ## 15N tracer: data preparation, background correction
 
-```{r 15N data}
-# 15N data ----------------------------------------------------------------
+After collection of marsh cores, six were harvested to capture background isotope ratios in each pool. The remaining 24 mesocosms were grown in a greenhouse receiving raw Narragansett Bay seawater under a simulated semi-diurnal tidal regime. 
 
+During an ebb tide on 24 June 2016, 1.95 mg 15N was added to each mesocosm by injecting a solution of 99 atom percent 15N as KNO3 in artificial seawater. 
 
+At each subsequent week, three mesocosms of each vegetation type were harvested and separated into a wide range of vegetative and bulk sediment pools, with 15N recovery indicating N uptake and allocation.
+
+```{r 15N spike}
 # how much 15N was added to each pot?
 KNO3    <- 2.24047           # grams of KNO3 added
 soln    <- 2027.5            # final volume of spike solution (mls)
@@ -288,6 +345,11 @@ spike   <- KNO3 * (N_mw / KNO3_mw) / soln * mls # total grams of 15N added to ea
 # calculate atom pct from per mil values
 CN_mass_data$n_ap <- ap(CN_mass_data$d15n)
 
+```
+
+Background 15N isotope ratios were based on the time-zero mesocosms, which received no tracer.
+
+```{r 15N background}
 
 # get background 15N AP
 bkd <- plyr::ddply(CN_mass_data[as.character(CN_mass_data$time) %in% "t0", ], plyr::.(species, pool_label), plyr::summarise,
@@ -295,8 +357,11 @@ bkd <- plyr::ddply(CN_mass_data[as.character(CN_mass_data$time) %in% "t0", ], pl
              se.n15 = se(n_ap)
 )
 
+```
 
+Background 15N was subtracted from each sample to calculate 15N enrichment in excess of background levels; how much of the added tracer was recovered. We also corrected belowground tissues for sorption by subtracting the 15N enrichment of dead belowground biomass.
 
+```{r 15N corrections}
 # subtract background to get 15N excess (if result is negative, 15Nxs = 0)
 CN_mass_data$n15xs <- as.numeric(NA)
 for(i in 1:nrow(CN_mass_data)) {
@@ -354,14 +419,7 @@ CN_mass_data$n_core   <- CN_mass_data$n_pct * CN_mass_data$g_core
 summary(CN_mass_data$n15xs[!is.na(CN_mass_data$depth_bottom) & (CN_mass_data$time %in% paste0("t", 1:4))])
 summary(CN_mass_data$n15xs_MOM[!is.na(CN_mass_data$depth_bottom) & (CN_mass_data$time %in% paste0("t", 1:4))])
 
-summary(CN_mass_data$n15xs[(CN_mass_data$depth_bottom < 11) & (CN_mass_data$sample.type %in% "dead biomass") & (CN_mass_data$time %in% paste0("t", 1:4))])
-summary(CN_mass_data$n15xs_MOM[(CN_mass_data$depth_bottom < 11) & (CN_mass_data$sample.type %in% "dead biomass") & (CN_mass_data$time %in% paste0("t", 1:4))])
-
-# look at difference between with and without MOM correction
-summary(CN_mass_data$n15xs[!is.na(CN_mass_data$depth_bottom) & (CN_mass_data$time %in% paste0("t", 1:4))] - CN_mass_data$n15xs_MOM[!is.na(CN_mass_data$depth_bottom) & (CN_mass_data$time %in% paste0("t", 1:4))])
-# A: actually kind of high. mean = 0.05% compared with mean 15Nxs AP = 0.25%
-
-### does sorption vary by species?  No.
+# Q: does sorption vary by species?  No.
 summary(CN_mass_data$n15xs[CN_mass_data$sample.type %in% "dead biomass"])
 summary(stats::aov(n15xs ~ species, data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0"), ]))
 summary(stats::aov(n15xs ~ species, data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0") & (CN_mass_data$depth_bottom < 11), ])) # doesn't change if focused only on top 10 cm
@@ -369,10 +427,12 @@ summary(stats::aov(n15xs ~ species, data = CN_mass_data[(CN_mass_data$sample.typ
 ### does sorption change over time? No
 summary(stats::lm(n15xs ~ species + as.numeric(substr(time, 2, 2)), data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0"), ])) # no
 summary(stats::lm(n15xs ~ as.numeric(substr(time, 2, 2)), data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0"), ]))
-summary(stats::lm(n15xs ~ as.numeric(substr(time, 2, 2)), data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0") & (CN_mass_data$depth_bottom < 11), ])) # doesn't change if focused only on top 10 cm
+```
 
 
+Two objects contain 15N recoveries - in one version the belowground 15N mass was calculated from the bulk sediment samples (roots + sediment). The second estimates 15N recovery based on organic pools.
 
+```{r 15N recovery by pool}
 
 # get 15Nxs mass in each pool in each core
 # total recovery using belowground pools (rather than bulk sediment)
@@ -413,10 +473,10 @@ comb <- plyr::join_all(list(napp, abv, bgd, mat2), by = "new.core.id")
 ```
 
 
-## 15N inventories
+## Aboveground tissue: Biomass, N concentrations, 15N recovery
 
 
-```{r 15N inventories}
+```{r 15N inventories: aboveground}
 
 ###
 ### aboveground data
@@ -444,8 +504,34 @@ ag2.sp$session <- unique(ddHgt4$session)[c(1, 3, 5, 7, 9)][as.numeric(as.factor(
 ag2.sp$species2 <- ifelse(ag2.sp$species %in% "SA", "italic(S.~alterniflora)", "italic(D.~spicata)")
 
 
+```
 
 
+``` {r Figure S2, fig.width = 6, fig.height = 4}
+# Figure S2 - aboveground pools ---------------------------------------
+ggplot(ag2.sp, aes(y = g, x = session, colour = species2)) + geom_point( size = pointSize) + theme_classic() %+replace% theme(legend.title = element_blank()) +
+  facet_grid(sample.type2 ~ .) + geom_errorbar(aes(ymin = g - g.se, ymax = g + g.se),  width = 0) +
+  scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(ag2.sp$species2)[1], unique(ag2.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ylab(expression("Biomass (g "%.%m^-2~")")) +  xlab("") + ylim(0, 400) +
+  theme(legend.position = c(2.2, 0.9), legend.text.align = 0,
+        legend.background = element_rect(fill = NA, colour = NA))
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS2_part1_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
+
+
+ggplot(ag2.sp, aes(y = n_pct, x = session, colour = species2)) + geom_point( size = pointSize) + theme_classic() %+replace% theme(legend.title = element_blank()) +
+  facet_grid(sample.type2 ~ .) + geom_errorbar(aes(ymin = n_pct - n_pct.se, ymax = n_pct + n_pct.se),  width = 0) +
+  scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(ag2.sp$species2)[1], unique(ag2.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ylab("Tissue N") +  xlab("") + scale_y_continuous(labels = scales::percent) +
+  theme(legend.position = c(2.2, 0.9), legend.text.align = 0,
+        legend.background = element_rect(fill = NA, colour = NA))
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS2_part2_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
+```
+
+
+
+## Belowground tissue: Biomass, N concentrations, 15N recovery
+
+```{r 15N inventories: belowground}
 
 ###
 ### belowground data
@@ -470,9 +556,32 @@ bg.sp$session <- unique(ddHgt4$session)[c(1, 3, 5, 7, 9)][as.numeric(as.factor(b
 bg.sp$species2 <- ifelse(bg.sp$species %in% "SA", "italic(S.~alterniflora)", "italic(D.~spicata)")
 
 
+```
+
+``` {r Figures, fig.width = 6, fig.height = 4}
+# Figure S3 - belowground biomass pools --------------------------------------
+ggplot(bg.sp, aes(y = g, x = session, colour = species2)) + geom_point( size = pointSize) + theme_classic() +
+  facet_grid(sample.type ~ .) + geom_errorbar(aes(ymin = g - g.se, ymax = g + g.se),  width = 0) +
+  scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(bg.sp$species2)[1], unique(bg.sp$species)[2]), labels = c(expression(italic(D.~spicata)), expression(italic(S.~alterniflora)))) +
+  ylab(expression("Biomass (g "%.%m^-2~")")) +  xlab("") +
+  theme(legend.text.align = 0, legend.position = c(2.2, 1),
+        legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS3_part1_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
 
 
+ggplot(bg.sp, aes(y = n_pct, x = session, colour = species2)) + geom_point( size = pointSize) + theme_classic() +
+  facet_grid(sample.type ~ .) + geom_errorbar(aes(ymin = n_pct - n_pct.se, ymax = n_pct + n_pct.se),  width = 0) +
+  scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(bg.sp$species2)[1], unique(bg.sp$species)[2]), labels = c(expression(italic(D.~spicata)), expression(italic(S.~alterniflora)))) +
+  ylab("Tissue N content") +  xlab("") + scale_y_continuous(labels = scales::percent) + #ylim(0, 0.012) +
+  theme(legend.text.align = 0, legend.position = c(2.2, 1),
+        legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS3_part2_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
+```
 
+
+## Total 15N recoveries
+
+```{r 15N inventories continued}
 # 15N inventories ---------------------------------------------------------
 
 # aboveground
@@ -597,24 +706,8 @@ master$n15_pgFR2 <- master$n15_core * 1e3 / master$g_froots
 master$tot_15n_uptake <- master$n_uptake_15n + master$n_uptake_15n_bg # mg N/day/m2
 
 
-car::Anova(stats::aov(n15_core ~ rgr * species, data = master), type = "III")
-summary(stats::lm(n15_core ~ rgr , data = master[master$species %in% "DS", ]))
-summary(stats::lm(n15_core ~ rgr , data = master[master$species %in% "SA", ])) # no relp
-
-car::Anova(stats::aov(n15_core ~ dens * species, data = master), type = "III")
-summary(stats::lm(n15_core ~ dens , data = master[master$species %in% "DS", ])) # weak
-summary(stats::lm(n15_core ~ dens , data = master[master$species %in% "SA", ])) # no rel'p
-
-car::Anova(stats::aov(n15_pgFR2 ~ timeDiff * species, data = master), type = "III")
-summary(stats::lm(n15_pgFR2 ~ timeDiff * species, data = master))
-summary(stats::lm(n15_pgFR2 ~ timeDiff , data = master[master$species %in% "DS", ]))
-summary(stats::lm(n15_pgFR2 ~ timeDiff , data = master[master$species %in% "SA", ]))
-car::Anova(stats::aov(n15_pgFR ~ timeDiff * species, data = master), type = "III")
-car::Anova(stats::aov(n15_pgFR ~ timeDiff, data = master[master$species %in% "SA", ]), type = "III")
-summary(lm.sa <- stats::lm(n15_pgFR ~ timeDiff, data = master[master$species %in% "SA", ]))
-summary(lm.ds <- stats::lm(n15_pgFR ~ timeDiff, data = master[master$species %in% "DS", ]))
-
-
+summary(lm.sa <- lm(n15_pgFR ~ timeDiff, data = master[master$species %in% "SA", ]))
+summary(lm.ds <- lm(n15_pgFR ~ timeDiff, data = master[master$species %in% "DS", ]))
 
 # Calculate intersection of lines of best fit
 rightSide <- lm.ds$coefficients[2] - lm.sa$coefficients[2]
@@ -628,13 +721,7 @@ leftSide / rightSide # days until no difference detectable
 ## Analysis of N uptake drivers
 
 ```{r Drivers of N uptake}
-
-# Analysis of N uptake drivers --------------------------------------------
 summary(lm.mv <- stats::lm(tot_15n_uptake ~ (napp.MH + rgr + g_roots + session) * species, data = master))
-
-
-summary(master$cn_bg[master$cn_bg > 5])
-summary(master$cn_ag[master$cn_ag > 5])
 
 summary(lm3_4 <- stats::lm(n_uptake_biomass ~ I(n_uptake_15n ) , data = master[master$time %in% c("t3", "t4"), ]))
 
@@ -647,6 +734,88 @@ dd.master$session <- unique(ddHgt4$session)[c(3, 5, 7, 9)][as.numeric(as.factor(
 
 ```
 
+
+``` {r Figure2, fig.width = 6, fig.height = 4}
+
+# Figure 2a - Aboveground biomass over time ----------------------------------
+
+ggplot2::ggplot(ddHgt4[ddHgt4$cohort > 0, ], ggplot2::aes(y = mass / pot.m2, x = session, colour = species, shape = species)) +
+  ggplot2::geom_point(size = 1.5) + ggplot2::theme_classic() +
+  ggplot2::geom_errorbar(ggplot2::aes(ymin = (mass - mass.se) / pot.m2, ymax = (mass + mass.se) / pot.m2), width = 0) +
+  ggplot2::scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ggplot2::scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ggplot2::scale_x_datetime(breaks = unique(ddHgt4$session)[c(1, 3, 5, 7, 9)], labels = scales::date_format("%b-%d")) +
+  ggplot2::ylim(0, 600) + ggplot2::facet_grid(. ~ cohort, labeller = label_parsed) +
+  ggplot2::labs(y = expression("Biomass (g "%.%m^-2~")"), x = "") +
+  ggplot2::theme(legend.position = c(0.125, 0.87), legend.text.align = 0,
+        legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure2_", todaysDate, ".png"), width = 120, height= 70, units = "mm", dpi = 400)
+
+
+
+# Figure 2b - NAPP ------------------------------------------
+ggplot(dd.master, aes(y = prodn_rate, x = session, shape = species, colour = species)) + geom_point(size = pointSize) + theme_classic() +
+  # facet_wrap(~ species) +
+  geom_errorbar(aes(ymin = prodn_rate - prodn_rate.se, ymax = prodn_rate + prodn_rate.se), width = 0) +
+  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ylim(0, 15) +
+  ylab(expression("Primary production (g"%.%m^{-2}%.%"d"^{-1}~")")) + xlab("") +
+  theme(legend.text.align = 0, legend.position = c(5,5),
+        legend.background = element_rect(fill = NA, colour = NA)) +
+  annotate("text", x = unique(dd.master$session)[3], y = 12, label = "**") +
+  annotate("text", x = unique(dd.master$session)[4], y = 9, label = "*")
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure2_lowerPanel_", todaysDate, ".png"), width = 120, height= 70, units = "mm", dpi = 400)
+
+```
+
+``` {r Figure3, fig.width = 6, fig.height = 4}
+# Figure 3 - Aboveground N uptake  ----------------------------------------
+ggplot(dd.master, aes(y = n_uptake_biomass, x = session, shape = species, colour = species)) + geom_point(size = pointSize) + theme_classic() +
+  # facet_wrap(~ species) +
+  geom_errorbar(aes(ymin = n_uptake_biomass - n_uptake_biomass.se, ymax = n_uptake_biomass + n_uptake_biomass.se), width = 0) +
+  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ylim(0, 200) +
+  ylab(expression("N uptake (mg N"%.%d^{-1}%.%"m"^{-2}~"; primary prod.)")) + xlab("") +
+  theme(legend.text.align = 0, legend.position = c(5,5),
+        legend.background = element_rect(fill = NA, colour = NA)) +
+  annotate("text", x = unique(dd.master$session)[3], y = 155, label = "*") +
+  annotate("text", x = unique(dd.master$session)[4], y = 135, label = "*")
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure3_.png"), width = 80, height= 80, units = "mm", dpi = 400)
+```
+
+
+``` {r Figures 4-5, fig.width = 6, fig.height = 4}
+# Figure 4 - 15N recoveries ------------------------------------------------
+ggplot(mgd[!mgd$time %in% "t0", ], aes(x = session, y = recovery, colour = species, shape = species)) + geom_point(size = pointSize) + ylab("Recovery (decimal fraction)") + xlab("") +
+  geom_errorbar(aes(ymin = recovery - recovery.se, ymax = recovery + recovery.se), width = 0) + theme_classic()  +
+  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = unique(mgd$species), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = unique(mgd$species), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  facet_grid(. ~ type)  +ylim(0, 0.85) +
+  theme(legend.position = c(0.15, 0.9), legend.text.align = 0, axis.title.x=element_blank(),
+        legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure4_", todaysDate, ".png"), width = 120, height= 90, units = "mm", dpi = 400)
+
+
+
+# Figure 5 - 15N uptake per gram fine roots ---------------------------------
+rt2 <- plyr::ddply(master, plyr::.(species, timeDiff), plyr::summarise,
+             xbar = mean(n15_pgFR, na.rm = TRUE),
+             se = se(n15_pgFR))
+ggplot(rt2, aes(x = timeDiff, y = xbar, colour = species, shape = species)) + geom_point(size = pointSize) + theme_classic() +
+  ylim(0, 0.2)  + #xlim(0, 9) +
+  geom_errorbar(aes(ymin = xbar - se, ymax = xbar + se), width = 0) +
+  xlab("Experiment duration (days)") +
+  ylab(expression("N uptake (mg "^{15}~N%.%d^{-1}%.%"m"^{-2}%.%"gdw"^{-1}~")")) +
+  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = unique(rt2$species), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(rt2$species)), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  theme(legend.text.align = 0, legend.position = c(0.8, 0.8),
+        legend.background = element_rect(fill = NA, colour = NA)) +
+  geom_smooth(method = "lm", se = FALSE)
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure5_", todaysDate, ".png"), width = 100, height= 100, units = "mm", dpi = 400)
+
+```
 
 ## Estimating belowground production using 15N
 
@@ -695,14 +864,25 @@ bgp.out <- plyr::ddply(master[master$time %in% c("t3", "t4"), ], plyr::.(species
 # write.csv(bgp.out, file = "C:/RDATA/greenhouse/output/GRO/bgp_estimates.csv", row.names = FALSE)
 
 # stats
-stats::t.test(bg_n_est ~ species, data = master[master$time %in% c("t3", "t4"), ])
 stats::t.test(n_uptake_biomass ~ species, data = master[master$time %in% c("t3", "t4"), ]) # DS higher than SA
-stats::t.test(bgp_est ~ species, data = master[master$time %in% c("t3", "t4"), ])
 stats::t.test(prodn_rate ~ species, data = master[master$time %in% c("t3", "t4"), ])  # DISP is more productive than SPAL
 
-stats::t.test(bgp_est ~ species, data = master[master$time %in% c("t3", "t4"), ])
-stats::t.test(I(bgp_est / prodn_rate) ~ species, data = master[master$time %in% c("t3", "t4"), ])
+```
 
+``` {r Figure6, fig.width = 6, fig.height = 4}
+# Figure 6 - N uptake estimated by 2 methods --------------------------------
+ggplot(master[master$cluster %in% "3-4 weeks", ], aes(x = n_uptake_15n, y = n_uptake_biomass, colour = species, shape = species)) + geom_point(size = pointSize) + theme_classic() +
+  ylim(0, 225)  + # facet_wrap(~ cluster, scales = "free_x") +
+  ylab(expression("N uptake (mg"%.%d^{-1}%.%"m"^{-2}~"; primary prod.)")) +
+  xlab(expression("N uptake (mg"%.%d^{-1}%.%"m"^{-2}~"; "^{15}~N~"method)")) +
+  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(master$species)[1], unique(master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(master$species)[1], unique(master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  theme(legend.text.align = 0, legend.position = c(0.2, 0.9),
+        legend.background = element_rect(fill = NA, colour = NA)) +
+  geom_smooth(data = subset(master, cluster %in% "3-4 weeks"), aes(group = 1), method = "lm", se = FALSE, colour = "black") +
+  geom_text(data = data.frame(cluster = "3-4 weeks", n_uptake_biomass = 50, n_uptake_15n = 3, species = "SA"), label =
+              "paste(italic(r) ^ 2, \" = 0.50\")", parse = TRUE, colour = "black")
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure6_.png"), width = 80, height= 80, units = "mm", dpi = 400)
 ```
 
 
@@ -830,198 +1010,9 @@ stats::t.test(tot_n ~ species, data = rts[(rts$sample.type %in% "rhizomes"), ])
 car::Anova(aov1 <- stats::aov(n_wa ~ t * as.factor(species), data = leaf), type = "III")
 stats::TukeyHSD(stats::aov(n_wa ~ as.factor(species), data = leaf))
 
-
 stats::t.test(recovery2 ~ species, data = mat2[mat2$time %in% "t4", ])
 summary(mat2$recovery2[mat2$recovery2 > 0.05])
 
-
-
 ```
 
 
-
-### Figures from manuscript
-
-``` {r Figures, fig.width = 6, fig.height = 4}
-
-
-# Figure 1 - Allometry ----------------------------------------------------
-
-# png(filename = here("output/Figure1.png"), width = 100, height = 100, units = "mm", res = 400)
-graphics::par(fig = c(0, 1, 0, 1), mar = c(4, 4, 0.5, 0.5))
-graphics::plot(sample ~ height_cm, data = allometry[(allometry$spp %in% "DISP"), ],
-     cex = pointSize / 2, pch = 19, col = fig2Col,
-     ylab = "Total mass (g)", xlab = "Height (cm)", xlim = c(0, 80), ylim = c(0, 0.65), xaxt = "n",
-     las = 1, tcl = 0.25, tck = 0.01, bty = "n", yaxs = "i", xaxs = "i")
-graphics::abline(h = 0)
-graphics::abline(v = 0)
-graphics::axis(side = 1, tcl = 0.25, tck = 0.01, at = axTicks(1), labels = graphics::axTicks(1))
-graphics::points(sample ~ height_cm, data = allometry[(allometry$spp %in% "SPAL"), ],  cex = pointSize / 2, pch = 17)
-
-x <- allometry[(allometry$spp %in% "DISP"), "height_cm"]
-x.spal <- allometry[(allometry$spp %in% "SPAL"), "height_cm"]
-
-y.pred2 <- (x * CSP.coef[1, 3] + CSP.coef[1, "(Intercept)"])^(1/CSP.coef$lam[1]) # DISP
-y.pred3 <- (x.spal * CSP.coef[2, 3] + CSP.coef[2, "(Intercept)"])^(1/CSP.coef$lam[2]) # SPAL
-graphics::lines(x = x[order(y.pred2)], y = y.pred2[order(y.pred2)], lty = 1, lwd = 2, col = fig2Col)
-graphics::lines(x = x.spal[order(y.pred3)], y = y.pred3[order(y.pred3)], lty = 1, lwd = 2)
-
-graphics::text(x = 20, y = 0.52, cex = 0.95, expression(italic("Spartina")))
-graphics::text(x = 65, y = 0.3, cex = 0.95, expression(italic("Distichlis")))
-# dev.off()
-
-
-
-
-# Figure 2a - Aboveground biomass over time ----------------------------------
-
-ggplot2::ggplot(ddHgt4[ddHgt4$cohort > 0, ], ggplot2::aes(y = mass / pot.m2, x = session, colour = species, shape = species)) +
-  ggplot2::geom_point(size = 1.5) + ggplot2::theme_classic() +
-  ggplot2::geom_errorbar(ggplot2::aes(ymin = (mass - mass.se) / pot.m2, ymax = (mass + mass.se) / pot.m2), width = 0) +
-  ggplot2::scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  ggplot2::scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  ggplot2::scale_x_datetime(breaks = unique(ddHgt4$session)[c(1, 3, 5, 7, 9)], labels = scales::date_format("%b-%d")) +
-  ggplot2::ylim(0, 600) + ggplot2::facet_grid(. ~ cohort, labeller = label_parsed) +
-  ggplot2::labs(y = expression("Biomass (g "%.%m^-2~")"), x = "") +
-  ggplot2::theme(legend.position = c(0.125, 0.87), legend.text.align = 0,
-        legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure2_", todaysDate, ".png"), width = 120, height= 70, units = "mm", dpi = 400)
-
-
-
-# Figure 2b - NAPP ------------------------------------------
-ggplot(dd.master, aes(y = prodn_rate, x = session, shape = species, colour = species)) + geom_point(size = pointSize) + theme_classic() +
-  # facet_wrap(~ species) +
-  geom_errorbar(aes(ymin = prodn_rate - prodn_rate.se, ymax = prodn_rate + prodn_rate.se), width = 0) +
-  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  ylim(0, 15) +
-  ylab(expression("Primary production (g"%.%m^{-2}%.%"d"^{-1}~")")) + xlab("") +
-  theme(legend.text.align = 0, legend.position = c(5,5),
-        legend.background = element_rect(fill = NA, colour = NA)) +
-  annotate("text", x = unique(dd.master$session)[3], y = 12, label = "**") +
-  annotate("text", x = unique(dd.master$session)[4], y = 9, label = "*")
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure2_lowerPanel_", todaysDate, ".png"), width = 120, height= 70, units = "mm", dpi = 400)
-
-
-
-# Figure 3 - Aboveground N uptake  ----------------------------------------
-
-ggplot(dd.master, aes(y = n_uptake_biomass, x = session, shape = species, colour = species)) + geom_point(size = pointSize) + theme_classic() +
-  # facet_wrap(~ species) +
-  geom_errorbar(aes(ymin = n_uptake_biomass - n_uptake_biomass.se, ymax = n_uptake_biomass + n_uptake_biomass.se), width = 0) +
-  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  ylim(0, 200) +
-  ylab(expression("N uptake (mg N"%.%d^{-1}%.%"m"^{-2}~"; primary prod.)")) + xlab("") +
-  theme(legend.text.align = 0, legend.position = c(5,5),
-        legend.background = element_rect(fill = NA, colour = NA)) +
-  annotate("text", x = unique(dd.master$session)[3], y = 155, label = "*") +
-  annotate("text", x = unique(dd.master$session)[4], y = 135, label = "*")
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure3_.png"), width = 80, height= 80, units = "mm", dpi = 400)
-
-
-
-
-# Figure 4 - 15N recoveries ------------------------------------------------
-ggplot(mgd[!mgd$time %in% "t0", ], aes(x = session, y = recovery, colour = species, shape = species)) + geom_point(size = pointSize) + ylab("Recovery (decimal fraction)") + xlab("") +
-  geom_errorbar(aes(ymin = recovery - recovery.se, ymax = recovery + recovery.se), width = 0) + theme_classic()  +
-  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = unique(mgd$species), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  scale_shape_manual(values = c(16, 17), name = "", breaks = unique(mgd$species), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  facet_grid(. ~ type)  +ylim(0, 0.85) +
-  theme(legend.position = c(0.15, 0.9), legend.text.align = 0, axis.title.x=element_blank(),
-        legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure4_", todaysDate, ".png"), width = 120, height= 90, units = "mm", dpi = 400)
-
-
-
-# Figure 5 - 15N uptake per gram fine roots ---------------------------------
-rt2 <- plyr::ddply(master, plyr::.(species, timeDiff), plyr::summarise,
-             xbar = mean(n15_pgFR, na.rm = TRUE),
-             se = se(n15_pgFR))
-ggplot(rt2, aes(x = timeDiff, y = xbar, colour = species, shape = species)) + geom_point(size = pointSize) + theme_classic() +
-  ylim(0, 0.2)  + #xlim(0, 9) +
-  geom_errorbar(aes(ymin = xbar - se, ymax = xbar + se), width = 0) +
-  xlab("Experiment duration (days)") +
-  ylab(expression("N uptake (mg "^{15}~N%.%d^{-1}%.%"m"^{-2}%.%"gdw"^{-1}~")")) +
-  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = unique(rt2$species), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(rt2$species)), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  theme(legend.text.align = 0, legend.position = c(0.8, 0.8),
-        legend.background = element_rect(fill = NA, colour = NA)) +
-  geom_smooth(method = "lm", se = FALSE)
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure5_", todaysDate, ".png"), width = 100, height= 100, units = "mm", dpi = 400)
-
-
-
-
-# Figure 6 - N uptake estimated by 2 methods --------------------------------
-ggplot(master[master$cluster %in% "3-4 weeks", ], aes(x = n_uptake_15n, y = n_uptake_biomass, colour = species, shape = species)) + geom_point(size = pointSize) + theme_classic() +
-  ylim(0, 225)  + # facet_wrap(~ cluster, scales = "free_x") +
-  ylab(expression("N uptake (mg"%.%d^{-1}%.%"m"^{-2}~"; primary prod.)")) +
-  xlab(expression("N uptake (mg"%.%d^{-1}%.%"m"^{-2}~"; "^{15}~N~"method)")) +
-  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(master$species)[1], unique(master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(master$species)[1], unique(master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  theme(legend.text.align = 0, legend.position = c(0.2, 0.9),
-        legend.background = element_rect(fill = NA, colour = NA)) +
-  geom_smooth(data = subset(master, cluster %in% "3-4 weeks"), aes(group = 1), method = "lm", se = FALSE, colour = "black") +
-  geom_text(data = data.frame(cluster = "3-4 weeks", n_uptake_biomass = 50, n_uptake_15n = 3, species = "SA"), label =
-              "paste(italic(r) ^ 2, \" = 0.50\")", parse = TRUE, colour = "black")
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure6_.png"), width = 80, height= 80, units = "mm", dpi = 400)
-
-
-
-# Figure S1 - predicted vs obs biomass ---------------------------------------
-ggplot(obs, aes(x = allom.est / pot.m2, y = g / pot.m2, colour = species2, shape = species2)) +
-  geom_point(size = pointSize) + theme_classic() %+replace% theme(legend.title = element_blank()) +
-  labs(x = expression("Predicted biomass (allometry; g"%.%m^-2~")"), y = expression("Measured biomass (g "%.%m^-2~")")) +
-  ylim(0, 650) + xlim(0, 650) +
-  scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(obs$species2)[1], unique(obs$species2)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(obs$species2)[1], unique(obs$species2)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  theme(legend.position = c(0.3, 0.9), legend.text.align = 0,
-        legend.background = element_rect(fill = NA, colour = NA)) +
-  geom_abline(slope = 1, intercept = 0, linetype = 2)
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS1_", todaysDate, ".png"), width = 90, height= 90, units = "mm", dpi = 400)
-
-
-
-
-# Figure S2 - aboveground pools ---------------------------------------
-ggplot(ag2.sp, aes(y = g, x = session, colour = species2)) + geom_point( size = pointSize) + theme_classic() %+replace% theme(legend.title = element_blank()) +
-  facet_grid(sample.type2 ~ .) + geom_errorbar(aes(ymin = g - g.se, ymax = g + g.se),  width = 0) +
-  scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(ag2.sp$species2)[1], unique(ag2.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  ylab(expression("Biomass (g "%.%m^-2~")")) +  xlab("") + ylim(0, 400) +
-  theme(legend.position = c(2.2, 0.9), legend.text.align = 0,
-        legend.background = element_rect(fill = NA, colour = NA))
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS2_part1_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
-
-
-ggplot(ag2.sp, aes(y = n_pct, x = session, colour = species2)) + geom_point( size = pointSize) + theme_classic() %+replace% theme(legend.title = element_blank()) +
-  facet_grid(sample.type2 ~ .) + geom_errorbar(aes(ymin = n_pct - n_pct.se, ymax = n_pct + n_pct.se),  width = 0) +
-  scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(ag2.sp$species2)[1], unique(ag2.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
-  ylab("Tissue N") +  xlab("") + scale_y_continuous(labels = scales::percent) +
-  theme(legend.position = c(2.2, 0.9), legend.text.align = 0,
-        legend.background = element_rect(fill = NA, colour = NA))
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS2_part2_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
-
-
-
-# Figure S3 - belowground biomass pools --------------------------------------
-ggplot(bg.sp, aes(y = g, x = session, colour = species2)) + geom_point( size = pointSize) + theme_classic() +
-  facet_grid(sample.type ~ .) + geom_errorbar(aes(ymin = g - g.se, ymax = g + g.se),  width = 0) +
-  scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(bg.sp$species2)[1], unique(bg.sp$species)[2]), labels = c(expression(italic(D.~spicata)), expression(italic(S.~alterniflora)))) +
-  ylab(expression("Biomass (g "%.%m^-2~")")) +  xlab("") +
-  theme(legend.text.align = 0, legend.position = c(2.2, 1),
-        legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS3_part1_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
-
-
-ggplot(bg.sp, aes(y = n_pct, x = session, colour = species2)) + geom_point( size = pointSize) + theme_classic() +
-  facet_grid(sample.type ~ .) + geom_errorbar(aes(ymin = n_pct - n_pct.se, ymax = n_pct + n_pct.se),  width = 0) +
-  scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(bg.sp$species2)[1], unique(bg.sp$species)[2]), labels = c(expression(italic(D.~spicata)), expression(italic(S.~alterniflora)))) +
-  ylab("Tissue N content") +  xlab("") + scale_y_continuous(labels = scales::percent) + #ylim(0, 0.012) +
-  theme(legend.text.align = 0, legend.position = c(2.2, 1),
-        legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS3_part2_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
-
-
-```
