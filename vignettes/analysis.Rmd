@@ -1,5 +1,5 @@
 ---
-title: "analysis"
+title: "Source code from nitrogen uptake manuscript (Hill et al. in press)"
 author: "Troy D. Hill, Nathalie R. Sommer, Caroline R. Kanaskie, Emily A. Santos, and Autumn J. Oczkowski"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
