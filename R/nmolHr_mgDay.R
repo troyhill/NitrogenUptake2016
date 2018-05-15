@@ -1,4 +1,4 @@
-#' Convert N2O units from nanomoles per hour to milligrams per day
+#' Convert N2O units from nanomoles of N2O per hour to milligrams of N per day
 #'
 #' @param x numeric or integer value(s)
 #'
