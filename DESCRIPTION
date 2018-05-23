@@ -13,14 +13,14 @@ Depends:
     R (>= 3.0),
     zoo,
     car,
-    MASS,
-    ggplot2
+    MASS
 RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown,
     plyr,
     reshape2,
-    MuMIn,
-    scales
+    ggplot2,
+    scales,
+    MuMIn
 VignetteBuilder: knitr
 

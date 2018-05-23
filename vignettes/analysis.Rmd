@@ -20,6 +20,9 @@ knitr::opts_chunk$set(echo = TRUE)
 # devtools::install_github("troyhill/NitrogenUptake2016", build_vignettes = TRUE)
 
 # then load the package:
+library(ggplot2)
+library(scales)
+library(plyr)
 library(NitrogenUptake2016)
 
 # set some constants
@@ -27,6 +30,8 @@ todaysDate <- substr(as.character(Sys.time()), 1, 10)
 core.area <- pot.m2 <- 0.00801185 # mesocosm surface area (m2)
 top.vol   <- core.area * 0.05 * 1e6 # cm3 in core: top 5 cm only
 pointSize <- 2 # for ggplot graphics
+pd <- pd2 <- position_dodge(1.2)
+pd3 <- position_dodge(0.8)
 grayColor <- 0.55
 fig2Col   <- "gray55"
 
@@ -639,13 +644,13 @@ master$tot_15n_uptake <- master$n_uptake_15n + master$n_uptake_15n_bg # mg N/day
 
 # Results: a. Stem allometry, aboveground biomass and production ----------
 table(allometry$spp[!is.na(allometry$sample)])
-plyr::ldply(CSP, r.squaredGLMM)
+plyr::ldply(CSP, MuMIn::r.squaredGLMM)
 
 # change over time in production?
 summary(lm.sa.prod <- lm(napp.MH ~ session, data = master[master$species %in% "SA",]))
 summary(lm.ds.prod <- lm(napp.MH ~ session, data = master[master$species %in% "DS",]))
 
-plyr::ddply(master, .(species), summarise,
+plyr::ddply(master, plyr::.(species), plyr::summarise,
       production    = mean(prodn_rate, na.rm = TRUE),
       production.se = se(prodn_rate)
 )
@@ -689,8 +694,8 @@ graphics::text(x = 65, y = 0.3, cex = 0.95, expression(italic("Distichlis")))
 ```{r Results section B}
 # Results: b.	Leaf and stem biomass, N pools, and uptake ------------------
 # leaf, stem biomass differences
-leaf <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("leaf", paste0("leaf ", 1:10)), ],
-              .(species, time, new.core.id), summarise,
+leaf <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("leaf", paste0("leaf ", 1:10)), ],
+              plyr::.(species, time, new.core.id), plyr::summarise,
               tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
               tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
               tot_c    = sum(c_pct * g_core / pot.m2, na.rm = TRUE),
@@ -698,8 +703,8 @@ leaf <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("leaf", paste0("leaf 
               c_wa = tot_c / tot_mass)
 leaf$t <- as.numeric(substr(leaf$time, 2, 2)) * 7
 
-stem <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("belowground stems", "stems"), ],
-              .(species, time, new.core.id), summarise,
+stem <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("belowground stems", "stems"), ],
+              plyr::.(species, time, new.core.id), plyr::summarise,
               tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
               tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
               tot_c    = sum(c_pct * g_core / pot.m2, na.rm = TRUE),
@@ -713,8 +718,8 @@ names(leaf2)[4:8] <- paste0(names(leaf)[4:8], ".leaf")
 leaf2 <- cbind(leaf2, stem[4:8])
 leaf2$n_wa_ag <- (leaf2$tot_n.leaf + leaf2$tot_n) / (leaf2$tot_mass.leaf + leaf2$tot_mass)
 
-ddply(leaf[, -c(2, 3)], .(species), numcolwise(mean))
-ddply(leaf[, -c(2, 3)], .(species), numcolwise(se))
+plyr::ddply(leaf[, -c(2, 3)], plyr::.(species), plyr::numcolwise(mean))
+plyr::ddply(leaf[, -c(2, 3)], plyr::.(species), plyr::numcolwise(se))
 
 # leaf biomass
 summary(lm.sa.leaf <- lm(tot_mass ~ t, data = leaf[leaf$species %in% "SA",]))
@@ -728,8 +733,8 @@ t.test(n_wa ~ species, data = leaf)
 
 
 # stems 
-ddply(stem[, -c(2, 3)], .(species), numcolwise(mean))
-ddply(stem[, -c(2, 3)], .(species), numcolwise(se))
+plyr::ddply(stem[, -c(2, 3)], plyr::.(species), plyr::numcolwise(mean))
+plyr::ddply(stem[, -c(2, 3)], plyr::.(species), plyr::numcolwise(se))
 
 # stem biomass
 summary(lm.sa.stem <- lm(tot_mass ~ t, data = stem[stem$species %in% "SA",]))
@@ -742,8 +747,8 @@ summary(lm.ds.leafN <- lm(n_wa ~ t, data = leaf[leaf$species %in% "DS",]))
 t.test(n_wa ~ species, data = leaf)
 
 # mean N content for all
-ddply(stem[, -c(2, 3)], .(), numcolwise(mean))
-ddply(stem[, -c(2, 3)], .(), numcolwise(se))
+plyr::ddply(stem[, -c(2, 3)], plyr::.(), plyr::numcolwise(mean))
+plyr::ddply(stem[, -c(2, 3)], plyr::.(), plyr::numcolwise(se))
 
 # stem N stock
 t.test(tot_n ~ species, data = stem)
@@ -754,13 +759,13 @@ summary(lm.sa.N.ag <- lm(n_wa_ag ~ t, data = leaf2[leaf2$species %in% "SA",]))
 summary(lm.ds.N.ag <- lm(n_wa_ag ~ t, data = leaf2[leaf2$species %in% "DS",]))
 t.test(n_wa_ag ~ species, data = leaf2)
 
-ddply(leaf2, .(species, time), summarise,
+plyr::ddply(leaf2, plyr::.(species, time), plyr::summarise,
       n_pct = mean(n_wa_ag),
       n_pct.se = se(n_wa_ag))
-ddply(leaf2, .(species), summarise,
+plyr::ddply(leaf2, plyr::.(species), plyr::summarise,
       n_pct = mean(n_wa_ag),
       n_pct.se = se(n_wa_ag))
-ddply(leaf2, .(), summarise,
+plyr::ddply(leaf2, plyr::.(), plyr::summarise,
       n_pct = mean(n_wa_ag),
       n_pct.se = se(n_wa_ag))
 
@@ -773,7 +778,7 @@ for (i in 1:length(unique(master$session))) {
   print(unique(master$session)[i])
   print(t.test(n_uptake_biomass ~ species, data = master[(master$session %in% c(unique(master$session)[i])), ]))
 }
-ddply(master, .(species), summarise,
+plyr::ddply(master, plyr::.(species), plyr::summarise,
       n_uptake = mean(n_uptake_biomass),
       n_uptake.se = se(n_uptake_biomass))
 
@@ -787,7 +792,7 @@ ggplot(ag2.sp, aes(y = g, x = as.Date(session), colour = species2, shape = speci
   scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(ag2.sp$species2)[1], unique(ag2.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(ag2.sp$species2)[1], unique(ag2.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   ylab(expression("Biomass (g "%.%m^-2~")")) +  xlab("") + ylim(0, 325) +
-  scale_x_date(breaks = as.Date(unique(ag2.sp$session)), labels = date_format("%b-%d")) +
+  scale_x_date(breaks = as.Date(unique(ag2.sp$session)), labels = scales::date_format("%b-%d")) +
   theme(legend.position = c(2.2, 0.9), legend.text.align = 0,
         legend.background = element_rect(fill = NA, colour = NA))
 # ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS2_part1_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
@@ -798,7 +803,7 @@ ggplot(ag2.sp, aes(y = n_pct, x = as.Date(session), colour = species2, shape = s
   scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(ag2.sp$species2)[1], unique(ag2.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(ag2.sp$species2)[1], unique(ag2.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   ylab("Tissue N") +  xlab("") + scale_y_continuous(labels = scales::percent) +
-  scale_x_date(breaks = as.Date(unique(ag2.sp$session)), labels = date_format("%b-%d")) +
+  scale_x_date(breaks = as.Date(unique(ag2.sp$session)), labels = scales::date_format("%b-%d")) +
   theme(legend.position = c(2.2, 0.9), legend.text.align = 0,
         legend.background = element_rect(fill = NA, colour = NA))
 # ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS2_part2_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
@@ -808,8 +813,6 @@ ggplot(ag2.sp, aes(y = n_pct, x = as.Date(session), colour = species2, shape = s
 ``` {r Figure2, fig.width = 6, fig.height = 4}
 
 # Figure 2 - Aboveground biomass over time ----------------------------------
-pd <- position_dodge(1.2)
-
 ggplot2::ggplot(ddHgt4[ddHgt4$cohort > 0, ], ggplot2::aes(y = mass / pot.m2, x = as.Date(session), colour = species, shape = species)) +
   ggplot2::geom_point(size = pointSize, position = pd) + ggplot2::theme_classic() +
   ggplot2::geom_errorbar(ggplot2::aes(ymin = (mass - mass.se) / pot.m2, ymax = (mass + mass.se) / pot.m2), width = 0, position = pd) +
@@ -827,8 +830,15 @@ ggplot2::ggplot(ddHgt4[ddHgt4$cohort > 0, ], ggplot2::aes(y = mass / pot.m2, x =
 
 ``` {r Figure3, fig.width = 6, fig.height = 4}
 # Figure 3A - NAPP ------------------------------------------
+
+dd.master <- plyr::ddply(master, plyr::.(time, species), plyr::numcolwise(mean))
+dd.master.se <- plyr::ddply(master, plyr::.(time, species), plyr::numcolwise(se))
+dd.master$n_uptake_biomass.se <- dd.master.se$n_uptake_biomass
+dd.master$prodn_rate.se <- dd.master.se$prodn_rate
+dd.master$session <- unique(ddHgt4$session)[c(3, 5, 7, 9)][as.numeric(as.factor(dd.master$time))]
+
 # set dodge width for points & error bars
-pd <- position_dodge(0.8)
+pd3 <- position_dodge(0.8)
 
 Fig3A <- ggplot(dd.master, aes(y = prodn_rate, x = as.Date(session), shape = species, colour = species)) + geom_point(size = pointSize) + theme_classic() +
   # facet_wrap(~ species) +
@@ -847,14 +857,14 @@ Fig3A
 
 
 # Figure 3B - Aboveground N uptake  ----------------------------------------
-Fig3B <- ggplot(dd.master, aes(y = n_uptake_biomass, x = as.Date(session), shape = species, colour = species)) + geom_point(size = pointSize, position = pd) + theme_classic() +
+Fig3B <- ggplot(dd.master, aes(y = n_uptake_biomass, x = as.Date(session), shape = species, colour = species)) + geom_point(size = pointSize, position = pd3) + theme_classic() +
   # facet_wrap(~ species) +
-  geom_errorbar(aes(ymin = n_uptake_biomass - n_uptake_biomass.se, ymax = n_uptake_biomass + n_uptake_biomass.se), width = 0, position = pd) +
+  geom_errorbar(aes(ymin = n_uptake_biomass - n_uptake_biomass.se, ymax = n_uptake_biomass + n_uptake_biomass.se), width = 0, position = pd3) +
   scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   ylim(0, 150) +
   ylab(expression("N uptake (mg N"%.%d^{-1}%.%"m"^{-2}*")")) + xlab("") +
-  scale_x_date(breaks = as.Date(unique(dd.master$session)), labels = date_format("%b-%d")) +
+  scale_x_date(breaks = as.Date(unique(dd.master$session)), labels = scales::date_format("%b-%d")) +
   theme(legend.text.align = 0, legend.position = c(5,5),
         legend.background = element_rect(fill = NA, colour = NA)) +
   annotate("text", x = as.Date(unique(dd.master$session)[3]), y = 147, label = "*") +
@@ -929,7 +939,7 @@ ggplot(bg.sp, aes(y = g, x = as.Date(session), colour = species2, shape = specie
   scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(bg.sp$species2)[1], unique(bg.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(bg.sp$species2)[1], unique(bg.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   ylab(expression("Biomass (g "%.%m^-2~")")) +  xlab("") +
-  scale_x_date(breaks = as.Date(unique(bg.sp$session)), labels = date_format("%b-%d")) +
+  scale_x_date(breaks = as.Date(unique(bg.sp$session)), labels = scales::date_format("%b-%d")) +
   theme(legend.text.align = 0, legend.position = c(2.2, 1),
         legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
 # ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS3_part1_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
@@ -938,7 +948,7 @@ ggplot(bg.sp, aes(y = g, x = as.Date(session), colour = species2, shape = specie
 ggplot(bg.sp, aes(y = n_pct, x = as.Date(session), colour = species2, shape = species2)) + geom_point(size = pointSize, position = pd2) + theme_classic() +
   facet_grid(sample.type ~ .) + geom_errorbar(aes(ymin = n_pct - n_pct.se, ymax = n_pct + n_pct.se), width = 0, position = pd2) +
   scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(bg.sp$species2)[1], unique(bg.sp$species)[2]), labels = c(expression(italic(D.~spicata)), expression(italic(S.~alterniflora)))) +
-  scale_x_date(breaks = as.Date(unique(bg.sp$session)), labels = date_format("%b-%d")) +
+  scale_x_date(breaks = as.Date(unique(bg.sp$session)), labels = scales::date_format("%b-%d")) +
   ylab("Tissue N content") +  xlab("") + scale_y_continuous(labels = scales::percent) +
   theme(legend.text.align = 0, legend.position = c(2.2, 1),
         legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
@@ -962,12 +972,6 @@ rsq::rsq.partial(lm.mv.ds)
 
 summary(lm3_4 <- stats::lm(n_uptake_biomass ~ I(n_uptake_15n ) , data = master[master$time %in% c("t3", "t4"), ]))
 
-dd.master <- plyr::ddply(master, plyr::.(time, species), plyr::numcolwise(mean))
-dd.master.se <- plyr::ddply(master, plyr::.(time, species), plyr::numcolwise(se))
-dd.master$n_uptake_biomass.se <- dd.master.se$n_uptake_biomass
-dd.master$prodn_rate.se <- dd.master.se$prodn_rate
-dd.master$session <- unique(ddHgt4$session)[c(3, 5, 7, 9)][as.numeric(as.factor(dd.master$time))]
-
 
 ```
 
@@ -975,7 +979,6 @@ dd.master$session <- unique(ddHgt4$session)[c(3, 5, 7, 9)][as.numeric(as.factor(
 
 ``` {r Figures 4-5, fig.width = 6, fig.height = 4}
 # Figure 4 - 15N recoveries ------------------------------------------------
-pd2 <- position_dodge(1.2)
 
 ggplot(mgd[!mgd$time %in% "t0", ], aes(x = as.Date(session), y = recovery, colour = species, shape = species)) + 
   geom_point(size = pointSize, position = pd2) + ylab(expression(" "^15~"N recovery")) + xlab("") +
@@ -983,7 +986,7 @@ ggplot(mgd[!mgd$time %in% "t0", ], aes(x = as.Date(session), y = recovery, colou
   scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = unique(mgd$species), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   scale_shape_manual(values = c(16, 17), name = "", breaks = unique(mgd$species), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   facet_grid(. ~ type)  + scale_y_continuous(labels = scales::percent, lim = c(0, 0.85)) + 
-  scale_x_date(breaks = as.Date(unique(mgd[!mgd$time %in% "t0", "session"])), labels = date_format("%b-%d")) +
+  scale_x_date(breaks = as.Date(unique(mgd[!mgd$time %in% "t0", "session"])), labels = scales::date_format("%b-%d")) +
   theme(legend.position = c(0.15, 0.9), legend.text.align = 0, axis.title.x=element_blank(),
         legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
 # ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure4_", todaysDate, ".png"), width = 120, height= 90, units = "mm", dpi = 400)

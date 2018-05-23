@@ -2,7 +2,7 @@
 % Please edit documentation in R/nmolHr_mgDay.R
 \name{nmolHr_mgDay}
 \alias{nmolHr_mgDay}
-\title{Convert N2O units from nanomoles per hour to milligrams per day}
+\title{Convert N2O units from nanomoles of N2O per hour to milligrams of N per day}
 \usage{
 nmolHr_mgDay(x)
 }
@@ -13,7 +13,7 @@ nmolHr_mgDay(x)
 numeric value
 }
 \description{
-Convert N2O units from nanomoles per hour to milligrams per day
+Convert N2O units from nanomoles of N2O per hour to milligrams of N per day
 }
 \examples{
 nmolHr_mgDay(dea$DEA)
