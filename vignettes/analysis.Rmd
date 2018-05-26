@@ -1,5 +1,5 @@
 ---
-title: "Source code from JEMBE nitrogen uptake manuscript (Hill et al. in press) and Data In Brief companion manuscript (Hill et al. submitted)"
+title: "Source code from nitrogen uptake companion manuscripts"
 author: "Troy D. Hill, Nathalie R. Sommer, Caroline R. Kanaskie, Emily A. Santos, and Autumn J. Oczkowski"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -16,8 +16,22 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Welcome!
 
 This vignette contains R code used for data processing, statistical analysis, and production of figures for two associated manuscripts:
+
 - "Nitrogen uptake and allocation by *Spartina alterniflora* and *Distichlis spicata*" (Hill et al., Journal of Experimental Marine Biology and Ecology)
+
 - "Nitrogen and carbon concentrations and stable isotope ratios: data from a 15N tracer study in short-form *Spartina alterniflora* and *Distichlis spicata*" (Hill et al., Data In Brief)
+
+Our R package contains four datasets, with associated documentation accessible using the standard '?' function: 
+
+?allometry
+
+?stemHeights
+
+?CN_mass_data
+
+?dea
+
+The datasets are also included as .csv files in the R package's inst/extdata subdirectory. 
 
 For more information contact Troy Hill at Hill.Troy\@gmail.com.
 
@@ -416,6 +430,7 @@ mat2 <- plyr::ddply(CN_mass_data[!CN_mass_data$sample.type %in% c("bulk sediment
               n15_2 = sum(n15_g_recov, na.rm  = T)
 )
 mat2$recovery2 <- mat2$n15_2 / (spike) # "recovery" uses bulk belowground data, "recovery2" uses root pools
+mat2$days <- as.numeric(substr(mat2$time, 2, 2)) * 7
 
 ### relps between napp and 15n recoveries (excludes dead biomass)
 bgd <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roots", "fine roots", "rhizomes"), ],
@@ -614,7 +629,7 @@ bg_del <- plyr::ddply(bg, plyr::.(new.core.id), plyr::summarise, # I think all t
 # all relevant values are per m2
 master <- plyr::join_all(list(napp[, c("napp.MH", "new.core.id")], # primary production
                         rgr.stems,
-                        n_mean, n_bg_mean[, -c(1:2)], # N inventories above and belowground
+                        n_mean[, -c(1)], n_bg_mean[, -c(1:2)], # N inventories above and belowground
                         ag[, 3:7], bg_del # 15N recoveries and unweighted average pct N
 ), by = "new.core.id")
 master$napp.MH  <- master$napp.MH / pot.m2 # g/m2
@@ -640,6 +655,29 @@ master$n15_pgCR <- (master$n_uptake_15n + master$n_uptake_15n_bg) / (master$g_ro
 master$n15_pgR  <- (master$n_uptake_15n + master$n_uptake_15n_bg) / master$g_roots # 15N uptake per gram fine+coarse root biomass: mg 15N/m2/day/g root biomass
 master$n15_pgFR2 <- master$n15_core * 1e3 / master$g_froots
 master$tot_15n_uptake <- master$n_uptake_15n + master$n_uptake_15n_bg # mg N/day/m2
+master$days <- as.numeric(substr(master$time, 2, 2)) * 7
+
+
+### apply relationship to estimate belowground production
+summary(lm3_4 <- stats::lm(n_uptake_biomass ~ I(n_uptake_15n ) , data = master[master$time %in% c("t3", "t4"), ]))
+lm3_4
+master$bg_n_est <- as.numeric(master$n_uptake_15n_bg) * coefficients(lm3_4)[2] + coefficients(lm3_4)[1] # total N uptake belowground: mg N/m2/day
+master$bg_n_est[master$time %in% c("t1", "t2")] <- NA
+master$bgp_est <- master$bg_n_est / master$n_pct_bg2 / 1e3 # [estimated total N uptake (mg N/day)] / [mg N / mg biomass] / [1000 mg/g] = [g belowground biomass / day (/m2)]
+master$bgp_biomass_est <- master$bgp_est * master$timeDiff # [g belowground biomass / day] * [timeDiff (days)] = total belowground production during period [g/m2]
+
+### differences in total nitrogen interception between species
+master$tot_N_int <- master$bg_n_est + master$n_uptake_biomass + ifelse(master$species %in% "SA", nmolHr_mgDay(dd.dea$flux.m2[2]), nmolHr_mgDay(dd.dea$flux.m2[1]))
+master$tot_N_int[master$time %in% c("t1", "t2")] <- NA
+
+
+dd.master <- ddply(master, .(time, species), numcolwise(mean))
+dd.master.se <- ddply(master, .(time, species), numcolwise(se))
+dd.master$n_uptake_biomass.se <- dd.master.se$n_uptake_biomass
+dd.master$prodn_rate.se <- dd.master.se$prodn_rate
+dd.master$session <- unique(ddHgt4$session)[c(3, 5, 7, 9)][as.numeric(as.factor(dd.master$time))]
+
+
 
 
 ```
@@ -836,13 +874,6 @@ ggplot2::ggplot(ddHgt4[ddHgt4$cohort > 0, ], ggplot2::aes(y = mass / pot.m2, x =
 
 ``` {r Figure 3 (JEMBE), fig.width = 6, fig.height = 4}
 # Figure 3A (JEMBE) - NAPP ------------------------------------------
-
-dd.master <- plyr::ddply(master, plyr::.(time, species), plyr::numcolwise(mean))
-dd.master.se <- plyr::ddply(master, plyr::.(time, species), plyr::numcolwise(se))
-dd.master$n_uptake_biomass.se <- dd.master.se$n_uptake_biomass
-dd.master$prodn_rate.se <- dd.master.se$prodn_rate
-dd.master$session <- unique(ddHgt4$session)[c(3, 5, 7, 9)][as.numeric(as.factor(dd.master$time))]
-
 # set dodge width for points & error bars
 pd3 <- position_dodge(0.8)
 
@@ -966,32 +997,30 @@ ggplot(bg.sp, aes(y = n_pct, x = as.Date(session), colour = species2, shape = sp
 
 
 
-## Results D: 15N recoveries and N uptake estimates
+### Results D: 15N recoveries and N uptake estimates
 
 ```{r Recoveries and sorption}
 # comparison of total 15N recovery by species
-t.test(recovery2 ~ species, data = mat2)
+t.test(recovery2 ~ factor(species), data = mat2)
 
 # variation over time in total 15N recovery
-mat2$days <- as.numeric(substr(mat2$time, 2, 2)) * 7
 Anova(aov.tot <- aov(recovery2 ~ factor(species) * days, data = mat2), type = 2)
 summary(lm(recovery2 ~ days, data = mat2[mat2$species %in% "DS",]))
 summary(lm(recovery2 ~ days, data = mat2[mat2$species %in% "SA",]))
 
 # comparison of belowground 15N recoveries between species
-t.test(n15_bg ~ species, data = master)
-Anova(aov.bg <- aov(n15_bg ~ species * days, data = master), type = 2)
+t.test(n15_bg ~ factor(species), data = master)
+Anova(aov.bg <- aov(n15_bg ~ factor(species) * days, data = master), type = 2)
 
 
 # comparison of aboveground 15N recoveries between species
-t.test(n15 ~ species, data = master)
-master$days <- as.numeric(substr(master$time, 2, 2)) * 7
-Anova(aov.ag.n15 <- aov(n15 ~ species * days, data = master), type = 2)
+t.test(n15 ~ factor(species), data = master)
+Anova(aov.ag.n15 <- aov(n15 ~ factor(species) * days, data = master), type = 2)
 summary(lm(n15 ~ days, data = master[master$species %in% "DS",]))
 summary(lm(n15 ~ days, data = master[master$species %in% "SA",]))
 
 
-t.test(n15 ~ species, data = master)
+t.test(n15 ~ factor(species), data = master)
 
 
 # Q: how much sorption is there? (look just at belowground data from t1-4)
@@ -1009,8 +1038,8 @@ summary(stats::lm(n15xs ~ as.numeric(substr(time, 2, 2)), data = CN_mass_data[(C
 
 
 ### differences in 15N-nitrogen interception between species (weeks 3 & 4)
-t.test(n_uptake_15n ~ species, data = master[!is.na(master$bgp_biomass_est), ])
-t.test(n_uptake_15n_bg ~ species, data = master[!is.na(master$bgp_biomass_est), ])
+# t.test(n_uptake_15n ~ factor(species), data = master[!is.na(master$bgp_biomass_est), ])
+# t.test(n_uptake_15n_bg ~ factor(species), data = master[!is.na(master$bgp_biomass_est), ])
 
 ddply(master[!is.na(master$bgp_biomass_est), ], .(species), summarise,
       bg.15n.uptake = mean(n_uptake_15n_bg),
@@ -1019,8 +1048,8 @@ ddply(master[!is.na(master$bgp_biomass_est), ], .(species), summarise,
       ag.15n.uptake.se = se(n_uptake_15n))
 
 # 15N uptake per gram fine-roots 
-Anova(aov(n15_pgFR ~ timeDiff * species, data = master), type = "III")
-summary(lm(n15_pgFR ~ timeDiff * species, data = master))
+Anova(aov(n15_pgFR ~ timeDiff * factor(species), data = master), type = "III")
+summary(lm(n15_pgFR ~ timeDiff * factor(species), data = master))
 summary(lm.sa <- lm(n15_pgFR ~ timeDiff, data = master[master$species %in% "SA", ]))
 summary(lm.ds <- lm(n15_pgFR ~ timeDiff, data = master[master$species %in% "DS", ]))
 
@@ -1039,9 +1068,6 @@ summary(lm.mv.ds <- lm(tot_15n_uptake ~ napp.MH + rgr + g_roots + timeDiff, data
 rsq::rsq.partial(lm.mv.sa)
 rsq::rsq.partial(lm.mv.ds)
 
-summary(lm3_4 <- stats::lm(n_uptake_biomass ~ I(n_uptake_15n ) , data = master[master$time %in% c("t3", "t4"), ]))
-
-
 # belowground production
 summary(lm3_4)
 
@@ -1049,7 +1075,7 @@ summary(lm3_4)
 t.test(tot_N_int ~ species, data = master)
 ```
 
-```{Table 1}
+```{r Table 1}
 
 ### assemble Table 1: 15N recovery and uptake by compartment
 # mean(CN_mass_data[(CN_mass_data$sample.type2 %in% "leaf") & (!CN_mass_data$time %in% "t0"), "n15xs_MOM"], na.rm = T)
@@ -1233,21 +1259,7 @@ ggplot(rt2, aes(x = timeDiff, y = xbar, colour = species, shape = species)) + ge
 # Estimating belowground production using 15N
 
 ```{r Estimating belowground production}
-
-
-### apply relationship to estimate belowground production
-
-lm3_4
-master$bg_n_est <- as.numeric(master$n_uptake_15n_bg) * coefficients(lm3_4)[2] + coefficients(lm3_4)[1] # total N uptake belowground: mg N/m2/day
-master$bg_n_est[master$time %in% c("t1", "t2")] <- NA
-master$bgp_est <- master$bg_n_est / master$n_pct_bg2 / 1e3 # [estimated total N uptake (mg N/day)] / [mg N / mg biomass] / [1000 mg/g] = [g belowground biomass / day (/m2)]
-master$bgp_biomass_est <- master$bgp_est * master$timeDiff # [g belowground biomass / day] * [timeDiff (days)] = total belowground production during period [g/m2]
-
-summary(master$bgp_est / master$prodn_rate)
-
 ### differences in total nitrogen interception between species
-master$tot_N_int <- master$bg_n_est + master$n_uptake_biomass + ifelse(master$species %in% "SA", nmolHr_mgDay(dd.dea$flux.m2[2]), nmolHr_mgDay(dd.dea$flux.m2[1]))
-master$tot_N_int[master$time %in% c("t1", "t2")] <- NA
 summary(aov.sp1 <- stats::aov(tot_N_int ~ species, data = master))
 car::Anova(aov.sp2 <- stats::aov(tot_N_int ~ species, data = master))
 stats::TukeyHSD(aov.sp2)
@@ -1307,7 +1319,7 @@ ggplot(master[master$cluster %in% "3-4 weeks", ], aes(x = n_uptake_15n, y = n_up
         legend.background = element_rect(fill = NA, colour = NA)) +
   geom_smooth(data = subset(master, cluster %in% "3-4 weeks"), aes(group = 1), method = "lm", se = FALSE, colour = "black") +
   geom_text(data = data.frame(cluster = "3-4 weeks", n_uptake_biomass = 50, n_uptake_15n = 3, species = "SA"), label =
-              "paste(italic(R) ^ 2, \" = 0.50\")", parse = TRUE, colour = "black")
+              "paste(italic(R) ^ 2, \" = 0.45\")", parse = TRUE, colour = "black")
 # ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure6_", todaysDate, ".png"), width = 80, height= 80, units = "mm", dpi = 400)
 
 ```

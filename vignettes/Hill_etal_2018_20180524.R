@@ -303,6 +303,8 @@ mat2 <- ddply(CN_mass_data[!CN_mass_data$sample.type %in% c("bulk sediment"), ],
               n15_2 = sum(n15_g_recov, na.rm  = T)
 )
 mat2$recovery2 <- mat2$n15_2 / (spike) # "recovery" uses bulk belowground data, "recovery2" uses root pools
+mat2$days <- as.numeric(substr(mat2$time, 2, 2)) * 7
+
 summary(mat2$recovery2[mat2$recovery2 > 0.05])
 
 
@@ -547,7 +549,7 @@ bg_del <- ddply(bg, .(new.core.id), summarise, # I think all these values are pe
 # all relevant values are per m2
 master <- join_all(list(napp[, c("napp.MH", "new.core.id")], # primary production
                         rgr.stems,
-                        n_mean, n_bg_mean[, -c(1:2)], # N inventories above and belowground
+                        n_mean[, -c(1)], n_bg_mean[, -c(1:2)], # N inventories above and belowground
                         ag[, 3:7], bg_del # 15N recoveries and unweighted average pct N
 ), by = "new.core.id")
 master$napp.MH  <- master$napp.MH / pot.m2 # g/m2
@@ -573,6 +575,7 @@ master$n15_pgCR <- (master$n_uptake_15n + master$n_uptake_15n_bg) / (master$g_ro
 master$n15_pgR  <- (master$n_uptake_15n + master$n_uptake_15n_bg) / master$g_roots # 15N uptake per gram fine+coarse root biomass: mg 15N/day/g root biomass
 master$n15_pgFR2 <- master$n15_core * 1e3 / master$g_froots           # mg 15N / g fine roots
 master$tot_15n_uptake <- master$n_uptake_15n + master$n_uptake_15n_bg # mg N/day/m2
+master$days <- as.numeric(substr(master$time, 2, 2)) * 7
 
 ### apply relationship between total N uptake and 15N uptake to estimate belowground production
 summary(lm3_4 <- lm(n_uptake_biomass ~ I(n_uptake_15n ) , data = master[master$time %in% c("t3", "t4"), ]))
