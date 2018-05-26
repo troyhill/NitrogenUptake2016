@@ -21,6 +21,7 @@ Suggests: knitr,
     reshape2,
     ggplot2,
     scales,
-    MuMIn
+    MuMIn,
+    rsq
 VignetteBuilder: knitr
 
