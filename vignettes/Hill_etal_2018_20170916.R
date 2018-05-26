@@ -910,6 +910,7 @@ tbl.prep <- ddply(CN_mass_data[(!CN_mass_data$time %in% "t0") &
                                  (CN_mass_data$sample.type2 %in% c("coarse roots", "fine roots", "rhizomes",
                                  "stems", "leaf")), ],
       .(day.no, species, new.core.id, sample.type2), summarise,
+      n15xs          = sum(n15xs_MOM * n_core, na.rm = T) / sum(n_core, na.rm = TRUE),
       g              = sum(g_core / pot.m2, na.rm  = T),
       n15.mg         = sum(n15_g, na.rm  = T) * 1000 / pot.m2, # mg per m2
       n15.perg       = n15.mg * pot.m2 / sum(g_core, na.rm  = T)) # mg 15N per g dw
