@@ -9,7 +9,43 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo=FALSE}
+if(!require(knitr)){
+  install.packages("knitr")
+}
+if(!require(rmarkdown)){
+  install.packages("rmarkdown")
+}
+if(!require(plyr)){
+  install.packages("plyr")
+}
+if(!require(reshape2)){
+  install.packages("reshape2")
+}
+if(!require(ggplot2)){
+  install.packages("ggplot2")
+}
+if(!require(scales)){
+  install.packages("scales")
+}
+if(!require(MuMIn)){
+  install.packages("MuMIn")
+}
+if(!require(rsq)){
+  install.packages("rsq")
+}
+# then load the package:
+library(knitr)
+library(rmarkdown)
+library(plyr)
+library(reshape2)
+library(ggplot2)
+library(scales)
+library(MuMIn)
+library(rsq)
+library(NitrogenUptake2016)
+
+
 knitr::opts_chunk$set(echo = TRUE, comment=NA)
 ```
 
@@ -38,13 +74,6 @@ For more information contact Troy Hill at Hill.Troy\@gmail.com.
 ```{r, echo = FALSE, include=FALSE}
 # if the NitrogenUptake2016 package isn't installed, use devtools to do so:
 # devtools::install_github("troyhill/NitrogenUptake2016", build_vignettes = TRUE)
-
-# then load the package:
-library(rsq)
-library(ggplot2)
-library(scales)
-library(plyr)
-library(NitrogenUptake2016)
 
 # set some constants
 todaysDate <- substr(as.character(Sys.time()), 1, 10)
