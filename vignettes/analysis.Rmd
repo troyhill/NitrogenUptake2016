@@ -204,7 +204,7 @@ ggplot(obs, aes(x = allom.est / pot.m2, y = g / pot.m2, colour = species2, shape
   theme(legend.position = c(0.3, 0.9), legend.text.align = 0,
         legend.background = element_rect(fill = NA, colour = NA)) +
   geom_abline(slope = 1, intercept = 0, linetype = 2)
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS1_", todaysDate, ".png"), width = 90, height= 90, units = "mm", dpi = 400)
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS1_", todaysDate, ".eps"), width = 90, height= 90, units = "mm", dpi = 400)
 ```
 
 
@@ -733,7 +733,7 @@ Allometry model parameters
 
 ``` {r Figure 1 - Allometry, fig.width = 6, fig.height = 4, message = FALSE}
 
-# png(filename = paste0("C:/RDATA/greenhouse/output/GRO/Figure1_", todaysDate, ".png"), width = 80, height = 80, units = "mm", res = 400)
+# png(filename = paste0("C:/RDATA/greenhouse/output/GRO/Figure1_", todaysDate, ".png"), width = 90, height = 90, units = "mm", res = 1000)
 graphics::par(fig = c(0, 1, 0, 1), mar = c(4, 4, 0.5, 0.5))
 graphics::plot(sample ~ height_cm, data = allometry[(allometry$spp %in% "DISP"), ],
      cex = pointSize / 2, pch = 19, col = fig2Col,
@@ -754,6 +754,7 @@ graphics::lines(x = x.spal[order(y.pred3)], y = y.pred3[order(y.pred3)], lty = 1
 
 graphics::text(x = 20, y = 0.52, cex = 0.95, expression(italic("Spartina")))
 graphics::text(x = 65, y = 0.3, cex = 0.95, expression(italic("Distichlis")))
+# dev.off()
 ```
 
 
