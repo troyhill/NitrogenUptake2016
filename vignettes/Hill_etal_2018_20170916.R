@@ -850,8 +850,9 @@ ddply(master[!is.na(master$bgp_biomass_est), ], .(species), summarise,
       ag.15n.uptake.se = se(n_uptake_15n))
 
 # 15N uptake per gram fine-roots 
-Anova(aov(n15_pgFR ~ timeDiff * species, data = master), type = "III")
-summary(lm(n15_pgFR ~ timeDiff * species, data = master))
+master$spp2 <- factor(master$species)
+contrasts(master$spp2) <- contr.poly(2) 
+Anova(lm(n15_pgFR ~ timeDiff * spp2, data = master), type = "III")
 summary(lm.sa <- lm(n15_pgFR ~ timeDiff, data = master[master$species %in% "SA", ]))
 summary(lm.ds <- lm(n15_pgFR ~ timeDiff, data = master[master$species %in% "DS", ]))
 
