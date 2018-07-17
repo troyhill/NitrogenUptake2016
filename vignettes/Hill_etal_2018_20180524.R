@@ -1,6 +1,7 @@
 ### Script for analysis of GRO 2016 data published as R package
 
 library(ggplot2)
+library(scales)
 library(gridExtra)
 library(rsq)
 library(reshape2)
@@ -1079,16 +1080,18 @@ ddply(master[, c("time", "species", "n15_pgFR")], .(species, time), numcolwise(m
 
 
 # Figure 1 - Allometry ----------------------------------------------------
-
+# tiff(file = paste0("C:/RDATA/greenhouse/output/GRO/Figure1_", todaysDate, ".tiff"), width = 90, height = 90, units = "mm", res = 800, compression = "zip")
 # png(filename = paste0("C:/RDATA/greenhouse/output/GRO/Figure1_", todaysDate, ".png"), width = 80, height = 80, units = "mm", res = 400)
-par(fig = c(0, 1, 0, 1), mar = c(4, 4, 0.5, 0.5))
+par(fig = c(0, 1, 0, 1), mar = c(2.5, 4, 0.5, 0.5))
 plot(sample ~ height_cm, data = allometry[(allometry$spp %in% "DISP"), ],
      cex = pointSize / 2, pch = 19, col = fig2Col,
-     ylab = "Total mass (g)", xlab = "Height (cm)", xlim = c(0, 80), ylim = c(0, 0.65), xaxt = "n",
+     ylab = "Total mass (g)", xlab = "", xlim = c(0, 80), ylim = c(0, 0.65), xaxt = "n",
      las = 1, tcl = 0.25, tck = 0.01, bty = "n", yaxs = "i", xaxs = "i")
+mtext("Height (cm)", side = 1, line = 1.5)
 abline(h = 0)
 abline(v = 0)
-axis(side = 1, tcl = 0.25, tck = 0.01, at = axTicks(1), labels = axTicks(1))
+axis(side = 1, tcl = 0.25, tck = 0.01, at = axTicks(1), labels = NA)
+mtext(axTicks(1), side = 1, at = axTicks(1), line = 0.25)
 points(sample ~ height_cm, data = allometry[(allometry$spp %in% "SPAL"), ],  cex = pointSize / 2, pch = 17)
 
 x <- allometry[(allometry$spp %in% "DISP"), "height_cm"]
@@ -1107,10 +1110,12 @@ text(x = 65, y = 0.3, cex = 0.95, expression(italic("Distichlis")))
 
 
 # Figure 2 - Aboveground biomass over time ----------------------------------
+# tiff(file = paste0("C:/RDATA/greenhouse/output/GRO/Figure1_", todaysDate, ".tiff"), width = 90, height = 90, units = "mm", res = 800, compression = "zip")
 pd <- position_dodge(1.2)
+pointSize2 <- 2.5
 
 ggplot(ddHgt4[ddHgt4$cohort > 0, ], aes(y = mass / pot.m2, x = as.Date(session), colour = species, shape = species)) +
-  geom_point(size = pointSize, position = pd) + theme_classic() + 
+  geom_point(size = pointSize + 0.5, position = pd) + theme_classic() + 
   geom_errorbar(aes(ymin = (mass - mass.se) / pot.m2, ymax = (mass + mass.se) / pot.m2), width = 0, position = pd) +
   scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
   scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
@@ -1119,14 +1124,13 @@ ggplot(ddHgt4[ddHgt4$cohort > 0, ], aes(y = mass / pot.m2, x = as.Date(session),
   scale_x_date(breaks = as.Date(unique(ddHgt4$session))[c(1, 2, 4, 6, 8)], labels = date_format("%b-%d")) +
   theme(legend.position = c(0.125, 0.87), legend.text.align = 0,
         legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure2_", todaysDate, ".png"), width = 120, height= 70, units = "mm", dpi = 400)
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure2_", todaysDate, ".tiff"), width = 140, height= 90, units = "mm", dpi = 800, compression = "lzw")
 
 unique(ddHgt4$day[ddHgt4$cohort == 1])
 
 # Figure 3A - NAPP ------------------------------------------
 # set dodge width for points & error bars
 pd <- position_dodge(0.6)
-pointSize2 <- 2
 
 fig3A <- ggplot(dd.master, aes(y = prodn_rate, x = as.Date(session), shape = species, colour = species)) + 
   geom_point(size = pointSize2, position = pd) + theme_classic() +
@@ -1163,8 +1167,8 @@ fig3B <- ggplot(dd.master, aes(y = n_uptake_biomass, x = as.Date(session), shape
   annotate("text", x = as.Date(unique(dd.master$session)[1]), y = 150, label = "B")
 # ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure3B_.png"), width = 80, height= 80, units = "mm", dpi = 400)
 
-ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure3_", todaysDate,".png"), width = 80, height= 160, units = "mm", dpi = 400, 
-       gridExtra::arrangeGrob(fig3A, fig3B))
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure3_", todaysDate,".tiff"), width = 90, height= 140, units = "mm", dpi = 800, compression = "lzw",
+#        gridExtra::arrangeGrob(fig3A, fig3B))
 
 
 # Figure 4 - 15N recoveries ------------------------------------------------
@@ -1180,7 +1184,7 @@ ggplot(mgd[!mgd$time %in% "t0", ], aes(x = as.Date(session), y = recovery, colou
   scale_x_date(breaks = as.Date(unique(mgd[!mgd$time %in% "t0", "session"])), labels = date_format("%b-%d")) +
   theme(legend.position = c(0.15, 0.9), legend.text.align = 0, axis.title.x=element_blank(),
         legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure4_", todaysDate, ".png"), width = 120, height= 90, units = "mm", dpi = 400)
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure4_", todaysDate, ".tiff"), width = 140, height= 90, units = "mm", dpi = 800, compression = "lzw")
 
 
 
@@ -1200,7 +1204,7 @@ ggplot(rt2, aes(x = timeDiff, y = xbar, colour = species, shape = species)) + ge
   theme(legend.text.align = 0, legend.position = c(0.8, 0.8),
         legend.background = element_rect(fill = NA, colour = NA)) +
   geom_smooth(method = "lm", se = FALSE)
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure5_", todaysDate, ".png"), width = 80, height= 80, units = "mm", dpi = 400)
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure5_", todaysDate, ".tiff"), width = 90, height= 90, units = "mm", dpi = 800, compression = "lzw")
 
 
 
@@ -1217,12 +1221,12 @@ ggplot(master[master$cluster %in% "3-4 weeks", ], aes(x = n_uptake_15n, y = n_up
   geom_smooth(data = subset(master, cluster %in% "3-4 weeks"), aes(group = 1), method = "lm", se = FALSE, colour = "black") +
   geom_text(data = data.frame(cluster = "3-4 weeks", n_uptake_biomass = 50, n_uptake_15n = 3, species = "SA"), label =
               "paste(italic(R) ^ 2, \" = 0.45\")", parse = TRUE, colour = "black")
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure6_", todaysDate, ".png"), width = 80, height= 80, units = "mm", dpi = 400)
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/Figure6_", todaysDate, ".tiff"), width = 90, height= 90, units = "mm", dpi = 800, compression = "lzw")
 summary(lm3_4)
 
 # Figure S1 - predicted vs obs biomass ---------------------------------------
 ggplot(obs, aes(x = allom.est / pot.m2, y = g / pot.m2, colour = species2, shape = species2)) +
-  geom_point(size = pointSize) + theme_classic() %+replace% theme(legend.title = element_blank()) +
+  geom_point(size = pointSize2) + theme_classic() %+replace% theme(legend.title = element_blank()) +
   labs(x = expression("Predicted biomass (allometry; g"%.%m^-2~")"), y = expression("Measured biomass (g "%.%m^-2~")")) +
   ylim(0, 650) + xlim(0, 650) +
   scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(obs$species2)[1], unique(obs$species2)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
@@ -1230,7 +1234,7 @@ ggplot(obs, aes(x = allom.est / pot.m2, y = g / pot.m2, colour = species2, shape
   theme(legend.position = c(0.3, 0.9), legend.text.align = 0,
         legend.background = element_rect(fill = NA, colour = NA)) +
   geom_abline(slope = 1, intercept = 0, linetype = 2)
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS1_", todaysDate, ".png"), width = 80, height= 80, units = "mm", dpi = 400)
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS1_", todaysDate, ".tiff"), width = 90, height= 90, units = "mm", dpi = 800, compression = "lzw")
 
 
 
@@ -1244,7 +1248,7 @@ ggplot(ag2.sp, aes(y = g, x = as.Date(session), colour = species2, shape = speci
   scale_x_date(breaks = as.Date(unique(ag2.sp$session)), labels = date_format("%b-%d")) +
   theme(legend.position = c(2.2, 0.9), legend.text.align = 0,
         legend.background = element_rect(fill = NA, colour = NA))
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS2_part1_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS2_part1_", todaysDate, ".tiff"), width = 90, height= 140, units = "mm", dpi = 800, compression = "lzw")
 
 
 ggplot(ag2.sp, aes(y = n_pct, x = as.Date(session), colour = species2, shape = species2)) + geom_point(size = pointSize2, position = pd2) + theme_classic() %+replace% theme(legend.title = element_blank()) +
@@ -1255,7 +1259,7 @@ ggplot(ag2.sp, aes(y = n_pct, x = as.Date(session), colour = species2, shape = s
   scale_x_date(breaks = as.Date(unique(ag2.sp$session)), labels = date_format("%b-%d")) +
   theme(legend.position = c(2.2, 0.9), legend.text.align = 0,
         legend.background = element_rect(fill = NA, colour = NA))
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS2_part2_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS2_part2_", todaysDate, ".tiff"), width = 90, height= 140, units = "mm", dpi = 800, compression = "lzw")
 
 
 
@@ -1268,7 +1272,7 @@ ggplot(bg.sp, aes(y = g, x = as.Date(session), colour = species2, shape = specie
   scale_x_date(breaks = as.Date(unique(bg.sp$session)), labels = date_format("%b-%d")) +
   theme(legend.text.align = 0, legend.position = c(2.2, 1),
         legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS3_part1_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS3_part1_", todaysDate, ".tiff"), dpi = 800, compression = "lzw", width = 140, height = 90, units = "mm")
 
 
 ggplot(bg.sp, aes(y = n_pct, x = as.Date(session), colour = species2, shape = species2)) + geom_point(size = pointSize2, position = pd2) + theme_classic() +
@@ -1278,7 +1282,7 @@ ggplot(bg.sp, aes(y = n_pct, x = as.Date(session), colour = species2, shape = sp
   ylab("Tissue N content") +  xlab("") + scale_y_continuous(labels = scales::percent) +
   theme(legend.text.align = 0, legend.position = c(2.2, 1),
         legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
-# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS3_part2_", todaysDate, ".png"), width = 75, height= 90, units = "mm", dpi = 400)
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS3_part2_", todaysDate, ".tiff"), dpi = 800, compression = "lzw", width = 140, height = 90, units = "mm")
 
 
 

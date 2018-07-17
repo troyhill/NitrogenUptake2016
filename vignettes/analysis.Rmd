@@ -734,6 +734,8 @@ Allometry model parameters
 ``` {r Figure 1 - Allometry, fig.width = 6, fig.height = 4, message = FALSE}
 
 # png(filename = paste0("C:/RDATA/greenhouse/output/GRO/Figure1_", todaysDate, ".png"), width = 90, height = 90, units = "mm", res = 1000)
+# tiff(file = paste0("C:/RDATA/greenhouse/output/GRO/Figure1_", todaysDate, ".png"), width = 90, height = 90, units = "mm", res = 800)
+
 graphics::par(fig = c(0, 1, 0, 1), mar = c(4, 4, 0.5, 0.5))
 graphics::plot(sample ~ height_cm, data = allometry[(allometry$spp %in% "DISP"), ],
      cex = pointSize / 2, pch = 19, col = fig2Col,
