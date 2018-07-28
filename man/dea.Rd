@@ -20,7 +20,7 @@ Data: Denitrification enzyme activity and in vitro N2O production rates
 }
 \examples{
 ### export to .csv:
-write.csv(dea, file = "dea.csv")
+write.csv(dea, file = file.path(tempdir(), "dea.csv"))
 }
 \keyword{N2O}
 \keyword{data,}

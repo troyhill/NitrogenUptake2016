@@ -26,7 +26,7 @@ A dataframe of masses and heights of stems of Spartina alterniflora and Distichl
 }
 \examples{
 ### export to .csv:
-write.csv(allometry, file = "allometry.csv")
+write.csv(allometry, file = file.path(tempdir(), "allometry.csv"))
 }
 \keyword{allometry}
 \keyword{data,}

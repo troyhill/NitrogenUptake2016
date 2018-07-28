@@ -31,7 +31,7 @@ Data: Nutrient concentrations, stable isotope ratios, and biomass from destructi
 }
 \examples{
 ### export to .csv:
-write.csv(CN_mass_data, file = "CN_mass_data.csv")
+write.csv(CN_mass_data, file = file.path(tempdir(), "CN_mass_data.csv"))
 }
 \keyword{15N}
 \keyword{data,}

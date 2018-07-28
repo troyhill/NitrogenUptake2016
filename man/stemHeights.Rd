@@ -35,7 +35,7 @@ A dataframe of Spartina alterniflora and Distichlis spicata stem heights, from t
 }
 \examples{
 ### export to .csv:
-write.csv(stemHeights, file = "stemHeights.csv")
+write.csv(stemHeights, file = file.path(tempdir(), "stemHeights.csv"))
 }
 \keyword{NAPP,}
 \keyword{aboveground}
