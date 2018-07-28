@@ -1,0 +1,1642 @@
+---
+title: 'Nitrogen uptake and allocation estimates for _Spartina alterniflora_ and _Distichlis spicata_'
+subtitle: 'Journal of Experimental Marine Biology and Ecology, In Press, pp. 1-8'
+author: 'Troy D. Hill^a\*^, Nathalie R. Sommer^b^, Caroline R. Kanaskie^c^, Emily A. Santos^d^, and Autumn J. Oczkowski^a^'
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Journal of Experimental Marine Biology and Ecology manuscript}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+if(!require(knitr)){
+  install.packages("knitr", repos='http://cran.us.r-project.org')
+}
+if(!require(rmarkdown)){
+  install.packages("rmarkdown", repos='http://cran.us.r-project.org')
+}
+if(!require(plyr)){
+  install.packages("plyr", repos='http://cran.us.r-project.org')
+}
+if(!require(reshape2)){
+  install.packages("reshape2", repos='http://cran.us.r-project.org')
+}
+if(!require(ggplot2)){
+  install.packages("ggplot2", repos='http://cran.us.r-project.org')
+}
+if(!require(scales)){
+  install.packages("scales", repos='http://cran.us.r-project.org')
+}
+if(!require(MuMIn)){
+  install.packages("MuMIn", repos='http://cran.us.r-project.org')
+}
+if(!require(rsq)){
+  install.packages("rsq", repos='http://cran.us.r-project.org')
+}
+# then load the package:
+library(knitr)
+library(rmarkdown)
+library(plyr)
+library(reshape2)
+library(ggplot2)
+library(scales)
+library(MuMIn)
+library(rsq)
+library(NitrogenUptake2016)
+
+
+knitr::opts_chunk$set(echo = TRUE, comment=NA)
+```
+
+^a^United States Environmental Protection Agency, Office of Research and Development, 27 Tarzwell Drive, Narragansett, RI 02882, United States
+
+^b^Yale University, School of Forestry and Environmental Studies, 205 Prospect Street, New Haven, CT 06511, United States
+
+^c^University of New Hampshire, Department of Natural Resources and the Environment, 46 College Road, Durham, NH 03824, United States
+
+^d^Humboldt State University, College of Natural Resources and Sciences, 1 Harpst Street, Arcata, CA, 95521, United States
+
+*Corresponding author: hill.troy@gmail.com
+
+
+## Abstract
+
+Salt marshes have the potential to intercept nitrogen that could otherwise impact coastal water quality. Salt marsh plants play a central role in nutrient interception by retaining N in above- and belowground tissues. We examine N uptake and allocation in two dominant salt marsh plants, short-form _Spartina alterniflora_ and _Distichlis spicata_. Nitrogen uptake was measured using ^15^N tracer experiments conducted over a four-week period, supplemented with stem-level growth rates, primary production, and microbial denitrification assays. By varying experiment duration, we identify the importance of a rarely-measured aspect of experimental design in ^15^N tracer studies. Experiment duration had a greater impact on quantitative N uptake estimates than primary production or stem-level relative growth rates. Rapid initial scavenging of added ^15^N caused apparent nitrogen uptake rates to decline by a factor of two as experiment duration increased from one week to one month, although each experiment shared the qualitative conclusion that _Distichlis_ roots scavenged N approximately twice as rapidly as _Spartina_. We estimate total N uptake into above- and belowground tissues as 154 and 277 mg N$\cdot$m^-2^$\cdot$d^-1^ for _Spartina_ and _Distichlis_, respectively. Driving this pattern were higher N content in _Distichlis_ leaves and belowground tissue and strong differences in primary production; _Spartina_ and _Distichlis_ produced 8.8 and 14.7 g biomass$\cdot$m^-2^$\cdot$d^-1^. Denitrification potentials were similar in sediment associated with both species, but the strong species-specific difference in N uptake suggests that _Distichlis_-dominated marshes are likely to intercept more N from coastal waters than are short-form _Spartina_ marshes. The data and source code for this manuscript are available as an R package from https://github.com/troyhill/NitrogenUptake2016.
+
+\vspace{3mm}\hrule
+\doublespace
+
+**Keywords:** Nitrogen uptake, Nitrogen-15, Salt marsh, _Spartina alterniflora_, _Distichlis spicata_
+
+
+```{r, echo = FALSE, include=FALSE}
+# if the NitrogenUptake2016 package isn't installed, use devtools to do so:
+# devtools::install_github("troyhill/NitrogenUptake2016", build_vignettes = TRUE)
+
+# set some constants
+todaysDate <- substr(as.character(Sys.time()), 1, 10)
+core.area <- pot.m2 <- 0.00801185 # mesocosm surface area (m2)
+top.vol   <- core.area * 0.05 * 1e6 # cm3 in core: top 5 cm only
+pointSize <- 2 # for ggplot graphics
+pd <- pd2 <- position_dodge(1.2)
+pd3 <- position_dodge(0.8)
+grayColor <- 0.55
+fig2Col   <- "gray55"
+
+
+```
+
+\newline
+
+## 1.	Introduction
+
+Nitrogen (N) enrichment in coastal ecosystems is a chronic and widespread phenomenon (Paerl et al., 2002), and one that may be exacerbated by changing precipitation regimes (Sinha et al., 2017). Salt marshes occur along terrestrial margins and serve as buffers, retaining and transforming N before it reaches coastal waters (Craft et al., 2009) and can contribute to cultural eutrophication. The N-buffering capacity of salt marshes reflects the combined effects of microbial conversion of N to gaseous forms, sediment accumulation, and plant uptake of mineral N into organic tissues.
+
+Microbial denitrification converts bioavailable forms of N to less reactive gaseous compounds (e.g., Koop-Jakobsen and Giblin, 2010; Yang et al., 2015) that can be readily exported to the atmosphere. The magnitude of denitrification is estimated at ~25% of annual plant N demand (White and Howes, 1994). Burial of N in deposited mineral sediment is a function of cation exchange capacity and sediment accumulation rates, both of which are variable and potentially impermanent (Anisfeld and Benoit, 1997). Nitrogen is also taken up by plants and stored in organic tissue during the growing season, when it is, in roughly equal parts, released to coastal waters or translocated to belowground plant structures for future re-use (Hopkinson and Schubauer, 1984) or long-term burial in dead organic tissues (White and Howes, 1994). This understanding of plant N cycling suggests that approximately half of annual plant N demand is supplied by inorganic N imported in coastal waters or produced by local N fixation.
+
+In salt marshes from the northeastern United States to the Gulf Coast, short-form _Spartina alterniflora_ Loisel and _Distichlis spicata_ (L.) Greene (hereafter _Spartina_ and _Distichlis_) can co-occur and behave as dominants on the marsh platform. Both species are typically N-limited (Smart and Barko, 1980) and respond positively to N enrichment throughout their ranges, increasing their biomass and dominance (Levine et al., 1998; Pennings et al., 2002). To the extent that these species differ in N uptake capacity, environmental changes affecting their dominance may have ancillary effects on ecosystem-scale nutrient interception.
+
+Nutrient enrichment itself can affect competition between these species, potentially signaling disparate N uptake capacities. Community ecology theory suggests that relief from nutrient limitation may lead to _Spartina_ to outcompete _Distichlis_, as competition shifts from nutrients to light (Levine et al., 1998). However, nutrient enrichment experiments have shown _Distichlis_ increasing in dominance at the expense of _Spartina_ (Fox et al., 2012; Pennings et al., 2002). The nature of the changing N regime - whether additional N is delivered as a "press" through a rising baseline level or in episodic pulses - may also play a role in enrichment effects on species cover and the ability of marsh plants to capture N. Understanding N uptake dynamics in these two species may provide insight into competitive outcomes under eutrophic conditions, and can provide a basis for estimating the nutrient-interception implications of shifts in dominance, regardless of cause.
+
+The use of ^15^N as a tracer is a common means of investigating N uptake dynamics. This approach is particularly useful when N stocks are poorly constrained or where production and N uptake may be loosely coupled. As a methodological tool ^15^N is powerful, but cost and labor requirements often limit applications to a single time interval. Time periods used for ^15^N studies vary widely, from two days (Mozdzer et al., 2014) to three months (Oczkowski et al., 2015) to as much as seven years (White and Howes, 1994). Because uptake rates are calculated based on the amount of ^15^N accumulated and the time elapsed, tracer studies using different time intervals have differential sensitivity to temporal variation in N uptake, and at least over long time periods emphasize different processes, as initial plant-microbe competition gives way to translocation dynamics and leaching rates (White and Howes, 1994).
+
+We conducted a ^15^N tracer study to improve our understanding of N capture and allocation by _Spartina_ and _Distichlis_, and to optimize the application and interpretation of ^15^N tracer methods. Our first objective was to quantify N uptake and allocation to above- and belowground tissues over a one-month time scale. Based on a zonation paradigm in which plants occupying less stressful, higher-elevation areas more efficiently compete for nutrients (Levine et al., 1998), we hypothesized that _Distichlis_ would scavenge N more efficiently than _Spartina_. We further hypothesized that in both species, N would be partitioned rapidly into aboveground photosynthetic tissues. Our second objective was to test the importance of potential determinants of N capture. The determinants we considered were relative growth rates of individual shoots, primary production, root biomass, and experiment duration.  We hypothesized that shoot growth rates and root biomass will be critical determinants of N uptake, respectively mediating demand for, and access to, dissolved N.
+
+\newline
+\newline
+
+## 2. Material and methods 
+
+**2.1.	 Experimental design**
+
+On 21 June 2016, vegetated salt marsh cores (hereafter "mesocosms") were collected from Colt State Park in Bristol, RI. Mesocosms were collected by inserting modified polyvinylchloride (PVC) coring tubes (35 cm x 10 cm dia.) into the marsh platform. Live aboveground biomass was protected from damage during retrieval using PVC extensions. After extracting the mesocosms from the marsh, mesh netting (0.5 mm) was secured to the bottom of the PVC to prevent sediment loss during the experiment. A total of 30 mesocosms were collected, 15 each from monoculture areas of short-form _Spartina_ and _Distichlis_ at similar elevations on the marsh platform.
+
+Following collection, mesocosms were transferred to a tidal basin (0.6 m x 1 m dia.) located in an outdoor greenhouse at the US Environmental Protection Agency's Atlantic Ecology Division. Semidiurnal tides were simulated with seawater pumped from Narragansett Bay and timer-operated solenoid valves at the input and outlet of the basin. Using the same system described by Hanson et al. (2016), the water level in the tidal basin was gradually raised from low tide (0.20 m) to high tide (0.45 m; determined by a standpipe) over a four-hour period beginning when the input solenoid was opened at 5 a.m. each morning. Flood tide was followed by a two hour slack tide when the input solenoid was closed, a four hour period of ebb tide drainage (drain solenoid opened), and a two hour slack low tide before the cycle began again. Mesocosms were positioned on a grate to allow drainage, and were inundated to a depth of 0.05 m during high tides. Mesocosms were redistributed inside the tidal basin every three days to homogenize exposure to ambient sunlight.
+
+\newline
+
+**2.2.	 Allometry and aboveground production**
+
+Every live culm in each mesocosm was tagged and heights were measured to the nearest millimeter on 22 June, 29 June, 6 July, 13 July, and 20 July 2016. Stem heights were also recorded for mesocosms as they were harvested. New shoots were tagged throughout the experiment, and in total 839 unique shoots were tracked. Stem densities were calculated directly from counts of live shoots, and shoot masses were estimated from heights using species-specific allometry equations developed for the marsh where mesocosms were initially collected.
+
+Allometric models were developed from live shoots collected from Colt State Park in May, June, and July 2016. At each sampling event, three 25 x 25 cm quadrats were collected from monoculture areas of short-form _Spartina_ and _Distichlis_. Stems were cut at the sediment surface, measured to the nearest millimeter, and a representative subsample of stems were individually dried to constant weight at 50^o^C. Masses were modeled as a function of height following Lu et al. (2016), with linear models parameterized using Box-Cox power transformations of biomass ($\lambda$) selected to maximize normality of residuals (Box and Cox, 1964). Species-specific allometry equations took the form mass = e^(height$\cdot$a+b)^ for $\lambda$ = 0, and mass = (height$\cdot$a + b)^1/$\lambda$^ for $\lambda$ not equal to zero (Box and Cox, 1964). These allometry equations were applied to the stem height measurements collected in the greenhouse experiment. Net aboveground primary production (NAPP) was calculated for each mesocosm as the sum of positive live biomass increments at the mesocosm-scale (Milner and Hughes, 1968).
+
+The performance of allometry models was evaluated by comparing predicted biomass with biomass directly measured during mesocosm harvests. By this measure, allometry-based biomass estimates averaged 31 g$\cdot$m-2 (14%) higher than the total observed biomass (Hill et al. (Submitted)). Although the absolute magnitude of the errors was similar between species, the lower total biomass in _Spartina_ mesocosms increased the proportional error, making _Distichlis_ allometry models more accurate by this measure (8% vs. 19% error).
+
+Estimated shoot masses were used to calculate relative growth rates (RGR; g$\cdot$g^-1^$\cdot$d^-1^); the rate of biomass accumulation per unit of biomass. RGR was calculated for each tagged shoot as the difference between sequential log-transformed shoot masses (M~t-1~ to T~t~ in eq. 1) divided by the time interval between measurements (Hunt, 1990). For shoot i over the time period T~t-1~ to T~t~, RGR was calculated as:
+
+RGR~(i,t)~ =   (ln(M~i,t~) - ln(M~i,t-1~)) / (T~t~ - T~t-1~)           [eq. 1]
+
+
+RGR was averaged across all unique stems in each mesocosm. When multiple growth rate measurements were available for an individual shoot, they were averaged to get a single representative quantity for each unique shoot, before calculating a mesocosm average.
+
+\newline
+
+**2.3. ^15^N tracer pulse**
+
+To track N uptake, we added ^15^N tracer to each mesocosm using a solution of 99 atom percent K^15^NO3 in artificial seawater. During an ebb tide on 24 June 2016, 4 mL of tracer solution was injected into the sediment at three evenly-spaced points in each mesocosm, adding a combined 1.95 mg ^15^N to each mesocosm. Mesocosms grown in the greenhouse received the single dose of ^15^N tracer at the same time, but were deconstructed over the subsequent month, as described below, allowing variable amounts of time for ^15^N movement and allocation. 
+The ^15^N application used in this study is equivalent to a one-time addition of 246 mg N$\cdot$m-2 (243 mg ^15^N$\cdot$m-2), large enough to enable detection of plant uptake and allocation while minimally affecting the soil N stock. Our interpretation assumes that the tracer application did not introduce enough total N to cause enrichment artifacts, and that our study represents the response of wetlands in an ambient N regime to a small pulse. Although we did not test this assumption, our N loading rate is low relative to literature values from studies in ambient nutrient regimes (Table S1).
+	 
+\newline
+
+**2.4. Mesocosm processing**
+
+At collection (21 June 2016) and at weekly intervals beginning nine days after tracer addition, a cohort of three randomly selected mesocosms from each species was harvested for analysis of ^15^N accumulation in above- and belowground tissue. This sampling occurred on 1 July, 8 July, 15 July, and 22 July 2016. Above-ground biomass was clipped at the sediment surface, rinsed with deionized water and separated into live and standing dead biomass. Live biomass was further separated into stems, dead leaves, and live leaves. Live leaves were separated by position relative to the top of the shoot, although these node-level data were pooled together during data analysis.
+
+After aboveground biomass was sampled, peat was extruded from the coring tube and sectioned into six depth intervals: 0-2 cm, 2-5 cm, 5-10 cm, 10-15 cm, 15-20 cm, and 20-30 cm. Surface litter and algal mat layers were separated when present. Each depth interval was subsampled for belowground biomass and bulk density. One quarter of each depth interval volume was dried to constant weight at 50oC, with bulk density calculated as the bulk sediment dry mass divided by the sample volume. One quarter of each depth interval was archived in a freezer, and the remaining half of each depth interval was used for separation of belowground biomass. Within one week of harvest, belowground biomass was rinsed clean of sediment using deionized water and separated into live rhizomes, live coarse roots (>1 mm), live fine roots ($\leq$ 1 mm), and dead biomass. Live biomass was distinguished from dead by its white color and turgid structure. All samples were dried to constant weight at 50^o^C, ground using a Wiley mill using a size 40 screen, and stored in acid-washed scintillation vials. Enriched and unenriched samples were ground on separate mills to prevent contamination.
+
+\newline
+
+**2.5. Potential and in vitro denitrification**
+
+On 9 July 2016 two acetylene inhibition assays were conducted using subsamples of 0-5 cm depth intervals from each of the six mesocosms harvested the previous day. Denitrification enzyme activity (DEA) potential was measured by incubating 6.5 g of sediment in 70 mL jars sealed with rubber septa. Sample containers were amended with 12 mL of nutrient-amended filtered seawater (7 mmol N$\cdot$L-1 as KNO3; 17 mmol C$\cdot$L-1 as D-glucose; and 6 mmol P$\cdot$L-1 as KH2PO4) with 0.125 g$\cdot$L-1 chloramphenicol added as a microbial inhibitor. Containers were alternately evacuated and flushed with N2 three times, and acetylene (10% of headspace volume) was added to block reduction of N2O to N2. In vitro denitrification was measured in nearly identical acetylene inhibition assays. The only difference was the use of unamended filtered seawater rather than a nutrient solution, following Warneke et al. (2011). In vitro denitrification and DEA assays estimate microbial denitrification under ambient conditions, wherein some compound may be limiting, and after removing limitation. These measures therefore provide reasonable lower and upper-bound estimates of denitrification.
+
+In both assays, N2O accumulation in the jars was measured at 30 minute intervals over a period of two hours, with 5 mL of sample headspace and 10 mL of N2 transferred to evacuated 12 mL exetainers (Labco, UK). Sampled headspace was replaced with a 10% mixture of acetylene in N2. Nitrous oxide concentrations were analyzed by gas chromatography (GC; Shimadzu GC2014) using an electron capture detector (ECD). The GC column oven temperature was 75oC, the ECD temperature was 325oC, the carrier gas was helium and makeup gas was a 5% solution of methane in argon. Potential and in vitro denitrification were measured as the slope of the line of best fit for dilution-corrected N2O concentrations in the jar headspace. At least three points were used for each rate estimate, and all relationships had R2 ??? 0.92 (mean R2 = 0.97). A laboratory blank using DEA solution and no added sediment yielded zero flux (slope = 0.0; R2 = 0.0), so no blank correction was applied. Fluxes per gram of bulk sediment were divided by the sediment inventory (g$\cdot$m-2) to express gas fluxes per unit area, units comparable to N uptake rates.
+
+\newline
+
+**2.6. Analytical measurements and N uptake calculations**
+
+Nitrogen concentrations and isotope ratios were measured using an Elementar Vario Micro elemental analyzer connected to a continuous flow Isoprime 100 isotope ratio mass spectrometer (Elementar Americas, Mt. Laurel, NJ). Check standards, blanks, and sample replicates were run every ten samples. Replicate analyses of isotopic standard reference materials USGS 40 ($\delta$ ^13^C = -26.39 $\unicode{x2030}$; $\delta$ ^15^N = -4.52 $\unicode{x2030}$) and USGS 41 ($\delta$ ^13^C = 37.63 $\unicode{x2030}$; $\delta$ ^15^N = 47.57 $\unicode{x2030}$) were used to normalize isotopic values of working standards to the Air ($\delta$^15^N) and Vienna Pee Dee Belemnite ($\delta$ ^13^C) scales (Paul et al., 2007). Average recoveries for standard reference materials were ±1.1% for ^15^N, ±0.4% for total N, ±0.03% for ^13^C, and ±0.05% for total C. Coefficients of variation on sample replicates averaged 8.9% for $\delta$ ^15^N, 5.9% for total N, -0.5% for$\delta$ ^13^C, and 3.6% for total C.
+
+Isotope composition reported by the mass spectrometer is in per mil notation, where ^15^N= [(R~sample~-R~air~)/R~air~] × 10^3^. This was converted to atom-percent notation as: 
+
+
+^15^N AP = (($\delta$ ^15^N + 1000) / (($\delta$ ^15^N + 1000 + (1000 / 0.0036765))) x 100              [eq. 2]
+
+
+The mass of ^15^N recovered was calculated in two steps. First, the atom percent (AP) excess ^15^N (^15^Nxs) was calculated for each sample by subtracting the background ^15^N AP for each compartment (based on time-zero data) from ^15^N AP in enriched samples. An additional correction was applied to belowground biomass; ^15^Nxs in dead biomass was subtracted from live biomass compartments to account for sorption of ^15^N to organic matter and focus on incorporation of ^15^N into tissue (Mozdzer et al., 2014). Multiplying ^15^Nxs by the percent N and total biomass in the associated compartment provides the ^15^N mass recovered, which can be directly compared to the mass of tracer added.
+
+Aboveground N uptake was estimated independently using ^15^N and harvest techniques. Rates of ^15^N uptake (mg ^15^N $\cdot$m-2$\cdot$d-1) were calculated using the mass of ^15^N recovered in live aboveground tissue and the time elapsed between tracer addition and harvest. In the harvest technique, total N uptake was estimated by multiplying primary production rates by a weighted average of N content in aboveground tissues. 
+
+\newline
+
+**2.7.	 Belowground primary production**
+
+In the absence of direct measurements of net belowground primary production (NBPP), we estimated NBPP and N uptake using ^15^Nxs accumulation and the stoichiometry of belowground tissue. When a significant relationship was observed between aboveground ^15^Nxs  uptake and total N uptake estimated from aboveground production, the relationship between the two measures (TN~AG~ = ^15^N~AG~ × a~AG~ + b~AG~) was applied to belowground ^15^Nxs uptake rates (^15^NBG; mg ^15^N$\cdot$m-2 $\cdot$d-1) to estimate total N accumulation in belowground tissue (TNBG; mg N$\cdot$m-2$\cdot$d-1; eq. 3). The stoichiometry of belowground tissue was then used to estimate biomass production required for a given total N uptake rate (eq. 4). Specifically, belowground N uptake rates were divided by the weighted-average N concentration in belowground tissues to estimate belowground biomass production (mg biomass$\cdot$m-2$\cdot$d-1):
+
+
+TN~BG~ = ^15^N~BG~ $\cdot$ a~AG~ + b~AG~                    [eq. 3]
+
+
+NBPP = TN~BG~ ÷  (mg N)/(mg biomass)				                [eq. 4]
+
+
+This approach makes two important assumptions. First, it assumes that above- and belowground tissues do not differentially discriminate between ^15^N and 14N. Assuming no fractionation differences between tissues means that ^15^Nxs accumulation is similarly representative of total N accumulation in both tissues, and allows model parameters a~AG~ and b~AG~ to be applied to belowground ^15^N uptake to estimate total N uptake. Secondly, this approach assumes that the bulk of ^15^Nxs measured in roots and rhizomes is incorporated into tissues and reflects production. ^15^Nxs in live roots and rhizomes was corrected for sorption by subtracting ^15^Nxs in dead biomass, but we did not measure and cannot correct for ^15^N that was in the process of translocation to aboveground tissue.
+
+\newline
+
+**2.8. Statistical analysis**
+
+Temporal trends in biomass and N content were evaluated for each species using linear models. Statistical comparisons of mean values between species were made using Welch's t-test, with non-integer degrees of freedom rounded down. Differences between species and the effect of experiment duration (four weekly harvests following a single ^15^N application) on N uptake rates were evaluated using two-way analysis of variance (ANOVA) with species and time as main effects. Potentially important controls on total (above- and belowground) ^15^N uptake were evaluated using species-specific multiple regression models with experiment duration, relative growth rates, primary production, and root biomass as explanatory variables. All analyses were conducted in R version 3.5.1.
+
+\newline
+\newline
+
+## 3. Results
+
+**3.1. Stem allometry, aboveground biomass and production**
+
+Stem allometry was based on 95 _Distichlis_ samples and 75 _Spartina_ stems collected from Colt State Park, RI. These data suggest strong species-specific differences in allometry. On the marsh platform, _Distichlis_ had greater maximum stem heights than _Spartina_ (Fig. 1), although _Spartina_ generally weighed more at stem heights taller than 15 cm. Power transformations differed between the species and the resulting allometry parameters (Table 1) are not directly comparable, although Figure 1 suggests that _Spartina_ has a more concave relationship between mass and height, indicating a more rapid increase in biomass per increment of shoot height. As a result, _Spartina_ shoots tend to have a similar or higher mass than _Distichlis_ shoots of the same height.
+
+Cohorts varied in their initial standing aboveground biomass (Fig. 2), but biomass in all cases increased over time indicating steady primary production. Over the four harvests _Spartina_ NAPP averaged 3.7 ± 0.56 g$\cdot$m-2$\cdot$d-1 and remained constant over time (P = 0.14), while _Distichlis_ NAPP (pooled mean: 5.7 ± 0.99 g$\cdot$m-2$\cdot$d-1) increased over time (R2 = 0.64, F(1, 10) = 20.4, P < 0.01) and was significantly higher than _Spartina_ during the third (Welch's two-sample t-test; t(3) = 4.6, P < 0.05) and fourth (t(3) = 4.2, P < 0.05) harvests (Fig. 3A).
+
+\newline
+
+**3.2.	Leaf and stem biomass, N stocks, and uptake**
+
+The time trend in leaf mass varied by species, with _Distichlis_ leaf mass remaining constant and _Spartina_ leaf mass declining slightly over the course of the experiment (R2 = 0.29, F(1, 13) = 6.6, P < 0.05). Nonetheless, the species did not significantly differ in the amount of leaf biomass present (_Distichlis_ and _Spartina_ pooled means: 108 ±11 g$\cdot$m-2 vs. 120 ±12 g$\cdot$m-2; P = 0.45). Linear models of leaf N content over time showed no trend for either species (P = 0.70 and 0.18 for _Spartina_ and _Distichlis_), but leaf N was consistently higher in _Distichlis_ than _Spartina_ (2.32 ±0.03% vs. 1.76 ±0.07%; t(20) = 7.1, P < 0.001).
+
+Similar trends were observed in stem tissue dynamics during mesocosm harvests. _Spartina_ stem biomass declined slightly over time (R2 = 0.50, F(1, 13) = 15, P < 0.01) while _Distichlis_ showed no trend (P = 0.69). Combining all cohorts, the two species differed significantly in the amount of stem biomass recovered (t(23) = 7.9, P < 0.001), with _Distichlis_ stem mass substantially higher than _Spartina_ (227 ±16 g$\cdot$m-2 vs. 83 ±10 g$\cdot$m-2). There were no differences or time trends in stem N content (pooled mean: 1.14 ±0.04%), but the dramatic difference in mass led _Distichlis_ mesocosms to consistently have a larger stem N stock (2.46 ±0.16 g$\cdot$m-2 vs. 0.93 ±0.09 g$\cdot$m-2; t(21) = 8.2, P < 0.001).
+
+The weighted average of N concentrations in leaves and stems was multiplied by the rate of primary production to estimate total N accumulation rates in aboveground biomass. Weighted average N concentrations did not vary over time for either species (P = 0.06 and 0.14 for _Spartina_ and _Distichlis_) and both species had similar weighted average N concentrations (P = 0.63; pooled mean: 1.50 ±0.04% N). Nonetheless, mesocosm-specific weighted average N concentrations were used to estimate N uptake. 
+
+As a product of NAPP and tissue N, aboveground N uptake (mg N$\cdot$m-2$\cdot$d-1; Fig 3B) reflected the relatively stronger trends in NAPP. Nitrogen uptake was highly variable during the first harvest, possibly a result of the brief time period considered (7 days). Neither species had a systematic trend in total N uptake rates over time (P = 0.24 and 0.21 for _Spartina_ and _Distichlis_). Across all mesocosms, mean N uptake rates were similar for both species (P < 0.13) and averaged 57.8 ±10.1 mg N$\cdot$m-2$\cdot$d-1 for _Spartina_ and 85.7 ±14.8 mg N$\cdot$m-2$\cdot$d-1 for _Distichlis_. The two species differed in total N uptake only during the third (t(2) = 4.2, P < 0.05) and fourth harvests (t(3) = 3.6, P < 0.05). In both cases _Distichlis_ accumulated N more rapidly than _Spartina_ (Fig. 3B).
+
+\newline
+
+**3.3.	Belowground biomass and N stocks**
+
+_Spartina_ fine root biomass declined over the four weeks of the study from ~325 g$\cdot$m-2 to 142 g$\cdot$m-2 (F(1,13) = 8.9, R2 = 0.36, P < 0.05). _Distichlis_ fine root mass did not have a systematic time trend but was consistently lower than _Spartina_ (t(14) = -4.7, P < 0.001), averaging 75 ±4 g$\cdot$m-2 vs. 205 ±27 g$\cdot$m-2. Strong differences in N concentrations favored _Distichlis_ (0.98 ±0.02% vs. 0.81 ±0.03%; t(24) = 5.5, P < 0.001) but were insufficient to compensate for the much greater mass of _Spartina_ fine roots, which led _Spartina_ to have a larger fine root N stock (1.7 ±0.25 g N$\cdot$m-2 vs. 0.73 ±0.04 g N$\cdot$m-2; t(14) = -3.7, P < 0.01).
+
+Coarse root biomass was similar across species (126 ±16 g$\cdot$m-2 for _Distichlis_ vs. 168 ±17 for _Spartina_; P = 0.09) and through time. Despite significantly higher N content in _Distichlis_ coarse roots (0.92 ±0.03% vs. 0.68 ±0.03%; t(27) = 6.2, P < 0.001), coarse root N stocks were similar in both species (1.1 ±0.1 g N$\cdot$m-2; P = 0.87).
+
+Rhizomes were the dominant contributor to belowground biomass. Rhizome biomass did not vary over time, and _Distichlis_ had twice as much rhizome biomass than _Spartina_ (913 ±48 g$\cdot$m-2 vs. 408 ±39 g$\cdot$m-2; t(26) = 8.2, P < 0.001). As observed in fine and coarse roots, _Distichlis_ rhizomes had higher N content than _Spartina_, 0.85 ±0.03% vs. 0.65 ±0.03% (t(27) = 5.3,P < 0.001). Although rhizomes had the lowest N content of any tissue type, their mass dominance made rhizomes the largest belowground N stock for both species. The rhizome N stock in _Distichlis_ mesocosms averaged 7.7 ±0.44 g N$\cdot$m-2, almost three times the 2.6 ±0.22 g N$\cdot$m-2 stored in _Spartina_ rhizomes (t(20) = 10.5, P < 0.001).
+
+Belowground primary production was estimated from ^15^N data as described in equations 3 and 4. The resultant estimates of belowground production averaged 6.6 and 8.1 g m-2 d-1 for _Spartina_ and _Distichlis_ (Table 3). 
+
+\newline
+
+**3.4.	^15^N recoveries and N uptake estimates**
+
+Total ^15^N recovered in the mesocosms, including in dead biomass and surficial algae, averaged 54% (Fig. 4). Although our tracer was added directly to porewater, 46% of the tracer added was unaccounted for at harvest. This quantity did not change over time, suggesting that the unaccounted-for ^15^N was either unrelated to time-dependent processes such as denitrification, or that competition between plants and microbes for the added ^15^N ended early in the experiment. Because the mesocosms were not closed systems, ^15^N may also have been exported during tidal exchange.
+
+Several differences were observed in ^15^N allocation by the two species. _Spartina_ had higher ^15^N content in leaves (t(19) = -2.5, P < 0.05), stems (t(21) = -3.0, P < 0.01), and rhizomes (Table 2; t(20) = -2.3, P < 0.05), while _Distichlis_ had higher ^15^N content in fine roots (t(21) = 2.2, P < 0.05). When compartments were aggregated, _Spartina_ had higher ^15^N content in both above (t(21) = -2.9, P < 0.01) and belowground tissues (t(21) = -2.2, P < 0.05).
+
+Similar masses of ^15^N were recovered in the leaves and coarse roots of the two species, but differences were observed in the other compartments (Table 2). Compared with _Spartina_, _Distichlis_ had more ^15^N mass recovered in stems (t(15) = 5.2, P < 0.01) and rhizomes (t(15) = 2.6, P < 0.05), and less recovered in fine roots (t(20) = -2.5, P < 0.05). These differences led _Distichlis_ to have higher total ^15^N recovery than _Spartina_ (t(19) = 2.5, P < 0.05; Table 2). Aboveground biomass captured more ^15^N than belowground biomass in both species (F(1,44) = 12.7, P < 0.001; partition main effect in two-way ANOVA), and _Distichlis_ captured more ^15^N than _Spartina_ (F(1,44) = 6.9, P < 0.05; species main effect).
+
+Belowground ^15^N data were corrected for abiotic sorption to biomass by subtracting ^15^N adsorbed to dead peat in each mesocosm section. The sorption contribution to ^15^N enrichment averaged 0.043 atom percent above natural background levels, compared with average sorption-corrected root and rhizome enrichment of 0.26 atom percent. There was no difference in sorption between species (P = 0.56), or substantial change over time (P = 0.89), emphasizing the role of dead organic matter as a medium-term reservoir for dissolved N.
+
+When standardized to fine root biomass, ^15^N uptake rates varied by species (ANCOVA: F(1,20) = 16, P < 0.001) and with experiment duration (F(1,20) = 10, P < 0.01; Fig. 5), with an insignificant interaction term (F(1,20) = 3, P = 0.12). Mass-specific uptake rates declined as experiment duration increased, but were higher for _Distichlis_. ANCOVA did not detect a significant difference in slopes, but regression lines for the two species suggest an intersection would occur around day 46, at which point no difference in root-specific ^15^N uptake would be observed.
+
+Multiple regression analysis of potentially important controls on live-biomass ^15^N uptake used experiment duration, mean relative growth rate of individual stems, mesocosm-scale primary production rates, and root biomass as explanatory variables in species-specific models. Both models had high explanatory power (_Spartina_: F(4,7) = 6, P < 0.05, adj. R2 = 0.64; _Distichlis_: F(4,7) = 5, P < 0.05, adj. R2 = 0.59), and in each case experiment duration was the only significant predictor of ^15^N uptake (P < 0.05; partial r2 = 0.52 and 0.64 for _Spartina_ and _Distichlis_). 
+
+Although there is a strong temporal effect on rates of ^15^N uptake, on time scales greater than three weeks there was general agreement between ^15^N accumulation in aboveground biomass and estimates of total N uptake from biomass production (Fig. 6). To increase the power of the model, _Spartina_ and _Distichlis_ were pooled together in this analysis, making the assumption that their fractionation behavior (the relationship between ^15^N uptake and total N uptake) is similar. The relationship between these two measures suggests that ^15^N accumulation in tissue may be a useful indicator of total N uptake, at least on time scales of approximately a month. 
+
+\newline
+
+**3.5.	Denitrification enzyme activity and total N interception**
+
+Denitrification enzyme activity, measured two weeks after the ^15^N addition, was comparable in both species (Table 3; P = 0.45). Unamended gaseous N fluxes also did not differ between species (P = 0.32). Both processes were highly variable; standard errors ranged from 12-58% of the mean value. This is indicative of high spatial variation on the marsh platform.
+
+Total N interception was estimated by combining our more integrative, longer-term estimates of N uptake into above- and belowground plant biomass (using data for 3-4 weeks after spike addition) with the potential for microbial N removal (DEA). Total plant and microbial N interception by _Distichlis_ mesocosms (277.0 ± 25.5 mg N$\cdot$m-2$\cdot$d-1) was significantly higher than _Spartina_ mesocosms (154.3 ± 11.8 mg N$\cdot$m-2$\cdot$d-1; t(7) = 4.4, P < 0.01), due to higher aboveground production and N uptake by _Distichlis_ (Table 3). 
+
+\newline
+
+## 4.	Discussion
+
+**4.1.	^15^N uptake and N interception**
+
+Over a four-week tracer experiment, _Distichlis_ consistently absorbed more N per gram of fine root biomass than _Spartina_. However, quantitative estimates of uptake rates declined by a factor of two as time passed. Dead organic matter appeared to serve as a reservoir that sorbed ^15^N and may have enabled _Spartina_ to accumulate N steadily, whereas _Distichlis_ appeared oriented towards rapid, opportunistic N uptake. Based on the species' relationships between N uptake and experiment duration, an experiment lasting approximately seven weeks may not have detected a difference between _Distichlis_ and _Spartina_. Our first hypothesis, that _Distichlis_ would scavenge N more quickly than _Spartina_, is therefore answered affirmatively, at least when fine root mass is controlled for and with the caveat that the advantage diminishes over time. 
+
+An enhanced ability to capture short pulses of nutrients could provide a competitive advantage to _Distichlis_ in conditions where N inputs are increasingly pulse-driven. _Distichlis_ is understudied in salt marsh settings, but in arid terrestrial ecosystems the species has been shown to efficiently capture pulsed N delivery (James and Richards, 2005). Conversely, _Spartina_ appears to have a limited ability to capture N when it is delivered by episodic rain events (Oczkowski et al., 2015), although _Spartina_ does respond to seasonal to annual variation in baseline nutrient regimes (Buresh et al., 1980; Hill and Roberts, 2017). In coming decades, precipitation patterns in the northeastern US are anticipated to change in ways that augment N delivery to the coastal zone (Sinha et al., 2017). Our results suggest a shift from press- to pulse-dominated N inputs could affect salt marsh structure by benefitting _Distichlis_. Increasing dominance by _Distichlis_ may enhance total N interception by salt marshes, although the difference in N interception capacity that we report is premised on NAPP differences.
+
+The DEA rates we report are similar to values from N-fertilized plots in a low-nutrient RI salt marsh, and low (<10%) relative to RI marshes receiving high N loads (Wigand et al., 2004). Although DEA is spatially and temporally variable, it offers a reasonable upper-bound estimate of potential denitrification. Our data indicate that dominance by _Spartina_ or _Distichlis_ is not associated with differences in DEA, suggesting that other processes (e.g., N regime, soil redox status) are more important determinants.
+
+\newline
+
+**4.2.	^15^N partitioning**
+
+Our second hypothesis suggested that N would be partitioned rapidly into aboveground photosynthetic tissues in both species. During the first week after ^15^N tracer was applied, ^15^N moved from porewater into aboveground tissues. This is consistent with previous work showing rapid ^15^N uptake within days of application (Hamersley and Howes, 2005; Mozdzer et al., 2014). In both species, ^15^N concentrations and stocks were higher in aboveground tissues than belowground, as higher concentrations in aboveground tissue more than accounted for greater belowground biomass. Although ^15^N tended to be more concentrated in _Spartina_ tissues, _Distichlis_ appeared to use the ^15^N more efficiently in biomass production, leading to higher ^15^N inventories despite generally lower ^15^N tissue concentrations.
+
+In addition to measuring ^15^N accumulation in belowground tissues, we used accumulation rates to estimate belowground productivity. Belowground production is challenging to measure in salt marshes, and our data provide some suggestion that ^15^N may be a useful tool for resolving rates of belowground production. Annualized belowground production estimates in Table 3, corresponding to annualized production rates of 2,400 and 3,000 g$\cdot$m-2$\cdot$yr-1, are higher than other estimates from the northeastern US that measured over longer periods (Anisfeld et al., 2016; Howes et al., 1985). Although our results are encouraging, the approach requires validation with independent belowground production measurements.
+
+\newline
+
+**4.3.	N uptake drivers**
+
+On a time scale of weeks, experiment duration was the strongest determinant of ^15^N uptake rate estimates. Although medium- and long-term ^15^N studies have been conducted to explicitly examine translocation and internal cycling (e.g., Buresh et al., 1980; White and Howes, 1994), our work is the first to intensively sample over the first month following a ^15^N tracer application. Our ^15^N recoveries in live plant tissue, ~20-40%, were in the lower range of values reported in the literature (Table S1), possibly related to our conservative treatment of subtracting an estimate of sorbed ^15^N from belowground tissue concentrations.
+
+Our results suggest that estimates of biogeochemical process rates are dramatically affected by the passage of time between a ^15^N pulse and the conclusion of an experiment. Experiment duration was a more powerful predictor of ^15^N uptake rates than were primary production or plant growth rates, although the qualitative conclusion that _Distichlis_ scavenged ^15^N more rapidly than _Spartina_ was consistent. We suggest that absolute rates based on partitioning studies using ^15^N tracer should be interpreted cautiously, and where possible, in the context of potential time-related experimental biases. These biases cannot always be avoided because of the costs and logistical difficulties required to replicate experiments over multiple time spans, but experiment duration is at least an important variable to include in literature syntheses.
+
+\newline
+\newline
+
+## 5. Data statement
+
+Data and source code used in this study are available as an R package hosted on GitHub (https://github.com/troyhill/NitrogenUptake2016), permanently archived by Zenodo (DOI: 10.5281/zenodo.1226378) and described in Hill et al. (Submitted).
+
+\newline
+\newline
+## 6.	Acknowledgements
+
+Caroline Kanaskie and Nathalie Sommer were supported by US EPA Greater Research Opportunities Fellowship Assistance Agreement nos. 91777301-0 and 91777501-0. The manuscript was improved by comments from Marty Chintala, Rose Martin, Rick McKinney, Wayne Munns, Cathy Wigand, and three anonymous reviewers. The authors thank Rick McKinney for analytical assistance, and Russell Ahlgren and Urban Services Inc. for infrastructure support. This work was supported by the US EPA Sustainable and Healthy Communities Research Program, section 4.61.6. This report is contribution number ORD-023763 of the US EPA Office of Research and Development, National Health and Environmental Effects Research Laboratory, Atlantic Ecology Division. Although the information in this document has been funded by the US EPA, it does not necessarily reflect the views of the agency and no official endorsement should be inferred. Mention of trade names or commercial products does not constitute endorsement or recommendation for use.
+
+\newline
+\newline
+
+## 7.	Literature cited
+
+Anisfeld, S.C. and Benoit, G., 1997. Impacts of flow restrictions on salt marshes: An instance of acidification. Environmental Science & Technology, 31: 1650-1657.
+
+Anisfeld, S.C., Hill, T.D. and Cahoon, D.R., 2016. Elevation dynamics in a restored versus a submerging salt marsh in Long Island Sound. Estuarine, Coastal and Shelf Science, 170: 145-154.
+
+Box, G.E. and Cox, D.R., 1964. An analysis of transformations. Journal of the Royal Statistical Society, Series B (Methodological), 26(2): 211-252.
+
+Buresh, R.J., DeLaune, R.D. and Patrick, W.H., 1980. Nitrogen and phosphorus distribution and utilization by _Spartina_ alterniflora in a Louisiana gulf coast marsh. Estuaries, 3(2): 111-121.
+
+Craft, C., Clough, J., Ehman, J., Joye, S., Park, R., Pennings, S., Guo, H.Y. and Machmuller, M., 2009. Forecasting the effects of accelerated sea-level rise on tidal marsh ecosystem services. Frontiers in Ecology and the Environment, 7(2): 73-78.
+
+Fox, L., Valiela, I. and Kinney, E., 2012. Vegetation cover and elevation in long-term experimental nutrient-enrichment plots in Great Sippewissett Salt Marsh, Cape Cod, Massachusetts: implications for eutrophication and sea level rise. Estuaries and Coasts, 35(2): 445-458.
+
+Hamersley, M.R. and Howes, B.L., 2005. Coupled nitrification-denitrification measured in situ in a _Spartina_ alterniflora marsh with a ^15^NH4+ tracer. Marine Ecology Progress Series, 299: 123-135.
+
+Hanson, A., Johnson, R., Wigand, C., Oczkowski, A., Davey, E. and Markham, E., 2016. Responses of _Spartina_ alterniflora to multiple stressors: changing precipitation patterns, accelerated sea level rise, and nutrient enrichment. Estuaries and Coasts, 39(5): 1376-1385.
+
+Hill, T.D. and Roberts, B.J., 2017. Effects of seasonality and environmental gradients on _Spartina_ alterniflora allometry and primary production. Ecology and Evolution, 7(22): 9676-9688.
+
+Hill, T.D., Sommer, N.R., Kanaskie, C.R., Santos, E.A. and Oczkowski, A.J., Submitted. Nitrogen and carbon concentrations and stable isotope ratios: data from a ^15^N tracer study in short-form _Spartina_ alterniflora and _Distichlis_ spicata. Data in Brief.
+
+Hopkinson, C.S. and Schubauer, J.P., 1984. Static and dynamic aspects of nitrogen cycling in the salt marsh graminoid _Spartina_ alterniflora. Ecology, 65(3): 961-969.
+
+Howes, B.L., Dacey, J.W.H. and Teal, J.M., 1985. Annual carbon mineralization and belowground production of _Spartina_ alterniflora in a New England salt marsh. Ecology, 66(2): 595-605.
+
+Hunt, R., 1990. Basic Growth Analysis: Plant Growth Analysis for Beginners. Unwin Hyman, London.
+
+James, J.J. and Richards, J.H., 2005. Plant N capture from pulses: effects of pulse size, growth rate, and other soil resources. Oecologia, 145(1): 113-122.
+
+Koop-Jakobsen, K. and Giblin, A.E., 2010. The effect of increased nitrate loading on nitrate reduction via denitrification and DNRA in salt marsh sediments. Limnology and Oceanography, 55(2): 789-802.
+
+Levine, J.M., Brewer, J.S. and Bertness, M.D., 1998. Nutrients, competition and plant zonation in a New England salt marsh. Journal of Ecology, 86(2): 285-292.
+
+Lu, M., Caplan, J.S., Bakker, J.D., Langley, J.A., Mozdzer, T.J., Drake, B.G. and Megonigal, J.P., 2016. Allometry data and equations for coastal marsh plants. Ecology, 97(12): 3554-3557.
+
+Milner, C. and Hughes, R.E., 1968. Methods for the measurement of the primary production of grasslands. IBP Handbook no. 6. Blackwell Scientific Publications, Oxford.
+
+Mozdzer, T.J., McGlathery, K.J., Mills, A.L. and Zieman, J.C., 2014. Latitudinal variation in the availability and use of dissolved organic nitrogen in Atlantic coast salt marshes. Ecology, 95(12): 3293-3303.
+
+Oczkowski, A., Wigand, C., Hanson, A., Markham, E., Miller, K.M. and Johnson, R., 2015. Nitrogen retention in salt marsh systems across nutrient-enrichment, elevation, and precipitation regimes: a multiple-stressor experiment. Estuaries and Coasts, 39(1): 68-81.
+
+Paerl, H., Dennis, R. and Whitall, D., 2002. Atmospheric deposition of nitrogen: Implications for nutrient over-enrichment of coastal waters. Estuaries and Coasts, 25(4): 677-693.
+
+Paul, D., Skrzypek, G. and Fórizs, I., 2007. Normalization of measured stable isotopic compositions to isotope reference scales - a review. Rapid Communications in Mass Spectrometry, 21(18): 3006-3014.
+
+Pennings, S.C., Stanton, L.E. and Brewer, J.S., 2002. Nutrient effects on the composition of salt marsh plant communities along the southern Atlantic and Gulf coasts of the United States. Estuaries, 25(6A): 1164-1173.
+
+Sinha, E., Michalak, A.M. and Balaji, V., 2017. Eutrophication will increase during the 21st century as a result of precipitation changes. Science, 357(6349): 405.
+
+Smart, R.M. and Barko, J.W., 1980. Nitrogen nutrition and salinity tolerance of _Distichlis_ spicata and _Spartina_ alterniflora. Ecology, 61(3): 630-638.
+
+Warneke, S., Schipper, L.A., Bruesewitz, D.A. and Baisden, W.T., 2011. A comparison of different approaches for measuring denitrification rates in a nitrate removing bioreactor. Water Research, 45(14): 4141-4151.
+
+White, D.S. and Howes, B.L., 1994. Long-term ^15^N-nitrogen retention in the vegetated sediments of a New England salt marsh. Limnology and Oceanography, 39(8): 1878-1892.
+
+Wigand, C., McKinney, R.A., Chintala, M.M., Charpentier, M.A. and Groffman, P.M., 2004. Denitrification enzyme activity of fringe salt marshes in New England (USA). Journal of Environmental Quality, 33(3): 1144-1151.
+
+Yang, W.H., Traut, B.H. and Silver, W.L., 2015. Microbially mediated nitrogen retention and loss in a salt marsh soil. Ecosphere, 6(1): 1-7.
+
+\newline
+\newline
+
+
+```{r allometry, include=FALSE, echo=FALSE}
+
+# Allometry ----------------------------------------------------------------
+
+##### Establish relationships following Lu et al. 2016
+CSP <- plyr::dlply(allometry, c("spp"), bCM)
+CSP.coef <- plyr::ldply(CSP, stats::coef)
+CSP.coef$lam <- plyr::ddply(allometry, c("spp"), function(df)  bCM(df, lam.only = TRUE))[, "V1"]
+CSP.coef$BIC <- plyr::ldply(CSP, stats::BIC)[, "V1"]
+CSP.coef$rsq <- plyr::ldply(CSP, MuMIn::r.squaredGLMM)[, "R2m"]
+#CSP.coef
+
+```
+
+
+```{r applying allometry to estimate plant masses, include=FALSE, echo=FALSE}
+
+### estimate plant masses from allometry
+for (i in 1:nrow(stemHeights)) {
+  if (stemHeights$species[i] %in% "DS") {
+    stemHeights$mass[i] <- (stemHeights$height_cm[i] * CSP.coef[1, 3] + CSP.coef[1, "(Intercept)"])^(1/CSP.coef$lam[1]) # DISP
+  } else if (stemHeights$species[i] %in% "SA") {
+    stemHeights$mass[i] <- (stemHeights$height_cm[i] * CSP.coef[2, 3] + CSP.coef[2, "(Intercept)"])^(1/CSP.coef$lam[2]) # SPAL
+  }
+}
+
+
+```
+
+```{r Allometry validation: comparison between predicted and harvested masses, include=FALSE, echo=FALSE}
+###
+### compare predicted (allometry) and observed masses at harvest
+###
+
+
+# get live + dead biomass for each pot at each date
+dat.ld <- plyr::ddply(stemHeights, plyr::.(core_num, species, date), plyr::summarise,
+                live = sum(mass[dead_live %in% "L"], na.rm = TRUE),
+                dead = sum(mass[dead_live %in% "D"], na.rm = TRUE)
+)
+
+# add cohort number
+dat.ld$day <- as.POSIXct(as.character(dat.ld$date), format = "%y%m%d", origin = "1960-01-01")
+dat.ld$cohort <- NA
+
+for (i in 1:length(unique(dat.ld$day))) {
+  uniqueIDS <- unique(dat.ld$core_num[dat.ld$day == sort(unique(dat.ld$day))[i]])
+  if (length(uniqueIDS) == 3) {
+    dat.ld$cohort[dat.ld$core_num %in% uniqueIDS] <- ifelse(sum(is.finite(dat.ld$cohort)) == 0, 1, max(dat.ld$cohort, na.rm = TRUE) + 1)
+  }
+}
+dat.ld$cohort[is.na(dat.ld$cohort)] <- 0
+dat.ld$cohort[dat.ld$cohort == 5] <- 4
+
+
+dat.ld$year <- 2016
+dat.ld$dead <- 0
+dat.ld$pot2  <- paste0(dat.ld$core_num, "-", dat.ld$species)
+
+
+
+### allometry estimates
+for (i in 1:length(unique(dat.ld$pot2))) {
+  targPot <- unique(dat.ld$pot2)[i]
+  maxDate <- max(dat.ld$day[dat.ld$pot2 %in% targPot])
+  tempDat <- dat.ld[(dat.ld$pot2 %in% targPot) & (dat.ld$day == maxDate), ]
+  if (i == 1) {
+    dat.ld.sub  <- tempDat
+  }
+  if (i > 1) {
+    dat.ld.sub <- rbind(dat.ld.sub, tempDat)
+  }
+}
+dat.ld.sub$id <- paste0(dat.ld.sub$species, "-", dat.ld.sub$core_num)
+
+### observed values
+obs <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("leaf 1", "leaf 2", "leaf 3", "leaf 4", # "dead leaf",
+                                            "leaf 5", "leaf 6", "leaf 7", "leaf 8", "leaf 9", "leaf 10", "leaf 11",
+                                            "stems"), ], plyr::.(time, species, new.core.id), plyr::summarise,
+             g        = sum(g_core, na.rm = T)
+)
+obs$core_num <- as.character(as.integer(substr(obs$new.core.id, 3, 4)))
+obs$core_num[as.integer(obs$core_num) > 12] <- paste0(obs$species[as.integer(obs$core_num) > 12], as.integer(obs$core_num[as.integer(obs$core_num) > 12]) - 12, "_T0")
+obs$id <- paste0(obs$species, "-", obs$core_num)
+
+obs <- plyr::join_all(list(obs, dat.ld.sub[, c(4,9:10)]), by = "id")
+names(obs)[which(names(obs) %in% "live")] <- "allom.est"
+obs$diff <- (obs$allom.est - obs$g)             # magnitude accuracy of allometry prediction (g)
+obs$diff.pct <- (obs$allom.est - obs$g) / obs$g # percent accuracy of allometry prediction
+obs$species2 <- ifelse(obs$species %in% "SA", "italic(S.~alterniflora)", "italic(D.~spicata)")
+summary(obs$diff)
+```
+
+```{r Figure 1 (Data In Brief), fig.width = 6, fig.height = 4, include=FALSE, echo=FALSE}
+# Figure 1 from Hill et al. (Data In Brief) - predicted vs obs biomass ---------------------------------------
+ggplot(obs, aes(x = allom.est / pot.m2, y = g / pot.m2, colour = species2, shape = species2)) +
+  geom_point(size = pointSize) + theme_classic() %+replace% theme(legend.title = element_blank()) +
+  labs(x = expression("Predicted biomass (allometry; g"%.%m^-2~")"), y = expression("Measured biomass (g "%.%m^-2~")")) +
+  ylim(0, 650) + xlim(0, 650) +
+  scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(obs$species2)[1], unique(obs$species2)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(obs$species2)[1], unique(obs$species2)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  theme(legend.position = c(0.3, 0.9), legend.text.align = 0,
+        legend.background = element_rect(fill = NA, colour = NA)) +
+  geom_abline(slope = 1, intercept = 0, linetype = 2)
+# ggsave(paste0("C:/RDATA/greenhouse/output/GRO/FigureS1_", todaysDate, ".eps"), width = 90, height= 90, units = "mm", dpi = 400)
+```
+
+
+
+```{r Relative growth rates, include=FALSE, echo=FALSE}
+
+# Relative growth rates ---------------------------------------------------
+stemHeights$RGR <- stemHeights$lateStartDate <- NA
+
+for(i in 1:length(unique(stemHeights$id[stemHeights$dead_live %in% "L"]))) { # 830 plants
+  targPlant <- unique(stemHeights$id[stemHeights$dead_live %in% "L"])[i]
+  subDat <- stemHeights[stemHeights$id %in% targPlant, ]
+  if (nrow(subDat) > 1) {
+    subDat$mass2 <- c(NA, subDat$mass[1:(nrow(subDat)-1)])
+    subDat$day2 <- c(subDat$day[1], subDat$day[1:(nrow(subDat)-1)])
+    subDat$RGR <- (log(subDat$mass) - log(subDat$mass2)) / as.numeric(difftime(subDat$day, subDat$day2, units = "days"))
+    ### add RGRs to dat.live object
+    stemHeights$RGR[(which(rownames(stemHeights) %in% rownames(subDat)))] <- subDat$RGR
+    if (!is.na(subDat$height[1]) & (subDat$height[1] < 6)) {
+      stemHeights$lateStartDate[which(rownames(stemHeights) %in% rownames(subDat))] <- 1 # indicates if high-growth period is captured
+    }
+  }
+}
+
+stemHeights$RGR[!is.finite(stemHeights$RGR)] <- NA
+
+# mean growth rate for each plant, then each mesocosm
+mean.rgr     <- plyr::ddply(stemHeights[stemHeights$dead_live %in% "L", ], plyr::.(id, new.core.id, species), plyr::summarise, meanRGR = mean(RGR, na.rm = TRUE))
+mean.rgr.pot <- plyr::ddply(mean.rgr, plyr::.(new.core.id, species), plyr::summarise, RGR = mean(meanRGR, na.rm = TRUE))
+mean.rgr.pot <- mean.rgr.pot[1:24, ]
+
+``` 
+
+
+```{r stem density and primary production, include=FALSE, echo=FALSE}
+# Stem density and biomass ------------------------------------------------
+
+### summarize by pot and session
+dat.live <- stemHeights[stemHeights$dead_live %in% "L", ]
+ddHgt2 <- plyr::ddply(dat.live, plyr::.(date, day, core_num, species), plyr::numcolwise(sum, na.rm = TRUE))
+ddHgt2$day <- as.POSIXct(ddHgt2$day, origin = "1960-01-01")
+ddHgt2$cohort <- NA
+
+for (i in 1:length(unique(ddHgt2$date))) {
+  uniqueIDS <- unique(ddHgt2$core_num[ddHgt2$date == sort(unique(ddHgt2$date))[i]])
+  if (length(uniqueIDS) == 3) {
+    ddHgt2$cohort[ddHgt2$core_num %in% uniqueIDS] <- i
+  }
+}
+ddHgt2$cohort <- (ddHgt2$cohort - 1) / 2
+ddHgt2$cohort[is.na(ddHgt2$cohort)] <- 0
+
+
+ddHgt4 <- plyr::ddply(ddHgt2, plyr::.(day, cohort, species), plyr::numcolwise(mean, na.rm = TRUE))
+ddHgt4.se <- plyr::ddply(ddHgt2, plyr::.(day, cohort, species), plyr::numcolwise(se))
+names(ddHgt4.se) <- paste0(names(ddHgt4.se), ".se")
+ddHgt4 <- cbind(ddHgt4, ddHgt4.se[, c(5, 7, 9)])
+ddHgt4$session <- as.POSIXct(ddHgt4$day, origin = "1960-01-01")
+ddHgt4$species2 <- ifelse(ddHgt4$species %in% "SA", "italic(S.~alterniflora)", "italic(D.~spicata)")
+
+
+
+####
+#### Calculate Milner-Hughes NAPP
+####
+test <- nappCalc2(dataset = dat.ld[dat.ld$cohort > 0, ], liveCol = "live", siteCol = "pot2", timeCol = "day", summarize = "TRUE", annualReset = "FALSE")
+napp <- test$summary
+napp$pot2 <- as.character(napp$site)
+napp$core_num <- as.numeric(sapply(strsplit(napp$pot2, "-"),  "[[", 1))
+napp$species  <- sapply(strsplit(napp$pot2, "-"),  "[[", 2)
+
+napp$cohort <- dat.ld$cohort[match(napp$pot2, dat.ld$pot2)]
+napp$new.core.id <- ifelse(napp$core_num > 9, paste0(napp$species, napp$core_num), paste0(napp$species, "0", napp$core_num))
+
+
+### build object to merge with master: average RGR, stem characteristics
+# mean growth rate for each plant, then each mesocosm
+mean.rgr     <- plyr::ddply(stemHeights[stemHeights$dead_live %in% "L", ], plyr::.(id, new.core.id, species), plyr::summarise, meanRGR = mean(RGR, na.rm = TRUE))
+mean.rgr.pot <- plyr::ddply(mean.rgr, plyr::.(new.core.id, species), plyr::summarise, rgr = mean(meanRGR, na.rm = TRUE))
+mean.rgr.pot <- mean.rgr.pot[1:24, ]
+
+mean.dens     <- plyr::ddply(stemHeights[stemHeights$dead_live %in% "L", ], plyr::.(new.core.id, date), plyr::summarise, stem.density = sum(!is.na(height_cm)))
+mean.dens.pot <- plyr::ddply(mean.dens, plyr::.(new.core.id), plyr::summarise, dens = mean(stem.density / pot.m2, na.rm = TRUE)) # mean of all stem density msrmts for a pot
+mean.dens.pot <- mean.dens.pot[1:24, ]
+
+rgr.stems <- plyr::join_all(list(mean.rgr.pot, mean.dens.pot), by = "new.core.id")
+
+```
+
+
+```{r Denitrification enzyme activity and ambient N2O flux, include = FALSE, echo = FALSE, message = FALSE}
+
+# Denitrification enzyme activity -----------------------------------------
+
+dea$species  <- substr(dea$pot, 1, 2)
+dea$species2 <- ifelse(dea$species %in% "SA", "italic(S.~alterniflora)", "italic(D.~spicata)")
+dea$DEA.m2   <- dea$DEA * dea$bd_gcm3 * (top.vol / core.area) # * 5 * 1e4 # [flux per gram] * [g/cm3] * [5 cm depth] * [cm2/m2]
+dea$IV.m2    <- dea$IV * dea$bd_gcm3  * (top.vol / core.area) # * 5 * 1e4
+dea$gap.g    <- dea$DEA - dea$IV
+dea$gap.m2   <- dea$DEA.m2 - dea$IV.m2
+
+dd.dea <- plyr::ddply(dea, plyr::.(species, species2), plyr::summarise,
+                flux.g = mean(DEA),
+                flux.m2 = mean(DEA.m2),
+                flux.g.se = se(DEA),
+                flux.m2.se = se(DEA.m2)
+)
+dd.dea$type <- "DEA"
+
+dd.iv <- plyr::ddply(dea, plyr::.(species, species2), plyr::summarise,
+               flux.g = mean(IV),
+               flux.m2 = mean(IV.m2),
+               flux.g.se = se(IV),
+               flux.m2.se = se(IV.m2)
+)
+dd.iv$type <- "GHG"
+
+dd.dea <- rbind(dd.dea, dd.iv)
+
+
+### stats on DEA/IV N2O flux
+dea.m     <- reshape2::melt(dea, id.vars = c("species", "species2", "pot"), measure.vars = c(2, 3, 8:11))
+dea.m$ID  <- paste0(dea.m$species, "-", dea.m$variable)
+
+# dea.g.aov <- stats::aov(value ~ factor(variable) * factor(species), data = dea.m[(dea.m$variable %in% c("IV.m2", "DEA.m2")), ])
+# car::Anova(dea.g.aov, type = 2, singular = TRUE) # difference between methods, but not species
+```
+
+```{r 15N spike, include=FALSE, echo=FALSE}
+# how much 15N was added to each pot?
+KNO3    <- 2.24047           # grams of KNO3 added
+soln    <- 2027.5            # final volume of spike solution (mls)
+KNO3_mw <- 102.1032       # g/mol
+N_mw    <- 15                # gN/mol KNO3
+mls     <- 12                # mls added per mesocosm
+spike   <- KNO3 * (N_mw / KNO3_mw) / soln * mls # total grams of 15N added to each mesocosm
+
+
+# calculate atom pct from per mil values
+CN_mass_data$n_ap <- ap(CN_mass_data$d15n)
+
+```
+
+```{r 15N background, include=FALSE, echo=FALSE}
+
+# get background 15N AP
+bkd <- plyr::ddply(CN_mass_data[as.character(CN_mass_data$time) %in% "t0", ], plyr::.(species, pool_label), plyr::summarise,
+             n15 = mean(n_ap, na.rm = T),
+             se.n15 = se(n_ap)
+)
+
+```
+
+
+```{r 15N corrections, include=FALSE, echo=FALSE}
+# subtract background to get 15N excess (if result is negative, 15Nxs = 0)
+CN_mass_data$n15xs <- as.numeric(NA)
+for(i in 1:nrow(CN_mass_data)) {
+  if(!is.na(CN_mass_data$species[i])) {
+    spp  <- CN_mass_data$species[i]
+    pool <- CN_mass_data$pool_label[i]
+
+    a <- bkd[(bkd$species %in% spp) & (bkd$pool_label %in% pool), "n15"]
+
+    if((is.numeric(a) & (length(a) > 0))) { # excludes all pools we don't have bkd for
+      difference <- CN_mass_data$n_ap[i] - a # NOT decimal fraction
+      ifelse (!is.na(difference) & (difference > 0), CN_mass_data$n15xs[i] <- difference, CN_mass_data$n15xs[i] <- 0)
+    } else {
+      difference <- CN_mass_data$n_ap[i] - 0.370317701 # assume bkgd of 11 d15N
+      ifelse ((difference > 0) & !is.na(difference), CN_mass_data$n15xs[i] <- difference, CN_mass_data$n15xs[i] <- 0)
+    }
+  }
+}
+
+
+### Additional correction to belowground live biomass, subtracting 15Nxs of dead MOM to account for sorption
+CN_mass_data$n15xs_MOM <- CN_mass_data$n15xs # n15xs still useful for total recoveries
+for(i in 1:nrow(CN_mass_data)) {
+  if (CN_mass_data$time[i] %in% paste0("t", 1:4)) {
+    if(!is.na(CN_mass_data$depth_top[i])) {
+      spp    <- CN_mass_data$species[i]
+      coreID <- CN_mass_data$new.core.id[i]
+      pool   <- CN_mass_data$pool_label[i]
+      depth_bottom <- CN_mass_data$depth_bottom[i]
+
+      a <- CN_mass_data[(CN_mass_data$new.core.id %in% coreID) & (CN_mass_data$pool_label %in% paste0("dead biomass ", depth_bottom, "cm")) &
+                   (CN_mass_data$depth_bottom == depth_bottom), "n15xs"]
+
+      if((is.numeric(a) & (length(a) > 0))) { # excludes all pools we don't have bkd for
+        difference <- CN_mass_data$n15xs[i] - a # NOT decimal fraction
+        ifelse (!is.na(difference) & (difference > 0), CN_mass_data$n15xs_MOM[i] <- difference, CN_mass_data$n15xs_MOM[i] <- 0)
+      } else {
+        difference <- CN_mass_data$n_ap[i] - 0.370317701 # assume bkgd of 11 d15N
+        ifelse ((difference > 0) & !is.na(difference), CN_mass_data$n15xs_MOM[i] <- difference, CN_mass_data$n15xs_MOM[i] <- 0)
+      }
+    }
+  }
+}
+
+
+
+CN_mass_data$n15_g_pg_recov  <- CN_mass_data$n15xs  / 100 * CN_mass_data$n_pct  # for total recovery
+CN_mass_data$n15_g_recov     <- CN_mass_data$n15_g_pg_recov  * CN_mass_data$g_core  # for total recovery
+
+CN_mass_data$n15_g_pg <- CN_mass_data$n15xs_MOM / 100 * CN_mass_data$n_pct
+CN_mass_data$n15_g    <- CN_mass_data$n15_g_pg  * CN_mass_data$g_core
+CN_mass_data$n_core   <- CN_mass_data$n_pct * CN_mass_data$g_core
+
+```
+
+```{r 15N recovery by pool, include=FALSE, echo=FALSE}
+
+# get 15Nxs mass in each pool in each core
+# total recovery using belowground pools (rather than bulk sediment)
+mat2 <- plyr::ddply(CN_mass_data[!CN_mass_data$sample.type %in% c("bulk sediment"), ], plyr::.(time, species, new.core.id), plyr::summarise,
+              n15_2 = sum(n15_g_recov, na.rm  = T)
+)
+mat2$recovery2 <- mat2$n15_2 / (spike) # "recovery" uses bulk belowground data, "recovery2" uses root pools
+mat2$days <- as.numeric(substr(mat2$time, 2, 2)) * 7
+
+### relps between napp and 15n recoveries (excludes dead biomass)
+bgd <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roots", "fine roots", "rhizomes"), ],
+             plyr::.(time, species, new.core.id), plyr::summarise,
+             g        = sum(g_core, na.rm = T),
+             n15    = sum(n15_g, na.rm  = T),
+             n_core   = sum(n_core, na.rm = T)
+)
+bgd$g_pg <- bgd$n15 / bgd$g
+
+
+# species-level belowground inventory over time
+abv <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("decomp layer", "leaf 1", "leaf 2", "leaf 3", "leaf 4",
+                                            "leaf 5", "leaf 6", "leaf 7", "leaf 8", "leaf 9", "leaf 10", "leaf 11",
+                                            # "dead leaf", "standing dead", "microbe mat",
+                                            "standing dead", "stems"), ], plyr::.(time, species, new.core.id), plyr::summarise,
+             g        = sum(g_core, na.rm = T),
+             n15      = sum(n15_g, na.rm  = T),
+             n_core   = sum(n_core, na.rm = T)
+)
+abv$g_pg <- abv$n15 / abv$g
+
+names(abv)[4:7] <- paste0(names(abv)[4:7], ".ag")
+names(bgd)[4:7] <- paste0(names(bgd)[4:7], ".bg")
+
+comb <- plyr::join_all(list(napp, abv, bgd, mat2), by = "new.core.id")
+
+```
+
+
+```{r 15N inventories: aboveground, include=FALSE, echo=FALSE}
+
+###
+### aboveground data
+###
+
+### mass over time in aboveground compartments. mean +- se by species (sum across depth intervals)
+
+ag2 <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type2 %in% c("stems", "leaf"), ],
+             plyr::.(time, species, new.core.id, sample.type2), plyr::summarise,
+             g   = sum(g_core / pot.m2, na.rm  = T),
+             n_pct = mean(n_pct, na.rm = TRUE),
+             n   = sum(n_core / pot.m2, na.rm  = T),
+             n15 = sum(n15_g, na.rm  = T),
+             n15_pg = n15 / (g * pot.m2),
+             c13 = mean(d13c, na.rm = TRUE),
+             cn  = sum(c_pct * g_core, na.rm = TRUE) / n
+)
+
+ag2.sp <- plyr::ddply(ag2, plyr::.(time, species, sample.type2), plyr::numcolwise(mean))
+ag2.se <- plyr::ddply(ag2, plyr::.(time, species, sample.type2), plyr::numcolwise(se))
+names(ag2.se)[4:10] <- paste0(names(ag2.sp)[4:10], ".se")
+ag2.sp <- cbind(ag2.sp, ag2.se[, 4:10])
+ag2.sp$t <- as.integer(substr(ag2.sp$time, 2, 2))
+ag2.sp$session <- unique(ddHgt4$session)[c(1, 3, 5, 7, 9)][as.numeric(as.factor(ag2.sp$time))]
+ag2.sp$species2 <- ifelse(ag2.sp$species %in% "SA", "italic(S.~alterniflora)", "italic(D.~spicata)")
+
+
+###
+### belowground data
+###
+
+### mass over time in belowground compartments. mean +- se by species (sum across depth intervals)
+bg <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roots", "fine roots", "rhizomes"), ],
+            plyr::.(time, species, new.core.id, sample.type), plyr::summarise,
+            g   = sum(g_core / pot.m2, na.rm  = T),
+            n_pct = mean(n_pct, na.rm = TRUE),
+            n   = sum(n_core / pot.m2, na.rm  = T),
+            n15 = sum(n15_g, na.rm  = T),
+            n15_pg = n15 / (g * pot.m2)
+)
+
+bg.sp <- plyr::ddply(bg, plyr::.(time, species, sample.type), plyr::numcolwise(mean))
+bg.se <- plyr::ddply(bg, plyr::.(time, species, sample.type), plyr::numcolwise(se))
+names(bg.se)[4:8] <- paste0(names(bg.se)[4:8], ".se")
+bg.sp <- cbind(bg.sp, bg.se[, 4:8])
+bg.sp$t <- as.integer(substr(bg.sp$time, 2, 2))
+bg.sp$session <- unique(ddHgt4$session)[c(1, 3, 5, 7, 9)][as.numeric(as.factor(bg.sp$time))]
+bg.sp$species2 <- ifelse(bg.sp$species %in% "SA", "italic(S.~alterniflora)", "italic(D.~spicata)")
+
+
+# Total 15N inventories ---------------------------------------------------------
+
+# aboveground
+ag <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("belowground stems", "stems", "leaf", paste0("leaf ", 1:10)), ],
+            plyr::.(time, species, new.core.id), plyr::summarise,
+            g   = sum(g_core / pot.m2, na.rm  = T),
+            n_pct = mean(n_pct, na.rm = TRUE),
+            n   = sum(n_core / pot.m2, na.rm  = T),
+            n15 = sum(n15_g, na.rm  = T) # g per pot
+)
+
+agd1 <- plyr::ddply(ag, plyr::.(time, species), plyr::summarise,
+              n15.mean    = mean(n15, na.rm  = T),
+              n15.se      = se(n15),
+              recovery    = mean(n15 / spike, na.rm = TRUE),
+              recovery.se = se(n15 / spike)
+)
+# species-level belowground inventory over time
+bgd <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roots", "fine roots", "rhizomes"), ], #, "dead biomass"
+             plyr::.(time, species, new.core.id), plyr::summarise,
+             n15    = sum(n15_g, na.rm  = T)
+)
+bgd1 <- plyr::ddply(bgd, plyr::.(time, species), plyr::summarise,
+              n15.mean    = mean(n15, na.rm  = T),
+              n15.se      = se(n15),
+              recovery    = mean(n15 / spike, na.rm = TRUE),
+              recovery.se = se(n15 / spike)
+)
+
+bgd1$type <- "Belowground"
+agd1$type <- "Aboveground"
+mgd <- rbind(agd1, bgd1)
+
+tot <- plyr::ddply(mat2, plyr::.(time, species), plyr::summarise,
+             n15.mean    = mean(n15_2, na.rm  = T),
+             n15.se      = se(n15_2),
+             recovery    = mean(n15_2 / spike, na.rm = TRUE),
+             recovery.se = se(n15_2 / spike)
+)
+tot$type <- "Total"
+
+# total recovery combined above + belowground (includes dead aboveground but only live belowground)
+tot.live <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("coarse roots", "fine roots", "rhizomes",
+                                                 "leaf 1", "leaf 2", "leaf 3", "leaf 4",
+                                                 "leaf 5", "leaf 6", "leaf 7", "leaf 8", "leaf 9", "leaf 10", "leaf 11",
+                                                 "stems"), ], #, "dead biomass"
+                  plyr::.(time, species, new.core.id), plyr::summarise,
+                  n15    = sum(n15_g, na.rm  = T)
+)
+tot.live1 <- plyr::ddply(tot.live, plyr::.(time, species), plyr::summarise,
+                   n15.mean    = mean(n15, na.rm  = T),
+                   n15.se      = se(n15),
+                   recovery    = mean(n15 / spike, na.rm = TRUE),
+                   recovery.se = se(n15 / spike)
+)
+
+
+mgd <- rbind(mgd, tot)
+# replace unique times with actual sampling dates using indexing
+mgd$session <- unique(ddHgt4$session)[c(1, 3, 5, 7, 9)][as.numeric(as.factor(mgd$time))]
+
+
+```
+
+
+
+```{r N uptake rates, include=FALSE, echo=FALSE}
+# N uptake rates ----------------------------------------------------------
+# Aboveground: estimate from biomass and weighted average biomass N concentration
+# get weighted average of aboveground N concentrations for each core
+n_mean <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("belowground stems", "stems", "leaf", paste0("leaf ", 1:10)), ],
+                plyr::.(species, time, new.core.id), plyr::summarise,
+                tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
+                tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
+                tot_c    = sum(c_pct * g_core / pot.m2, na.rm = TRUE),
+                n_wa = tot_n / tot_mass,
+                c_wa = tot_c / tot_mass
+)
+n_bg_mean <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("fine roots", "coarse roots", "rhizomes"), ],
+                   plyr::.(species, time, new.core.id), plyr::summarise,
+                   tot_mass_bg = sum(g_core / pot.m2, na.rm = TRUE),
+                   tot_n_bg    = sum(n_core / pot.m2, na.rm = TRUE),
+                   tot_c_bg    = sum(c_pct * g_core  / pot.m2, na.rm = TRUE),
+                   n_wa_bg = tot_n_bg / tot_mass_bg,
+                   c_wa_bg = tot_c_bg / tot_mass_bg
+)
+bg_del <- plyr::ddply(bg, plyr::.(new.core.id), plyr::summarise, # I think all these values are per m2
+                g_bg     = sum(g, na.rm = TRUE),
+                g_froots = sum(g[sample.type %in% "fine roots"], na.rm = TRUE),
+                g_roots  = sum(g[sample.type %in% c("fine roots", "coarse roots")], na.rm = TRUE),
+                n_bg     = sum(n, na.rm = TRUE),
+                n_pct_bg = mean(n_pct * g, na.rm = TRUE) / g_bg,
+                n_pct_bg2 = n_bg / g_bg,
+                n15_bg   = sum(n15, na.rm = TRUE)
+)
+
+# all relevant values are per m2
+master <- plyr::join_all(list(napp[, c("napp.MH", "new.core.id")], # primary production
+                        rgr.stems,
+                        n_mean[, -c(1)], n_bg_mean[, -c(1:2)], # N inventories above and belowground
+                        ag[, 3:7], bg_del # 15N recoveries and unweighted average pct N
+), by = "new.core.id")
+master$napp.MH  <- master$napp.MH / pot.m2 # g/m2
+master$n15_core <- master$n15 + master$n15_bg # total live biomass inventory
+master$recovery <- master$n15_core / spike
+master$session  <- unique(ddHgt4$session)[c(3, 5, 7, 9)][as.numeric(as.factor(master$time))]
+
+# use master$timeDiff for 15N rate calculations
+# use master$timeDiff + 2 for NAPP rate calculations
+master$timeDiff <- as.numeric(difftime(master$session, "2016-06-24", units = "days"))
+
+master$n_uptake_15n     <- master$n15 * 1e3 / master$timeDiff / pot.m2 # mg N/day/m2 accumulating in aboveground tissue, using 15N
+master$n_uptake_15n_bg  <- master$n15_bg * 1e3 / master$timeDiff /pot.m2 # mg N/day/m2
+master$prodn_rate       <- master$napp.MH / (master$timeDiff + 2) # g/m2/day
+
+master$n_uptake_biomass <- master$prodn_rate * 1e3 * master$n_wa # mg N/m2/day accumulating in aboveground tissue, using primary production rate and weighted average pct N
+master$cn_ag    <- master$c_wa / master$n_wa # C:N ratio in aboveground tissue
+master$cn_bg    <- master$c_wa_bg / master$n_wa_bg
+master$cluster  <- ifelse(master$time %in% c("t1", "t2"), "1-2 weeks", "3-4 weeks")
+master$n15_pgBG <- (master$n_uptake_15n + master$n_uptake_15n_bg) / master$g_bg # 15N uptake per gram belowground biomass: mg 15N/m2/day/g TOTAL BG biomass
+master$n15_pgFR <- (master$n_uptake_15n + master$n_uptake_15n_bg) / master$g_froots # 15N uptake per gram coarse roots: mg 15N/m2/day/g fine roots
+master$n15_pgCR <- (master$n_uptake_15n + master$n_uptake_15n_bg) / (master$g_roots - master$g_froots) # 15N uptake per gram coarse roots: mg 15N/m2/day/g coarse roots
+master$n15_pgR  <- (master$n_uptake_15n + master$n_uptake_15n_bg) / master$g_roots # 15N uptake per gram fine+coarse root biomass: mg 15N/m2/day/g root biomass
+master$n15_pgFR2 <- master$n15_core * 1e3 / master$g_froots
+master$tot_15n_uptake <- master$n_uptake_15n + master$n_uptake_15n_bg # mg N/day/m2
+master$days <- as.numeric(substr(master$time, 2, 2)) * 7
+
+
+### apply relationship to estimate belowground production
+summary(lm3_4 <- stats::lm(n_uptake_biomass ~ I(n_uptake_15n ) , data = master[master$time %in% c("t3", "t4"), ]))
+lm3_4
+master$bg_n_est <- as.numeric(master$n_uptake_15n_bg) * coefficients(lm3_4)[2] + coefficients(lm3_4)[1] # total N uptake belowground: mg N/m2/day
+master$bg_n_est[master$time %in% c("t1", "t2")] <- NA
+master$bgp_est <- master$bg_n_est / master$n_pct_bg2 / 1e3 # [estimated total N uptake (mg N/day)] / [mg N / mg biomass] / [1000 mg/g] = [g belowground biomass / day (/m2)]
+master$bgp_biomass_est <- master$bgp_est * master$timeDiff # [g belowground biomass / day] * [timeDiff (days)] = total belowground production during period [g/m2]
+
+### differences in total nitrogen interception between species
+master$tot_N_int <- master$bg_n_est + master$n_uptake_biomass + ifelse(master$species %in% "SA", nmolHr_mgDay(dd.dea$flux.m2[2]), nmolHr_mgDay(dd.dea$flux.m2[1]))
+master$tot_N_int[master$time %in% c("t1", "t2")] <- NA
+
+
+dd.master <- ddply(master, .(time, species), numcolwise(mean))
+dd.master.se <- ddply(master, .(time, species), numcolwise(se))
+dd.master$n_uptake_biomass.se <- dd.master.se$n_uptake_biomass
+dd.master$prodn_rate.se <- dd.master.se$prodn_rate
+dd.master$session <- unique(ddHgt4$session)[c(3, 5, 7, 9)][as.numeric(as.factor(dd.master$time))]
+
+
+
+
+```
+
+```{r Results section A, include=FALSE, echo=FALSE}
+
+# Results: a. Stem allometry, aboveground biomass and production ----------
+table(allometry$spp[!is.na(allometry$sample)])
+plyr::ldply(CSP, MuMIn::r.squaredGLMM)
+
+# change over time in production?
+summary(lm.sa.prod <- lm(napp.MH ~ session, data = master[master$species %in% "SA",]))
+summary(lm.ds.prod <- lm(napp.MH ~ session, data = master[master$species %in% "DS",]))
+
+plyr::ddply(master, plyr::.(species), plyr::summarise,
+      production    = mean(prodn_rate, na.rm = TRUE),
+      production.se = se(prodn_rate)
+)
+t.test(prodn_rate ~ species, data = master)
+
+for (i in 1:length(unique(master$session))) {
+  print(unique(master$session)[i])
+  print(t.test(prodn_rate ~ species, data = master[(master$session %in% c(unique(master$session)[i])), ]))
+}
+```
+
+
+
+
+```{r Results section B, include = FALSE, echo = FALSE}
+# Results: b.	Leaf and stem biomass, N pools, and uptake ------------------
+# leaf, stem biomass differences
+leaf <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("leaf", paste0("leaf ", 1:10)), ],
+              plyr::.(species, time, new.core.id), plyr::summarise,
+              tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
+              tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
+              tot_c    = sum(c_pct * g_core / pot.m2, na.rm = TRUE),
+              n_wa = tot_n / tot_mass,
+              c_wa = tot_c / tot_mass)
+leaf$t <- as.numeric(substr(leaf$time, 2, 2)) * 7
+
+stem <- plyr::ddply(CN_mass_data[CN_mass_data$sample.type %in% c("belowground stems", "stems"), ],
+              plyr::.(species, time, new.core.id), plyr::summarise,
+              tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
+              tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
+              tot_c    = sum(c_pct * g_core / pot.m2, na.rm = TRUE),
+              n_wa = tot_n / tot_mass,
+              c_wa = tot_c / tot_mass
+)
+stem$t <- as.numeric(substr(stem$time, 2, 2)) * 7
+
+leaf2 <- leaf
+names(leaf2)[4:8] <- paste0(names(leaf)[4:8], ".leaf")
+leaf2 <- cbind(leaf2, stem[4:8])
+leaf2$n_wa_ag <- (leaf2$tot_n.leaf + leaf2$tot_n) / (leaf2$tot_mass.leaf + leaf2$tot_mass)
+
+plyr::ddply(leaf[, -c(2, 3)], plyr::.(species), plyr::numcolwise(mean))
+plyr::ddply(leaf[, -c(2, 3)], plyr::.(species), plyr::numcolwise(se))
+
+# leaf biomass
+summary(lm.sa.leaf <- lm(tot_mass ~ t, data = leaf[leaf$species %in% "SA",]))
+summary(lm.ds.leaf <- lm(tot_mass ~ t, data = leaf[leaf$species %in% "DS",]))
+t.test(tot_mass ~ species, data = leaf)
+
+# leaf N content
+summary(lm.sa.leafN <- lm(n_wa ~ t, data = leaf[leaf$species %in% "SA",]))
+summary(lm.ds.leafN <- lm(n_wa ~ t, data = leaf[leaf$species %in% "DS",]))
+t.test(n_wa ~ species, data = leaf)
+
+
+# stems 
+plyr::ddply(stem[, -c(2, 3)], plyr::.(species), plyr::numcolwise(mean))
+plyr::ddply(stem[, -c(2, 3)], plyr::.(species), plyr::numcolwise(se))
+
+# stem biomass
+summary(lm.sa.stem <- lm(tot_mass ~ t, data = stem[stem$species %in% "SA",]))
+summary(lm.ds.stem <- lm(tot_mass ~ t, data = stem[stem$species %in% "DS",]))
+t.test(tot_mass ~ species, data = stem)
+
+# stem N content
+summary(lm.sa.leafN <- lm(n_wa ~ t, data = leaf[leaf$species %in% "SA",]))
+summary(lm.ds.leafN <- lm(n_wa ~ t, data = leaf[leaf$species %in% "DS",]))
+t.test(n_wa ~ species, data = leaf)
+
+# mean N content for all
+plyr::ddply(stem[, -c(2, 3)], plyr::.(), plyr::numcolwise(mean))
+plyr::ddply(stem[, -c(2, 3)], plyr::.(), plyr::numcolwise(se))
+
+# stem N stock
+t.test(tot_n ~ species, data = stem)
+
+
+# aboveground weighted average N content
+summary(lm.sa.N.ag <- lm(n_wa_ag ~ t, data = leaf2[leaf2$species %in% "SA",]))
+summary(lm.ds.N.ag <- lm(n_wa_ag ~ t, data = leaf2[leaf2$species %in% "DS",]))
+t.test(n_wa_ag ~ species, data = leaf2)
+
+plyr::ddply(leaf2, plyr::.(species, time), plyr::summarise,
+      n_pct = mean(n_wa_ag),
+      n_pct.se = se(n_wa_ag))
+plyr::ddply(leaf2, plyr::.(species), plyr::summarise,
+      n_pct = mean(n_wa_ag),
+      n_pct.se = se(n_wa_ag))
+plyr::ddply(leaf2, plyr::.(), plyr::summarise,
+      n_pct = mean(n_wa_ag),
+      n_pct.se = se(n_wa_ag))
+
+### total N uptake (NAPP * %N)
+summary(lm.sa.Nupt <- lm(n_uptake_biomass ~ session, data = master[master$species %in% "SA",]))
+summary(lm.ds.Nupt <- lm(n_uptake_biomass ~ session, data = master[master$species %in% "DS",]))
+t.test(n_uptake_biomass ~ species, data = master) # no difference bt species as a whole
+
+for (i in 1:length(unique(master$session))) {
+  print(unique(master$session)[i])
+  print(t.test(n_uptake_biomass ~ species, data = master[(master$session %in% c(unique(master$session)[i])), ]))
+}
+plyr::ddply(master, plyr::.(species), plyr::summarise,
+      n_uptake = mean(n_uptake_biomass),
+      n_uptake.se = se(n_uptake_biomass))
+
+```
+
+
+``` {r Figure 2 (Data In Brief), fig.width = 6, fig.height = 4, message = FALSE, include = FALSE, echo = FALSE}
+# Figure 2 in Data In Brief manuscript - aboveground pools ---------------------------------------
+ggplot(ag2.sp, aes(y = g, x = as.Date(session), colour = species2, shape = species2)) + geom_point(size = pointSize, position = pd2) + theme_classic() %+replace% theme(legend.title = element_blank()) +
+  facet_grid(sample.type2 ~ .) + geom_errorbar(aes(ymin = g - g.se, ymax = g + g.se), width = 0, position = pd2) +
+  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(ag2.sp$species2)[1], unique(ag2.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(ag2.sp$species2)[1], unique(ag2.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ylab(expression("Biomass (g "%.%m^-2~")")) +  xlab("") + ylim(0, 325) +
+  scale_x_date(breaks = as.Date(unique(ag2.sp$session)), labels = scales::date_format("%b-%d")) +
+  theme(legend.position = c(2.2, 0.9), legend.text.align = 0,
+        legend.background = element_rect(fill = NA, colour = NA))
+
+
+
+ggplot(ag2.sp, aes(y = n_pct, x = as.Date(session), colour = species2, shape = species2)) + geom_point(size = pointSize, position = pd2) + theme_classic() %+replace% theme(legend.title = element_blank()) +
+  facet_grid(sample.type2 ~ .) + geom_errorbar(aes(ymin = n_pct - n_pct.se, ymax = n_pct + n_pct.se), width = 0, position = pd2) +
+  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(ag2.sp$species2)[1], unique(ag2.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(ag2.sp$species2)[1], unique(ag2.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ylab("Tissue N") +  xlab("") + scale_y_continuous(labels = scales::percent) +
+  scale_x_date(breaks = as.Date(unique(ag2.sp$session)), labels = scales::date_format("%b-%d")) +
+  theme(legend.position = c(2.2, 0.9), legend.text.align = 0,
+        legend.background = element_rect(fill = NA, colour = NA))
+
+```
+
+
+
+```{r Results: C: Belowground biomass and N pools, include = FALSE, echo = FALSE}
+
+# Results: c.	Belowground biomass and N pools -----------------------------
+# belowground biomass and tissue N
+rts <- ddply(CN_mass_data[CN_mass_data$sample.type %in% c("fine roots", "coarse roots", "rhizomes"), ],
+             .(species, time, new.core.id, sample.type), summarise,
+             tot_mass = sum(g_core / pot.m2, na.rm = TRUE),
+             tot_n    = sum(n_core / pot.m2, na.rm = TRUE),
+             tot_c    = sum(c_pct * g_core / pot.m2, na.rm = TRUE),
+             n_wa = tot_n / tot_mass,
+             c_wa = tot_c / tot_mass
+)
+rts$t <- as.numeric(substr(rts$time, 2, 2)) * 7
+
+ddply(rts[, -c(2, 3)], .(species, sample.type), numcolwise(mean))
+ddply(rts[, -c(2, 3)], .(species, sample.type), numcolwise(se))
+
+# fine roots
+organ <- "fine roots"
+summary(lm(tot_mass ~ t, data = rts[(rts$sample.type %in% organ) & (rts$species %in% "SA"), ]))
+summary(lm(tot_mass ~ t, data = rts[(rts$sample.type %in% organ) & (rts$species %in% "DS"), ]))
+t.test(tot_mass ~ species, data = rts[(rts$sample.type %in% organ), ])
+t.test(n_wa ~ species, data = rts[(rts$sample.type %in% organ), ])
+t.test(tot_n ~ species, data = rts[(rts$sample.type %in% organ), ])
+
+# coarse roots
+organ <- "coarse roots"
+t.test(tot_mass ~ species, data = rts[(rts$sample.type %in% organ), ])
+summary(lm(tot_mass ~ t, data = rts[(rts$sample.type %in% organ) & (rts$species %in% "SA"), ]))
+summary(lm(tot_mass ~ t, data = rts[(rts$sample.type %in% organ) & (rts$species %in% "DS"), ]))
+
+for (i in 1:length(unique(rts$t))) {
+  print(unique(rts$t)[i])
+  print(t.test(n_wa ~ species, data = rts[(rts$t %in% c(unique(rts$t)[i])) & (rts$sample.type %in% organ), ]))
+}
+
+t.test(n_wa ~ species, data = rts[(rts$sample.type %in% organ), ])
+t.test(tot_n ~ species, data = rts[(rts$sample.type %in% organ), ])
+
+
+
+# rhizomes
+organ <- "rhizomes"
+summary(lm(tot_mass ~ t, data = rts[(rts$sample.type %in% organ) & (rts$species %in% "SA"), ]))
+summary(lm(tot_mass ~ t, data = rts[(rts$sample.type %in% organ) & (rts$species %in% "DS"), ]))
+t.test(tot_mass ~ species, data = rts[(rts$sample.type %in% organ), ])
+t.test(n_wa ~ species, data = rts[(rts$sample.type %in% organ), ])
+t.test(tot_n ~ species, data = rts[(rts$sample.type %in% organ), ])
+
+
+```
+
+
+``` {r Figure 3 (Data In Brief), fig.width = 6, fig.height = 4, include = FALSE, echo = FALSE}
+# Figure 3 (Data In Brief) - belowground biomass pools --------------------------------------
+ggplot(bg.sp, aes(y = g, x = as.Date(session), colour = species2, shape = species2)) + geom_point(size = pointSize, position = pd2) + theme_classic() +
+  facet_grid(sample.type ~ .) + geom_errorbar(aes(ymin = g - g.se, ymax = g + g.se), width = 0, position = pd2) +
+  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(bg.sp$species2)[1], unique(bg.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(bg.sp$species2)[1], unique(bg.sp$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ylab(expression("Biomass (g "%.%m^-2~")")) +  xlab("") +
+  scale_x_date(breaks = as.Date(unique(bg.sp$session)), labels = scales::date_format("%b-%d")) +
+  theme(legend.text.align = 0, legend.position = c(2.2, 1),
+        legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
+
+
+
+ggplot(bg.sp, aes(y = n_pct, x = as.Date(session), colour = species2, shape = species2)) + geom_point(size = pointSize, position = pd2) + theme_classic() +
+  facet_grid(sample.type ~ .) + geom_errorbar(aes(ymin = n_pct - n_pct.se, ymax = n_pct + n_pct.se), width = 0, position = pd2) +
+  scale_colour_grey(start = 0.5, end = 0.1, name = "", breaks = c(unique(bg.sp$species2)[1], unique(bg.sp$species)[2]), labels = c(expression(italic(D.~spicata)), expression(italic(S.~alterniflora)))) +
+  scale_x_date(breaks = as.Date(unique(bg.sp$session)), labels = scales::date_format("%b-%d")) +
+  ylab("Tissue N content") +  xlab("") + scale_y_continuous(labels = scales::percent) +
+  theme(legend.text.align = 0, legend.position = c(2.2, 1),
+        legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
+
+```
+
+
+```{r Recoveries and sorption, include = FALSE, echo = FALSE}
+# comparison of total 15N recovery by species
+t.test(recovery2 ~ factor(species), data = mat2)
+
+# variation over time in total 15N recovery
+Anova(aov.tot <- aov(recovery2 ~ factor(species) * days, data = mat2), type = 2)
+summary(lm(recovery2 ~ days, data = mat2[mat2$species %in% "DS",]))
+summary(lm(recovery2 ~ days, data = mat2[mat2$species %in% "SA",]))
+
+# comparison of belowground 15N recoveries between species
+t.test(n15_bg ~ factor(species), data = master)
+Anova(aov.bg <- aov(n15_bg ~ factor(species) * days, data = master), type = 2)
+
+
+# comparison of aboveground 15N recoveries between species
+t.test(n15 ~ factor(species), data = master)
+Anova(aov.ag.n15 <- aov(n15 ~ factor(species) * days, data = master), type = 2)
+summary(lm(n15 ~ days, data = master[master$species %in% "DS",]))
+summary(lm(n15 ~ days, data = master[master$species %in% "SA",]))
+
+
+t.test(n15 ~ factor(species), data = master)
+
+
+# Q: how much sorption is there? (look just at belowground data from t1-4)
+summary(CN_mass_data$n15xs[!is.na(CN_mass_data$depth_bottom) & (CN_mass_data$time %in% paste0("t", 1:4))])
+summary(CN_mass_data$n15xs_MOM[!is.na(CN_mass_data$depth_bottom) & (CN_mass_data$time %in% paste0("t", 1:4))])
+
+# Q: does sorption vary by species?  No.
+summary(CN_mass_data$n15xs[CN_mass_data$sample.type %in% "dead biomass"])
+summary(stats::aov(n15xs ~ species, data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0"), ]))
+summary(stats::aov(n15xs ~ species, data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0") & (CN_mass_data$depth_bottom < 11), ])) # doesn't change if focused only on top 10 cm
+
+### does sorption change over time? No
+summary(stats::lm(n15xs ~ species + as.numeric(substr(time, 2, 2)), data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0"), ])) # no
+summary(stats::lm(n15xs ~ as.numeric(substr(time, 2, 2)), data = CN_mass_data[(CN_mass_data$sample.type %in% "dead biomass") & (!CN_mass_data$time %in% "t0"), ]))
+
+
+### differences in 15N-nitrogen interception between species (weeks 3 & 4)
+# t.test(n_uptake_15n ~ factor(species), data = master[!is.na(master$bgp_biomass_est), ])
+# t.test(n_uptake_15n_bg ~ factor(species), data = master[!is.na(master$bgp_biomass_est), ])
+
+ddply(master[!is.na(master$bgp_biomass_est), ], .(species), summarise,
+      bg.15n.uptake = mean(n_uptake_15n_bg),
+      bg.15n.uptake.se = se(n_uptake_15n_bg),
+      ag.15n.uptake = mean(n_uptake_15n),
+      ag.15n.uptake.se = se(n_uptake_15n))
+
+# 15N uptake per gram fine-roots 
+master$spp2 <- factor(master$species)
+contrasts(master$spp2) <- contr.poly(2) 
+Anova(aov(n15_pgFR ~ timeDiff * spp2, data = master), type = "III")
+summary(lm.sa <- lm(n15_pgFR ~ timeDiff, data = master[master$species %in% "SA", ]))
+summary(lm.ds <- lm(n15_pgFR ~ timeDiff, data = master[master$species %in% "DS", ]))
+
+
+
+# Calculate intersection of lines of best fit
+rightSide <- lm.ds$coefficients[2] - lm.sa$coefficients[2]
+leftSide  <- lm.sa$coefficients[1] - lm.ds$coefficients[1]
+leftSide / rightSide # days until no difference detectable
+
+```
+
+```{r Drivers of N uptake, include = FALSE, echo = FALSE}
+summary(lm.mv.sa <- lm(tot_15n_uptake ~ napp.MH + rgr + g_roots + timeDiff, data = master[master$species %in% "SA", ]))
+summary(lm.mv.ds <- lm(tot_15n_uptake ~ napp.MH + rgr + g_roots + timeDiff, data = master[master$species %in% "DS", ]))
+rsq::rsq.partial(lm.mv.sa)
+rsq::rsq.partial(lm.mv.ds)
+
+# belowground production
+summary(lm3_4)
+
+### differences in total nitrogen interception between species
+t.test(tot_N_int ~ species, data = master)
+```
+
+```{r Table 1, include = FALSE, echo = FALSE}
+
+### assemble Table 1: 15N recovery and uptake by compartment
+# mean(CN_mass_data[(CN_mass_data$sample.type2 %in% "leaf") & (!CN_mass_data$time %in% "t0"), "n15xs_MOM"], na.rm = T)
+
+CN_mass_data$day.no <- as.numeric(substr(CN_mass_data$time, 2, 2)) * 7
+tbl.prep <- ddply(CN_mass_data[(!CN_mass_data$time %in% "t0") & 
+                                 (CN_mass_data$sample.type2 %in% c("coarse roots", "fine roots", "rhizomes",
+                                 "stems", "leaf")), ],
+      .(day.no, species, new.core.id, sample.type2), summarise,
+      n15.xs          = sum(n15xs_MOM * n_core, na.rm = T) / sum(n_core, na.rm = TRUE),
+      g              = sum(g_core / pot.m2, na.rm  = T),
+      n15.mg         = sum(n15_g, na.rm  = T) * 1000 / pot.m2, # mg per m2
+      n15.perg       = n15.mg * pot.m2 / sum(g_core, na.rm  = T)) # mg 15N per g dw
+      # uptake_rate    = mean(ap(d15n) * n_pct * g_core, na.rm  = T) * 1000 / day.no,
+      # sp_uptake_rate = sum(ap(d15n) * n_pct * g_core, na.rm  = T) * 1000 / sum(g_core, na.rm  = T) / day.no
+tbl.prep$uptake_rate <- tbl.prep$n15.mg / tbl.prep$day.no
+tbl.prep$sp_uptake_rate <- tbl.prep$n15.perg / tbl.prep$day.no
+
+tbl.prep.for.stats <- ddply(tbl.prep, .(species, sample.type2), summarise,
+                            n15xs    = mean(n15.xs, na.rm = TRUE),
+                            n15xs.se = se(n15.xs),
+                            n15      = mean(n15.mg),
+                            n15.se   = se(n15.mg),
+                            n15.pg   = mean(n15.perg),
+                            n15.pg.se = se(n15.perg),
+                            uptake   = mean(uptake_rate),
+                            uptake.se = se(uptake_rate),
+                            uptake.pg = mean(sp_uptake_rate),
+                            uptake.pg.se = se(sp_uptake_rate)
+                            )
+
+tbl.prep.all <- ddply(CN_mass_data[(!CN_mass_data$time %in% "t0") & 
+                                    (CN_mass_data$sample.type2 %in% c("coarse roots", "fine roots", "rhizomes",
+                                                                      "stems", "leaf")), ],
+                     .(day.no, species, new.core.id), summarise,
+                     n15.xs          = sum(n15xs_MOM * n_core, na.rm = T) / sum(n_core, na.rm = TRUE),
+                     g              = sum(g_core / pot.m2, na.rm  = T),
+                     n15.mg         = sum(n15_g, na.rm  = T) * 1000 / pot.m2, # mg per m2
+                     n15.perg       = n15.mg * pot.m2 / sum(g_core, na.rm  = T)) # mg 15N per g dw
+tbl.prep.all$uptake_rate <- tbl.prep.all$n15.mg / tbl.prep.all$day.no
+tbl.prep.all$sp_uptake_rate <- tbl.prep.all$n15.perg / tbl.prep.all$day.no
+
+tbl.prep.all2 <- ddply(tbl.prep.all, .(species), summarise,
+                       n15xs    = mean(n15.xs, na.rm = TRUE),
+                       n15xs.se = se(n15.xs),
+                       n15 = mean(n15.mg),
+                      n15.se   = se(n15.mg),
+                      n15.pg = mean(n15.perg),
+                      n15.pg.se = se(n15.perg),
+                      uptake = mean(uptake_rate),
+                      uptake.se = se(uptake_rate),
+                      uptake.pg = mean(sp_uptake_rate),
+                      uptake.pg.se = se(sp_uptake_rate)
+)
+tbl.prep.all2$sample.type2 <- "Total"
+
+tbl.prep.ag <- ddply(CN_mass_data[(!CN_mass_data$time %in% "t0") & 
+                                 (CN_mass_data$sample.type2 %in% c("stems", "leaf")), ],
+                  .(day.no, species, new.core.id), summarise,
+                  n15.xs          = sum(n15xs_MOM * n_core, na.rm = T) / sum(n_core, na.rm = TRUE),
+                  g              = sum(g_core / pot.m2, na.rm  = T),
+                  n15.mg         = sum(n15_g, na.rm  = T) * 1000  / pot.m2, # mg per m2
+                  n15.perg       = n15.mg  * pot.m2 / sum(g_core, na.rm  = T)) # mg 15N per g dw
+# uptake_rate    = mean(ap(d15n) * n_pct * g_core, na.rm  = T) * 1000 / day.no,
+# sp_uptake_rate = sum(ap(d15n) * n_pct * g_core, na.rm  = T) * 1000 / sum(g_core, na.rm  = T) / day.no
+tbl.prep.ag$uptake_rate <- tbl.prep.ag$n15.mg / tbl.prep.ag$day.no
+tbl.prep.ag$sp_uptake_rate <- tbl.prep.ag$n15.perg / tbl.prep.ag$day.no
+
+tbl.prep.ag2 <- ddply(tbl.prep.ag, .(species), summarise,
+                      n15xs    = mean(n15.xs, na.rm = TRUE),
+                      n15xs.se = se(n15.xs),
+                      n15 = mean(n15.mg),
+                            n15.se   = se(n15.mg),
+                            n15.pg = mean(n15.perg),
+                            n15.pg.se = se(n15.perg),
+                            uptake = mean(uptake_rate),
+                            uptake.se = se(uptake_rate),
+                            uptake.pg = mean(sp_uptake_rate),
+                            uptake.pg.se = se(sp_uptake_rate)
+)
+tbl.prep.ag2$sample.type2 <- "Total aboveground"
+
+
+
+tbl.prep.bg <- ddply(CN_mass_data[(!CN_mass_data$time %in% "t0") & 
+                                    (CN_mass_data$sample.type2 %in% c("fine roots", "coarse roots", "rhizomes")), ],
+                     .(day.no, species, new.core.id), summarise,
+                     n15.xs          = sum(n15xs_MOM * n_core, na.rm = T) / sum(n_core, na.rm = TRUE),
+                     g              = sum(g_core / pot.m2, na.rm  = T),
+                     n15.mg         = sum(n15_g, na.rm  = T) * 1000  / pot.m2, # mg per m2
+                     n15.perg       = n15.mg  * pot.m2 / sum(g_core, na.rm  = T)) # mg 15N per g dw
+# uptake_rate    = mean(ap(d15n) * n_pct * g_core, na.rm  = T) * 1000 / day.no,
+# sp_uptake_rate = sum(ap(d15n) * n_pct * g_core, na.rm  = T) * 1000 / sum(g_core, na.rm  = T) / day.no
+tbl.prep.bg$uptake_rate <- tbl.prep.bg$n15.mg / tbl.prep.bg$day.no
+tbl.prep.bg$sp_uptake_rate <- tbl.prep.bg$n15.perg / tbl.prep.bg$day.no
+
+tbl.prep.bg2 <- ddply(tbl.prep.bg, .(species), summarise,
+                      n15xs    = mean(n15.xs, na.rm = TRUE),
+                      n15xs.se = se(n15.xs),
+                      n15 = mean(n15.mg),
+                      n15.se   = se(n15.mg),
+                      n15.pg = mean(n15.perg),
+                      n15.pg.se = se(n15.perg),
+                      uptake = mean(uptake_rate),
+                      uptake.se = se(uptake_rate),
+                      uptake.pg = mean(sp_uptake_rate),
+                      uptake.pg.se = se(sp_uptake_rate)
+)
+tbl.prep.bg2$sample.type2 <- "Total belowground"
+
+tbl.final <- plyr::rbind.fill(list(tbl.prep.for.stats, tbl.prep.ag2, tbl.prep.bg2, tbl.prep.all2))
+# write.csv(tbl.final, "C:/RDATA/greenhouse/output/GRO/table_15n_180524.csv")
+
+for (i in 1:length(unique(tbl.prep$sample.type2))) {
+  print(unique(tbl.prep$sample.type2)[i])
+  print(paste("n15.mg P-value: ", t.test(n15.mg ~ species, data = tbl.prep[tbl.prep$sample.type2 %in% unique(tbl.prep$sample.type2)[i], ])$p.value))
+  print(paste("del n-15 P-value: ", t.test(n15.xs ~ species, data = tbl.prep[tbl.prep$sample.type2 %in% unique(tbl.prep$sample.type2)[i], ])$p.value))
+  print(paste("uptake_rate P-value: ", t.test(uptake_rate ~ species, data = tbl.prep[tbl.prep$sample.type2 %in% unique(tbl.prep$sample.type2)[i], ])$p.value))
+  }
+
+setDat <- tbl.prep.all # tbl.prep.all, tbl.prep.ag, tbl.prep.bg
+paste("del n-15 P-value: ", t.test(n15.xs ~ species, data = setDat)$p.value)
+paste("n15.mg P-value: ", t.test(n15.mg ~ species, data = setDat)$p.value)
+paste("uptake_rate P-value: ", t.test(uptake_rate ~ species, data = setDat)$p.value)
+
+# average recovery across species
+ddply(tbl.prep.ag, .(), summarise,
+      n15 = mean(n15.mg) / (spike * 1e3 / pot.m2),
+      n15.se   = se(n15.mg) / (spike * 1e3 / pot.m2)
+)
+ddply(tbl.prep.bg, .(), summarise,
+      n15 = mean(n15.mg) / (spike * 1e3 / pot.m2),
+      n15.se   = se(n15.mg) / (spike * 1e3 / pot.m2)
+)
+
+# difference between above and belowground recovery by species
+ag$type <- "aboveground"
+bgd$type <- "belowground"
+bgag <- rbind(ag[(!ag$time %in% "t0"), c(1:3, 7:8)], bgd[(!bgd$time %in% "t0"), ])
+Anova(aov2 <- aov(n15 ~ type * species, data = bgag), type = 2)
+TukeyHSD(aov2)
+```
+
+
+```{r Estimating belowground production, include = FALSE, echo = FALSE}
+### differences in total nitrogen interception between species
+summary(aov.sp1 <- stats::aov(tot_N_int ~ species, data = master))
+car::Anova(aov.sp2 <- stats::aov(tot_N_int ~ species, data = master))
+stats::TukeyHSD(aov.sp2)
+stats::t.test(tot_N_int ~ species, data = master)
+
+plyr::ddply(master, plyr::.(species), plyr::summarise,
+      Nint = mean(tot_N_int, na.rm = TRUE),
+      Nint.se = se(tot_N_int))
+
+
+bgp.out <- plyr::ddply(master[master$time %in% c("t3", "t4"), ], plyr::.(species), plyr::summarise,
+                 bg_n_uptake         = mean(bg_n_est), # mg/m2/d
+                 bg_n_uptake.se      = se(bg_n_est),
+                 ag_n_uptake         = mean(n_uptake_biomass),
+                 ag_n_uptake.se      = se(n_uptake_biomass),
+
+                 bg_production       = mean(bgp_est), # g/m2/day
+                 bg_production.se    = se(bgp_est),
+                 ag_production       = mean(prodn_rate), # g/m2/day
+                 ag_production.se    = se(prodn_rate),
+
+                 new_bg_biomass      = mean(bgp_biomass_est), # g/m2
+                 new_bg_biomass.se   = se(bgp_biomass_est),
+                 root_shoot_ratio    = mean(bgp_est / prodn_rate),
+                 root_shoot_ratio.se = se(bgp_est / prodn_rate)
+)
+# write.csv(bgp.out, file = "C:/RDATA/greenhouse/output/GRO/bgp_estimates.csv", row.names = FALSE)
+
+# stats
+stats::t.test(n_uptake_biomass ~ species, data = master[master$time %in% c("t3", "t4"), ]) # DS higher than SA
+stats::t.test(prodn_rate ~ species, data = master[master$time %in% c("t3", "t4"), ])  # DISP is more productive than SPAL
+
+# stats for table 2
+t.test(bg_n_est ~ species, data = master[master$time %in% c("t3", "t4"), ])
+t.test(n_uptake_biomass ~ species, data = master[master$time %in% c("t3", "t4"), ]) # DS higher than SA
+t.test(n_uptake_biomass ~ species, data = master[master$time %in% c("t3", "t4"), ])
+
+t.test(bgp_est ~ species, data = master[master$time %in% c("t3", "t4"), ])
+t.test(prodn_rate ~ species, data = master[master$time %in% c("t3", "t4"), ])  # DISP is more productive than SPAL
+t.test(prodn_rate ~ species, data = master[master$time %in% c("t3", "t4"), ])
+
+t.test(DEA.m2 ~ species, data = dea)
+t.test(IV.m2 ~ species, data = dea)
+
+
+```
+
+
+```{r Results section E, include = FALSE, echo = FALSE, message = FALSE}
+
+# Results e.	Denitrification enzyme activity and total N interception ----
+t.test(nmolHr_mgDay(DEA.m2) ~ species, data = dea)
+t.test(nmolHr_mgDay(IV.m2) ~ species, data = dea)
+
+dea.x <- ddply(dea, .(species), numcolwise(mean))
+dea.se <- ddply(dea, .(species), numcolwise(se))
+# dea.x
+# dea.se
+# dea.se[, 6:7] / dea.x[, 6:7]
+
+tableCols <- c("species", "bg_n_est", "n_uptake_biomass", "bgp_est", "prodn_rate")
+ddply(master[master$time %in% c("t3", "t4"), tableCols], .(species), numcolwise(mean))
+# ddply(master[master$time %in% c("t3", "t4"), tableCols], .(species), numcolwise(se))
+
+# nmolHr_mgDay(dea.x[, c("DEA.m2", "IV.m2")]) 
+# nmolHr_mgDay(dea.se[, c("DEA.m2", "IV.m2")])
+```
+
+
+
+
+## 8.	Figures
+
+``` {r Figure 1 - Allometry, fig.width = 6, fig.height = 4, message = FALSE, echo = FALSE}
+
+# png(filename = paste0("C:/RDATA/greenhouse/output/GRO/Figure1_", todaysDate, ".png"), width = 90, height = 90, units = "mm", res = 1000)
+# tiff(file = paste0("C:/RDATA/greenhouse/output/GRO/Figure1_", todaysDate, ".png"), width = 90, height = 90, units = "mm", res = 800)
+
+graphics::par(fig = c(0, 1, 0, 1), mar = c(4, 4, 0.5, 0.5))
+graphics::plot(sample ~ height_cm, data = allometry[(allometry$spp %in% "DISP"), ],
+     cex = pointSize / 2, pch = 19, col = fig2Col,
+     ylab = "Total mass (g)", xlab = "Height (cm)", xlim = c(0, 80), ylim = c(0, 0.65), xaxt = "n",
+     las = 1, tcl = 0.25, tck = 0.01, bty = "n", yaxs = "i", xaxs = "i")
+graphics::abline(h = 0)
+graphics::abline(v = 0)
+graphics::axis(side = 1, tcl = 0.25, tck = 0.01, at = axTicks(1), labels = graphics::axTicks(1))
+graphics::points(sample ~ height_cm, data = allometry[(allometry$spp %in% "SPAL"), ],  cex = pointSize / 2, pch = 17)
+
+x <- allometry[(allometry$spp %in% "DISP"), "height_cm"]
+x.spal <- allometry[(allometry$spp %in% "SPAL"), "height_cm"]
+
+y.pred2 <- (x * CSP.coef[1, 3] + CSP.coef[1, "(Intercept)"])^(1/CSP.coef$lam[1]) # DISP
+y.pred3 <- (x.spal * CSP.coef[2, 3] + CSP.coef[2, "(Intercept)"])^(1/CSP.coef$lam[2]) # SPAL
+graphics::lines(x = x[order(y.pred2)], y = y.pred2[order(y.pred2)], lty = 1, lwd = 2, col = fig2Col)
+graphics::lines(x = x.spal[order(y.pred3)], y = y.pred3[order(y.pred3)], lty = 1, lwd = 2)
+
+graphics::text(x = 20, y = 0.52, cex = 0.95, expression(italic("Spartina")))
+graphics::text(x = 65, y = 0.3, cex = 0.95, expression(italic("Distichlis")))
+# dev.off()
+```
+
+**Figure 1.** Mass-height allometry for Spartina (black triangles) and Distichlis (gray circles) from Colt State Park, RI. Allometry model parameters are reported in Table 1.
+
+
+``` {r Figure 2 (JEMBE), fig.width = 6, fig.height = 4, message = FALSE, echo=FALSE}
+
+# Figure 2 - Aboveground biomass over time ----------------------------------
+ggplot2::ggplot(ddHgt4[ddHgt4$cohort > 0, ], ggplot2::aes(y = mass / pot.m2, x = as.Date(session), colour = species, shape = species)) +
+  ggplot2::geom_point(size = pointSize, position = pd) + ggplot2::theme_classic() +
+  ggplot2::geom_errorbar(ggplot2::aes(ymin = (mass - mass.se) / pot.m2, ymax = (mass + mass.se) / pot.m2), width = 0, position = pd) +
+  ggplot2::scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ggplot2::scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(ddHgt4$species[ddHgt4$cohort > 0])[1], unique(ddHgt4$species[ddHgt4$cohort > 0])[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ggplot2::scale_x_date(breaks = as.Date(unique(ddHgt4$session))[c(1, 2, 4, 6, 8)], labels = scales::date_format("%b-%d")) +
+  ggplot2::ylim(0, 600) + ggplot2::facet_grid(. ~ cohort, labeller = label_parsed) +
+  ggplot2::labs(y = expression("Biomass (g "%.%m^-2~")"), x = "") +
+  ggplot2::theme(legend.position = c(0.125, 0.87), legend.text.align = 0,
+        legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
+
+
+```
+
+
+**Figure 2.** Live aboveground biomass over time (mean ± SE; n = 3), for each of the four cohorts of harvested mesocosms. Points are offset for clarity; sampling dates are the same for both species.
+
+
+``` {r Figure 3 (JEMBE), fig.width = 6, fig.height = 4, message = FALSE, echo=FALSE}
+# Figure 3A (JEMBE) - NAPP ------------------------------------------
+# set dodge width for points & error bars
+pd3 <- position_dodge(0.8)
+
+Fig3A <- ggplot(dd.master, aes(y = prodn_rate, x = as.Date(session), shape = species, colour = species)) + geom_point(size = pointSize) + theme_classic() +
+  # facet_wrap(~ species) +
+  geom_errorbar(aes(ymin = prodn_rate - prodn_rate.se, ymax = prodn_rate + prodn_rate.se), width = 0) +
+  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ylim(0, 10.2) +
+  ylab(expression("Primary production (g"%.%m^{-2}%.%"d"^{-1}~")")) + xlab("") + ggplot2::scale_x_date(breaks = as.Date(unique(dd.master$session)), labels = scales::date_format("%b-%d")) +
+  theme(legend.text.align = 0, legend.position = c(5,5),
+        legend.background = element_rect(fill = NA, colour = NA)) +
+  annotate("text", x = as.Date(unique(dd.master$session)[3]), y = 10, label = "*") +
+  annotate("text", x = as.Date(unique(dd.master$session)[4]), y = 8, label = "*") +
+  annotate("text", x = as.Date(unique(dd.master$session)[1]), y = 8, label = "A")
+#Fig3A
+
+
+# Figure 3B - Aboveground N uptake  ----------------------------------------
+Fig3B <- ggplot(dd.master, aes(y = n_uptake_biomass, x = as.Date(session), shape = species, colour = species)) + geom_point(size = pointSize, position = pd3) + theme_classic() +
+  # facet_wrap(~ species) +
+  geom_errorbar(aes(ymin = n_uptake_biomass - n_uptake_biomass.se, ymax = n_uptake_biomass + n_uptake_biomass.se), width = 0, position = pd3) +
+  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(dd.master$species)[1], unique(dd.master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  ylim(0, 150) +
+  ylab(expression("N uptake (mg N"%.%d^{-1}%.%"m"^{-2}*")")) + xlab("") +
+  scale_x_date(breaks = as.Date(unique(dd.master$session)), labels = scales::date_format("%b-%d")) +
+  theme(legend.text.align = 0, legend.position = c(5,5),
+        legend.background = element_rect(fill = NA, colour = NA)) +
+  annotate("text", x = as.Date(unique(dd.master$session)[3]), y = 147, label = "*") +
+  annotate("text", x = as.Date(unique(dd.master$session)[4]), y = 125, label = "*") +
+  annotate("text", x = as.Date(unique(dd.master$session)[1]), y = 150, label = "B")
+Fig3B
+
+```
+
+
+**Figure 3.** Panel A: Aboveground production (mean ± SE) in each cohort of harvested mesocosms (n = 3). Gray circles are Distichlis and black triangles are Spartina. Within a harvest date, significant differences between species are indicated by asterisks (*P < 0.05). Panel B: Aboveground N uptake in each cohort, estimated from primary production and biomass N concentrations. The starting point for all uptake measurements was the first biomass measurement, 22 June 2016. Points are offset for clarity in both panels.
+
+
+``` {r Figures 4-5 (JEMBE), fig.width = 6, fig.height = 4, echo=FALSE}
+# Figure 4 - 15N recoveries ------------------------------------------------
+
+ggplot(mgd[!mgd$time %in% "t0", ], aes(x = as.Date(session), y = recovery, colour = species, shape = species)) + 
+  geom_point(size = pointSize, position = pd2) + ylab(expression(" "^15~"N recovery")) + xlab("") +
+  geom_errorbar(aes(ymin = recovery - recovery.se, ymax = recovery + recovery.se), width = 0, position = pd2) + theme_classic()  +
+  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = unique(mgd$species), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = unique(mgd$species), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  facet_grid(. ~ type)  + scale_y_continuous(labels = scales::percent, lim = c(0, 0.85)) + 
+  scale_x_date(breaks = as.Date(unique(mgd[!mgd$time %in% "t0", "session"])), labels = scales::date_format("%b-%d")) +
+  theme(legend.position = c(0.15, 0.9), legend.text.align = 0, axis.title.x=element_blank(),
+        legend.background = element_rect(fill = NA, colour = NA), axis.text.x=element_text(angle=45,hjust=1))
+
+```
+
+
+**Figure 4.** ^15^N recoveries in aboveground biomass, belowground live biomass (corrected for sorption), and total (all ^15^N recovered, including sorption, dead belowground biomass and surficial algae) at each time point, for each species (mean ± SE). Inventories were summed for all vegetative components and expressed as a percent of the ^15^N added. Points are offset slightly for clarity.
+
+
+``` {r Fig5, fig.width = 6, fig.height = 4, echo=FALSE}
+
+
+# Figure 5 - 15N uptake per gram fine roots ---------------------------------
+rt2 <- plyr::ddply(master, plyr::.(species, timeDiff), plyr::summarise,
+             xbar = mean(n15_pgFR, na.rm = TRUE),
+             se = se(n15_pgFR),
+             session = mean(session))
+ggplot(rt2, aes(x = timeDiff, y = xbar, colour = species, shape = species)) + geom_point(size = pointSize) + theme_classic() +
+  ylim(0, 0.15) +
+  geom_errorbar(aes(ymin = xbar - se, ymax = xbar + se), width = 0) +
+  xlab("Experiment duration (days)") +
+  ylab(expression("N uptake (mg "^{15}~N%.%d^{-1}%.%"gdw"^{-1}~")")) +
+  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = unique(rt2$species), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(rt2$species)), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_x_continuous(breaks = unique(rt2$timeDiff), lim = c(7, 28)) +
+  theme(legend.text.align = 0, legend.position = c(0.8, 0.8),
+        legend.background = element_rect(fill = NA, colour = NA)) +
+  geom_smooth(method = "lm", se = FALSE)
+
+```
+
+**Figure 5.** Combined above- and belowground ^15^N uptake per gram of fine root biomass (mean ± SE), as a function of experiment duration. Lines of best fit intersect at day 46. 
+
+
+
+``` {r Figure6, fig.width = 6, fig.height = 4, echo=FALSE}
+# Figure 6 - N uptake estimated by 2 methods --------------------------------
+ggplot(master[master$cluster %in% "3-4 weeks", ], aes(x = n_uptake_15n, y = n_uptake_biomass, colour = species, shape = species)) + geom_point(size = pointSize) + theme_classic() +
+  ylim(0, 150)  + # facet_wrap(~ cluster, scales = "free_x") +
+  ylab(expression("N uptake (mg N "%.%d^{-1}%.%"m"^{-2}*")")) +
+  xlab(expression(""^15*"N uptake (mg "^15*"N"%.%d^{-1}%.%"m"^{-2}*")")) +
+  scale_colour_grey(start = grayColor, end = 0.1, name = "", breaks = c(unique(master$species)[1], unique(master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  scale_shape_manual(values = c(16, 17), name = "", breaks = c(unique(master$species)[1], unique(master$species)[2]), labels = c(expression(italic(Distichlis)), expression(italic(Spartina)))) +
+  theme(legend.text.align = 0, legend.position = c(0.2, 0.9),
+        legend.background = element_rect(fill = NA, colour = NA)) +
+  geom_smooth(data = subset(master, cluster %in% "3-4 weeks"), aes(group = 1), method = "lm", se = FALSE, colour = "black") +
+  geom_text(data = data.frame(cluster = "3-4 weeks", n_uptake_biomass = 50, n_uptake_15n = 3, species = "SA"), label =
+              "paste(italic(R) ^ 2, \" = 0.45\")", parse = TRUE, colour = "black")
+
+
+```
+
+**Figure 6.** Relationship between aboveground N uptake estimates calculated from ^15^N vs. primary production rates and biomass N concentrations. Data shown are from harvests three and four weeks after ^15^N addition; line of best fit is shown (P = 0.01; y = 43.0x - 9.4).
+
+\newline
+\newline
+
+
+
+
+
+ 
+## 9. Tables
+
+
+**Table 1.** Allometry models used to estimate masses from plant heights. Masses were estimated as mass = (height$\cdot$a + b)^1/$\lambda$^, using the intercepts (a), slopes (b), and lambda values below.
+
+``` {r Allometry model table,  results = "asis", message = FALSE, echo = FALSE}
+knitr::kable(CSP.coef)
+
+```
+
+
+
+**Table 2.** Excess 15N concentrations (15Nxs: atom percent) and 15N inventories (mg 15N$\cdot$m-2) in live plant tissues (mean ±SE in parentheses; n = 12). Excess 15N includes a sorption correction for belowground tissue. For each tissue type, asterisks indicate significant differences between species (significance not shown in vignette - see manuscript for annotated table). Inventories reflect recovery of the 243 mg 15N$\cdot$m-2 added.
+
+``` {r Table2, results = "asis", echo = FALSE}
+
+kable(tbl.final[, 1:6])
+
+```
+
+
+
+**Table 3.** Mean (SE in parentheses) N uptake, and primary production from mesocosms harvested 3-4 weeks after 15N application, and denitrification potentials measured two weeks after application. For each parameter, asterisks indicate significant differences between species (***P < 0.001, Welch's two-sample t-test). All units are expressed per m2 per day. 1Estimated as described in equations 3 and 4.
+	
+``` {r Table 3, results = "asis", echo = FALSE}
+
+Species <- c("Total Belowground N uptake (mg N)", "Total Aboveground N uptake (mg N)", 	
+            "Belowground Primary production (g dw)", "Aboveground Primary production (g dw)",	
+            "Denitrification potential (mg N)", 	"Unamended N2O+N2 flux (mg N)")
+Distichlis <- c("62.2 (20.5)",	"115.5*** (7.7)",	"7.2 (5.9)",	"7.5*** (0.7)",	"99.4 (32.4)",	"39.4 (23.0)")
+Spartina <- c("39.6 (7.1)",	"49.2*** (9.8)",	"5.9 (1.3)",	"2.9*** (0.5)",	"65.4 (23.6)",	"8.9 (1.1)"
+)
+t3 <- rbind(Species, Distichlis)
+t3.2 <- rbind(t3, Spartina)
+
+knitr::kable(t3.2)
+
+```

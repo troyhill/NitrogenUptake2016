@@ -13,5 +13,5 @@
 #' @name dea
 #' @usage dea
 #' @examples ### export to .csv:
-#' write.csv(dea, file = "dea.csv")
+#' write.csv(dea, file = file.path(tempdir(), "dea.csv"))
 NULL

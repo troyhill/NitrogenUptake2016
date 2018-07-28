@@ -31,5 +31,5 @@
 #' @name stemHeights
 #' @usage stemHeights
 #' @examples ### export to .csv:
-#' write.csv(stemHeights, file = "stemHeights.csv")
+#' write.csv(stemHeights, file = file.path(tempdir(), "stemHeights.csv"))
 NULL

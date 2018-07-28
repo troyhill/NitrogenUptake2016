@@ -26,5 +26,5 @@
 #' @name CN_mass_data
 #' @usage CN_mass_data
 #' @examples ### export to .csv:
-#' write.csv(CN_mass_data, file = "CN_mass_data.csv")
+#' write.csv(CN_mass_data, file = file.path(tempdir(), "CN_mass_data.csv"))
 NULL

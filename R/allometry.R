@@ -22,5 +22,5 @@
 #' @name allometry
 #' @usage allometry
 #' @examples ### export to .csv:
-#' write.csv(allometry, file = "allometry.csv")
+#' write.csv(allometry, file = file.path(tempdir(), "allometry.csv"))
 NULL
