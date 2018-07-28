@@ -28,7 +28,11 @@ All the data used in this manuscript will then be available:
 The manuscript vignette can be read via:
 
 ```r
-vignette("analysis",package="NitrogenUptake2016")
+# Journal of Experimental Marine Biology and Ecology (in press)
+vignette("JEMBE", package = "NitrogenUptake2016")
+
+# Data In Brief (submitted)
+vignette("DataInBrief", package = "NitrogenUptake2016")
 ```
 
 
