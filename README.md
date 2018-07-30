@@ -2,6 +2,12 @@
 
 This repository contains data and source code associated with Hill et al. "Nitrogen uptake and allocation estimates for _Spartina alterniflora_ and _Distichlis spicata_"
 
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/NitrogenUptake2016)](https://cran.r-project.org/package=NitrogenUptake2016)
+
+
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/NitrogenUptake2016)](https://cran.r-project.org/package=NitrogenUptake2016)
+
+
 [![DOI](https://zenodo.org/badge/103706037.svg)](https://zenodo.org/badge/latestdoi/103706037)
 
 
