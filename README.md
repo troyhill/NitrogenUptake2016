@@ -13,7 +13,14 @@ This repository contains data and source code associated with Hill et al. "Nitro
 
 ## Install the Package 
 
-Install the package from GitHub using devtools:
+Install the package from CRAN:
+
+```r
+install.packages("NitrogenUptake2016")
+```
+
+
+Alternatively, the package can be installed from GitHub using devtools:
 
 ```r
 install.packages("devtools")
@@ -31,7 +38,7 @@ All the data used in this manuscript will then be available:
 ```
 
 
-The manuscript vignette can be read via:
+The manuscript vignettes can be read via:
 
 ```r
 # Journal of Experimental Marine Biology and Ecology (in press)
