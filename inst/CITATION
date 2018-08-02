@@ -1,6 +1,6 @@
 bibentry(
          bibtype  = "Article",
-         journal  = "Journal of Experimental Marine Biology and Ecology",
+         journal  = "Data In Brief",
          title    = "Data and source code from: Nitrogen uptake and allocation estimates for Spartina alterniflora and Distichlis spicata",
          doi      = c("10.5281/zenodo.1226378"),
          author   = c(
