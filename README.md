@@ -8,7 +8,7 @@ This repository contains data and source code associated with the manuscript "Ni
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/NitrogenUptake2016)](https://cran.r-project.org/package=NitrogenUptake2016)
 
 
-[![DOI](https://zenodo.org/badge/103706037.svg)](https://zenodo.org/badge/latestdoi/103706037)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1226378.svg)](https://doi.org/10.5281/zenodo.1226378)
 
 
 ## Install the Package 
