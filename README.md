@@ -7,6 +7,8 @@ This repository contains data and source code associated with the manuscript "Ni
 
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/NitrogenUptake2016)](https://cran.r-project.org/package=NitrogenUptake2016)
 
+[![](http://cranlogs.r-pkg.org/badges/grand-total/NitrogenUptake2016)](https://cran.r-project.org/package=NitrogenUptake2016)
+
 
 ## Install the Package 
 
