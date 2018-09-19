@@ -1,13 +1,11 @@
 # NitrogenUptake2016
 
+
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/NitrogenUptake2016)](https://cran.r-project.org/package=NitrogenUptake2016) [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/NitrogenUptake2016)](https://cran.r-project.org/package=NitrogenUptake2016) [![](http://cranlogs.r-pkg.org/badges/grand-total/NitrogenUptake2016)](https://cran.r-project.org/package=NitrogenUptake2016)
+
+
+
 This repository contains data and source code associated with the manuscript "Nitrogen uptake and allocation estimates for _Spartina alterniflora_ and _Distichlis spicata_" (Hill et al. 2018; DOI: https://doi.org/10.1016/j.jembe.2018.07.006).
-
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/NitrogenUptake2016)](https://cran.r-project.org/package=NitrogenUptake2016)
-
-
-[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/NitrogenUptake2016)](https://cran.r-project.org/package=NitrogenUptake2016)
-
-[![](http://cranlogs.r-pkg.org/badges/grand-total/NitrogenUptake2016)](https://cran.r-project.org/package=NitrogenUptake2016)
 
 
 ## Install the Package 
