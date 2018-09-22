@@ -1,12 +1,18 @@
 ---
 title: 'Nitrogen uptake and allocation estimates for _Spartina alterniflora_ and _Distichlis spicata_'
-subtitle: 'Journal of Experimental Marine Biology and Ecology, In Press, pp. 1-8'
+subtitle: 'Journal of Experimental Marine Biology and Ecology,  2018, 507: 53-60. DOI: 10.1016/j.jembe.2018.07.006'
 author: 'Troy D. Hill^a\*^, Nathalie R. Sommer^b^, Caroline R. Kanaskie^c^, Emily A. Santos^d^, and Autumn J. Oczkowski^a^'
-output: rmarkdown::html_vignette
+output: 
+  pdf_document: 
+    latex_engine: pdflatex
 vignette: >
   %\VignetteIndexEntry{Journal of Experimental Marine Biology and Ecology manuscript}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8} 
+mainfont: FreeMono
+header-includes:
+- \usepackage{pdflscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
 ---
 
 ```{r setup, include=FALSE, echo=FALSE}
@@ -49,6 +55,7 @@ library(NitrogenUptake2016)
 knitr::opts_chunk$set(echo = TRUE, comment=NA)
 ```
 
+
 ^a^United States Environmental Protection Agency, Office of Research and Development, 27 Tarzwell Drive, Narragansett, RI 02882, United States
 
 ^b^Yale University, School of Forestry and Environmental Studies, 205 Prospect Street, New Haven, CT 06511, United States
@@ -59,13 +66,15 @@ knitr::opts_chunk$set(echo = TRUE, comment=NA)
 
 *Corresponding author: hill.troy@gmail.com
 
+## Author's note
+This pdf was created for our R package vignette and formatting differs from the manuscript printed in JEMBE, although the content is the same. Contact Hill.Troy@gmail.com for a pdf of the published manuscript.
+
 
 ## Abstract
 
 Salt marshes have the potential to intercept nitrogen that could otherwise impact coastal water quality. Salt marsh plants play a central role in nutrient interception by retaining N in above- and belowground tissues. We examine N uptake and allocation in two dominant salt marsh plants, short-form _Spartina alterniflora_ and _Distichlis spicata_. Nitrogen uptake was measured using ^15^N tracer experiments conducted over a four-week period, supplemented with stem-level growth rates, primary production, and microbial denitrification assays. By varying experiment duration, we identify the importance of a rarely-measured aspect of experimental design in ^15^N tracer studies. Experiment duration had a greater impact on quantitative N uptake estimates than primary production or stem-level relative growth rates. Rapid initial scavenging of added ^15^N caused apparent nitrogen uptake rates to decline by a factor of two as experiment duration increased from one week to one month, although each experiment shared the qualitative conclusion that _Distichlis_ roots scavenged N approximately twice as rapidly as _Spartina_. We estimate total N uptake into above- and belowground tissues as 154 and 277 mg N$\cdot$m^-2^$\cdot$d^-1^ for _Spartina_ and _Distichlis_, respectively. Driving this pattern were higher N content in _Distichlis_ leaves and belowground tissue and strong differences in primary production; _Spartina_ and _Distichlis_ produced 8.8 and 14.7 g biomass$\cdot$m^-2^$\cdot$d^-1^. Denitrification potentials were similar in sediment associated with both species, but the strong species-specific difference in N uptake suggests that _Distichlis_-dominated marshes are likely to intercept more N from coastal waters than are short-form _Spartina_ marshes. The data and source code for this manuscript are available as an R package from https://github.com/troyhill/NitrogenUptake2016.
 
 \vspace{3mm}\hrule
-\doublespace
 
 **Keywords:** Nitrogen uptake, Nitrogen-15, Salt marsh, _Spartina alterniflora_, _Distichlis spicata_
 
@@ -87,7 +96,7 @@ fig2Col   <- "gray55"
 
 ```
 
-\newline
+
 
 ## 1.	Introduction
 
@@ -103,8 +112,7 @@ The use of ^15^N as a tracer is a common means of investigating N uptake dynamic
 
 We conducted a ^15^N tracer study to improve our understanding of N capture and allocation by _Spartina_ and _Distichlis_, and to optimize the application and interpretation of ^15^N tracer methods. Our first objective was to quantify N uptake and allocation to above- and belowground tissues over a one-month time scale. Based on a zonation paradigm in which plants occupying less stressful, higher-elevation areas more efficiently compete for nutrients (Levine et al., 1998), we hypothesized that _Distichlis_ would scavenge N more efficiently than _Spartina_. We further hypothesized that in both species, N would be partitioned rapidly into aboveground photosynthetic tissues. Our second objective was to test the importance of potential determinants of N capture. The determinants we considered were relative growth rates of individual shoots, primary production, root biomass, and experiment duration.  We hypothesized that shoot growth rates and root biomass will be critical determinants of N uptake, respectively mediating demand for, and access to, dissolved N.
 
-\newline
-\newline
+
 
 ## 2. Material and methods 
 
@@ -114,7 +122,7 @@ On 21 June 2016, vegetated salt marsh cores (hereafter “mesocosms”) were col
 
 Following collection, mesocosms were transferred to a tidal basin (0.6 m x 1 m dia.) located in an outdoor greenhouse at the US Environmental Protection Agency’s Atlantic Ecology Division. Semidiurnal tides were simulated with seawater pumped from Narragansett Bay and timer-operated solenoid valves at the input and outlet of the basin. Using the same system described by Hanson et al. (2016), the water level in the tidal basin was gradually raised from low tide (0.20 m) to high tide (0.45 m; determined by a standpipe) over a four-hour period beginning when the input solenoid was opened at 5 a.m. each morning. Flood tide was followed by a two hour slack tide when the input solenoid was closed, a four hour period of ebb tide drainage (drain solenoid opened), and a two hour slack low tide before the cycle began again. Mesocosms were positioned on a grate to allow drainage, and were inundated to a depth of 0.05 m during high tides. Mesocosms were redistributed inside the tidal basin every three days to homogenize exposure to ambient sunlight.
 
-\newline
+
 
 **2.2.	 Allometry and aboveground production**
 
@@ -131,14 +139,14 @@ RGR~(i,t)~ =   (ln(M~i,t~) - ln(M~i,t-1~)) / (T~t~ - T~t-1~)           [eq. 1]
 
 RGR was averaged across all unique stems in each mesocosm. When multiple growth rate measurements were available for an individual shoot, they were averaged to get a single representative quantity for each unique shoot, before calculating a mesocosm average.
 
-\newline
+
 
 **2.3. ^15^N tracer pulse**
 
 To track N uptake, we added ^15^N tracer to each mesocosm using a solution of 99 atom percent K^15^NO3 in artificial seawater. During an ebb tide on 24 June 2016, 4 mL of tracer solution was injected into the sediment at three evenly-spaced points in each mesocosm, adding a combined 1.95 mg ^15^N to each mesocosm. Mesocosms grown in the greenhouse received the single dose of ^15^N tracer at the same time, but were deconstructed over the subsequent month, as described below, allowing variable amounts of time for ^15^N movement and allocation. 
 The ^15^N application used in this study is equivalent to a one-time addition of 246 mg N$\cdot$m-2 (243 mg ^15^N$\cdot$m-2), large enough to enable detection of plant uptake and allocation while minimally affecting the soil N stock. Our interpretation assumes that the tracer application did not introduce enough total N to cause enrichment artifacts, and that our study represents the response of wetlands in an ambient N regime to a small pulse. Although we did not test this assumption, our N loading rate is low relative to literature values from studies in ambient nutrient regimes (Table S1).
 	 
-\newline
+
 
 **2.4. Mesocosm processing**
 
@@ -146,7 +154,7 @@ At collection (21 June 2016) and at weekly intervals beginning nine days after t
 
 After aboveground biomass was sampled, peat was extruded from the coring tube and sectioned into six depth intervals: 0-2 cm, 2-5 cm, 5-10 cm, 10-15 cm, 15-20 cm, and 20-30 cm. Surface litter and algal mat layers were separated when present. Each depth interval was subsampled for belowground biomass and bulk density. One quarter of each depth interval volume was dried to constant weight at 50oC, with bulk density calculated as the bulk sediment dry mass divided by the sample volume. One quarter of each depth interval was archived in a freezer, and the remaining half of each depth interval was used for separation of belowground biomass. Within one week of harvest, belowground biomass was rinsed clean of sediment using deionized water and separated into live rhizomes, live coarse roots (>1 mm), live fine roots (less than or equal to 1 mm), and dead biomass. Live biomass was distinguished from dead by its white color and turgid structure. All samples were dried to constant weight at 50^o^C, ground using a Wiley mill using a size 40 screen, and stored in acid-washed scintillation vials. Enriched and unenriched samples were ground on separate mills to prevent contamination.
 
-\newline
+
 
 **2.5. Potential and in vitro denitrification**
 
@@ -154,11 +162,11 @@ On 9 July 2016 two acetylene inhibition assays were conducted using subsamples o
 
 In both assays, N2O accumulation in the jars was measured at 30 minute intervals over a period of two hours, with 5 mL of sample headspace and 10 mL of N2 transferred to evacuated 12 mL exetainers (Labco, UK). Sampled headspace was replaced with a 10% mixture of acetylene in N2. Nitrous oxide concentrations were analyzed by gas chromatography (GC; Shimadzu GC2014) using an electron capture detector (ECD). The GC column oven temperature was 75oC, the ECD temperature was 325oC, the carrier gas was helium and makeup gas was a 5% solution of methane in argon. Potential and in vitro denitrification were measured as the slope of the line of best fit for dilution-corrected N2O concentrations in the jar headspace. At least three points were used for each rate estimate, and all relationships had R2 of at least 0.92 (mean R2 = 0.97). A laboratory blank using DEA solution and no added sediment yielded zero flux (slope = 0.0; R2 = 0.0), so no blank correction was applied. Fluxes per gram of bulk sediment were divided by the sediment inventory (g$\cdot$m-2) to express gas fluxes per unit area, units comparable to N uptake rates.
 
-\newline
+
 
 **2.6. Analytical measurements and N uptake calculations**
 
-Nitrogen concentrations and isotope ratios were measured using an Elementar Vario Micro elemental analyzer connected to a continuous flow Isoprime 100 isotope ratio mass spectrometer (Elementar Americas, Mt. Laurel, NJ). Check standards, blanks, and sample replicates were run every ten samples. Replicate analyses of isotopic standard reference materials USGS 40 ($\delta$ ^13^C = -26.39 $\unicode{x2030}$; $\delta$ ^15^N = -4.52 $\unicode{x2030}$) and USGS 41 ($\delta$ ^13^C = 37.63 $\unicode{x2030}$; $\delta$ ^15^N = 47.57 $\unicode{x2030}$) were used to normalize isotopic values of working standards to the Air ($\delta$^15^N) and Vienna Pee Dee Belemnite ($\delta$ ^13^C) scales (Paul et al., 2007). Average recoveries for standard reference materials were ±1.1% for ^15^N, ±0.4% for total N, ±0.03% for ^13^C, and ±0.05% for total C. Coefficients of variation on sample replicates averaged 8.9% for $\delta$ ^15^N, 5.9% for total N, -0.5% for$\delta$ ^13^C, and 3.6% for total C.
+Nitrogen concentrations and isotope ratios were measured using an Elementar Vario Micro elemental analyzer connected to a continuous flow Isoprime 100 isotope ratio mass spectrometer (Elementar Americas, Mt. Laurel, NJ). Check standards, blanks, and sample replicates were run every ten samples. Replicate analyses of isotopic standard reference materials USGS 40 ($\delta$ ^13^C = -26.39 per mil; $\delta$ ^15^N = -4.52 per mil) and USGS 41 ($\delta$ ^13^C = 37.63 per mil; $\delta$ ^15^N = 47.57 per mil) were used to normalize isotopic values of working standards to the Air ($\delta$^15^N) and Vienna Pee Dee Belemnite ($\delta$ ^13^C) scales (Paul et al., 2007). Average recoveries for standard reference materials were ±1.1% for ^15^N, ±0.4% for total N, ±0.03% for ^13^C, and ±0.05% for total C. Coefficients of variation on sample replicates averaged 8.9% for $\delta$ ^15^N, 5.9% for total N, -0.5% for$\delta$ ^13^C, and 3.6% for total C.
 
 Isotope composition reported by the mass spectrometer is in per mil notation, where ^15^N= [(R~sample~-R~air~)/R~air~] × 10^3^. This was converted to atom-percent notation as: 
 
@@ -170,7 +178,7 @@ The mass of ^15^N recovered was calculated in two steps. First, the atom percent
 
 Aboveground N uptake was estimated independently using ^15^N and harvest techniques. Rates of ^15^N uptake (mg ^15^N $\cdot$m-2$\cdot$d-1) were calculated using the mass of ^15^N recovered in live aboveground tissue and the time elapsed between tracer addition and harvest. In the harvest technique, total N uptake was estimated by multiplying primary production rates by a weighted average of N content in aboveground tissues. 
 
-\newline
+
 
 **2.7.	 Belowground primary production**
 
@@ -185,14 +193,15 @@ NBPP = TN~BG~ ÷  (mg N)/(mg biomass)				                [eq. 4]
 
 This approach makes two important assumptions. First, it assumes that above- and belowground tissues do not differentially discriminate between ^15^N and 14N. Assuming no fractionation differences between tissues means that ^15^Nxs accumulation is similarly representative of total N accumulation in both tissues, and allows model parameters a~AG~ and b~AG~ to be applied to belowground ^15^N uptake to estimate total N uptake. Secondly, this approach assumes that the bulk of ^15^Nxs measured in roots and rhizomes is incorporated into tissues and reflects production. ^15^Nxs in live roots and rhizomes was corrected for sorption by subtracting ^15^Nxs in dead biomass, but we did not measure and cannot correct for ^15^N that was in the process of translocation to aboveground tissue.
 
-\newline
+
 
 **2.8. Statistical analysis**
 
 Temporal trends in biomass and N content were evaluated for each species using linear models. Statistical comparisons of mean values between species were made using Welch's t-test, with non-integer degrees of freedom rounded down. Differences between species and the effect of experiment duration (four weekly harvests following a single ^15^N application) on N uptake rates were evaluated using two-way analysis of variance (ANOVA) with species and time as main effects. Potentially important controls on total (above- and belowground) ^15^N uptake were evaluated using species-specific multiple regression models with experiment duration, relative growth rates, primary production, and root biomass as explanatory variables. All analyses were conducted in R version 3.5.1.
 
-\newline
-\newline
+
+
+
 
 ## 3. Results
 
@@ -202,7 +211,7 @@ Stem allometry was based on 95 _Distichlis_ samples and 75 _Spartina_ stems coll
 
 Cohorts varied in their initial standing aboveground biomass (Fig. 2), but biomass in all cases increased over time indicating steady primary production. Over the four harvests _Spartina_ NAPP averaged 3.7 ± 0.56 g$\cdot$m-2$\cdot$d-1 and remained constant over time (P = 0.14), while _Distichlis_ NAPP (pooled mean: 5.7 ± 0.99 g$\cdot$m-2$\cdot$d-1) increased over time (R2 = 0.64, F(1, 10) = 20.4, P < 0.01) and was significantly higher than _Spartina_ during the third (Welch’s two-sample t-test; t(3) = 4.6, P < 0.05) and fourth (t(3) = 4.2, P < 0.05) harvests (Fig. 3A).
 
-\newline
+
 
 **3.2.	Leaf and stem biomass, N stocks, and uptake**
 
@@ -214,7 +223,7 @@ The weighted average of N concentrations in leaves and stems was multiplied by t
 
 As a product of NAPP and tissue N, aboveground N uptake (mg N$\cdot$m-2$\cdot$d-1; Fig 3B) reflected the relatively stronger trends in NAPP. Nitrogen uptake was highly variable during the first harvest, possibly a result of the brief time period considered (7 days). Neither species had a systematic trend in total N uptake rates over time (P = 0.24 and 0.21 for _Spartina_ and _Distichlis_). Across all mesocosms, mean N uptake rates were similar for both species (P < 0.13) and averaged 57.8 ±10.1 mg N$\cdot$m-2$\cdot$d-1 for _Spartina_ and 85.7 ±14.8 mg N$\cdot$m-2$\cdot$d-1 for _Distichlis_. The two species differed in total N uptake only during the third (t(2) = 4.2, P < 0.05) and fourth harvests (t(3) = 3.6, P < 0.05). In both cases _Distichlis_ accumulated N more rapidly than _Spartina_ (Fig. 3B).
 
-\newline
+
 
 **3.3.	Belowground biomass and N stocks**
 
@@ -226,7 +235,7 @@ Rhizomes were the dominant contributor to belowground biomass. Rhizome biomass d
 
 Belowground primary production was estimated from ^15^N data as described in equations 3 and 4. The resultant estimates of belowground production averaged 6.6 and 8.1 g m-2 d-1 for _Spartina_ and _Distichlis_ (Table 3). 
 
-\newline
+
 
 **3.4.	^15^N recoveries and N uptake estimates**
 
@@ -244,7 +253,7 @@ Multiple regression analysis of potentially important controls on live-biomass ^
 
 Although there is a strong temporal effect on rates of ^15^N uptake, on time scales greater than three weeks there was general agreement between ^15^N accumulation in aboveground biomass and estimates of total N uptake from biomass production (Fig. 6). To increase the power of the model, _Spartina_ and _Distichlis_ were pooled together in this analysis, making the assumption that their fractionation behavior (the relationship between ^15^N uptake and total N uptake) is similar. The relationship between these two measures suggests that ^15^N accumulation in tissue may be a useful indicator of total N uptake, at least on time scales of approximately a month. 
 
-\newline
+
 
 **3.5.	Denitrification enzyme activity and total N interception**
 
@@ -252,7 +261,7 @@ Denitrification enzyme activity, measured two weeks after the ^15^N addition, wa
 
 Total N interception was estimated by combining our more integrative, longer-term estimates of N uptake into above- and belowground plant biomass (using data for 3-4 weeks after spike addition) with the potential for microbial N removal (DEA). Total plant and microbial N interception by _Distichlis_ mesocosms (277.0 ± 25.5 mg N$\cdot$m-2$\cdot$d-1) was significantly higher than _Spartina_ mesocosms (154.3 ± 11.8 mg N$\cdot$m-2$\cdot$d-1; t(7) = 4.4, P < 0.01), due to higher aboveground production and N uptake by _Distichlis_ (Table 3). 
 
-\newline
+
 
 ## 4.	Discussion
 
@@ -264,7 +273,7 @@ An enhanced ability to capture short pulses of nutrients could provide a competi
 
 The DEA rates we report are similar to values from N-fertilized plots in a low-nutrient RI salt marsh, and low (<10%) relative to RI marshes receiving high N loads (Wigand et al., 2004). Although DEA is spatially and temporally variable, it offers a reasonable upper-bound estimate of potential denitrification. Our data indicate that dominance by _Spartina_ or _Distichlis_ is not associated with differences in DEA, suggesting that other processes (e.g., N regime, soil redox status) are more important determinants.
 
-\newline
+
 
 **4.2.	^15^N partitioning**
 
@@ -272,7 +281,7 @@ Our second hypothesis suggested that N would be partitioned rapidly into abovegr
 
 In addition to measuring ^15^N accumulation in belowground tissues, we used accumulation rates to estimate belowground productivity. Belowground production is challenging to measure in salt marshes, and our data provide some suggestion that ^15^N may be a useful tool for resolving rates of belowground production. Annualized belowground production estimates in Table 3, corresponding to annualized production rates of 2,400 and 3,000 g$\cdot$m-2$\cdot$yr-1, are higher than other estimates from the northeastern US that measured over longer periods (Anisfeld et al., 2016; Howes et al., 1985). Although our results are encouraging, the approach requires validation with independent belowground production measurements.
 
-\newline
+
 
 **4.3.	N uptake drivers**
 
@@ -280,21 +289,21 @@ On a time scale of weeks, experiment duration was the strongest determinant of ^
 
 Our results suggest that estimates of biogeochemical process rates are dramatically affected by the passage of time between a ^15^N pulse and the conclusion of an experiment. Experiment duration was a more powerful predictor of ^15^N uptake rates than were primary production or plant growth rates, although the qualitative conclusion that _Distichlis_ scavenged ^15^N more rapidly than _Spartina_ was consistent. We suggest that absolute rates based on partitioning studies using ^15^N tracer should be interpreted cautiously, and where possible, in the context of potential time-related experimental biases. These biases cannot always be avoided because of the costs and logistical difficulties required to replicate experiments over multiple time spans, but experiment duration is at least an important variable to include in literature syntheses.
 
-\newline
-\newline
+
+
 
 ## 5. Data statement
 
 Data and source code used in this study are available as an R package hosted on GitHub (https://github.com/troyhill/NitrogenUptake2016), permanently archived by Zenodo (DOI: 10.5281/zenodo.1226378) and described in Hill et al. (Submitted).
 
-\newline
-\newline
+
+
 ## 6.	Acknowledgements
 
 Caroline Kanaskie and Nathalie Sommer were supported by US EPA Greater Research Opportunities Fellowship Assistance Agreement nos. 91777301-0 and 91777501-0. The manuscript was improved by comments from Marty Chintala, Rose Martin, Rick McKinney, Wayne Munns, Cathy Wigand, and three anonymous reviewers. The authors thank Rick McKinney for analytical assistance, and Russell Ahlgren and Urban Services Inc. for infrastructure support. This work was supported by the US EPA Sustainable and Healthy Communities Research Program, section 4.61.6. This report is contribution number ORD-023763 of the US EPA Office of Research and Development, National Health and Environmental Effects Research Laboratory, Atlantic Ecology Division. Although the information in this document has been funded by the US EPA, it does not necessarily reflect the views of the agency and no official endorsement should be inferred. Mention of trade names or commercial products does not constitute endorsement or recommendation for use.
 
-\newline
-\newline
+
+
 
 ## 7.	Literature cited
 
@@ -356,8 +365,8 @@ Wigand, C., McKinney, R.A., Chintala, M.M., Charpentier, M.A. and Groffman, P.M.
 
 Yang, W.H., Traut, B.H. and Silver, W.L., 2015. Microbially mediated nitrogen retention and loss in a salt marsh soil. Ecosphere, 6(1): 1-7.
 
-\newline
-\newline
+
+
 
 
 ```{r allometry, include=FALSE, echo=FALSE}
@@ -1594,8 +1603,8 @@ ggplot(master[master$cluster %in% "3-4 weeks", ], aes(x = n_uptake_15n, y = n_up
 
 **Figure 6.** Relationship between aboveground N uptake estimates calculated from ^15^N vs. primary production rates and biomass N concentrations. Data shown are from harvests three and four weeks after ^15^N addition; line of best fit is shown (P = 0.01; y = 43.0x – 9.4).
 
-\newline
-\newline
+
+
 
 
 
@@ -1613,6 +1622,7 @@ knitr::kable(CSP.coef)
 ```
 
 
+\blandscape
 
 **Table 2.** Excess 15N concentrations (15Nxs: atom percent) and 15N inventories (mg 15N$\cdot$m-2) in live plant tissues (mean ±SE in parentheses; n = 12). Excess 15N includes a sorption correction for belowground tissue. For each tissue type, asterisks indicate significant differences between species (significance not shown in vignette - see manuscript for annotated table). Inventories reflect recovery of the 243 mg 15N$\cdot$m-2 added.
 
@@ -1628,9 +1638,9 @@ kable(tbl.final[, 1:6])
 	
 ``` {r Table 3, results = "asis", echo = FALSE}
 
-Species <- c("Total Belowground N uptake (mg N)", "Total Aboveground N uptake (mg N)", 	
-            "Belowground Primary production (g dw)", "Aboveground Primary production (g dw)",	
-            "Denitrification potential (mg N)", 	"Unamended N2O+N2 flux (mg N)")
+Species <- c("Belowground uptake (mg N)", "Aboveground uptake (mg N)", 	
+            "NBPP (g dw)", "NAPP (g dw)",	
+            "DEA (mg N)", 	"Unamended N2O+N2 flux (mg N)")
 Distichlis <- c("62.2 (20.5)",	"115.5*** (7.7)",	"7.2 (5.9)",	"7.5*** (0.7)",	"99.4 (32.4)",	"39.4 (23.0)")
 Spartina <- c("39.6 (7.1)",	"49.2*** (9.8)",	"5.9 (1.3)",	"2.9*** (0.5)",	"65.4 (23.6)",	"8.9 (1.1)"
 )
@@ -1640,3 +1650,7 @@ t3.2 <- rbind(t3, Spartina)
 knitr::kable(t3.2)
 
 ```
+
+
+\elandscape
+

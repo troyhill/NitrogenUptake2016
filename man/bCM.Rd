@@ -4,8 +4,9 @@
 \alias{bCM}
 \title{Parameterize Box-Cox model for mass-height allometry (based on Lu et al. 2016)}
 \usage{
-bCM(dat, mass = "sample", height = "height_cm", lam.avail = c(-2, -1.5,
-  -1, -2/3, -1/2, -1/3, 0, 1/3, 1/2, 2/3, 1, 1.5, 2), lam.only = FALSE)
+bCM(dat, mass = "sample", height = "height_cm", lam.avail = c(-2,
+  -1.5, -1, -2/3, -1/2, -1/3, 0, 1/3, 1/2, 2/3, 1, 1.5, 2),
+  lam.only = FALSE)
 }
 \arguments{
 \item{dat}{dataframe with data}

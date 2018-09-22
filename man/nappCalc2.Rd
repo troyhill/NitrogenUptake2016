@@ -4,10 +4,10 @@
 \alias{nappCalc2}
 \title{Calculate net aboveground primary production}
 \usage{
-nappCalc2(dataset, liveCol = "mass", deadCol = "dead", yearCol = "year",
-  siteCol = "pot2", timeCol = "day", annualReset = "TRUE",
-  MilnerHughes = "TRUE", EOS = "FALSE", EOS_window = 1,
-  summarize = "TRUE")
+nappCalc2(dataset, liveCol = "mass", deadCol = "dead",
+  yearCol = "year", siteCol = "pot2", timeCol = "day",
+  annualReset = "TRUE", MilnerHughes = "TRUE", EOS = "FALSE",
+  EOS_window = 1, summarize = "TRUE")
 }
 \arguments{
 \item{dataset}{data}
