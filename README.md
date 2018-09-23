@@ -14,6 +14,7 @@ Install the package from CRAN:
 
 ```r
 install.packages("NitrogenUptake2016")
+library(NitrogenUptake2016)
 ```
 
 
