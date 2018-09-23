@@ -38,10 +38,10 @@ All the data used in this manuscript will then be available:
 The manuscript vignettes can be read via:
 
 ```r
-# Journal of Experimental Marine Biology and Ecology (in press)
+# Journal of Experimental Marine Biology and Ecology (Hill et al. 2018)
 vignette("JEMBE", package = "NitrogenUptake2016")
 
-# Data In Brief (submitted)
+# Data In Brief (Hill et al. submitted)
 vignette("DataInBrief", package = "NitrogenUptake2016")
 ```
 
