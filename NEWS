@@ -1,8 +1,8 @@
-NitrogenUptake2016 version 0.2.2 (release date: 2018-09-22)
+NitrogenUptake2016 version 0.2.2 (release date: 2018-09-23)
 ==================
 
 Changes:
 * JEMBE manuscript citation updated (added DOI, volume, pages)
-* JEMBE vignette output changed to pdf
+* JEMBE and Data In Bried vignettes now produce pdfs
 
 

@@ -2,11 +2,17 @@
 title: 'Nitrogen and carbon concentrations and stable isotope ratios: data from a ^15^N tracer study in short-form _Spartina alterniflora_ and _Distichlis spicata_'
 subtitle: 'Data In Brief, _Submitted_'
 author: 'Troy D. Hill^a\*^, Nathalie R. Sommer^b^, Caroline R. Kanaskie^c^, Emily A. Santos^d^, and Autumn J. Oczkowski^a^'
-output: rmarkdown::html_vignette
+output: 
+  pdf_document: 
+    latex_engine: pdflatex
 vignette: >
   %\VignetteIndexEntry{Data In Brief manuscript}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+  %\VignetteEncoding{UTF-8} 
+mainfont: FreeMono
+header-includes:
+- \usepackage{pdflscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
 ---
 
 ```{r setup, include=FALSE, echo=FALSE}
@@ -914,7 +920,7 @@ At collection (21 June 2016) and at weekly intervals following tracer addition, 
 
 After aboveground biomass was sampled, peat was extruded from the coring tube and sectioned into six depth intervals: 0-2 cm, 2-5 cm, 5-10 cm, 10-15 cm, 15-20 cm, and 20-30 cm. Surface litter and algal mat layers were separated when present. Each sediment depth interval was subsampled for belowground biomass and bulk density. One quarter of each depth interval volume was dried to constant weight at 50oC, and bulk density calculated as the dry mass divided by the sample volume. One quarter of each depth interval was archived in a freezer, and the remaining half of each depth interval was used for separation of belowground biomass. Within one week of harvest, belowground biomass was rinsed clean of sediment using deionized water and separated into live rhizomes, live coarse roots (>1 mm), live fine roots (less than or equal to 1 mm), and dead biomass. Live biomass was distinguished from dead by its white color and turgid structure. All samples were dried to constant weight at 50oC, ground using a Wiley mill and a size 40 screen, and stored in acid-washed scintillation vials. Samples containing ^15^N tracer samples were ground on a separate dedicated mill to prevent contamination.
 
-Nitrogen and carbon concentrations and stable isotope ratios were measured using an Elementar Vario Micro elemental analyzer connected to a continuous flow Isoprime 100 isotope ratio mass spectrometer. Check standards, blanks, and replicated samples were run every ten samples. Replicate analyses of isotopic standard reference materials USGS 40 ($\delta$ ^13^C = -26.39 $\unicode{x2030}$; $\delta$ ^15^N = -4.52 $\unicode{x2030}$) and USGS 41 ($\delta$ ^13^C = 37.63 $\unicode{x2030}$; $\delta$ ^15^N = 47.57 $\unicode{x2030}$) were used to normalize isotopic values of working standards to the Air ($\delta$^15^N) and Vienna Pee Dee Belemnite ($\delta$ ^13^C) scales (Paul et al., 2007). Average recoveries for standard reference materials were ±1.1% for ^15^N, ±0.4% for total N, ±0.03% for ^13^C, and ±0.05% for total C. Coefficients of variation on sample replicates averaged 8.9% for $\delta$ ^15^N, 5.9% for total N, -0.5% for$\delta$ ^13^C, and 3.6% for total C.
+Nitrogen and carbon concentrations and stable isotope ratios were measured using an Elementar Vario Micro elemental analyzer connected to a continuous flow Isoprime 100 isotope ratio mass spectrometer. Check standards, blanks, and replicated samples were run every ten samples. Replicate analyses of isotopic standard reference materials USGS 40 ($\delta$ ^13^C = -26.39 per mil; $\delta$ ^15^N = -4.52 per mil) and USGS 41 ($\delta$ ^13^C = 37.63 per mil; $\delta$ ^15^N = 47.57 per mil) were used to normalize isotopic values of working standards to the Air ($\delta$^15^N) and Vienna Pee Dee Belemnite ($\delta$ ^13^C) scales (Paul et al., 2007). Average recoveries for standard reference materials were ±1.1% for ^15^N, ±0.4% for total N, ±0.03% for ^13^C, and ±0.05% for total C. Coefficients of variation on sample replicates averaged 8.9% for $\delta$ ^15^N, 5.9% for total N, -0.5% for$\delta$ ^13^C, and 3.6% for total C.
 
 These compartment-level data provide a time series of biomass and tissue N in aboveground (Fig. 2) and belowground (Fig. 3) tissues. 
 
