@@ -14,7 +14,6 @@ Install the package from CRAN:
 
 ```r
 install.packages("NitrogenUptake2016")
-library(NitrogenUptake2016)
 ```
 
 
@@ -23,13 +22,18 @@ Alternatively, the package can be installed from GitHub using devtools:
 ```r
 install.packages("devtools")
 devtools::install_github("troyhill/NitrogenUptake2016", build_vignettes = TRUE)
-library("NitrogenUptake2016")
+```
+
+After installing, load the package:
+
+```r
+library(NitrogenUptake2016)
 ```
 
 
 ## Read our manuscripts
 
-The manuscript vignettes can be read via:
+After loading the NitrogenUptake2016 package, the manuscript vignettes are available as pdfs:
 
 ```r
 # Journal of Experimental Marine Biology and Ecology (Hill et al. 2018)
@@ -43,7 +47,7 @@ vignette("DataInBrief", package = "NitrogenUptake2016")
 
 ## Access our data
 
-After loading the NitrogenUptake2016 library, all the data used in our manuscripts will be available and annotated:
+All the data used in our manuscripts are also available and annotated:
 
 ```r
 ?allometry
