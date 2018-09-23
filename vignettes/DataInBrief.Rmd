@@ -7,12 +7,14 @@ output:
     latex_engine: pdflatex
 vignette: >
   %\VignetteIndexEntry{Data In Brief manuscript}
-  %\VignetteEncoding{UTF-8} 
+  %\VignetteEngine{knitr::knitr}
+  %\usepackage[UTF-8]{inputenc}
 mainfont: FreeMono
 header-includes:
 - \usepackage{pdflscape}
 - \newcommand{\blandscape}{\begin{landscape}}
 - \newcommand{\elandscape}{\end{landscape}}
+- \usepackage[utf8]{inputenc}
 ---
 
 ```{r setup, include=FALSE, echo=FALSE}
