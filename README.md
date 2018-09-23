@@ -25,15 +25,8 @@ devtools::install_github("troyhill/NitrogenUptake2016", build_vignettes = TRUE)
 library("NitrogenUptake2016")
 ```
 
-All the data used in this manuscript will then be available:
 
-```r
-?allometry
-?dea
-?stemHeights
-?CN_mass_data
-```
-
+## Read our manuscripts
 
 The manuscript vignettes can be read via:
 
@@ -43,6 +36,19 @@ vignette("JEMBE", package = "NitrogenUptake2016")
 
 # Data In Brief (Hill et al. submitted)
 vignette("DataInBrief", package = "NitrogenUptake2016")
+```
+
+
+
+## Access our data
+
+After loading the NitrogenUptake2016 library, all the data used in our manuscripts will be available and annotated:
+
+```r
+?allometry
+?dea
+?stemHeights
+?CN_mass_data
 ```
 
 
