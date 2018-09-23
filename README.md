@@ -14,19 +14,6 @@ Install the package from CRAN:
 
 ```r
 install.packages("NitrogenUptake2016")
-```
-
-
-Alternatively, the package can be installed from GitHub using devtools:
-
-```r
-install.packages("devtools")
-devtools::install_github("troyhill/NitrogenUptake2016", build_vignettes = TRUE)
-```
-
-After installing, load the package:
-
-```r
 library(NitrogenUptake2016)
 ```
 
