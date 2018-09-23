@@ -8,7 +8,7 @@
 This repository contains data and source code associated with the manuscript "Nitrogen uptake and allocation estimates for _Spartina alterniflora_ and _Distichlis spicata_" (Hill et al. 2018; DOI: https://doi.org/10.1016/j.jembe.2018.07.006).
 
 
-## Install the Package from R
+## Install the package
 
 Install our R package directly from CRAN using the following commands in the R console:
 
