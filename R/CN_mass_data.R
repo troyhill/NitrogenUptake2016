@@ -25,6 +25,13 @@
 #' @keywords data, stable isotopes, 15N
 #' @name CN_mass_data
 #' @usage CN_mass_data
+#' @references{
+#' Hill, T.D., N.R. Sommer, C.R. Kanaskie, E.A. Santos, A.J. Oczkowski. In press. Data and source code from: Nitrogen uptake and allocation estimates for Spartina alterniflora and Distichlis spicata. Data In Brief.
+#'   \url{https://doi.org/10.1016/j.jembe.2018.07.006}.
+#' 
+#' Hill, T.D., N.R. Sommer, C.R. Kanaskie, E.A. Santos, A.J. Oczkowski. 2018. Nitrogen uptake and allocation estimates for Spartina alterniflora and Distichlis spicata. Journal of Experimental Marine Biology and Ecology 507: 53-60.
+#'   \url{https://doi.org/10.1016/j.jembe.2018.07.006}.
+#' }
 #' @examples ### export to .csv:
 #' write.csv(CN_mass_data, file = file.path(tempdir(), "CN_mass_data.csv"))
 NULL
