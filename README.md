@@ -25,11 +25,11 @@ library(NitrogenUptake2016)
 After loading the NitrogenUptake2016 package, the manuscript vignettes are available as pdfs:
 
 ```r
-# Journal of Experimental Marine Biology and Ecology (Hill et al. 2018)
-vignette("JEMBE", package = "NitrogenUptake2016")
+# Journal of Experimental Marine Biology and Ecology manuscript
+vignette(package = "NitrogenUptake2016", topic = "JEMBE")
 
-# Data In Brief (Hill et al. submitted)
-vignette("DataInBrief", package = "NitrogenUptake2016")
+# Data In Brief manuscript
+vignette(package = "NitrogenUptake2016", topic = "DataInBrief")
 ```
 
 
