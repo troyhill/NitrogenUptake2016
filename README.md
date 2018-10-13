@@ -5,7 +5,9 @@
 
 
 
-This repository contains data and source code associated with the manuscript "Nitrogen uptake and allocation estimates for _Spartina alterniflora_ and _Distichlis spicata_" (Hill et al. 2018; DOI: https://doi.org/10.1016/j.jembe.2018.07.006).
+This repository contains data and source code associated with two companion manuscripts:
+- Troy D. Hill, Nathalie R. Sommer, Caroline R. Kanaskie, Emily A. Santos, Autumn J. Oczkowski. 2018. "Nitrogen uptake and allocation estimates for _Spartina alterniflora_ and _Distichlis spicata_." Journal of Experimental Marine Biology and Ecology 507:53-60. https://doi.org/10.1016/j.jembe.2018.07.006
+- Troy D. Hill, Nathalie R. Sommer, Caroline R. Kanaskie, Emily A. Santos, Autumn J. Oczkowski. In Press. Data In Brief. "Nitrogen and carbon concentrations and stable isotope ratios: Data from a ^15^N tracer study in short-form _Spartina alterniflora_ and _Distichlis spicata_." https://doi.org/10.1016/j.dib.2018.09.133
 
 
 ## Install the package
