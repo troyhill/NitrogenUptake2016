@@ -1,6 +1,6 @@
 ---
 title: 'Nitrogen uptake and allocation estimates for _Spartina alterniflora_ and _Distichlis spicata_'
-subtitle: 'Journal of Experimental Marine Biology and Ecology,  2018, 507: 53-60. DOI: 10.1016/j.jembe.2018.07.006'
+subtitle: 'Journal of Experimental Marine Biology and Ecology,  2018, 507: 53-60. <DOI: 10.1016/j.jembe.2018.07.006>'
 author: 'Troy D. Hill^a\*^, Nathalie R. Sommer^b^, Caroline R. Kanaskie^c^, Emily A. Santos^d^, and Autumn J. Oczkowski^a^'
 output: 
   pdf_document: 

@@ -1,7 +1,7 @@
 ---
 title: 'Nitrogen and carbon concentrations and stable isotope ratios: data from a ^15^N tracer study in short-form _Spartina alterniflora_ and _Distichlis spicata_'
-subtitle: 'Data In Brief, _In Press_'
-author: 'Troy D. Hill^a,b\*^, Nathalie R. Sommer^c^, Caroline R. Kanaskie^d^, Emily A. Santos^e^, and Autumn J. Oczkowski^a^'
+subtitle: 'Data In Brief, _In Press_. <DOI: 10.1016/j.dib.2018.09.133>'
+author: 'Troy D. Hill^a,1\*^, Nathalie R. Sommer^b^, Caroline R. Kanaskie^c^, Emily A. Santos^d^, and Autumn J. Oczkowski^a^'
 output: 
   pdf_document: 
     latex_engine: pdflatex
@@ -59,13 +59,13 @@ knitr::opts_chunk$set(echo = TRUE, comment=NA)
 
 ^a^United States Environmental Protection Agency, Office of Research and Development, 27 Tarzwell Drive, Narragansett, RI 02882, United States
 
-^b^Current address: National Park Service, South Florida Natural Resources Center, 950 North Krome Avenue, Homestead, FL 33030, United States
+^1^Corresponding author, Troy_Hill@nps.gov; Current address: National Park Service, South Florida Natural Resources Center, 950 North Krome Avenue, Homestead, FL 33030, United States
 
-^c^Yale University, School of Forestry and Environmental Studies, 205 Prospect Street, New Haven, CT 06511, United States
+^b^Yale University, School of Forestry and Environmental Studies, 205 Prospect Street, New Haven, CT 06511, United States
 
-^d^University of New Hampshire, Department of Natural Resources and the Environment, 46 College Road, Durham, NH 03824, United States
+^c^University of New Hampshire, Department of Natural Resources and the Environment, 46 College Road, Durham, NH 03824, United States
 
-^e^Humboldt State University, College of Natural Resources and Sciences, 1 Harpst Street, Arcata, CA, 95521, United States
+^d^Humboldt State University, College of Natural Resources and Sciences, 1 Harpst Street, Arcata, CA, 95521, United States
 
 *Corresponding author: hill.troy@gmail.com
 
@@ -810,7 +810,7 @@ t.test(tot_n ~ species, data = rts[(rts$sample.type %in% organ), ])
 
 ## Abstract
 
-We present several datasets that provide information on primary production, nitrogen (N) uptake and allocation in two salt marsh dominants, short-form _Spartina alterniflora_ and _Distichlis spicata_. These four datasets were generated during a month-long stable isotope (^15^N) tracer study described in the companion manuscript [1]. They include an allometry dataset containing mass and height data for individual plants harvested from Colt State Park, Bristol, Rhode Island and used to nondestructively estimate plant masses. A second dataset contains weekly stem height measurements collected over the course of a month-long ^15^N tracer study. Also included are high resolution data from 49 vegetated compartments (leaves, stems, fine/coarse roots, rhizomes) and bulk sediment depth intervals, reporting the mass, carbon and N concentrations, and stable isotope ratios as measured following the harvest of cores over time. Additionally, we provide a complementary dataset with estimates of microbial removal from potential and ambient denitrification enzyme assays. These data, along with source code used in their analysis, are compiled in the NitrogenUptake2016 R package available from the Comprehensive R Archive Network.
+We present several datasets that provide information on primary production, nitrogen (N) uptake and allocation in two salt marsh grasses, short-form _Spartina alterniflora_ and _Distichlis spicata_. These four datasets were generated during a month-long stable isotope (^15^N) tracer study described in the companion manuscript [1]. They include an allometry dataset containing mass and height data for individual plants harvested from Colt State Park, Bristol, Rhode Island and used to nondestructively estimate plant masses. A second dataset contains weekly stem height measurements collected over the course of the ^15^N tracer study. Also included are high resolution data from 49 vegetated compartments (leaves, stems, fine/coarse roots, rhizomes) and bulk sediment depth intervals, reporting the mass, carbon and N concentrations, and stable isotope ratios measured following the harvest of cores over time. Additionally, we provide a complementary dataset with estimates of microbial removal from potential and ambient denitrification enzyme assays. These data, along with source code used in their analysis, are compiled in the NitrogenUptake2016 R package available from the Comprehensive R Archive Network.
 
 
 ## Specifications Table
@@ -840,7 +840,7 @@ __Experimental features__
 Three cores from each vegetation type were physically deconstructed at weekly intervals to measure ^15^N accumulation in a range of vegetative and sedimentary compartments. Additional data are provided describing the mass-height allometry of aboveground biomass, the dataset of weekly stem height measurements used to estimate growth rates, and results of sediment denitrification enzyme assays.
 
 __Data source location__	
-Cores and allometry samples were collected from Colt State Park, Bristol, Rhode Island, USA (Latitude/Longitude: 41.6856987, -71.2884572). Greenhouse incubations conducted at USEPA Atlantic Ecology Division, Narragansett, Rhode Island, USA.
+Cores and allometry samples were collected from Colt State Park, Bristol, Rhode Island, USA (Latitude/Longitude: 41.6857, -71.2885). Greenhouse incubations conducted at USEPA Atlantic Ecology Division, Narragansett, Rhode Island, USA.
 
 __Data accessibility__	
 Data are publicly available as an R package archived by the Comprehensive R Archive Network (https://cran.r-project.org/package=NitrogenUptake2016).
@@ -874,7 +874,7 @@ library(NitrogenUptake2016)
 
 **1.2.	Mass-height allometry**
 
-Live plants were collected from Colt State Park (Bristol, Rhode Island, USA) in May, June, and July 2016. On each sampling date, three 25 x 25 cm quadrats were collected from monoculture areas of short-form _Spartina alterniflora_ and _Distichlis spicata_. Stems were cut at the sediment surface, total plant height was measured to the nearest 0.1 cm, and a representative subsample of plants were individually dried to constant weight at 50^o^C. The "allometry" dataset includes 95 mass/height observations (units: grams and centimeters) from _Distichlis spicata_ and 75 from short-form _Spartina alterniflora_.
+Live plants were collected from Colt State Park (Bristol, Rhode Island, USA) in May, June, and July 2016. On each sampling date, three 25 cm x 25 cm quadrats were collected from monoculture areas of short-form _Spartina alterniflora_ and _Distichlis spicata_. Stems were cut at the sediment surface, total plant height was measured to the nearest 0.1 cm, and a representative subsample of plants were individually dried to constant weight at 50^o^C. The "allometry" dataset includes 95 mass/height observations (units: grams and centimeters) from _Distichlis spicata_ and 75 from short-form _Spartina alterniflora_.
 
 
 ```{r eval=FALSE}
@@ -894,7 +894,7 @@ All live plants in each of the 24 mesocosms were tagged and the height from the 
 **1.4.	Mass, nutrient, and stable isotope concentrations**
 
 Mesocosm harvests occurred on 1 July, 8 July, 15 July, and 22 July 2016. During harvest, material in the mesocosms was separated into as many as 49 distinct vegetated compartments (leaves divided by node, stems, fine/coarse roots, rhizomes) and bulk sediment depth intervals. Aboveground and belowground compartments are described in the Experimental Methods section, below. In addition to the dry mass (50^o^C) of each compartment in each mesocosm, this dataset contains nitrogen and carbon concentrations and stable isotope ratios. 
-The "CN_mass_data" dataset contains 1192 observations reporting the mass (g) of each compartment recovered from each mesocosm, the compartment’s volume (cm^3^; for bulk sediment samples), carbon and nitrogen content (g $\cdot$ g^-1^), and stable carbon and nitrogen isotope ratios (per mil).
+The "CN_mass_data" dataset contains 1192 observations reporting the mass (g) of each compartment recovered from each mesocosm, the compartment’s volume (cm^3^; for belowground samples), carbon and nitrogen content (g $\cdot$ g^-1^), and stable carbon and nitrogen isotope ratios (per mil deviations from Vienna Pee Dee Belemnite (VPDB) and Air, respectively).
 
 
 ```{r eval=FALSE}
@@ -916,14 +916,14 @@ The data are derived from two sets of acetylene inhibition assays conducted usin
 
 **2.1.	Experimental context**
 
-Thirty salt marsh sediment mesocosms (15 cm x 35 cm PVC cores; 15 from monocultures of each species) were collected from the field, and three from each vegetation type were immediately harvested to represent time-zero conditions. The remaining 24 mesocosms were grown in a tidal tank in an outdoor greenhouse, and a single dose of 1.95 mg ^15^N was added to each mesocosm on 24 June 2016. Mesocosms were then harvested at weekly intervals over the subsequent four weeks. 
+Thirty salt marsh sediment mesocosms (10 cm x 35 cm PVC cores; 15 from monocultures of each species) were collected from the field, and three from each vegetation type were immediately harvested to represent time-zero conditions. The remaining 24 mesocosms were grown in a tidal tank in an outdoor greenhouse, and a single dose of 1.95 mg ^15^N was added to each mesocosm on 24 June 2016. Mesocosms were then harvested at weekly intervals over the subsequent four weeks. 
 
 **2.2.	Mass-height allometry**
 
-Live plants collected from Colt State Park, Bristol, RI, USA were used to establish allometric relationships between plant height and mass. Masses were modeled as a function of height, with species-specific allometry models parameterized using Box-Cox power transformations of biomass ($\lambda$). Masses of plants growing in the mesocosms were estimated from weekly plant height measurements using species-specific allometry equations of the form mass = (height$\cdot$a + b)^1/$\lambda$^. The R code used to construct these models from raw mass and height data is included in the vignettes in the "JEMBE" vignette in the R package "NitrogenUptake2016," accessible by running the following commands in R:
+Live plants collected from Colt State Park, Bristol, RI, USA were used to establish allometric relationships between plant height and mass. Masses were modeled as a function of height, with species-specific allometry models parameterized using Box-Cox power transformations of biomass ($\lambda$). Masses of plants growing in the mesocosms were estimated from weekly plant height measurements using species-specific allometry equations of the form _mass_ = ( _height_ $\cdot$ a + b)^1/$\lambda$^. The R code used to construct these models from raw mass and height data is included in the vignettes in the "JEMBE" vignette in the R package "NitrogenUptake2016," accessible by running the following commands in R:
 
 ```{r eval=FALSE}
-vignette("JEMBE", package = "NitrogenUptake2016")
+vignette(topic = "JEMBE", package = "NitrogenUptake2016")
 ```
 
 
@@ -947,18 +947,18 @@ ggplot(obs, aes(x = allom.est / pot.m2, y = g / pot.m2, colour = species2, shape
   geom_abline(slope = 1, intercept = 0, linetype = 2)
 ```
 
-**Figure 1.** Relationship between allometry-based biomass estimates and biomass measured at harvest for each core (R^2^ = 0.80, y = 0.87x, _P_ < 0.001), with dashed 1:1 line shown.
+**Figure 1.** Relationship between allometry-based biomass estimates and biomass measured at harvest for each mesocosm (R^2^ = 0.80, y = 0.87x, _P_ < 0.001), with dashed 1:1 line shown.
 
 
 
 
 **2.4.	Mass, nutrient, and stable isotope concentrations**
 
-At collection (21 June 2016) and at weekly intervals following tracer addition, cohorts of three randomly selected mesocosms from each species was harvested for analysis of ^15^N accumulation in above- and belowground compartments. Above-ground biomass was clipped at the sediment surface, rinsed with deionized water and separated into live and standing dead plants. Live plants were further separated into stems, dead leaves, and live leaves. Live leaves were separated and numbered by position relative to the top of the plant. These node-level data are included in the provided dataset, although they were combined into a single leaf pool during data analysis [1].
+At collection (21 June 2016) and at weekly intervals following tracer addition, cohorts of three randomly selected mesocosms from each species was harvested for analysis of ^15^N accumulation in above- and belowground compartments. Aboveground biomass was clipped at the sediment surface, rinsed with deionized water and separated into live and standing dead plants. Live plants were further separated into stems, dead leaves, and live leaves. Live leaves were separated and numbered by position relative to the top of the plant. These node-level data are included in the provided dataset, although they were combined into a single leaf pool during data analysis [1].
 
 After aboveground biomass was sampled, peat was extruded from the coring tube and sectioned into six depth intervals: 0-2 cm, 2-5 cm, 5-10 cm, 10-15 cm, 15-20 cm, and 20-30 cm. Surface litter and algal mat layers were separated when present. Each sediment depth interval was subsampled for belowground biomass and bulk density. One quarter of each depth interval volume was dried to constant weight at 50^o^C, and bulk density calculated as the dry mass divided by the sample volume. One quarter of each depth interval was archived in a freezer, and the remaining half of each depth interval was used for separation of belowground biomass. Within one week of harvest, belowground biomass was rinsed clean of sediment using deionized water and separated into live rhizomes, live coarse roots (>1 mm), live fine roots (less than or equal to 1 mm), and dead biomass. Live biomass was distinguished from dead by its white color and turgid structure. All samples were dried to constant weight at 50^o^C, ground using a Wiley mill and a size 40 screen, and stored in acid-washed scintillation vials. Samples containing ^15^N tracer samples were ground on a separate dedicated mill to prevent contamination.
 
-Nitrogen and carbon concentrations and stable isotope ratios were measured using an Elementar Vario Micro elemental analyzer connected to a continuous flow Isoprime 100 isotope ratio mass spectrometer. Check standards, blanks, and replicated samples were run every ten samples. Replicate analyses of isotopic standard reference materials USGS 40 ($\delta$ ^13^C = -26.39 per mil; $\delta$ ^15^N = -4.52 per mil) and USGS 41 ($\delta$ ^13^C = 37.63 per mil; $\delta$ ^15^N = 47.57 per mil) were used to normalize isotopic values of working standards to the Air ($\delta$^15^N) and Vienna Pee Dee Belemnite ($\delta$ ^13^C) scales [9]. Average recoveries for standard reference materials were ±1.1% for ^15^N, ±0.4% for total N, ±0.03% for ^13^C, and ±0.05% for total C. Coefficients of variation on sample replicates averaged 8.9% for $\delta$ ^15^N, 5.9% for total N, -0.5% for$\delta$ ^13^C, and 3.6% for total C.
+Nitrogen and carbon concentrations and stable isotope ratios were measured using an Elementar Vario Micro elemental analyzer connected to a continuous flow Isoprime 100 isotope ratio mass spectrometer. Check standards, blanks, and replicated samples were run every ten samples. Replicate analyses of isotopic standard reference materials USGS 40 ($\delta$ ^13^C = -26.39 per mil; $\delta$ ^15^N = -4.52 per mil) and USGS 41 ($\delta$ ^13^C = 37.63 per mil; $\delta$ ^15^N = 47.57 per mil) were used to normalize isotopic values of working standards to the Air ($\delta$^15^N) and VPDB ($\delta$ ^13^C) scales [9]. Average recoveries for standard reference materials were ±1.1% for ^15^N, ±0.4% for total N, ±0.03% for ^13^C, and ±0.05% for total C. Coefficients of variation on sample replicates averaged 8.9% for $\delta$ ^15^N, 5.9% for total N, -0.5% for$\delta$ ^13^C, and 3.6% for total C.
 
 These compartment-level data provide a time series of biomass and tissue N in aboveground (Fig. 2) and belowground (Fig. 3) tissues. 
 
@@ -1023,7 +1023,7 @@ ggplot(bg.sp, aes(y = n_pct, x = as.Date(session), colour = species2, shape = sp
 
 **2.5.	Denitrification enzyme assays**
 
-DEA potential was measured by incubating 6.5 g of sediment in 70 mL jars sealed with rubber septa. Sample containers were amended with 12 mL of nutrient-amended filtered seawater (7 mmol N L^-1^ as KNO~3~; 17 mmol C L^-1^ as D-glucose; and 6 mmol P L^-1^ as KH~2~PO~4~) with 0.125 g L-1 chloramphenicol added as a microbial inhibitor. Containers were alternately evacuated and flushed with N~2~ three times, and acetylene (10% of headspace volume) was added to block reduction of N~2~O to N~2~. In vitro denitrification was measured in nearly identical acetylene inhibition assays. The only difference was the use of 12 mL of un-amended filtered seawater rather than a nutrient solution [10]. 
+DEA potential was measured by incubating 6.5 g of sediment in 70 mL jars sealed with rubber septa. Sample containers were amended with 12 mL of nutrient-amended filtered seawater (7 mmol N $\cdot$ L^-1^ as KNO~3~; 17 mmol C $\cdot$ L^-1^ as D-glucose; and 6 mmol P $\cdot$ L^-1^ as KH~2~PO~4~) with 0.125 g $\cdot$ L-1 chloramphenicol added as a microbial inhibitor. Containers were alternately evacuated and flushed with N~2~ three times, and acetylene (10% of headspace volume) was added to block reduction of N~2~O to N~2~. In vitro denitrification was measured in nearly identical acetylene inhibition assays. The only difference was the use of 12 mL of un-amended filtered seawater rather than a nutrient solution [10]. 
 
 In both assays, N~2~O accumulation in the jars was measured at 30 minute intervals for two hours. During sampling, 5 mL of sample headspace and 10 mL of N~2~ were transferred to evacuated 12 mL exetainers (Labco, UK). Sampled headspace was replaced with a 10% mixture of acetylene in N~2~. Nitrous oxide concentrations were analyzed by gas chromatography (GC; Shimadzu GC2014) using an electron capture detector (ECD). The GC column oven temperature was 75^o^C, the ECD temperature was 325^o^C, the carrier gas was helium and makeup gas was a 5% solution of methane in argon. The potential and in vitro DEA data provided here reflect the slope of the line of best fit for dilution-corrected N~2~O concentrations in the jar headspace. At least three points were used for each rate estimate, and all relationships had R^2^ of at least 0.92 (mean R^2^ = 0.97). A laboratory blank using DEA solution and no added sediment yielded zero flux (slope = 0.0; R^2^ = 0.0), so no blank correction was applied. 
 
@@ -1033,7 +1033,7 @@ Financial support provided by the US EPA’s Sustainable and Healthy Communities
 
 ## 4.	References 
 
-1.	Hill, T.D., et al., Nitrogen uptake and allocation estimates for Spartina alterniflora and Distichlis spicata. Journal of Experimental Marine Biology and Ecology, 2018. 507: p. 53-60.
+1.	Hill, T.D., et al., Nitrogen uptake and allocation estimates for _Spartina alterniflora_ and _Distichlis spicata_. Journal of Experimental Marine Biology and Ecology, 2018. 507: p. 53-60.
 
 2.	Chmura, G.L., et al., Global carbon sequestration in tidal, saline wetland soils. Global Biogeochemical Cycles, 2003. 17(4): p. 1-12.
 
@@ -1047,7 +1047,7 @@ Financial support provided by the US EPA’s Sustainable and Healthy Communities
 
 7.	Milner, C. and R.E. Hughes, Methods for the measurement of the primary production of grasslands. IBP Handbook no. 6. 1968, Oxford: Blackwell Scientific Publications.
 
-8.	Hill, T.D. and B.J. Roberts, Effects of seasonality and environmental gradients on Spartina alterniflora allometry and primary production. Ecology and Evolution, 2017. 7(22): p. 9676-9688.
+8.	Hill, T.D. and B.J. Roberts, Effects of seasonality and environmental gradients on _Spartina alterniflora_ allometry and primary production. Ecology and Evolution, 2017. 7(22): p. 9676-9688.
 
 9.	Paul, D., G. Skrzypek, and I. Forizs, Normalization of measured stable isotopic compositions to isotope reference scales – a review. Rapid Communications in Mass Spectrometry, 2007. 21(18): p. 3006-3014.
 

@@ -33,6 +33,15 @@ Data: Nutrient concentrations, stable isotope ratios, and biomass from destructi
 ### export to .csv:
 write.csv(CN_mass_data, file = file.path(tempdir(), "CN_mass_data.csv"))
 }
+\references{
+{
+Hill, T.D., N.R. Sommer, C.R. Kanaskie, E.A. Santos, A.J. Oczkowski. In press. Data and source code from: Nitrogen uptake and allocation estimates for Spartina alterniflora and Distichlis spicata. Data In Brief.
+  \url{https://doi.org/10.1016/j.dib.2018.09.133}.
+
+Hill, T.D., N.R. Sommer, C.R. Kanaskie, E.A. Santos, A.J. Oczkowski. 2018. Nitrogen uptake and allocation estimates for Spartina alterniflora and Distichlis spicata. Journal of Experimental Marine Biology and Ecology 507: 53-60.
+  \url{https://doi.org/10.1016/j.jembe.2018.07.006}.
+}
+}
 \keyword{15N}
 \keyword{data,}
 \keyword{isotopes,}
