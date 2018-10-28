@@ -33,3 +33,9 @@ CSP.coef <- plyr::ldply(CSP, stats::coef)
 CSP.coef$lam <- plyr::ddply(allometry, c("spp"), function(df)  
                 bCM(df, lam.only = TRUE))[, "V1"]
 }
+\references{
+{
+Lu, Meng, Caplan, Joshua S., Bakker, Jonathan D., Mozdzer, Thomas J., Drake, Bert G., Megonigal, J. Patrick, and Langley, J. Adam. 2016. Allometry data and equations for coastal marsh plants. Ecology. 
+  \url{https://doi.org/10.1002/ecy.1600}.
+}
+}

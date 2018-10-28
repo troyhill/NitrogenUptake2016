@@ -10,6 +10,10 @@
 #' @importFrom MASS boxcox
 #' @importFrom stats lm
 #' @importFrom car basicPower
+#' @references{
+#' Lu, Meng, Caplan, Joshua S., Bakker, Jonathan D., Mozdzer, Thomas J., Drake, Bert G., Megonigal, J. Patrick, and Langley, J. Adam. 2016. Allometry data and equations for coastal marsh plants. Ecology. 
+#'   \url{https://doi.org/10.1002/ecy.1600}.
+#' }
 #' @examples ### get allometry model for each species
 #' CSP <- plyr::dlply(allometry, c("spp"), bCM)
 #' CSP.coef <- plyr::ldply(CSP, stats::coef)
